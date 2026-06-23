@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,21 +13,24 @@ import {
   ShieldCheck,
   Flame,
 } from "lucide-react";
-import LegacyCTA from "@/components/LegacyCTA";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PILLARS = [
   {
-    icon: <Target className="w-7 h-7" />,
+    icon: <Target className="w-6 h-6 text-[#D4AF37]" />,
     title: "Compete",
     desc: "High-stakes business competition that drives performance, accountability, and measurable growth across all 4 teams.",
   },
   {
-    icon: <Users className="w-7 h-7" />,
+    icon: <Users className="w-6 h-6 text-[#D4AF37]" />,
     title: "Collaborate",
     desc: "Build powerful business relationships that generate referrals, partnerships, and TYFCB revenue for all members.",
   },
   {
-    icon: <Zap className="w-7 h-7" />,
+    icon: <Zap className="w-6 h-6 text-[#D4AF37]" />,
     title: "Create Impact",
     desc: "Build nation-leading businesses through consistent action, strategic thinking, and legendary leadership.",
   },
@@ -33,22 +38,22 @@ const PILLARS = [
 
 const WHY_CARDS = [
   {
-    icon: <Target className="w-6 h-6 text-[#DAA537]" />,
+    icon: <Target className="w-5 h-5 text-[#D4AF37]" />,
     title: "Showcase Tournament",
     desc: "Real-time leaderboard showing live tournament progress across all 4 weeks.",
   },
   {
-    icon: <Trophy className="w-6 h-6 text-[#DAA537]" />,
+    icon: <Trophy className="w-5 h-5 text-[#D4AF37]" />,
     title: "Celebrate Teams",
     desc: "Honor the 4 legendary teams and their outstanding team owners.",
   },
   {
-    icon: <Globe className="w-6 h-6 text-[#DAA537]" />,
+    icon: <Globe className="w-5 h-5 text-[#D4AF37]" />,
     title: "Nation Building",
     desc: "Building a nation-building culture through collective business growth.",
   },
   {
-    icon: <Star className="w-6 h-6 text-[#DAA537]" />,
+    icon: <Star className="w-5 h-5 text-[#D4AF37]" />,
     title: "Permanent Recognition",
     desc: "Create lasting recognition for owners, partners, and member champions.",
   },
@@ -62,10 +67,10 @@ const VALUES = [
 ];
 
 const LEADERSHIP = [
-  { name: "Team Owner I", role: "Team Leader — Lions", img: "/images/owner-portrait-1.jpg" },
-  { name: "Team Owner II", role: "Team Leader — Eagles", img: "/images/owner-portrait-2.jpg" },
-  { name: "Team Owner III", role: "Team Leader — Tigers", img: "/images/owner-portrait-3.jpg" },
-  { name: "Team Owner IV", role: "Team Leader — Lotus", img: "/images/owner-portrait-4.jpg" },
+  { name: "Narendra Modi", role: "Team Leader — Lions", img: "/images/owner_modi.png" },
+  { name: "Ajit Doval", role: "Team Leader — Eagles", img: "/images/owner_doval.png" },
+  { name: "Amit Shah", role: "Team Leader — Tigers", img: "/images/owner_shah.png" },
+  { name: "Dr. S. Jaishankar", role: "Team Leader — Lotus", img: "/images/owner-portrait-4.jpg" },
 ];
 
 const QUOTES = [
@@ -78,150 +83,115 @@ const QUOTES = [
 ];
 
 export default function AboutPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
+        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-card", { opacity: 0, x: 30, duration: 1 }, "-=0.8");
+
+      // Scroll reveals
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="pt-16">
-
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+      
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[82vh] flex items-center px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#060d14]">
-        {/* Grid overlay */}
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
+      <section className="relative min-h-[85vh] flex items-center px-6 sm:px-10 lg:px-16 overflow-hidden">
+        {/* Subtle radial glow */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0%,transparent_60%)] pointer-events-none" />
 
-        {/* Large atmospheric radial */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 90% at 50% 55%, rgba(218,165,55,0.10) 0%, rgba(218,165,55,0.03) 45%, transparent 70%)",
-          }}
-        />
-
-        {/* Subtle corner glows */}
-        <div
-          className="absolute -top-40 -left-40 w-[640px] h-[640px] pointer-events-none rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(218,165,55,0.06) 0%, transparent 70%)" }}
-        />
-        <div
-          className="absolute -bottom-40 -right-40 w-[640px] h-[640px] pointer-events-none rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(218,165,55,0.05) 0%, transparent 70%)" }}
-        />
-
-        <div className="max-w-7xl mx-auto relative w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
-          {/* LEFT — copy */}
+        <div className="max-w-7xl mx-auto relative w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-8 bg-[#DAA537]/70" />
-              <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
-                The Arena Is Set
-              </span>
+            <div className="h-badge inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] block pulse-live" />
+              <span className="font-montserrat text-white/80 text-[10px] font-bold tracking-[0.3em] uppercase">The Arena Is Set</span>
             </div>
 
-            <h1
-              className="font-cinzel font-black text-white leading-[1.05] mb-6"
-              style={{ fontSize: "clamp(44px,6.5vw,82px)" }}
-            >
-              ABOUT
-              <br />
-              <span className="text-shadow-gold" style={{ color: "#DAA537" }}>
-                ABL 2026
-              </span>
+            <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(36px, 6vw, 80px)" }}>
+              ABOUT<br/>
+              <span className="text-[#D4AF37] tracking-widest">ABL 2026</span>
             </h1>
 
-            <div className="gold-divider w-28 mb-6" />
+            <div className="h-sub">
+              <p className="font-montserrat text-white/60 text-base sm:text-lg tracking-[0.1em] mb-10 max-w-xl leading-relaxed">
+                ARES Business League 2026 is a high-stakes, one-month business tournament bringing together 30 elite business owners competing across 4 iconic factions. Strategy. Leadership. Execution. One Winner.
+              </p>
 
-            <p className="font-montserrat text-white/60 text-base leading-relaxed mb-8 max-w-xl">
-              ARES Business League 2026 is a high-stakes, one-month business tournament bringing
-              together 30 elite business owners competing across 4 iconic teams. Strategy.
-              Leadership. Execution. One Winner.
-            </p>
-
-            {/* Stat strip */}
-            <div className="grid grid-cols-3 gap-5 mb-10 max-w-sm">
-              {[
-                { val: "30", label: "Elite Players" },
-                { val: "4", label: "Iconic Teams" },
-                { val: "4", label: "Weeks of Battle" },
-              ].map((s) => (
-                <div key={s.label} className="text-center">
-                  <div
-                    className="font-cinzel font-black text-[#DAA537]"
-                    style={{ fontSize: "clamp(28px,3vw,40px)" }}
-                  >
-                    {s.val}
+              <div className="flex flex-wrap gap-8 mb-10">
+                {[
+                  { val: "30", label: "Elite Players" },
+                  { val: "4", label: "Iconic Factions" },
+                  { val: "4", label: "Weeks of Battle" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <div className="font-cinzel font-light text-[#D4AF37] text-3xl mb-1">{s.val}</div>
+                    <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">{s.label}</div>
                   </div>
-                  <div className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest mt-0.5">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="h-btns flex flex-wrap gap-4">
               <Link href="/teams" className="btn-primary">
-                Meet The Teams <ArrowRight className="w-4 h-4" />
+                Meet The Factions <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link href="/leaderboard" className="btn-secondary">
-                View Leaderboard
+                Live Leaderboard
               </Link>
             </div>
           </div>
 
-          {/* RIGHT — info card */}
-          <div className="relative">
-            {/* Trophy image in background */}
-            <div
-              className="absolute -top-6 -right-6 w-full h-full pointer-events-none rounded-2xl overflow-hidden"
-              style={{ opacity: 0.08 }}
-            >
-              <img
-                src="/images/hero-trophy-pedestal.jpg"
-                alt=""
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="glass-card relative overflow-hidden p-8">
-              {/* Top gold accent line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px]"
-                style={{
-                  background: "linear-gradient(90deg, transparent, #DAA537, #F5D078, #DAA537, transparent)",
-                }}
-              />
-
-              {/* Trophy image */}
-              <div className="flex justify-center mb-6">
-                <img
-                  src="/images/hero-trophy.jpg"
-                  alt="Championship Trophy"
-                  className="w-24 h-28 object-cover rounded-xl trophy-glow"
-                />
+          <div className="h-card relative">
+            <div className="glass-card relative overflow-hidden p-10 border-white/10 bg-white/[0.02]">
+              <div className="flex justify-center mb-8">
+                <img src="/images/hero_arena.png" alt="Championship" className="w-full h-48 object-cover rounded-xl border border-white/10" style={{ filter: "contrast(110%)" }} />
               </div>
 
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-xl text-center mb-1">
-                ARES BUSINESS LEAGUE
+              <h3 className="font-cinzel font-light tracking-widest text-[#D4AF37] text-xl text-center mb-2 uppercase">
+                Ares Business League
               </h3>
-              <div className="font-montserrat text-white/35 text-sm text-center mb-5">
+              <div className="font-montserrat text-white/40 text-[10px] tracking-[0.2em] uppercase text-center mb-8">
                 2026 — Nation Builders Edition
               </div>
 
-              <div className="gold-divider mb-5" />
-
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {[
-                  { label: "Tournament Duration", value: "June 24 – July 22, 2026" },
-                  { label: "Teams", value: "4 Iconic Teams" },
-                  { label: "Business Owners", value: "30 Elite Players" },
-                  { label: "Prize", value: "1.5x Pool + Trophies + MVP Awards" },
-                  { label: "Platform", value: "BNI Chapter" },
+                  { label: "Duration", value: "June 24 – July 22, 2026" },
+                  { label: "Format", value: "4 Teams. 30 Players." },
+                  { label: "Stakes", value: "1.5x Pool + MVP Awards" },
                 ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center justify-between py-2.5 border-b border-[#DAA537]/10 last:border-0"
-                  >
-                    <span className="font-montserrat text-white/40 text-xs">{item.label}</span>
-                    <span className="font-montserrat font-semibold text-white text-xs text-right max-w-[55%]">
-                      {item.value}
-                    </span>
+                  <div key={item.label} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0">
+                    <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-[0.2em]">{item.label}</span>
+                    <span className="font-cinzel text-white/90 text-sm tracking-wider">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -230,296 +200,92 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* ─── MISSION ─── */}
-      <section className="relative py-24 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#0D1B2A]">
-        {/* Atmospheric trophy pedestal background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img
-            src="/images/hero-trophy-pedestal.jpg"
-            alt=""
-            className="w-full h-full object-cover opacity-[0.04]"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, #0D1B2A 0%, rgba(13,27,42,0.6) 50%, #0D1B2A 100%)",
-            }}
-          />
-        </div>
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#050505]">
         <div className="max-w-7xl mx-auto relative">
-          {/* Section label */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8 bg-[#DAA537]/70" />
-                <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
-                  Our Purpose
-                </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+            <div className="sr">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase">Our Purpose</span>
+                <div className="h-px w-12 bg-white/10" />
               </div>
-              <h2
-                className="font-cinzel font-black text-white leading-tight mb-6"
-                style={{ fontSize: "clamp(32px,4.5vw,56px)" }}
-              >
-                THE <span className="text-gold-gradient">MISSION</span>
+              <h2 className="font-cinzel font-light text-white leading-tight mb-8" style={{ fontSize: "clamp(36px,5vw,56px)" }}>
+                THE <span className="text-[#D4AF37]">MISSION</span>
               </h2>
-              <p className="font-montserrat text-white/55 text-base leading-relaxed mb-6 max-w-lg">
-                It is NOT just a competition. ARES Business League exists to build a nation through
-                business growth, member collaboration, and forging legendary enterprises that
-                generate massive TYFCB revenue together.
+              <p className="font-montserrat text-white/60 text-sm leading-relaxed max-w-lg mb-8 tracking-wide">
+                It is NOT just a competition. ARES Business League exists to build a nation through business growth, member collaboration, and forging legendary enterprises that generate massive TYFCB revenue together.
               </p>
-              <div className="gold-divider w-24" />
             </div>
 
-            {/* Right side pull-quote */}
-            <div
-              className="glass-card p-8 relative overflow-hidden"
-              style={{ borderColor: "rgba(218,165,55,0.25)" }}
-            >
-              <div
-                className="absolute top-0 left-0 w-1 h-full rounded-l-xl"
-                style={{ background: "linear-gradient(to bottom, #F5D078, #B8860B)" }}
-              />
-              <p className="font-cinzel text-white/90 text-xl leading-relaxed pl-4">
-                &ldquo;Leaders Compete.
-                <br />
-                <span style={{ color: "#DAA537" }}>Nation Progresses.</span>&rdquo;
+            <div className="glass-card p-10 relative overflow-hidden sr border-l-4 border-l-[#D4AF37] bg-white/[0.02]">
+              <p className="font-cinzel text-white/90 text-2xl leading-relaxed font-light">
+                &ldquo;Leaders Compete.<br />
+                <span className="text-[#D4AF37]">Nation Progresses.</span>&rdquo;
               </p>
-              <div className="mt-6 pl-4 font-montserrat text-white/40 text-xs tracking-widest uppercase">
+              <div className="mt-6 font-montserrat text-white/30 text-[10px] tracking-[0.3em] uppercase">
                 The ABL 2026 Creed
               </div>
             </div>
           </div>
 
-          {/* Three mission cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sr-stagger">
             {PILLARS.map((item) => (
-              <div
-                key={item.title}
-                className="card-premium p-8 text-center group cursor-default"
-                style={{ background: "rgba(6,13,20,0.7)" }}
-              >
-                <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-[#DAA537] mx-auto mb-5 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    background: "rgba(218,165,55,0.08)",
-                    border: "1px solid rgba(218,165,55,0.25)",
-                    boxShadow: "0 0 24px rgba(218,165,55,0.08)",
-                  }}
-                >
+              <div key={item.title} className="glass-card p-10 bg-white/[0.01] hover:bg-white/[0.03] transition-colors border-white/5">
+                <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
-                <h3 className="font-cinzel font-bold text-[#DAA537] text-xl mb-3">
-                  {item.title.toUpperCase()}
-                </h3>
-                <div className="w-8 h-px bg-[#DAA537]/40 mx-auto mb-4" />
-                <p className="font-montserrat text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-lg mb-4">{item.title}</h3>
+                <p className="font-montserrat text-white/50 text-[11px] leading-[1.8] uppercase tracking-wider">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="section-sep" />
-
-      {/* ─── VALUES / PILLARS ─── */}
-      <section className="relative py-24 px-4 sm:px-8 lg:px-12 bg-[#060d14] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(218,165,55,0.06) 0%, transparent 70%)",
-          }}
-        />
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-14">
-            <div className="flex items-center gap-3 justify-center mb-4">
-              <div className="h-px w-8 bg-[#DAA537]/70" />
-              <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
-                Why It Matters
-              </span>
-              <div className="h-px w-8 bg-[#DAA537]/70" />
-            </div>
-            <h2
-              className="font-cinzel font-black text-white"
-              style={{ fontSize: "clamp(28px,4vw,52px)" }}
-            >
-              THE PILLARS OF <span className="text-gold-gradient">ABL</span>
-            </h2>
-            <p className="font-montserrat text-white/45 text-sm mt-4 max-w-2xl mx-auto leading-relaxed">
-              Four foundational principles that drive everything we do — from the opening ceremony
-              to the final championship ceremony.
-            </p>
-          </div>
-
-          {/* Why it matters grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-            {WHY_CARDS.map((item) => (
-              <div
-                key={item.title}
-                className="card group cursor-default text-center"
-                style={{ background: "rgba(13,27,42,0.6)" }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    background: "rgba(218,165,55,0.08)",
-                    border: "1px solid rgba(218,165,55,0.2)",
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <h3 className="font-cinzel font-bold text-[#DAA537] text-base mb-2">
-                  {item.title}
-                </h3>
-                <p className="font-montserrat text-white/45 text-xs leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="section-sep mb-16" />
-
-          {/* Values — larger icon cards */}
-          <div className="text-center mb-12">
-            <h2
-              className="font-cinzel font-black text-white"
-              style={{ fontSize: "clamp(24px,3.5vw,44px)" }}
-            >
-              CORE <span className="text-gold-gradient">VALUES</span>
+      {/* ─── VALUES ─── */}
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+        <div className="max-w-7xl mx-auto relative sr">
+          <div className="text-center mb-20">
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">Core Principles</span>
+            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(32px,4vw,48px)" }}>
+              THE <span className="text-[#D4AF37]">VALUES</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
             {VALUES.map((v) => (
-              <div
-                key={v.title}
-                className="group cursor-default relative overflow-hidden rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-2"
-                style={{
-                  background: "rgba(13,27,42,0.8)",
-                  border: "1px solid rgba(218,165,55,0.18)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
-                }}
-              >
-                {/* Hover gold glow border */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    boxShadow: "0 0 0 1px rgba(218,165,55,0.55), 0 12px 40px rgba(218,165,55,0.14)",
-                  }}
-                />
-
-                {/* Icon */}
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-[#DAA537] mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    background: "rgba(218,165,55,0.08)",
-                    border: "1px solid rgba(218,165,55,0.25)",
-                  }}
-                >
+              <div key={v.title} className="glass-card p-8 bg-white/[0.01] hover:bg-white/[0.03] transition-all border-white/5 hover:border-[#D4AF37]/30 group">
+                <div className="w-10 h-10 mb-6 text-white/40 group-hover:text-[#D4AF37] transition-colors">
                   {v.icon}
                 </div>
-
-                <h3 className="font-cinzel font-bold text-white text-lg mb-3">{v.title}</h3>
-                <div className="w-8 h-px bg-[#DAA537]/50 mx-auto mb-3" />
-                <p className="font-montserrat text-white/45 text-xs leading-relaxed">{v.desc}</p>
+                <h3 className="font-cinzel tracking-widest text-white text-base mb-3 group-hover:text-[#D4AF37] transition-colors">{v.title}</h3>
+                <p className="font-montserrat text-white/40 text-[10px] leading-relaxed tracking-wider uppercase">{v.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="section-sep" />
-
-      {/* ─── LEADERSHIP / TEAM OWNERS ─── */}
-      <section className="relative py-24 px-4 sm:px-8 lg:px-12 bg-[#0D1B2A] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(218,165,55,0.06) 0%, transparent 65%)",
-          }}
-        />
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-14">
-            <div className="flex items-center gap-3 justify-center mb-4">
-              <div className="h-px w-8 bg-[#DAA537]/70" />
-              <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
-                The Champions
-              </span>
-              <div className="h-px w-8 bg-[#DAA537]/70" />
-            </div>
-            <h2
-              className="font-cinzel font-black text-white"
-              style={{ fontSize: "clamp(28px,4vw,52px)" }}
-            >
-              MEET THE <span className="text-gold-gradient">LEADERS</span>
+      {/* ─── LEADERSHIP ─── */}
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#050505]">
+        <div className="max-w-7xl mx-auto relative sr">
+          <div className="text-center mb-20">
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">The Champions</span>
+            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(32px,4vw,48px)" }}>
+              MEET THE <span className="text-[#D4AF37]">LEADERS</span>
             </h2>
-            <p className="font-montserrat text-white/45 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
-              Four elite team owners. Four unique strategies. One arena to determine the greatest
-              among them.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sr-stagger">
             {LEADERSHIP.map((leader) => (
-              <div
-                key={leader.name}
-                className="group cursor-default relative overflow-hidden rounded-2xl transition-all duration-400 hover:-translate-y-3"
-                style={{
-                  background: "rgba(6,13,20,0.7)",
-                  border: "1px solid rgba(218,165,55,0.18)",
-                }}
-              >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    boxShadow:
-                      "0 0 0 1px rgba(218,165,55,0.55), 0 16px 50px rgba(218,165,55,0.14)",
-                  }}
-                />
-
-                {/* Portrait */}
-                <div className="relative overflow-hidden h-64">
-                  <img
-                    src={leader.img}
-                    alt={leader.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Bottom gradient overlay */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-24"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(6,13,20,0.95) 0%, transparent 100%)",
-                    }}
-                  />
-                  {/* Gold top line */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px]"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, #DAA537, transparent)",
-                      opacity: 0,
-                    }}
-                  />
-                </div>
-
-                {/* Info */}
-                <div className="p-5 text-center">
-                  <h3 className="font-cinzel font-bold text-white text-base mb-1">
-                    {leader.name}
-                  </h3>
-                  <div className="font-montserrat text-[#DAA537] text-xs tracking-wide">
-                    {leader.role}
+              <div key={leader.name} className="group relative">
+                <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/10 relative">
+                  <img src={leader.img} alt={leader.name} className="w-full h-full object-cover filter opacity-70 group-hover:opacity-100 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="font-cinzel tracking-wider text-white text-lg mb-1">{leader.name}</h3>
+                    <div className="font-montserrat text-[#D4AF37] text-[9px] tracking-[0.2em] uppercase">{leader.role}</div>
                   </div>
                 </div>
               </div>
@@ -528,107 +294,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="section-sep" />
-
-      {/* ─── SPIRIT QUOTES ─── */}
-      <section className="relative py-20 px-4 sm:px-8 lg:px-12 bg-[#060d14] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-12">
-            <h2
-              className="font-cinzel font-black text-white"
-              style={{ fontSize: "clamp(24px,3.5vw,44px)" }}
-            >
-              THE ARES <span className="text-gold-gradient">SPIRIT</span>
-            </h2>
-            <div className="gold-divider w-24 mx-auto mt-4" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-            {QUOTES.map((quote) => (
-              <div
-                key={quote}
-                className="group cursor-default p-6 rounded-xl transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  background: "rgba(13,27,42,0.7)",
-                  border: "1px solid rgba(218,165,55,0.18)",
-                }}
-              >
-                {/* Gold left accent */}
-                <div
-                  className="w-0.5 h-8 mb-4 rounded-full"
-                  style={{ background: "linear-gradient(to bottom, #F5D078, #B8860B)" }}
-                />
-                <p className="font-cinzel text-[#DAA537] text-sm font-bold leading-relaxed">
-                  &ldquo;{quote}&rdquo;
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/teams" className="btn-primary">
-              Meet The Teams <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/leaderboard" className="btn-secondary">
-              View Leaderboard
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="section-sep" />
-
       {/* ─── BOTTOM CTA ─── */}
-      <section className="relative py-24 px-4 sm:px-8 lg:px-12 bg-[#0D1B2A] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(218,165,55,0.08) 0%, transparent 70%)",
-          }}
-        />
-
-        <div className="max-w-3xl mx-auto text-center relative">
-          <div className="flex items-center gap-3 justify-center mb-5">
-            <div className="h-px w-12 bg-[#DAA537]/60" />
-            <span className="font-montserrat text-[#DAA537]/80 text-[10px] font-bold tracking-[0.5em] uppercase">
-              Ready to Compete
-            </span>
-            <div className="h-px w-12 bg-[#DAA537]/60" />
-          </div>
-
-          <h2
-            className="font-cinzel font-black text-white leading-tight mb-5"
-            style={{ fontSize: "clamp(28px,4vw,52px)" }}
-          >
-            JOIN THE{" "}
-            <span className="text-shadow-gold" style={{ color: "#DAA537" }}>
-              ARENA
-            </span>
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000] text-center border-t border-white/5">
+        <div className="max-w-3xl mx-auto sr">
+          <h2 className="font-cinzel font-light text-white mb-6" style={{ fontSize: "clamp(36px,5vw,64px)" }}>
+            READY TO <span className="text-[#D4AF37] italic">COMPETE?</span>
           </h2>
-
-          <div className="gold-divider w-20 mx-auto mb-6" />
-
-          <p className="font-montserrat text-white/55 text-base leading-relaxed mb-8">
-            Be part of the most exciting business tournament of 2026. Connect with elite business
-            owners, compete for glory, and build your legacy.
+          <p className="font-montserrat text-white/50 text-sm tracking-wide mb-10 max-w-xl mx-auto leading-relaxed">
+            Be part of the most exciting business tournament of 2026. Connect with elite business owners, compete for glory, and build your legacy.
           </p>
-
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn-primary">
-              Get In Touch <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/schedule" className="btn-secondary">
-              View Schedule
-            </Link>
+             <Link href="/contact" className="btn-primary">
+               Contact <ArrowRight className="w-4 h-4 ml-2" />
+             </Link>
+             <Link href="/schedule" className="btn-secondary">
+               View Schedule
+             </Link>
           </div>
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

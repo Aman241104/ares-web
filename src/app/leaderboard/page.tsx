@@ -1,7 +1,15 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { teams } from "@/lib/data";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import LegacyCTA from "@/components/LegacyCTA";
+import LiveTicker from "@/components/LiveTicker";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function MiniSparkline({ values, color }: { values: number[]; color: string }) {
   const w = 60, h = 20;
@@ -20,6 +28,42 @@ function MiniSparkline({ values, color }: { values: number[]; color: string }) {
 }
 
 export default function LeaderboardPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
+        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+
+      // Scroll reveals
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   const sorted = [...teams].sort((a, b) => a.rank - b.rank);
   const weekData: Record<string, number[]> = {
     modi: [520, 765, 920, 1285],
@@ -27,247 +71,230 @@ export default function LeaderboardPage() {
     "amit-shah": [430, 600, 760, 1076],
     jaishankar: [380, 540, 700, 945],
   };
+
   return (
-    <div className="pt-16">
-      {/* Hero */}
-      <section className="relative overflow-hidden" style={{background:"linear-gradient(135deg, #060d14 0%, #0a1520 60%, #060d14 100%)", minHeight:"260px"}}>
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{width:"45%",background:"radial-gradient(ellipse 60% 80% at 80% 50%, rgba(218,165,55,0.12) 0%, transparent 70%)"}} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center pr-12" style={{width:"35%"}}>
-          <img src="/images/hero-trophy.jpg" alt="Trophy" className="h-full w-full object-cover object-center opacity-90" style={{maskImage:"linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", WebkitMaskImage:"linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)"}} />
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+      
+      {/* ─── HERO ─── */}
+      <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
+        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center pr-12 opacity-80" style={{ width: "40%" }}>
+          <img src="/images/hero_arena.png" alt="Trophy" className="h-full w-full object-cover object-center" style={{ maskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", filter: "contrast(110%)" }} />
         </div>
-        <div className="max-w-7xl mx-auto relative px-4 sm:px-8 lg:px-12 py-20">
+        
+        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-20 z-10">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-2 h-2 bg-green-500 rounded-full pulse-live block"/>
-              <span className="font-montserrat text-green-400 text-[11px] font-bold tracking-[0.4em] uppercase">Live Rankings</span>
+            <div className="h-badge inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-6">
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full pulse-live block"/>
+              <span className="font-montserrat text-green-400/80 text-[10px] font-bold tracking-[0.3em] uppercase">Live Rankings</span>
             </div>
-            <h1 className="font-cinzel font-black text-shadow-gold mb-3" style={{fontSize:"clamp(56px,8vw,110px)",color:"#DAA537",lineHeight:0.9}}>LEADER<br/>BOARD</h1>
-            <div className="w-24 h-0.5 mb-4" style={{background:"linear-gradient(90deg, #DAA537, transparent)"}} />
-            <div className="font-montserrat text-white/70 text-sm font-bold tracking-[0.3em] uppercase mb-2">LIVE STANDINGS. REAL IMPACT.</div>
-            <p className="font-montserrat text-white/40 text-sm">Updated every Wednesday @ 8:00 PM</p>
+            
+            <h1 className="h-title font-cinzel font-light text-white mb-4" style={{ fontSize: "clamp(36px, 7vw, 90px)", lineHeight: 1 }}>
+              LEADER<br/>
+              <span className="text-[#D4AF37] tracking-widest">BOARD</span>
+            </h1>
+            
+            <div className="h-sub">
+              <div className="font-montserrat text-white/60 text-xs font-bold tracking-[0.3em] uppercase mb-2">Live Standings. Real Impact.</div>
+              <p className="font-montserrat text-white/30 text-[10px] uppercase tracking-widest">Updated every Wednesday @ 8:00 PM</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Main content */}
-      <section className="py-12 px-4 sm:px-8 lg:px-12 bg-[#0D1B2A]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* ─── MAIN CONTENT ─── */}
+      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          {/* Table + Filters */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* TABLE + FILTERS */}
+          <div className="lg:col-span-2 space-y-6">
+            
             {/* Filters */}
-            <div className="flex flex-wrap gap-2">
-              {["Week 2 (Current)","All Teams","All Categories","Reset Filters"].map((f,i) => (
-                <button key={f} className={`font-montserrat text-[11px] font-bold px-4 py-2 rounded-lg border transition-all uppercase tracking-wider ${i===3?"border-red-500/30 text-red-400 hover:bg-red-500/10":"border-[#DAA537]/25 text-[#DAA537] hover:bg-[#DAA537]/8"}`}>
+            <div className="flex flex-wrap gap-2 sr">
+              {["Week 2 (Current)", "All Teams", "All Categories", "Reset Filters"].map((f, i) => (
+                <button key={f} className={`font-montserrat text-[10px] font-bold px-4 py-2 rounded-full border transition-all uppercase tracking-wider ${i === 3 ? "border-white/10 text-white/40 hover:bg-white/5" : "border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"}`}>
                   {f}
                 </button>
               ))}
             </div>
 
             {/* Table */}
-            <div className="bg-[#060d14] border border-[#DAA537]/20 rounded-2xl overflow-hidden">
-              <div className="grid grid-cols-12 gap-1 px-5 py-3 bg-[#DAA537]/5 border-b border-[#DAA537]/15">
-                {[["col-span-1","Rank"],["col-span-4","Team"],["col-span-2 text-right","Total Pts"],["col-span-2 text-right","Wk2 Pts"],["col-span-2 text-center","Trend"],["col-span-1 text-center","↕"]].map(([cls,h])=>(
-                  <div key={h} className={`${cls} font-montserrat text-[#DAA537] text-[10px] font-bold uppercase tracking-wider`}>{h}</div>
-                ))}
-              </div>
+            <div className="glass-card overflow-hidden sr border-white/10">
+              <div className="w-full overflow-x-auto custom-scrollbar">
+                <div className="min-w-[800px]">
+                  <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+                    {[["col-span-1", "Rk"], ["col-span-4", "Team"], ["col-span-2 text-right", "Total Pts"], ["col-span-2 text-right", "Wk2 Pts"], ["col-span-2 text-center", "Trend"], ["col-span-1 text-center", "↕"]].map(([cls, h]) => (
+                      <div key={h} className={`${cls} font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]`}>{h}</div>
+                    ))}
+                  </div>
 
-              {sorted.map((team,i)=>(
-                <div key={team.id} className={`grid grid-cols-12 gap-1 px-5 py-4 lb-row items-center relative`} style={{
-                  background: i===0 ? `linear-gradient(90deg, ${team.color}12 0%, rgba(218,165,55,0.04) 40%, transparent 100%)` : undefined,
-                  borderLeft: `3px solid ${i < 3 ? team.color : 'transparent'}`,
-                }}>
-                  <div className="col-span-1 flex flex-col items-center gap-0.5">
-                    <div className="w-10 h-10 rounded-full border-2 flex items-center justify-center relative" style={{
-                      borderColor:i===0?"#FFD700":i===1?"#C0C0C0":i===2?"#CD7F32":"rgba(255,255,255,0.15)",
-                      background:i===0?"radial-gradient(circle, rgba(255,215,0,0.18), rgba(255,215,0,0.06))":i===1?"rgba(192,192,192,0.08)":i===2?"rgba(205,127,50,0.08)":"transparent",
-                      boxShadow:i===0?"0 0 15px rgba(255,215,0,0.4)":i===1?"0 0 8px rgba(192,192,192,0.2)":undefined,
-                    }}>
-                      <span className="font-cinzel font-black text-base" style={{color:i===0?"#FFD700":i===1?"#C0C0C0":i===2?"#CD7F32":"rgba(255,255,255,0.3)"}}>{i+1}</span>
-                    </div>
-                  </div>
-                  <div className="col-span-4 flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center font-cinzel font-black text-sm flex-shrink-0" style={{background:`linear-gradient(135deg, ${team.color}55, ${team.color}30)`,border:`2px solid ${team.color}70`,color:team.color}}>{team.name.charAt(0)}</div>
-                    <div>
-                      <Link href={`/teams/${team.id}`} className="font-cinzel font-bold text-sm leading-tight hover:opacity-75 transition-opacity block" style={{color:team.color}}>{team.name.toUpperCase()}</Link>
-                      <div className="font-montserrat text-white/35 text-[11px]">{team.fullName.split(" ").at(-1)}</div>
-                    </div>
-                  </div>
-                  <div className="col-span-2 text-right">
-                    <span className="font-cinzel font-bold text-2xl text-[#DAA537]">{team.points.toLocaleString()}</span>
-                  </div>
-                  <div className="col-span-2 text-right">
-                    <span className="font-cinzel font-bold text-base text-white/60">{team.weekPoints}</span>
-                  </div>
-                  <div className="col-span-2 flex justify-center">
-                    <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
-                  </div>
-                  <div className="col-span-1 text-center">
-                    {i===1?<span className="font-montserrat text-green-400 text-xs font-bold">▲1</span>:i===2?<span className="font-montserrat text-red-400 text-xs font-bold">▼1</span>:<span className="font-montserrat text-white/25 text-xs">—</span>}
+                  <div className="sr-stagger">
+                    {sorted.map((team, i) => (
+                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.02] transition-colors relative" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}10 0%, transparent 100%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color : 'transparent'}` }}>
+                        <div className="col-span-1">
+                          <div className="font-cinzel text-lg" style={{ color: i === 0 ? "#D4AF37" : i === 1 ? "#C0C0C0" : i === 2 ? "#CD7F32" : "rgba(255,255,255,0.3)" }}>0{i+1}</div>
+                        </div>
+                        
+                        <div className="col-span-4 flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center font-cinzel font-black text-sm flex-shrink-0" style={{ background: `linear-gradient(135deg, ${team.color}, ${team.color}cc)`, color: "#fff" }}>
+                            {team.name.charAt(0)}
+                          </div>
+                          <div>
+                            <Link href={`/teams/${team.id}`} className="font-cinzel tracking-widest text-white text-sm hover:text-[#D4AF37] transition-colors uppercase block">
+                              {team.name}
+                            </Link>
+                            <div className="font-montserrat text-white/40 text-[9px] mt-1 tracking-widest uppercase">{team.fullName.split(" ").at(-1)}</div>
+                          </div>
+                        </div>
+                        
+                        <div className="col-span-2 text-right">
+                          <span className="font-cinzel font-light text-2xl" style={{ color: team.color }}>{team.points.toLocaleString()}</span>
+                        </div>
+                        
+                        <div className="col-span-2 text-right">
+                          <span className="font-cinzel text-base text-white/50">{team.weekPoints}</span>
+                        </div>
+                        
+                        <div className="col-span-2 flex justify-center">
+                          <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
+                        </div>
+                        
+                        <div className="col-span-1 text-center">
+                          {i === 1 ? <span className="font-montserrat text-green-400 text-[10px] font-bold">▲1</span> : i === 2 ? <span className="font-montserrat text-red-400 text-[10px] font-bold">▼1</span> : <span className="font-montserrat text-white/20 text-xs">—</span>}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-
-              <div className="px-5 py-4 text-center border-t border-[#DAA537]/10">
-                <a href="#analytics" className="font-montserrat text-[#DAA537] text-sm font-semibold hover:underline inline-flex items-center gap-1">
+              </div>
+              <div className="px-6 py-4 text-center border-t border-white/5">
+                <a href="#analytics" className="font-montserrat text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest hover:underline inline-flex items-center gap-2">
                   View Detailed Analytics <ArrowRight className="w-3 h-3"/>
                 </a>
               </div>
             </div>
 
-            {/* Points Trend SVG Line Chart */}
-            <div id="analytics" className="bg-[#060d14] border border-[#DAA537]/20 rounded-2xl p-6">
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-base mb-5 uppercase tracking-wider">Points Trend (Last 4 Weeks)</h3>
+            {/* SVG Chart */}
+            <div id="analytics" className="glass-card p-8 sr border-white/10">
+              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Points Trend (Last 4 Weeks)</h3>
               {(() => {
-                const chartW = 500, chartH = 180, padL = 40, padR = 20, padT = 10, padB = 30;
-                const w = chartW - padL - padR, h = chartH - padT - padB;
-                const maxPts = 1500;
-                const weeks = ["Week 1","Week 2","Week 3","Week 4"];
-                const yTicks = [0, 400, 800, 1200];
+                const chartData = [
+                  { name: "Week 1", modi: weekData.modi[0], doval: weekData.doval[0], shah: weekData["amit-shah"][0], jaishankar: weekData.jaishankar[0] },
+                  { name: "Week 2", modi: weekData.modi[1], doval: weekData.doval[1], shah: weekData["amit-shah"][1], jaishankar: weekData.jaishankar[1] },
+                  { name: "Week 3", modi: weekData.modi[2], doval: weekData.doval[2], shah: weekData["amit-shah"][2], jaishankar: weekData.jaishankar[2] },
+                  { name: "Week 4", modi: weekData.modi[3], doval: weekData.doval[3], shah: weekData["amit-shah"][3], jaishankar: weekData.jaishankar[3] },
+                ];
                 return (
-                  <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full">
-                    {/* Grid lines */}
-                    {yTicks.map(v => {
-                      const y = padT + h - (v/maxPts)*h;
-                      return (
-                        <g key={v}>
-                          <line x1={padL} y1={y.toFixed(1)} x2={padL+w} y2={y.toFixed(1)} stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-                          <text x={(padL-4).toFixed(1)} y={(y+4).toFixed(1)} textAnchor="end" fontSize="8" fontFamily="Cinzel" fill="rgba(255,255,255,0.3)">{v}</text>
-                        </g>
-                      );
-                    })}
-                    {/* Week labels */}
-                    {weeks.map((wk,i) => (
-                      <text key={wk} x={(padL + (i/(weeks.length-1))*w).toFixed(1)} y={(chartH-4).toFixed(1)} textAnchor="middle" fontSize="8" fontFamily="Montserrat" fill="rgba(255,255,255,0.3)">{wk}</text>
-                    ))}
-                    {/* Team lines */}
-                    {sorted.map((team) => {
-                      const pts = weekData[team.id] ?? [];
-                      const points = pts.map((v,i) => `${(padL + (i/(pts.length-1))*w).toFixed(1)},${(padT + h - (v/maxPts)*h).toFixed(1)}`).join(" ");
-                      return (
-                        <g key={team.id}>
-                          <polyline points={points} fill="none" stroke={team.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          {pts.map((v,i) => (
-                            <circle key={i} cx={(padL + (i/(pts.length-1))*w).toFixed(1)} cy={(padT + h - (v/maxPts)*h).toFixed(1)} r="3" fill={team.color} />
-                          ))}
-                        </g>
-                      );
-                    })}
-                  </svg>
+                  <div className="h-[250px] w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
+                        <YAxis stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
+                        <Tooltip 
+                          contentStyle={{ backgroundColor: "#050505", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px" }}
+                          itemStyle={{ fontSize: "12px", fontFamily: "var(--font-montserrat)" }}
+                          labelStyle={{ color: "#D4AF37", fontSize: "10px", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "8px", fontFamily: "var(--font-montserrat)" }}
+                        />
+                        {sorted.map(team => (
+                          <Line 
+                            key={team.id} 
+                            type="monotone" 
+                            dataKey={team.id === "amit-shah" ? "shah" : team.id} 
+                            name={team.name}
+                            stroke={team.color} 
+                            strokeWidth={3}
+                            dot={{ r: 4, fill: team.color, strokeWidth: 0 }}
+                            activeDot={{ r: 6, fill: "#fff", stroke: team.color, strokeWidth: 2 }}
+                          />
+                        ))}
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
                 );
               })()}
-              {/* Legend */}
-              <div className="flex flex-wrap gap-4 mt-3 pt-3 border-t border-white/5">
+              <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-white/5 justify-center">
                 {sorted.map(team=>(
-                  <div key={team.id} className="flex items-center gap-1.5">
-                    <div className="w-3 h-0.5 rounded-full" style={{backgroundColor:team.color}} />
-                    <span className="font-montserrat text-white/40 text-[11px]">{team.name}</span>
+                  <div key={team.id} className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full" style={{backgroundColor:team.color}} />
+                    <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-widest">{team.name}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Key Insights */}
-            <div className="bg-[#060d14] border border-[#DAA537]/20 rounded-2xl p-6">
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-base mb-5 uppercase tracking-wider">Key Insights</h3>
-              <div className="space-y-3">
-                {[
-                  {text:"Visionaries lead with consistent performance across all categories",color:"#E67E22"},
-                  {text:"Strategists show strong growth in Referrals & Meetings",color:"#1E3A8A"},
-                  {text:"Warriors are ramping up in high-impact events",color:"#C0392B"},
-                  {text:"Diplomats show high engagement in community activities",color:"#27AE60"},
-                ].map((ins)=>(
-                  <div key={ins.text} className="flex items-start gap-3 p-3.5 rounded-xl border transition-all hover:-translate-x-0.5" style={{background:"rgba(255,255,255,0.025)",borderColor:"rgba(255,255,255,0.06)"}}>
-                    <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 mt-1" style={{backgroundColor:ins.color}} />
-                    <p className="font-montserrat text-white/55 text-xs leading-relaxed">{ins.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-white/5">
-                <Link href="#" className="font-montserrat text-[#DAA537] text-xs font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-1">
-                  View Full Analytics <ArrowRight className="w-3 h-3" />
-                </Link>
               </div>
             </div>
 
             {/* Top Performers */}
-            <div className="bg-[#060d14] border border-[#DAA537]/20 rounded-2xl p-6">
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-base mb-5 uppercase tracking-wider">Top Performers — Week 2</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="glass-card p-8 sr border-white/10">
+              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers — Week 2</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
                 {[
-                  {label:"Top Points Earner",name:"Rahul Sharma",team:"Team Modi",teamColor:"#E67E22",value:"256 PTS",img:"/images/owner-portrait-1.jpg"},
-                  {label:"Top Referrer",name:"Priya Mehta",team:"Team Doval",teamColor:"#1E3A8A",value:"18 Referrals",img:"/images/owner-portrait-2.jpg"},
-                  {label:"Top Meetings",name:"Vikas Agarwal",team:"Team Modi",teamColor:"#E67E22",value:"21 Meetings",img:"/images/owner-portrait-3.jpg"},
+                  {label:"Top Points Earner",name:"Rahul Sharma",team:"Team Modi",teamColor:"#E67E22",value:"256 PTS",img:"/images/owner_modi.png"},
+                  {label:"Top Referrer",name:"Priya Mehta",team:"Team Doval",teamColor:"#1E3A8A",value:"18 Referrals",img:"/images/owner_doval.png"},
+                  {label:"Top Meetings",name:"Vikas Agarwal",team:"Team Modi",teamColor:"#E67E22",value:"21 Meetings",img:"/images/owner_shah.png"},
                   {label:"Top Growth",name:"Anil Desai",team:"Team Amit Shah",teamColor:"#C0392B",value:"₹24.8L",img:"/images/owner-portrait-4.jpg"},
                 ].map((p)=>(
-                  <div key={p.label} className="bg-[#0D1B2A] border border-[#DAA537]/15 rounded-xl p-4 text-center hover:border-[#DAA537]/40 transition-all">
-                    <div className="font-montserrat text-white/35 text-[10px] uppercase tracking-wider mb-3">{p.label}</div>
-                    <div className="w-14 h-14 rounded-full overflow-hidden mx-auto mb-2 border-2" style={{borderColor:p.teamColor}}>
-                      <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
+                  <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
+                    <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
+                    <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/20 p-1">
+                      <div className="w-full h-full rounded-full overflow-hidden">
+                        <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
+                      </div>
                     </div>
-                    <div className="font-cinzel font-bold text-white text-xs mb-0.5">{p.name}</div>
-                    <div className="font-montserrat text-[10px] mb-2" style={{color:p.teamColor}}>{p.team}</div>
-                    <div className="font-cinzel font-black text-lg" style={{color:p.teamColor}}>{p.value}</div>
+                    <div className="font-cinzel tracking-wider text-white text-[11px] mb-1">{p.name}</div>
+                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/40">{p.team}</div>
+                    <div className="font-cinzel font-light text-lg" style={{color:p.teamColor}}>{p.value}</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Points Details Sidebar */}
-          <div className="space-y-4">
-            <div className="bg-[#060d14] border border-[#DAA537]/25 rounded-2xl p-5 sticky top-24" style={{boxShadow:"0 0 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(218,165,55,0.1)"}}>
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-sm mb-1 uppercase tracking-wider">Points Details</h3>
-              <p className="font-montserrat text-white/35 text-[11px] mb-4">Total Points = Performance + Engagement + Impact</p>
+          {/* SIDEBAR */}
+          <div className="space-y-6">
+            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#050505]">
+              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
+              <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
 
-              <div className="mb-4">
-                <div className="font-montserrat text-white/50 text-[10px] font-bold uppercase tracking-wider mb-2.5">Core Categories (Max 1,000 pts)</div>
-                <div className="space-y-1.5">
+              <div className="mb-6">
+                <div className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold uppercase tracking-widest mb-3">Core Categories (Max 1,000 pts)</div>
+                <div className="space-y-2">
                   {[["Business Growth","300 PTS"],["Referrals Generated","250 PTS"],["Meetings Conducted","200 PTS"],["One-to-Ones","150 PTS"],["Event Participation","100 PTS"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-1.5 border-b border-white/4 last:border-0">
-                      <span className="font-montserrat text-white/55 text-xs">{l}</span>
-                      <span className="font-montserrat text-[#DAA537] text-xs font-bold">{p}</span>
+                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
+                      <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold">{p}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mb-4">
-                <div className="font-montserrat text-white/50 text-[10px] font-bold uppercase tracking-wider mb-2.5">Bonus Points (Max 500 pts)</div>
-                <div className="space-y-1.5">
+              <div className="mb-6">
+                <div className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold uppercase tracking-widest mb-3">Bonus Points (Max 500 pts)</div>
+                <div className="space-y-2">
                   {[["Early Bird Bonus","+100"],["Perfect Week Bonus","+150"],["Consistency Bonus","+100"],["Mega Impact Bonus","+150"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-1.5 border-b border-white/4 last:border-0">
-                      <span className="font-montserrat text-white/55 text-xs">{l}</span>
-                      <span className="font-montserrat text-green-400 text-xs font-bold">{p}</span>
+                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
+                      <span className="font-montserrat text-green-400 text-[10px] font-bold">{p}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mb-5">
-                <div className="font-montserrat text-white/50 text-[10px] font-bold uppercase tracking-wider mb-2.5">Deductions</div>
-                <div className="space-y-1.5">
+              <div className="mb-8">
+                <div className="font-montserrat text-red-400/70 text-[9px] font-bold uppercase tracking-widest mb-3">Deductions</div>
+                <div className="space-y-2">
                   {[["No Show","-25"],["Late Submission","-15"],["Incomplete Activity","-10"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-1.5 border-b border-white/4 last:border-0">
-                      <span className="font-montserrat text-white/55 text-xs">{l}</span>
-                      <span className="font-montserrat text-red-400 text-xs font-bold">{p}</span>
+                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
+                      <span className="font-montserrat text-red-400 text-[10px] font-bold">{p}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-3 bg-[#DAA537]/10 border-2 border-[#DAA537]/40 rounded-xl text-center py-5">
-                <div className="font-montserrat text-white/40 text-[11px] mb-1">Max Possible Per Week</div>
-                <div className="font-cinzel font-black text-5xl text-[#DAA537] leading-none">1,500</div>
-                <div className="font-montserrat text-white/35 text-xs">PTS</div>
-              </div>
-
-              <div className="mt-4 p-4 border border-[#DAA537]/15 rounded-xl bg-[#DAA537]/4">
-                <blockquote className="font-cinzel text-[#DAA537] text-xs italic leading-relaxed">
-                  &ldquo;The leaderboard is not just about competition. It&rsquo;s about commitment, consistency and creating impact together.&rdquo;
-                </blockquote>
-                <div className="font-montserrat text-white/35 text-[10px] mt-2">— ARES Business League</div>
+              <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
+                <div className="font-cinzel font-light text-5xl text-[#D4AF37] mb-1">1,500</div>
+                <div className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest">PTS</div>
               </div>
             </div>
           </div>
@@ -275,6 +302,7 @@ export default function LeaderboardPage() {
       </section>
 
       <LegacyCTA />
+      <LiveTicker />
     </div>
   );
 }

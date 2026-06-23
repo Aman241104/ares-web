@@ -30,6 +30,15 @@
     letter-spacing: 0.02em;
   }
   h1, h2, h3, h4, h5, h6 { font-family: var(--font-cinzel), Arial, serif; font-weight: 300; }
+  
+  ::selection {
+    background: rgba(212, 175, 55, 0.3); /* Gold selection */
+    color: #ffffff;
+  }
+  ::-moz-selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #ffffff;
+  }
 }
 
 /* Fonts */

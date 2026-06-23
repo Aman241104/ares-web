@@ -1,112 +1,134 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { weeklyEvents, specialEvents, teams } from "@/lib/data";
+import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const statusColors: Record<string, string> = {
-  completed: "bg-green-500/20 text-green-400 border-green-500/40",
-  "in-progress": "bg-yellow-500/20 text-yellow-400 border-yellow-500/40",
-  upcoming: "bg-blue-500/20 text-blue-400 border-blue-500/40",
+  completed: "bg-white/5 text-white/50 border-white/10",
+  "in-progress": "bg-[#D4AF37]/10 text-[#D4AF37] border-[#D4AF37]/30",
+  upcoming: "bg-blue-500/10 text-blue-400 border-blue-500/30",
 };
 
 const statusDot: Record<string, string> = {
-  completed: "bg-green-400",
-  "in-progress": "bg-yellow-400",
+  completed: "bg-white/50",
+  "in-progress": "bg-[#D4AF37]",
   upcoming: "bg-blue-400",
 };
 
 const specialEventImages = [
-  "/images/blog-strategy.jpg",
-  "/images/blog-leadership.jpg",
-  "/images/blog-networking.jpg",
-  "/images/blog-growth.jpg",
-];
-
-// Week 2 events as shown in the reference design
-const week2Events = [
-  { name: "Opening Ceremony", category: "Networking", points: 80, status: "completed" },
-  { name: "Business Growth Sprint", category: "Networking", points: 150, status: "completed" },
-  { name: "Refer & Earn Challenge", category: "Referrals", points: 200, status: "completed" },
-  { name: "TYFCB Challenge", category: "TYFCB", points: 300, status: "in-progress" },
-  { name: "One-on-One BNI", category: "Meetings", points: 200, status: "upcoming" },
-  { name: "Attendance Booster", category: "Attendance", points: 75, status: "upcoming" },
+  "/images/blog_strategy.png",
+  "/images/luxury_boardroom.png",
+  "/images/luxury_boardroom.png",
+  "/images/luxury_boardroom.png",
 ];
 
 export default function SchedulePage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".h-title", { opacity: 0, y: 30, duration: 1 })
+        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-img", { opacity: 0, scale: 0.9, duration: 1 }, "-=0.8");
+
+      // Scroll reveals
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="pt-16">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
-      <section className="relative py-20 px-4 sm:px-8 lg:px-12 bg-[#060d14] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
+      <section className="relative py-20 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center">
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 70% 50%, rgba(218,165,55,0.07) 0%, transparent 60%)",
+            backgroundImage: "radial-gradient(circle at 70% 50%, rgba(212,175,55,0.05) 0%, transparent 60%)",
           }}
         />
-        <div className="max-w-7xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <h1 className="font-cinzel font-black text-[#DAA537] mb-2 leading-none" style={{fontSize:"clamp(40px,6vw,80px)",textShadow:"0 0 40px rgba(218,165,55,0.4)"}}>
-              SCHEDULE<br/><span style={{fontSize:"0.65em"}}>&amp; EVENTS</span>
+            <h1 className="h-title font-cinzel font-light text-white mb-6 leading-none" style={{ fontSize: "clamp(36px,7vw,90px)" }}>
+              SCHEDULE<br/><span className="text-[#D4AF37] tracking-widest text-[0.8em]">EVENTS</span>
             </h1>
-            <div className="font-montserrat text-[#DAA537]/80 text-xs font-bold tracking-[0.35em] uppercase mb-3">42 CHALLENGES · 4 WEEKS · 1 CHAMPION</div>
-            <div className="gold-divider w-24 mb-4" />
-            <p className="font-montserrat text-white/60 text-base mb-6 max-w-md">
-              Dynamic schedule. Real-time updates. Maximum Impact.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <button className="btn-primary text-sm">
-                <Calendar className="w-4 h-4" /> Calendar View
-              </button>
-              <button className="btn-secondary text-sm">
-                <Clock className="w-4 h-4" /> Timeline View
-              </button>
+            <div className="h-sub">
+              <div className="font-montserrat text-white/50 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 flex items-center gap-4">
+                42 CHALLENGES <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> 4 WEEKS <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> 1 CHAMPION
+              </div>
+              <p className="font-montserrat text-white/60 text-sm leading-relaxed mb-10 max-w-md tracking-wide">
+                Dynamic schedule. Real-time updates. Maximum Impact. Keep track of all upcoming events, challenges and milestones.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button className="btn-primary">
+                  <Calendar className="w-4 h-4 ml-2" /> Calendar View
+                </button>
+                <button className="btn-secondary">
+                  <Clock className="w-4 h-4 mr-2" /> Timeline View
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Right: trophy + team badge pills */}
-          <div className="hidden lg:flex justify-end items-center gap-6">
-            <div className="relative w-36 h-36 flex-shrink-0">
+          <div className="hidden lg:flex justify-end items-center gap-8 h-img">
+            <div className="relative w-48 h-48 flex-shrink-0">
               <img
-                src="/images/hero-trophy.jpg"
+                src="/images/hero_arena.png"
                 alt="Trophy"
-                className="w-full h-full object-cover rounded-2xl opacity-85"
-                style={{ filter: "drop-shadow(0 0 30px rgba(218,165,55,0.6))" }}
+                className="w-full h-full object-cover rounded-full opacity-80 transition-all duration-700"
               />
-              <div
-                className="absolute inset-0 rounded-2xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(218,165,55,0.25), transparent)",
-                }}
-              />
+              <div className="absolute inset-0 rounded-full border border-white/10" />
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               {teams.map((t) => {
                 const teamImgs: Record<string,string> = {
-                  modi:"/images/team-modi.jpg", doval:"/images/team-doval.jpg",
-                  "amit-shah":"/images/team-amit-shah.jpg", jaishankar:"/images/team-jaishankar.jpg",
+                  modi:"/images/team_modi.png", doval:"/images/team_doval.png",
+                  "amit-shah":"/images/team_shah.png", jaishankar:"/images/team_jaishankar.png",
                 };
                 return (
                   <Link
                     key={t.id}
                     href={`/teams/${t.id}`}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl border hover:opacity-80 transition-opacity"
-                    style={{ borderColor: t.color + "60", backgroundColor: t.color + "12", minWidth: "200px" }}
+                    className="flex items-center gap-4 px-5 py-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all"
+                    style={{ minWidth: "220px" }}
                   >
-                    <div
-                      className="w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 border-2"
-                      style={{ borderColor: t.color + "70" }}
-                    >
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-white/10">
                       <img src={teamImgs[t.id]} alt={t.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-cinzel font-black text-xs leading-tight" style={{ color: t.color }}>
+                      <div className="font-cinzel tracking-widest text-sm leading-tight text-white mb-0.5">
                         {t.name.toUpperCase()}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-wider truncate">
+                      <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest truncate">
                         {t.fullName.toUpperCase()}
                       </div>
                     </div>
@@ -119,38 +141,38 @@ export default function SchedulePage() {
       </section>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#0D1B2A]">
-        <div className="max-w-7xl mx-auto mb-8">
-          <div className="font-montserrat text-[#DAA537]/60 text-[10px] font-bold tracking-[0.4em] uppercase mb-1">
-            Live Updates
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+        <div className="max-w-7xl mx-auto mb-12 sr">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-8 h-px bg-[#D4AF37]" />
+            <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
+              Live Updates
+            </div>
           </div>
-          <h2 className="font-cinzel font-black text-white text-2xl sm:text-3xl">
-            THIS WEEK&apos;S{" "}
-            <span className="text-[#DAA537]">EVENT UPDATE</span>
+          <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">
+            THIS WEEK'S <span className="text-[#D4AF37]">SCHEDULE</span>
           </h2>
         </div>
 
         {/* 3-column layout: week selector | events table | bonus sidebar */}
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-0 rounded-2xl overflow-hidden border border-[#DAA537]/20">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-0 rounded-2xl overflow-hidden glass-card border-white/10 sr">
+          
           {/* ── Left: Week Selector ── */}
-          <div
-            className="flex-shrink-0 lg:w-64 bg-[#060d14] border-r border-[#DAA537]/20 p-5"
-            style={{ minWidth: 220 }}
-          >
+          <div className="flex-shrink-0 lg:w-72 bg-white/[0.02] border-r border-white/10 p-8" style={{ minWidth: 260 }}>
             {/* Week buttons */}
-            <div className="space-y-1 mb-6">
+            <div className="space-y-2 mb-10">
               {weeklyEvents.map((week, i) => (
                 <div
                   key={week.week}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all cursor-default ${
+                  className={`w-full text-left px-5 py-4 rounded-xl transition-all cursor-default ${
                     i === 1
-                      ? "bg-[#DAA537] text-[#0D1B2A]"
-                      : "hover:bg-white/5 text-white/40"
+                      ? "bg-white/10 border border-white/20"
+                      : "hover:bg-white/5 text-white/40 border border-transparent"
                   }`}
                 >
                   <div
-                    className={`font-cinzel font-bold text-sm ${
-                      i === 1 ? "text-[#0D1B2A]" : "text-white/60"
+                    className={`font-cinzel tracking-widest text-sm ${
+                      i === 1 ? "text-white font-bold" : "text-white/40"
                     }`}
                   >
                     WEEK {week.week}
@@ -160,29 +182,29 @@ export default function SchedulePage() {
             </div>
 
             {/* Selected week details */}
-            <div className="pt-4 border-t border-[#DAA537]/20">
-              <div className="font-montserrat text-[#DAA537]/60 text-[9px] font-bold tracking-[0.3em] uppercase mb-1">
+            <div className="pt-8 border-t border-white/10">
+              <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">
                 WEEK 2 THEME
               </div>
-              <h3 className="font-cinzel font-bold text-white text-sm leading-tight mb-3">
+              <h3 className="font-cinzel text-white text-xl leading-tight mb-4 tracking-wider">
                 STRONGER IMPACT.
               </h3>
-              <p className="font-montserrat text-white/40 text-xs leading-relaxed mb-5">
-                Maintaining the league with focus, energy and meaningful connections
+              <p className="font-montserrat text-white/50 text-xs leading-relaxed mb-8">
+                Maintaining the league with focus, energy and meaningful connections.
               </p>
 
               {/* LIVE + countdown */}
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0" />
-                  <span className="font-montserrat text-green-400 text-xs font-bold tracking-wider">
+              <div className="space-y-2 glass-card p-4 border-white/5 bg-white/[0.01]">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full pulse-live flex-shrink-0" />
+                  <span className="font-montserrat text-green-400 text-[10px] font-bold tracking-[0.2em]">
                     LIVE
                   </span>
                 </div>
-                <div className="font-montserrat text-white/40 text-[10px] uppercase tracking-wider">
-                  END IN:
+                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">
+                  ENDS IN:
                 </div>
-                <div className="font-cinzel font-bold text-[#DAA537] text-base tracking-widest">
+                <div className="font-cinzel font-light text-white text-2xl tracking-widest">
                   04:12:36:58
                 </div>
               </div>
@@ -190,60 +212,56 @@ export default function SchedulePage() {
           </div>
 
           {/* ── Center: Events Table ── */}
-          <div className="flex-1 bg-[#060d14] p-6 min-w-0">
-            {/* Table header */}
-            <div className="grid grid-cols-12 gap-2 px-3 py-2 mb-2">
-              <div className="col-span-5 font-montserrat text-[10px] font-bold text-white/30 uppercase tracking-widest">
-                EVENT NAME
-              </div>
-              <div className="col-span-3 font-montserrat text-[10px] font-bold text-white/30 uppercase tracking-widest">
-                CATEGORY
-              </div>
-              <div className="col-span-2 text-right font-montserrat text-[10px] font-bold text-white/30 uppercase tracking-widest">
-                POINTS
-              </div>
-              <div className="col-span-2 text-right font-montserrat text-[10px] font-bold text-white/30 uppercase tracking-widest">
-                STATUS
-              </div>
-            </div>
-
-            {/* Event rows */}
-            <div className="space-y-2">
-              {week2Events.map((event) => (
-                <div
-                  key={event.name}
-                  className="grid grid-cols-12 gap-2 px-3 py-3.5 rounded-xl transition-all hover:-translate-x-0.5 items-center" style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(218,165,55,0.06)"}}
-                >
-                  <div className="col-span-5 font-montserrat font-semibold text-white text-sm truncate">
-                    {event.name}
-                  </div>
-                  <div className="col-span-3 font-montserrat text-white/50 text-xs">
-                    {event.category}
-                  </div>
-                  <div className="col-span-2 text-right font-cinzel font-bold text-[#DAA537] text-sm">
-                    {event.points}
-                  </div>
-                  <div className="col-span-2 text-right">
-                    <span
-                      className={`inline-flex items-center gap-1 font-montserrat text-[10px] px-2 py-0.5 rounded-full border capitalize ${
-                        statusColors[event.status]
-                      }`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${statusDot[event.status]}`} />
-                      <span className="hidden sm:inline">
-                        {event.status.replace("-", " ")}
-                      </span>
-                    </span>
-                  </div>
+          <div className="flex-1 p-8 min-w-0">
+            <div className="w-full overflow-x-auto custom-scrollbar">
+              <div className="min-w-[600px]">
+                {/* Table header */}
+                <div className="grid grid-cols-12 gap-4 px-4 py-3 mb-4 border-b border-white/5">
+                  <div className="col-span-5 font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">EVENT NAME</div>
+                  <div className="col-span-3 font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">CATEGORY</div>
+                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">PTS</div>
+                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">STATUS</div>
                 </div>
-              ))}
+
+                {/* Event rows */}
+                <div className="space-y-3">
+                  {scheduleEvents.map((event, i) => (
+                    <div
+                      key={event.name}
+                      className="grid grid-cols-12 gap-4 px-4 py-5 rounded-xl transition-all hover:bg-white/[0.02] items-center border border-white/5"
+                    >
+                      <div className="col-span-5 font-cinzel text-white text-sm tracking-wide truncate">
+                        {event.name}
+                      </div>
+                      <div className="col-span-3 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                        {event.category}
+                      </div>
+                      <div className="col-span-2 text-right font-cinzel text-[#D4AF37] text-base">
+                        {event.points}
+                      </div>
+                      <div className="col-span-2 text-right">
+                        <span
+                          className={`inline-flex items-center gap-2 font-montserrat text-[9px] px-3 py-1 rounded-full border uppercase tracking-widest ${
+                            statusColors[event.status]
+                          }`}
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${statusDot[event.status]}`} />
+                          <span className="hidden sm:inline">
+                            {event.status.replace("-", " ")}
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* View full schedule button */}
-            <div className="mt-6">
+            <div className="mt-8 text-center sm:text-left">
               <Link
-                href="#"
-                className="inline-flex items-center gap-2 font-montserrat font-bold text-sm text-[#DAA537] hover:text-[#DAA537]/80 border border-[#DAA537]/40 hover:border-[#DAA537]/70 px-5 py-2.5 rounded-lg transition-all"
+                href="/schedule"
+                className="inline-flex items-center gap-3 font-montserrat text-[10px] font-bold text-white uppercase tracking-widest hover:text-[#D4AF37] transition-colors py-2"
               >
                 VIEW FULL SCHEDULE <ArrowRight className="w-4 h-4" />
               </Link>
@@ -251,38 +269,29 @@ export default function SchedulePage() {
           </div>
 
           {/* ── Right: Bonus Points Sidebar ── */}
-          <div
-            className="flex-shrink-0 lg:w-56 bg-[#060d14] border-l border-[#DAA537]/20 p-5"
-            style={{ minWidth: 200 }}
-          >
-            <h3 className="font-cinzel font-bold text-[#DAA537] text-xs mb-1 tracking-widest uppercase">
+          <div className="flex-shrink-0 lg:w-72 bg-white/[0.02] border-l border-white/10 p-8" style={{ minWidth: 260 }}>
+            <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">
               BONUS POINTS
             </h3>
-            <p className="font-cinzel font-bold text-[#DAA537] text-xs mb-4 tracking-wider uppercase">
-              DETAILS
-            </p>
 
-            <div className="space-y-2.5 mb-5">
+            <div className="space-y-4 mb-8">
               {[
                 { name: "Early Bird Bonus", pts: "+25", desc: "Complete before the deadline" },
                 { name: "Perfect Week Bonus", pts: "+100", desc: "Complete all weekly events" },
                 { name: "Consistency Bonus", pts: "+75", desc: "Attend 3 consecutive weeks" },
                 { name: "Mega Impact Bonus", pts: "+150", desc: "Achieve high business impact" },
               ].map((b) => (
-                <div
-                  key={b.name}
-                  className="p-3 rounded-lg border transition-all hover:border-[#DAA537]/35" style={{background:"rgba(218,165,55,0.04)",border:"1px solid rgba(218,165,55,0.12)"}}
-                >
-                  <div className="flex items-start justify-between gap-2">
+                <div key={b.name} className="p-4 rounded-xl border border-white/5 bg-white/[0.01]">
+                  <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="font-montserrat font-semibold text-white/80 text-[11px] leading-tight">
+                      <div className="font-montserrat text-white text-[10px] uppercase tracking-widest mb-1.5">
                         {b.name}
                       </div>
-                      <div className="font-montserrat text-white/35 text-[9px] mt-0.5 leading-snug">
+                      <div className="font-montserrat text-white/40 text-[9px] leading-snug">
                         {b.desc}
                       </div>
                     </div>
-                    <span className="font-cinzel font-bold text-green-400 text-sm flex-shrink-0">
+                    <span className="font-cinzel text-green-400 text-sm flex-shrink-0">
                       {b.pts}
                     </span>
                   </div>
@@ -291,106 +300,103 @@ export default function SchedulePage() {
             </div>
 
             {/* Max bonus highlight */}
-            <div className="p-3 bg-[#DAA537]/10 border border-[#DAA537]/40 rounded-xl text-center mb-5">
-              <div className="font-montserrat text-white/50 text-[9px] uppercase tracking-wider mb-1 leading-tight">
-                MAX BONUS POINTS<br />PER WEEK:
+            <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center mb-8">
+              <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">
+                MAX BONUS POINTS<br />PER WEEK
               </div>
-              <div className="font-cinzel font-black text-3xl text-[#DAA537] leading-none">
+              <div className="font-cinzel font-light text-4xl text-[#D4AF37] mb-1">
                 350
               </div>
-              <div className="font-montserrat text-[#DAA537]/60 text-[10px] font-bold tracking-widest mt-0.5">
+              <div className="font-montserrat text-white/30 text-[9px] tracking-widest uppercase">
                 PTS
               </div>
             </div>
 
             {/* Schedule at a Glance */}
-            <div className="pt-4 border-t border-[#DAA537]/20">
-              <h3 className="font-cinzel font-bold text-[#DAA537] text-xs mb-3 tracking-widest uppercase">Schedule At a Glance</h3>
-              <div className="space-y-2">
+            <div className="pt-6 border-t border-white/10">
+              <h3 className="font-cinzel tracking-widest text-white/60 text-xs mb-4 uppercase">At a Glance</h3>
+              <div className="space-y-3">
                 {[
-                  {l:"Total Events",v:"42"},
-                  {l:"Events Completed",v:"6"},
-                  {l:"Events In-Progress",v:"2"},
-                  {l:"Upcoming Events",v:"34"},
-                  {l:"Weeks",v:"4"},
-                ].map((s)=>(
-                  <div key={s.l} className="flex items-center justify-between py-1.5 border-b border-white/4 last:border-0">
-                    <span className="font-montserrat text-white/45 text-[11px]">{s.l}</span>
-                    <span className="font-cinzel font-bold text-[#DAA537] text-sm">{s.v}</span>
+                  { l: "Total Events", v: "42" },
+                  { l: "Completed", v: "6" },
+                  { l: "In-Progress", v: "2" },
+                  { l: "Upcoming", v: "34" },
+                ].map((s) => (
+                  <div key={s.l} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                    <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest">{s.l}</span>
+                    <span className="font-cinzel text-white text-sm">{s.v}</span>
                   </div>
                 ))}
               </div>
-              <Link href="#" className="mt-4 w-full flex items-center justify-center gap-1.5 font-montserrat text-[10px] font-bold py-2 rounded-lg border border-[#DAA537]/40 text-[#DAA537] hover:border-[#DAA537] uppercase tracking-wider transition-all">
-                Book Full Schedule <ArrowRight className="w-3 h-3"/>
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── SPECIAL EVENTS ── */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#060d14]">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+        <div className="max-w-7xl mx-auto sr">
+          <div className="flex items-center justify-between mb-12">
             <div>
-              <div className="font-montserrat text-[#DAA537]/60 text-[10px] font-bold tracking-[0.4em] uppercase mb-1">
+              <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-2">
                 Premium Competitions
               </div>
-              <h2 className="font-cinzel font-bold text-white text-2xl sm:text-3xl">
-                SPECIAL <span className="text-[#DAA537]">EVENTS</span>
+              <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">
+                SPECIAL <span className="text-[#D4AF37]">EVENTS</span>
               </h2>
             </div>
             <Link
-              href="#"
-              className="font-montserrat text-[#DAA537] text-sm font-semibold hover:underline inline-flex items-center gap-1"
+              href="/schedule"
+              className="hidden sm:inline-flex items-center gap-2 font-montserrat text-[10px] font-bold text-white uppercase tracking-widest hover:text-[#D4AF37] transition-colors"
             >
-              View All <ArrowRight className="w-3 h-3" />
+              View All <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
             {specialEvents.map((event, i) => (
               <div
                 key={event.name}
-                className="bg-[#0D1B2A] border border-[#DAA537]/25 rounded-2xl overflow-hidden hover:border-[#DAA537]/60 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(218,165,55,0.15)] transition-all duration-300 group cursor-default"
+                className="glass-card group relative overflow-hidden border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
               >
                 {/* Card image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <img
                     src={specialEventImages[i % specialEventImages.length]}
                     alt={event.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   {/* Strong dark overlay for drama */}
-                  <div className="absolute inset-0" style={{background:"linear-gradient(to bottom, rgba(6,13,20,0.15) 0%, rgba(6,13,20,0.55) 60%, rgba(6,13,20,0.95) 100%)"}} />
-                  {/* Gold top accent */}
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#DAA537]" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, #000000 100%)" }} />
+                  
                   {/* Special Event label */}
-                  <div className="absolute top-3 left-3">
-                    <span className="font-montserrat text-[9px] font-bold text-[#DAA537] bg-[#DAA537]/15 border border-[#DAA537]/40 px-2 py-0.5 rounded-full uppercase tracking-widest">Special Event</span>
+                  <div className="absolute top-4 left-4">
+                    <span className="font-montserrat text-[8px] font-bold text-white bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full uppercase tracking-widest">Special</span>
                   </div>
+                  
                   {/* Status badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className={`font-montserrat text-[10px] font-bold px-2 py-0.5 rounded-full border capitalize ${statusColors[event.status]}`}>
+                  <div className="absolute top-4 right-4">
+                    <span className={`font-montserrat text-[8px] font-bold px-3 py-1 rounded-full border uppercase tracking-widest ${statusColors[event.status]}`}>
                       {event.status}
                     </span>
                   </div>
+                  
                   {/* Event name overlaid at bottom of image */}
-                  <div className="absolute bottom-3 left-4 right-4">
-                    <h4 className="font-cinzel font-black text-white text-base leading-tight" style={{textShadow:"0 2px 12px rgba(0,0,0,0.8)"}}>{event.name}</h4>
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <h4 className="font-cinzel tracking-wider text-white text-lg leading-tight">{event.name}</h4>
                   </div>
                 </div>
 
                 {/* Card body */}
-                <div className="p-4">
-                  <p className="font-montserrat text-white/50 text-xs mb-3 leading-relaxed">{event.desc}</p>
-                  <div className="flex items-center gap-3 font-montserrat text-[#DAA537] text-xs">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3 flex-shrink-0" />
+                <div className="p-6">
+                  <p className="font-montserrat text-white/50 text-[11px] mb-6 leading-relaxed min-h-[40px]">{event.desc}</p>
+                  <div className="flex items-center gap-6 border-t border-white/5 pt-4">
+                    <span className="flex items-center gap-2 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                      <Calendar className="w-3.5 h-3.5" />
                       {event.date}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 flex-shrink-0" />
+                    <span className="flex items-center gap-2 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                      <Clock className="w-3.5 h-3.5" />
                       {event.time}
                     </span>
                   </div>
@@ -398,8 +404,8 @@ export default function SchedulePage() {
               </div>
             ))}
           </div>
-          <div className="text-center">
-            <Link href="#" className="btn-primary text-sm px-8">VIEW ALL SPECIAL EVENTS <ArrowRight className="w-4 h-4" /></Link>
+          <div className="text-center mt-12 sm:hidden">
+            <Link href="/schedule" className="btn-secondary text-[10px]">VIEW ALL EVENTS</Link>
           </div>
         </div>
       </section>

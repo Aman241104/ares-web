@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import { tournamentRules } from "@/lib/data";
 import LegacyCTA from "@/components/LegacyCTA";
 import Link from "next/link";
@@ -12,6 +14,10 @@ import {
   ChevronRight,
   Scale,
 } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   { q: "Who can participate in ABL 2026?", a: "All active BNI members can participate. Each team consists of 7-8 business owners from the chapter." },
@@ -26,7 +32,7 @@ const faqs = [
 
 // Section icons and accent colors
 const SECTION_META: Record<string, { icon: React.ReactNode; accent: string; number: string }> = {
-  "Scoring System":   { icon: <Star className="w-5 h-5" />,         accent: "#DAA537", number: "01" },
+  "Scoring System":   { icon: <Star className="w-5 h-5" />,         accent: "#D4AF37", number: "01" },
   "Bonus Points":     { icon: <TrendingDown className="w-5 h-5" />, accent: "#27AE60", number: "02" },
   "Deductions":       { icon: <Scale className="w-5 h-5" />,        accent: "#C0392B", number: "03" },
   "Eligibility":      { icon: <CheckCircle className="w-5 h-5" />,  accent: "#1E3A8A", number: "04" },
@@ -35,128 +41,159 @@ const SECTION_META: Record<string, { icon: React.ReactNode; accent: string; numb
 };
 
 export default function RulesPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
+        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-links", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+
+      // Scroll reveals
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  const scrollToSection = (label: string) => {
+    const element = document.getElementById(`section-${label}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="pt-16 bg-[#060d14]">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative py-32 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#060d14]">
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(218,165,55,0.09) 0%, transparent 70%)" }}
+          style={{ backgroundImage: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }}
         />
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(ellipse 120% 120% at 50% 50%, transparent 40%, #060d14 100%)" }} />
 
-        <div className="max-w-4xl mx-auto text-center relative">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <div className="h-px w-8 bg-[#DAA537]/60" />
-            <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-4 mb-8 h-badge">
+            <div className="h-px w-12 bg-white/10" />
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
               Know the Game
             </span>
-            <div className="h-px w-8 bg-[#DAA537]/60" />
+            <div className="h-px w-12 bg-white/10" />
           </div>
 
-          <h1 className="font-cinzel font-black leading-none mb-4" style={{ fontSize: "clamp(44px,7vw,88px)" }}>
-            <span className="text-white">RULES &amp;</span>
-            <br />
-            <span className="text-gold-gradient text-shadow-gold">REGULATIONS</span>
+          <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-8" style={{ fontSize: "clamp(36px,8vw,90px)" }}>
+            RULES &amp; <span className="text-[#D4AF37] italic">REGULATIONS</span>
           </h1>
 
-          <div className="w-32 h-px mx-auto mb-6" style={{ background: "linear-gradient(90deg, transparent, #DAA537, transparent)" }} />
+          <div className="w-24 h-px mx-auto mb-8 bg-white/20" />
 
-          <p className="font-montserrat text-white/55 text-lg leading-relaxed max-w-xl mx-auto">
+          <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-2xl mx-auto">
             Everything you need to know to compete, score, and win in the ARES Business League 2026 arena.
           </p>
 
           {/* Quick links */}
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
+          <div className="flex flex-wrap justify-center gap-3 mt-10 h-links">
             {["Scoring", "Bonuses", "Deductions", "Eligibility", "Format", "Prizes"].map((label) => (
-              <span
+              <button
                 key={label}
-                className="font-montserrat text-[11px] font-semibold px-4 py-1.5 rounded-full border border-[#DAA537]/25 text-white/50 hover:border-[#DAA537]/60 hover:text-[#DAA537] cursor-pointer transition-all duration-200 bg-[#DAA537]/05"
+                onClick={() => scrollToSection(label)}
+                className="font-montserrat text-[10px] uppercase tracking-widest font-bold px-5 py-2.5 rounded-full border border-white/10 text-white/50 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/5 cursor-pointer transition-all duration-300 bg-white/[0.02]"
               >
                 {label}
-              </span>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* ── RULES GRID ── */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#0D1B2A]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-1 h-6 rounded-full bg-[#DAA537]" />
-            <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.4em] uppercase">
+          <div className="flex items-center gap-4 mb-12 sr">
+            <div className="w-8 h-px bg-[#D4AF37]" />
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
               Tournament Rules
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sr-stagger">
             {tournamentRules.map((section, sectionIdx) => {
               const meta = SECTION_META[section.section] || {
                 icon: <Award className="w-5 h-5" />,
-                accent: "#DAA537",
+                accent: "#D4AF37",
                 number: String(sectionIdx + 1).padStart(2, "0"),
               };
+              
+              const idLabel = section.section.split(" ")[0];
 
               return (
                 <div
                   key={section.section}
-                  className="group relative bg-[#060d14] rounded-2xl overflow-hidden border border-[#DAA537]/18 hover:border-[#DAA537]/45 transition-all duration-400 hover:-translate-y-1"
-                  style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.4)" }}
+                  id={`section-${idLabel}`}
+                  className="group relative glass-card overflow-hidden border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
                 >
                   {/* Left accent stripe */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-2xl"
+                    className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ background: `linear-gradient(to bottom, transparent, ${meta.accent}, transparent)` }}
                   />
 
                   {/* Section number watermark */}
                   <div
-                    className="absolute top-4 right-5 font-cinzel font-black text-5xl leading-none select-none pointer-events-none"
-                    style={{ color: meta.accent + "0E" }}
+                    className="absolute top-6 right-8 font-cinzel font-light text-6xl leading-none select-none pointer-events-none transition-colors duration-500"
+                    style={{ color: meta.accent + "10" }}
                   >
                     {meta.number}
                   </div>
 
-                  <div className="p-6 sm:p-7 relative">
+                  <div className="p-8 sm:p-10 relative">
                     {/* Header */}
-                    <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-5 mb-8">
                       <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 border"
-                        style={{
-                          background: meta.accent + "18",
-                          borderColor: meta.accent + "40",
-                          color: meta.accent,
-                        }}
+                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border bg-white/[0.02] border-white/10 group-hover:bg-opacity-20 transition-all duration-500"
+                        style={{ color: meta.accent }}
                       >
                         {meta.icon}
                       </div>
                       <div>
-                        <div className="font-montserrat text-[9px] font-bold tracking-[0.3em] uppercase mb-0.5" style={{ color: meta.accent + "90" }}>
+                        <div className="font-montserrat text-[9px] font-bold tracking-[0.4em] uppercase mb-1.5" style={{ color: meta.accent }}>
                           Section {meta.number}
                         </div>
-                        <h3 className="font-cinzel font-bold text-white text-base tracking-wide">{section.section}</h3>
+                        <h3 className="font-cinzel text-white text-xl tracking-wider">{section.section}</h3>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="mb-5 h-px" style={{ background: `linear-gradient(90deg, ${meta.accent}40, transparent)` }} />
+                    <div className="mb-6 h-px w-full" style={{ background: `linear-gradient(90deg, ${meta.accent}40, transparent)` }} />
 
                     {/* Rules list */}
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {section.rules.map((rule, i) => (
-                        <li key={i} className="flex items-start gap-3">
+                        <li key={i} className="flex items-start gap-4">
                           <div
-                            className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-[9px] font-black font-cinzel"
-                            style={{
-                              background: meta.accent + "18",
-                              color: meta.accent,
-                              border: `1px solid ${meta.accent}35`,
-                            }}
+                            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-[9px] font-bold bg-white/[0.02] border border-white/10 text-white/50"
                           >
                             {i + 1}
                           </div>
@@ -172,46 +209,44 @@ export default function RulesPage() {
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* ── FAQ ── */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#060d14]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-[#DAA537]/60" />
-              <span className="font-montserrat text-[#DAA537] text-[11px] font-bold tracking-[0.45em] uppercase">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-4 mb-6">
+              <div className="h-px w-8 bg-[#D4AF37]" />
+              <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
                 Common Questions
               </span>
-              <div className="h-px w-8 bg-[#DAA537]/60" />
+              <div className="h-px w-8 bg-[#D4AF37]" />
             </div>
-            <h2 className="font-cinzel font-black text-white text-3xl sm:text-4xl leading-tight">
-              FREQUENTLY ASKED <span className="text-gold-gradient">QUESTIONS</span>
+            <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl leading-tight">
+              FREQUENTLY ASKED <span className="text-[#D4AF37] italic">QUESTIONS</span>
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4 sr-stagger">
             {faqs.map((faq, i) => (
               <details
                 key={i}
-                className="group bg-[#0D1B2A] border border-[#DAA537]/18 rounded-xl overflow-hidden hover:border-[#DAA537]/45 transition-all duration-300"
+                className="group glass-card border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300"
               >
-                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-6 h-6 rounded-lg bg-[#DAA537]/12 border border-[#DAA537]/25 flex items-center justify-center flex-shrink-0">
-                      <ChevronRight className="w-3 h-3 text-[#DAA537] group-open:rotate-90 transition-transform duration-200" />
+                <summary className="flex items-center justify-between gap-6 p-6 sm:p-8 cursor-pointer list-none">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-8 h-8 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center flex-shrink-0">
+                      <ChevronRight className="w-4 h-4 text-[#D4AF37] group-open:rotate-90 transition-transform duration-300" />
                     </div>
-                    <span className="font-cinzel font-bold text-white text-sm leading-snug group-open:text-[#F5D078] transition-colors">
+                    <span className="font-cinzel tracking-wider text-white text-base leading-relaxed group-open:text-[#D4AF37] transition-colors">
                       {faq.q}
                     </span>
                   </div>
-                  <div className="w-6 h-6 rounded-full border border-[#DAA537]/30 flex items-center justify-center flex-shrink-0">
-                    <span className="text-[#DAA537] font-bold text-base leading-none group-open:hidden">+</span>
-                    <span className="text-[#DAA537] font-bold text-base leading-none hidden group-open:block">-</span>
+                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#D4AF37]/50 transition-colors">
+                    <span className="text-[#D4AF37] font-light text-xl leading-none group-open:hidden">+</span>
+                    <span className="text-[#D4AF37] font-light text-xl leading-none hidden group-open:block">-</span>
                   </div>
                 </summary>
-                <div className="px-5 pb-5 pt-1">
-                  <div className="ml-9 font-montserrat text-white/60 text-sm leading-relaxed border-t border-[#DAA537]/10 pt-4">
+                <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
+                  <div className="ml-12 font-montserrat text-white/50 text-sm leading-relaxed border-t border-white/5 pt-6">
                     {faq.a}
                   </div>
                 </div>
@@ -221,32 +256,30 @@ export default function RulesPage() {
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* ── BOTTOM CTA ── */}
-      <section className="relative py-20 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#0D1B2A]">
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#050505] border-t border-white/5 sr">
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(218,165,55,0.07) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }}
         />
 
-        <div className="relative max-w-2xl mx-auto text-center">
-          <div className="w-16 h-16 rounded-2xl bg-[#DAA537]/10 border border-[#DAA537]/30 flex items-center justify-center mx-auto mb-6">
-            <Scale className="w-7 h-7 text-[#DAA537]" />
+        <div className="relative max-w-3xl mx-auto text-center glass-card p-12 lg:p-16 border-white/10 rounded-3xl">
+          <div className="w-20 h-20 rounded-full bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-8">
+            <Scale className="w-8 h-8 text-[#D4AF37]" />
           </div>
-          <h2 className="font-cinzel font-black text-white text-3xl sm:text-4xl mb-3 leading-tight">
-            PLAY FAIR. <span className="text-gold-gradient">WIN HARD.</span>
+          <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
+            PLAY FAIR. <span className="text-[#D4AF37] italic">WIN HARD.</span>
           </h2>
-          <p className="font-montserrat text-white/50 text-base mb-2">
+          <p className="font-montserrat text-white/60 text-base mb-4">
             The arena rewards discipline, strategy, and relentless execution.
           </p>
-          <p className="font-montserrat text-white/35 text-sm mb-8">
+          <p className="font-montserrat text-white/40 text-sm mb-10">
             Still have questions? Our team is here to help.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn-primary">
-              Contact Us <ArrowRight className="w-4 h-4" />
+              Contact Us <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
             <Link href="/leaderboard" className="btn-secondary">
               View Standings
@@ -254,8 +287,6 @@ export default function RulesPage() {
           </div>
         </div>
       </section>
-
-      <div className="section-sep" />
 
       <LegacyCTA />
     </div>

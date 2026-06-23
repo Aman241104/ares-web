@@ -5,6 +5,7 @@ import { ArrowRight, Users, Trophy, Calendar, Target, Briefcase, Sword, BookOpen
 import { teams, blogPosts, partners } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,10 +42,13 @@ export default function HomePage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero
+      const title = new SplitType(".h-title-ares", { types: "chars" });
+      const bl = new SplitType(".h-title-bl", { types: "chars" });
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
-        .from(".h-title-ares", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
-        .from(".h-title-bl", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(title.chars, { opacity: 0, y: 50, rotateX: -90, stagger: 0.05, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
+        .from(bl.chars, { opacity: 0, x: -20, stagger: 0.02, duration: 0.8 }, "-=0.5")
         .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
         .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
         .from(".h-stats", { opacity: 0, y: 15, duration: 0.8, stagger: 0.1 }, "-=0.5");
@@ -87,20 +91,30 @@ export default function HomePage() {
     jaishankar: [380, 540, 700, 945],
   };
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
+    const { clientX, clientY } = e;
+    const xPos = (clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (clientY / window.innerHeight - 0.5) * 20;
+
+    gsap.to(".parallax-bg", { x: xPos * 2, y: yPos * 2, duration: 1, ease: "power2.out" });
+    gsap.to(".parallax-fg", { x: -xPos * 3, y: -yPos * 3, duration: 1, ease: "power2.out" });
+  };
+
   return (
     <div ref={heroRef} className="overflow-x-hidden bg-[#000000]">
 
       {/* ═══════════════════════════════════════════
           HERO (CINEMATIC)
       ═══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden" onMouseMove={handleMouseMove}>
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-[-5%] z-0 parallax-bg" style={{ width: "110%", height: "110%" }}>
           <Image 
             src="/images/hero_arena.png"
             alt="Hero Arena"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center scale-105"
             priority
           />
           {/* Overlays for readable text */}
@@ -108,7 +122,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-12 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-12 w-full parallax-fg">
           <div className="max-w-2xl">
             <div className="h-badge inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block" />
@@ -117,7 +131,7 @@ export default function HomePage() {
 
             <div className="mb-8">
               <h1 className="font-cinzel font-light leading-[1.1]">
-                <span className="h-title-ares block text-white tracking-widest" style={{ fontSize: "clamp(60px, 8vw, 110px)" }}>ARES</span>
+                <span className="h-title-ares block text-white tracking-widest" style={{ fontSize: "clamp(32px, 8vw, 110px)" }}>ARES</span>
                 <span className="h-title-bl block text-[#D4AF37] tracking-[0.2em]" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>BUSINESS LEAGUE</span>
               </h1>
             </div>
@@ -141,15 +155,16 @@ export default function HomePage() {
             </div>
 
             {/* Stats row */}
-            <div className="flex flex-wrap gap-12">
+            <div className="flex flex-wrap gap-8 sm:gap-12 mt-4 sm:mt-0">
               {[
-                { n: "30", l: "Elite Owners" },
-                { n: "4",  l: "Factions" },
-                { n: "1",  l: "Champion" },
+                { n: "30", l: "Business Owners" },
+                { n: "4",  l: "Teams" },
+                { n: "1",  l: "Month" },
+                { n: "1",  l: "Winner" },
               ].map((s, i) => (
-                <div key={s.l} className={`h-stats flex flex-col items-start ${i > 0 ? "hidden sm:flex" : ""}`}>
-                  <div className="font-cinzel font-light text-4xl text-white mb-2">{s.n}</div>
-                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
+                <div key={s.l} className={`h-stats flex flex-col items-start w-[40%] sm:w-auto ${i > 1 ? "hidden sm:flex" : ""}`}>
+                  <div className="font-cinzel font-light text-3xl sm:text-4xl text-white mb-1 sm:mb-2">{s.n}</div>
+                  <div className="font-montserrat text-white/40 text-[8px] sm:text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -177,39 +192,43 @@ export default function HomePage() {
               </div>
 
               <div className="glass-card overflow-hidden">
-                <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
-                  <div className="col-span-1 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Rank</div>
-                  <div className="col-span-6 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Team</div>
-                  <div className="col-span-2 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-right">Points</div>
-                  <div className="col-span-2 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-right">Week</div>
-                  <div className="col-span-1 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-center">Trend</div>
-                </div>
+                <div className="w-full overflow-x-auto custom-scrollbar">
+                  <div className="min-w-[600px]">
+                    <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+                      <div className="col-span-1 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Rank</div>
+                      <div className="col-span-6 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Team</div>
+                      <div className="col-span-2 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-right">Points</div>
+                      <div className="col-span-2 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-right">Week</div>
+                      <div className="col-span-1 font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em] text-center">Trend</div>
+                    </div>
 
-                {sorted.map((team, i) => (
-                  <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                    <div className="col-span-1">
-                      <div className="font-cinzel text-lg" style={{color: i===0?"#D4AF37":i===1?"#C0C0C0":i===2?"#CD7F32":"rgba(255,255,255,0.3)"}}>0{i+1}</div>
-                    </div>
-                    <div className="col-span-6 flex items-center gap-4">
-                      <TeamCrest teamId={team.id} color={team.color} size="md" />
-                      <div>
-                        <div className="font-cinzel text-white text-sm tracking-widest uppercase">
-                          {team.name}
+                    {sorted.map((team, i) => (
+                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <div className="col-span-1">
+                          <div className="font-cinzel text-lg" style={{color: i===0?"#D4AF37":i===1?"#C0C0C0":i===2?"#CD7F32":"rgba(255,255,255,0.3)"}}>0{i+1}</div>
                         </div>
-                        <div className="font-montserrat text-[10px] mt-1 tracking-widest uppercase" style={{color:team.color}}>{team.fullName.split(" ").at(-1)}</div>
+                        <div className="col-span-6 flex items-center gap-4">
+                          <TeamCrest teamId={team.id} color={team.color} size="md" />
+                          <div>
+                            <div className="font-cinzel text-white text-sm tracking-widest uppercase">
+                              {team.name}
+                            </div>
+                            <div className="font-montserrat text-[10px] mt-1 tracking-widest uppercase" style={{color:team.color}}>{team.fullName.split(" ").at(-1)}</div>
+                          </div>
+                        </div>
+                        <div className="col-span-2 text-right">
+                          <span className="font-cinzel text-xl text-[#D4AF37]">{team.points.toLocaleString()}</span>
+                        </div>
+                        <div className="col-span-2 text-right">
+                          <span className="font-montserrat text-xs text-white/40 tracking-wider">{team.weekPoints}</span>
+                        </div>
+                        <div className="col-span-1 flex justify-center opacity-70">
+                          <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-span-2 text-right">
-                      <span className="font-cinzel text-xl text-[#D4AF37]">{team.points.toLocaleString()}</span>
-                    </div>
-                    <div className="col-span-2 text-right">
-                      <span className="font-montserrat text-xs text-white/40 tracking-wider">{team.weekPoints}</span>
-                    </div>
-                    <div className="col-span-1 flex justify-center opacity-70">
-                      <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </div>
 
                 <div className="px-6 py-5 text-center">
                   <Link href="/leaderboard" className="font-montserrat text-white/50 hover:text-white transition-colors text-[10px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
@@ -358,6 +377,37 @@ export default function HomePage() {
                   <div className="font-cinzel text-white/80 text-xs mb-1">{p.name}</div>
                   <div className="font-montserrat text-[#D4AF37]/60 text-[8px] uppercase tracking-widest">{p.tier.replace(" Partner","")}</div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          TOURNAMENT EVENTS & QUICK LINKS
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 relative z-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          
+          {/* Quick Links */}
+          <div>
+            <div className="sr mb-8 pb-4 border-b border-white/5">
+              <h2 className="font-montserrat text-white font-medium text-xs tracking-[0.3em] uppercase">Quick Access</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sr-stagger">
+              {[
+                { href: "/gallery", icon: <ImageIcon className="w-5 h-5 text-[#D4AF37]" />, title: "Gallery", desc: "Event photos & media" },
+                { href: "/rules", icon: <BookOpen className="w-5 h-5 text-[#D4AF37]" />, title: "Rules", desc: "Tournament guidelines" },
+                { href: "/schedule", icon: <Calendar className="w-5 h-5 text-[#D4AF37]" />, title: "Schedule", desc: "Upcoming dates" },
+                { href: "/contact", icon: <Phone className="w-5 h-5 text-[#D4AF37]" />, title: "Contact", desc: "Get in touch" },
+              ].map((link) => (
+                <Link key={link.href} href={link.href} className="group block">
+                  <div className="glass-card p-6 flex flex-col hover:bg-white/[0.04] transition-colors h-full">
+                    <div className="mb-4">{link.icon}</div>
+                    <div className="font-cinzel text-white text-lg mb-1 group-hover:text-[#D4AF37] transition-colors">{link.title}</div>
+                    <div className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest">{link.desc}</div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

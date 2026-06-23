@@ -29,6 +29,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: '#000000',
+};
+
+import SmoothScroll from "@/components/SmoothScroll";
+import CommandMenu from "@/components/CommandMenu";
+import MobileDock from "@/components/MobileDock";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,10 +44,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable}`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col antialiased bg-[#0D1B2A]">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-full flex flex-col antialiased bg-[#000000] text-[#F2F2F2]">
+        <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
+        <SmoothScroll>
+          <Navbar />
+          <main className="flex-1 pb-24 xl:pb-0">{children}</main>
+          <Footer />
+        </SmoothScroll>
+        <CommandMenu />
+        <MobileDock />
       </body>
     </html>
   );

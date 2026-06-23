@@ -1,227 +1,277 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Users, Star, Award, Trophy, Building2, Shield } from "lucide-react";
 import { teams, partners, commissioners } from "@/lib/data";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
 
-const ownerPortraits: Record<string, string> = {
-  "modi": "/images/owner-portrait-1.jpg",
-  "doval": "/images/owner-portrait-2.jpg",
-  "amit-shah": "/images/owner-portrait-3.jpg",
-  "jaishankar": "/images/owner-portrait-4.jpg",
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const mascotImages: Record<string, string> = {
-  "modi": "/images/mascot-lion.jpg",
-  "doval": "/images/mascot-eagle.jpg",
-  "amit-shah": "/images/mascot-tiger.jpg",
-  "jaishankar": "/images/mascot-lotus.jpg",
+  "modi": "/images/mascot_lion.png",
+  "doval": "/images/mascot_eagle.png",
+  "amit-shah": "/images/mascot_tiger.png",
+  "jaishankar": "/images/mascot_lotus.png",
 };
 
 export default function WallOfFamePage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
+        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-img", { opacity: 0, scale: 0.95, filter: "blur(10px)", duration: 1.2 }, "-=1");
+
+      // Scroll reveals
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="pt-16">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{minHeight:"440px", background:"linear-gradient(135deg, #020609 0%, #060d14 40%, #0a1520 70%, #060d14 100%)"}}>
-        <div className="absolute inset-0 bg-grid opacity-[0.12] pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none" style={{backgroundImage:"radial-gradient(ellipse 70% 80% at 20% 50%, rgba(218,165,55,0.1) 0%, transparent 65%)"}}/>
+      <section className="relative overflow-hidden min-h-[60vh] flex items-center">
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(ellipse 60% 60% at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 65%)" }}/>
+        
         {/* Trophy image right side */}
-        <div className="absolute right-0 top-0 bottom-0 w-[40%] hidden lg:block overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:block overflow-hidden h-img">
           <img
             src="/images/hero-trophy.jpg"
             alt="Championship Trophy"
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-left"
             style={{
-              maskImage:"linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
-              WebkitMaskImage:"linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
-              opacity: 0.65,
-              filter:"brightness(0.9) contrast(1.1)",
+              maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, transparent 100%)",
+              opacity: 0.8,
             }}
           />
-          <div className="absolute inset-0" style={{background:"radial-gradient(ellipse 80% 70% at 70% 50%, rgba(218,165,55,0.12) 0%, transparent 60%)"}} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 70% 50%, rgba(212,175,55,0.1) 0%, transparent 60%)" }} />
         </div>
 
-        <div className="max-w-7xl mx-auto relative px-4 sm:px-8 lg:px-12 py-24 flex items-center" style={{minHeight:"440px"}}>
+        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 w-full z-10">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-px bg-[#DAA537]/70" />
-              <span className="font-montserrat text-[#DAA537]/80 text-[10px] font-bold tracking-[0.5em] uppercase">Honoring Excellence</span>
+            <div className="flex items-center gap-4 mb-8 h-badge">
+              <div className="w-12 h-px bg-white/10" />
+              <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">Honoring Excellence</span>
             </div>
-            <h1 className="font-cinzel font-black text-white mb-5 leading-[0.9]" style={{fontSize:"clamp(52px,8vw,100px)"}}>
+            
+            <h1 className="h-title font-cinzel font-light text-white mb-8 leading-[1.1]" style={{ fontSize: "clamp(38px,8vw,100px)" }}>
               WALL OF<br/>
-              <span className="text-shadow-gold" style={{color:"#DAA537"}}>FAME</span>
+              <span className="text-[#D4AF37] italic">FAME</span>
             </h1>
-            <div className="w-20 h-0.5 mb-5" style={{background:"linear-gradient(90deg, #DAA537, transparent)"}} />
-            <p className="font-montserrat text-white/55 text-sm leading-relaxed max-w-xl mb-8">
+            
+            <div className="w-24 h-px mb-8 bg-white/20" />
+            
+            <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-xl mb-12">
               The ARES Business League stands strong because of the incredible vision, support and commitment of our partners, team owners and commissioners. Your belief is building a lasting legacy.
             </p>
-            <Link href="/contact" className="btn-primary text-xs">
-              Join the Legacy <ArrowRight className="w-3.5 h-3.5" />
+            
+            <Link href="/contact" className="btn-primary">
+              Join the Legacy <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
         </div>
-        <div className="section-sep" />
       </section>
 
       {/* Stats */}
-      <section className="py-10 px-4 sm:px-8 lg:px-12" style={{background:"#0D1B2A"}}>
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5 sr">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
-            {num:"18+", label:"Trusted Partners", icon:<Users className="w-5 h-5 text-[#DAA537]" />},
-            {num:"4", label:"Visionary Leaders", icon:<Star className="w-5 h-5 text-[#DAA537]" />},
-            {num:"6", label:"League Guardians", icon:<Shield className="w-5 h-5 text-[#DAA537]" />},
-            {num:"One", label:"Unified Mission", icon:<Trophy className="w-5 h-5 text-[#DAA537]" />},
+            { num: "18+", label: "Trusted Partners", icon: <Users className="w-6 h-6 text-[#D4AF37]" /> },
+            { num: "4", label: "Visionary Leaders", icon: <Star className="w-6 h-6 text-[#D4AF37]" /> },
+            { num: "6", label: "League Guardians", icon: <Shield className="w-6 h-6 text-[#D4AF37]" /> },
+            { num: "One", label: "Unified Mission", icon: <Trophy className="w-6 h-6 text-[#D4AF37]" /> },
           ].map((s) => (
-            <div key={s.label} className="p-5 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#DAA537]/50"
-              style={{background:"#060d14", border:"1px solid rgba(218,165,55,0.18)", borderBottom:"3px solid rgba(218,165,55,0.4)"}}>
-              <div className="flex justify-center mb-3">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:"rgba(218,165,55,0.1)", border:"1px solid rgba(218,165,55,0.2)"}}>
+            <div key={s.label} className="p-8 glass-card border-white/10 hover:border-[#D4AF37]/30 transition-all duration-300 hover:-translate-y-1 text-center">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center bg-[#D4AF37]/5 border border-[#D4AF37]/20">
                   {s.icon}
                 </div>
               </div>
-              <div className="font-cinzel font-black text-3xl text-[#DAA537] mb-1">{s.num}</div>
-              <div className="font-montserrat text-white/45 text-[11px] uppercase tracking-wider">{s.label}</div>
+              <div className="font-cinzel font-light text-4xl text-white mb-2">{s.num}</div>
+              <div className="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-widest">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* Partners */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#060d14]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-1 h-8 rounded-full bg-[#DAA537]" />
-                <h2 className="font-cinzel font-black text-white text-2xl sm:text-3xl">Our <span style={{color:"#DAA537"}}>Partners</span></h2>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-8 h-px bg-[#D4AF37]" />
+                <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">Our <span className="text-[#D4AF37] italic">Partners</span></h2>
               </div>
-              <p className="font-montserrat text-white/45 text-sm pl-4">Heartfelt thanks to our partners who believe in our mission and power this league.</p>
+              <p className="font-montserrat text-white/50 text-sm pl-12 max-w-lg leading-relaxed">Heartfelt thanks to our partners who believe in our mission and power this league.</p>
             </div>
-            <Link href="/contact" className="btn-secondary text-xs self-start sm:self-auto">Become a Partner <ArrowRight className="w-3 h-3" /></Link>
+            <Link href="/contact" className="btn-secondary hidden sm:inline-flex">Become a Partner <ArrowRight className="w-4 h-4 ml-2" /></Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-            {partners.map((p) => (
-              <div key={p.name}
-                className="bg-white rounded-xl p-5 flex flex-col items-center justify-center text-center hover:shadow-[0_0_24px_rgba(218,165,55,0.4)] hover:-translate-y-1 transition-all duration-300 min-h-[110px] group cursor-pointer"
-                style={{
-                  border:"1px solid #f0f0f0",
-                  borderTop: (p.tier.toLowerCase().includes("platinum") || p.tier.toLowerCase().includes("strategic"))
-                    ? "3px solid #DAA537"
-                    : p.tier.toLowerCase().includes("gold")
-                    ? "2px solid #C49428"
-                    : "1px solid #e5e7eb"
-                }}>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2.5" style={{background:"rgba(218,165,55,0.1)"}}>
-                  <Building2 className="w-5 h-5 text-[#DAA537]" />
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 sr-stagger">
+            {partners.map((p) => {
+              const isPremium = p.tier.toLowerCase().includes("platinum") || p.tier.toLowerCase().includes("strategic");
+              const isGold = p.tier.toLowerCase().includes("gold");
+              
+              let tierColor = "white";
+              let tierAccent = "rgba(255,255,255,0.1)";
+              
+              if (isPremium) {
+                tierColor = "#D4AF37";
+                tierAccent = "rgba(212,175,55,0.15)";
+              } else if (isGold) {
+                tierColor = "#C49428";
+                tierAccent = "rgba(196,148,40,0.1)";
+              } else {
+                tierColor = "rgba(255,255,255,0.6)";
+              }
+
+              return (
+                <div 
+                  key={p.name} 
+                  className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-white/[0.04] hover:border-white/20 transition-all duration-500 min-h-[160px] group relative overflow-hidden"
+                >
+                  {isPremium && (
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50" />
+                  )}
+                  
+                  <div className="w-12 h-12 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-500">
+                    <Building2 className={`w-5 h-5 ${isPremium ? 'text-[#D4AF37]' : 'text-white/40'}`}/>
+                  </div>
+                  
+                  <div className="font-cinzel text-white text-sm tracking-wider leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors">{p.name}</div>
+                  
+                  <div className="font-montserrat text-[8px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    style={{ color: tierColor, background: tierAccent, border: `1px solid ${isPremium ? 'rgba(212,175,55,0.3)' : 'rgba(255,255,255,0.1)'}` }}>
+                    {p.tier}
+                  </div>
                 </div>
-                <div className="font-cinzel font-bold text-[#0D1B2A] text-[12px] leading-tight mb-1.5">{p.name}</div>
-                <div className="font-montserrat text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full"
-                  style={{
-                    color: (p.tier.toLowerCase().includes("platinum") || p.tier.toLowerCase().includes("strategic")) ? "#B8860B" : "#C49428",
-                    background: "rgba(218,165,55,0.1)",
-                    border: "1px solid rgba(218,165,55,0.3)"
-                  }}>
-                  {p.tier}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="text-center">
-            <Link href="/partners" className="font-montserrat text-[#DAA537] text-sm font-semibold hover:text-[#F5D078] transition-colors inline-flex items-center gap-1.5">
-              View All Partners <ArrowRight className="w-3.5 h-3.5" />
+            <Link href="/partners" className="font-montserrat text-white text-[10px] uppercase tracking-widest font-bold hover:text-[#D4AF37] transition-colors inline-flex items-center gap-2">
+              View All Partners <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* Team Owners */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12" style={{background:"#0D1B2A"}}>
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-1 h-8 rounded-full bg-[#DAA537]" />
-                <h2 className="font-cinzel font-black text-white text-2xl sm:text-3xl">Team <span style={{color:"#DAA537"}}>Owners</span></h2>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-8 h-px bg-[#D4AF37]" />
+                <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">Team <span className="text-[#D4AF37] italic">Owners</span></h2>
               </div>
-              <p className="font-montserrat text-white/45 text-sm pl-4">Leading with vision, passion and purpose — the forces behind the league.</p>
+              <p className="font-montserrat text-white/50 text-sm pl-12 max-w-lg leading-relaxed">Leading with vision, passion and purpose — the forces behind the league.</p>
             </div>
-            <Link href="/teams" className="btn-secondary text-xs self-start sm:self-auto">View All Teams <ArrowRight className="w-3 h-3" /></Link>
+            <Link href="/teams" className="btn-secondary hidden sm:inline-flex">View All Teams <ArrowRight className="w-4 h-4 ml-2" /></Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
             {teams.map((team) => {
               const portraitSrc = mascotImages[team.id];
               return (
                 <Link
                   key={team.id}
                   href={`/owners/${team.owner.id}`}
-                  className="block rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 group"
-                  style={{background:"#060d14", border:`1px solid ${team.color}35`, borderTop:`3px solid ${team.color}`, boxShadow:`0 4px 20px ${team.color}10`}}
+                  className="block rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 group glass-card border-white/10"
+                  style={{ borderTop: `2px solid ${team.color}` }}
                 >
-                  <div className="relative overflow-hidden" style={{height:"200px"}}>
+                  <div className="relative overflow-hidden h-[240px]">
                     <img
                       src={portraitSrc}
                       alt={team.name}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0" style={{background:`linear-gradient(to bottom, ${team.color}80 0%, ${team.color}20 40%, transparent 70%)`}} />
-                    <div className="absolute bottom-0 left-0 right-0 h-16" style={{background:"linear-gradient(to top, #060d14, transparent)"}} />
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background:`radial-gradient(ellipse 80% 60% at 50% 100%, ${team.color}20 0%, transparent 70%)`}} />
-                    <div className="absolute top-3 left-4">
-                      <div className="font-cinzel font-black text-sm tracking-[0.15em]" style={{color:team.color, textShadow:`0 0 16px ${team.color}`}}>
+                    <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, ${team.color}40 0%, ${team.color}10 40%, transparent 70%)` }} />
+                    <div className="absolute bottom-0 left-0 right-0 h-24" style={{ background: "linear-gradient(to top, rgba(5,5,5,1), transparent)" }} />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${team.color}20 0%, transparent 70%)` }} />
+                    
+                    <div className="absolute top-4 left-5">
+                      <div className="font-cinzel font-light text-2xl tracking-widest text-white mb-1 drop-shadow-md">
                         {team.name.replace(/^Team\s+/i,"").toUpperCase()}
                       </div>
-                      <div className="font-cinzel font-bold text-[9px] tracking-widest mt-0.5" style={{color:`${team.color}bb`}}>
+                      <div className="font-montserrat font-bold text-[8px] uppercase tracking-[0.3em]" style={{ color: team.color }}>
                         {team.fullName.split(" ").at(-1)!.toUpperCase()}
                       </div>
                     </div>
-                    <div className="absolute top-3 right-3">
-                      <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{background:`${team.color}30`, border:`1px solid ${team.color}60`}}>
-                        <Award className="w-3 h-3" style={{color:team.color}} />
+                    
+                    <div className="absolute top-4 right-4">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20">
+                        <Award className="w-4 h-4" style={{ color: team.color }} />
                       </div>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <div className="font-montserrat text-white/35 text-[10px] uppercase tracking-wider mb-0.5">Team Owner</div>
-                    <div className="font-cinzel font-bold text-white text-sm mb-1.5">{team.owner.name}</div>
-                    <div className="font-montserrat text-white/40 text-[11px] leading-snug line-clamp-2">{team.owner.leadershipStyle}</div>
+                  
+                  <div className="p-6 pt-2 bg-[#050505]">
+                    <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-1.5">Team Owner</div>
+                    <div className="font-cinzel text-white text-lg mb-3 tracking-wider">{team.owner.name}</div>
+                    <div className="font-montserrat text-white/50 text-[11px] leading-relaxed line-clamp-2">{team.owner.leadershipStyle}</div>
                   </div>
                 </Link>
               );
             })}
           </div>
+          <div className="text-center mt-10 sm:hidden">
+            <Link href="/teams" className="btn-secondary text-[10px]">VIEW ALL TEAMS</Link>
+          </div>
         </div>
       </section>
 
-      <div className="section-sep" />
-
       {/* Commissioners */}
-      <section className="py-16 px-4 sm:px-8 lg:px-12 bg-[#060d14]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-1 h-8 rounded-full bg-[#DAA537]" />
-              <h2 className="font-cinzel font-black text-white text-2xl sm:text-3xl">League <span style={{color:"#DAA537"}}>Commissioners</span></h2>
+          <div className="mb-12">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-8 h-px bg-[#D4AF37]" />
+              <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">League <span className="text-[#D4AF37] italic">Commissioners</span></h2>
             </div>
-            <p className="font-montserrat text-white/45 text-sm pl-4">Ensuring fairness, discipline and excellence throughout every match.</p>
+            <p className="font-montserrat text-white/50 text-sm pl-12 max-w-lg leading-relaxed">Ensuring fairness, discipline and excellence throughout every match.</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sr-stagger">
             {commissioners.map((c) => (
               <div key={c.name}
-                className="rounded-xl p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#DAA537]/50 group"
-                style={{background:"#0D1B2A", border:"1px solid rgba(218,165,55,0.15)", borderTop:"2px solid rgba(218,165,55,0.45)"}}>
-                <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-105"
-                  style={{background:"rgba(218,165,55,0.08)", border:"2px solid rgba(218,165,55,0.25)"}}>
-                  <svg className="w-7 h-7" style={{color:"rgba(218,165,55,0.8)"}} fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-                  </svg>
+                className="rounded-2xl p-6 text-center transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37]/40 group glass-card border-white/10"
+              >
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-500 group-hover:scale-110 bg-[#D4AF37]/10 border border-[#D4AF37]/30">
+                  <Shield className="w-7 h-7 text-[#D4AF37]" />
                 </div>
-                <div className="font-cinzel font-bold text-white text-[11px] mb-0.5 leading-tight">{c.name}</div>
-                <div className="font-montserrat text-xs font-semibold mb-2" style={{color:"#DAA537"}}>{c.role}</div>
-                <div className="font-montserrat text-white/35 text-[10px] leading-tight">{c.desc}</div>
+                <div className="font-cinzel text-white text-sm mb-1 leading-snug tracking-wider">{c.name}</div>
+                <div className="font-montserrat text-[9px] uppercase tracking-widest font-bold mb-3" style={{ color: "#D4AF37" }}>{c.role}</div>
+                <div className="font-montserrat text-white/40 text-[10px] leading-relaxed line-clamp-2">{c.desc}</div>
               </div>
             ))}
           </div>

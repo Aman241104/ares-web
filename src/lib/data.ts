@@ -1,11 +1,13 @@
-export const teams = [
+import { Team, WeeklyEvent, SpecialEvent, Partner, BlogPost, Commissioner, RuleSection, ScheduleEvent } from "@/types";
+
+export const teams: Team[] = [
   {
     id: "modi",
     name: "Team Modi",
     fullName: "Team Modi Visionaries",
     tagline: "Visionary Leadership",
     motto: "Vision Drives Leadership",
-    color: "#E67E22",
+    color: "#FF8C00",
     colorName: "Orange",
     icon: "lion",
     mascot: "Lion",
@@ -132,8 +134,8 @@ export const teams = [
     name: "Team Amit Shah",
     fullName: "Team Amit Shah Warriors",
     tagline: "Power Execution",
-    motto: "Execution Builds Power",
-    color: "#C0392B",
+    motto: "Execution is Everything",
+    color: "#B91C1C",
     colorName: "Red",
     icon: "shield",
     mascot: "Shield",
@@ -193,8 +195,8 @@ export const teams = [
     name: "Team Jaishankar",
     fullName: "Team Jaishankar Diplomats",
     tagline: "Diplomacy Global Impact",
-    motto: "Diplomacy Expands Horizons",
-    color: "#27AE60",
+    motto: "Global Impact, Local Roots",
+    color: "#15803D",
     colorName: "Green",
     icon: "🪷",
     mascot: "Lotus",
@@ -251,7 +253,7 @@ export const teams = [
   },
 ];
 
-export const weeklyEvents = [
+export const weeklyEvents: WeeklyEvent[] = [
   {
     week: 1,
     dates: "Jun 24 – Jun 30",
@@ -302,7 +304,7 @@ export const weeklyEvents = [
   },
 ];
 
-export const specialEvents = [
+export const specialEvents: SpecialEvent[] = [
   {
     name: "Opening Ceremony",
     desc: "The grand opening of ARES Business League 2026. Let the legacy begin!",
@@ -333,7 +335,7 @@ export const specialEvents = [
   },
 ];
 
-export const partners = [
+export const partners: Partner[] = [
   { name: "ACME Corporate Solutions", tier: "Platinum Partner", tagline: "Innovate • Collaborate • Elevate" },
   { name: "BNI", tier: "Strategic Partner", tagline: "Better Together" },
   { name: "Kapstone", tier: "Gold Partner", tagline: "Integrated Solutions" },
@@ -344,7 +346,18 @@ export const partners = [
   { name: "Digital 360", tier: "Marketing Partner", tagline: "360° Marketing" },
 ];
 
-export const blogPosts = [
+export const blogCategories: string[] = ["Strategy", "Leadership", "Networking", "Execution", "Business Growth", "Nation Building"];
+
+export const scheduleEvents: ScheduleEvent[] = [
+  { name: "Opening Ceremony", category: "Networking", points: 80, status: "completed" },
+  { name: "Business Growth Sprint", category: "Networking", points: 150, status: "completed" },
+  { name: "Refer & Earn Challenge", category: "Referrals", points: 200, status: "completed" },
+  { name: "TYFCB Challenge", category: "TYFCB", points: 300, status: "in-progress" },
+  { name: "One-on-One BNI", category: "Meetings", points: 200, status: "upcoming" },
+  { name: "Attendance Booster", category: "Attendance", points: 75, status: "upcoming" },
+];
+
+export const blogPosts: BlogPost[] = [
   {
     id: "power-of-strategic-collaboration",
     title: "The Power of Strategic Collaboration",
@@ -353,6 +366,7 @@ export const blogPosts = [
     date: "May 29, 2026",
     readTime: "4 min read",
     category: "Strategy",
+    image: "/images/blog_strategy.png",
   },
   {
     id: "leadership-in-the-arena",
@@ -362,6 +376,7 @@ export const blogPosts = [
     date: "May 27, 2026",
     readTime: "5 min read",
     category: "Leadership",
+    image: "/images/blog_leadership.png",
   },
   {
     id: "building-connections",
@@ -371,6 +386,7 @@ export const blogPosts = [
     date: "May 25, 2026",
     readTime: "3 min read",
     category: "Networking",
+    image: "/images/blog_networking.png",
   },
   {
     id: "execution-is-everything",
@@ -380,10 +396,11 @@ export const blogPosts = [
     date: "May 24, 2026",
     readTime: "4 min read",
     category: "Execution",
+    image: "/images/blog_growth.png",
   },
 ];
 
-export const commissioners = [
+export const commissioners: Commissioner[] = [
   { name: "R. K. Sharma", role: "Chief Commissioner", desc: "Upholding integrity and excellence." },
   { name: "Neha Verma", role: "Operations Commissioner", desc: "Ensuring smooth operations and seamless execution." },
   { name: "Vikram Singh", role: "Compliance Commissioner", desc: "Ensuring fair play and rule adherence." },
@@ -392,7 +409,7 @@ export const commissioners = [
   { name: "Karan Malhotra", role: "Technology Commissioner", desc: "Leveraging technology for transparency and innovation." },
 ];
 
-export const tournamentRules = [
+export const tournamentRules: RuleSection[] = [
   {
     section: "Scoring System",
     rules: [
