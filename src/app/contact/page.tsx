@@ -1,17 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import {
   Phone,
   Mail,
   MapPin,
-  Linkedin,
-  Instagram,
-  Youtube,
   ArrowRight,
   MessageCircle,
   Hash,
   Send,
   ChevronDown,
 } from "lucide-react";
+import { LinkedInIcon, InstagramIcon, YouTubeIcon } from "@/components/Icons";
 import LegacyCTA from "@/components/LegacyCTA";
 
 const CONTACT_CARDS = [
@@ -42,9 +42,9 @@ const CONTACT_CARDS = [
 ];
 
 const SOCIAL = [
-  { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "#" },
-  { icon: <Instagram className="w-5 h-5" />, label: "Instagram", href: "#" },
-  { icon: <Youtube className="w-5 h-5" />, label: "YouTube", href: "#" },
+  { icon: <LinkedInIcon className="w-5 h-5" />, label: "LinkedIn", href: "#" },
+  { icon: <InstagramIcon className="w-5 h-5" />, label: "Instagram", href: "#" },
+  { icon: <YouTubeIcon className="w-5 h-5" />, label: "YouTube", href: "#" },
 ];
 
 const INTERESTS = [
