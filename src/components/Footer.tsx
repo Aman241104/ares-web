@@ -34,7 +34,7 @@ export default function Footer() {
                   alt="ARES Logo" 
                   width={80} 
                   height={80} 
-                  unoptimized
+                  priority
                   className="w-full h-full object-contain transition-all duration-500" 
                 />
               </div>
@@ -58,6 +58,8 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 flex items-center justify-center text-white/40 bg-white/[0.02] border border-white/5 transition-all duration-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/5 rounded-xl hover:-translate-y-1"
                 >
                   {icon}

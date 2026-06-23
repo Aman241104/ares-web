@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
 import gsap from "gsap";
@@ -30,9 +31,10 @@ const specialEventImages = [
 
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const targetTime = targetDate.getTime();
   useEffect(() => {
     const tick = () => {
-      const diff = targetDate.getTime() - Date.now();
+      const diff = targetTime - Date.now();
       if (diff <= 0) { setTimeLeft({ d: 0, h: 0, m: 0, s: 0 }); return; }
       setTimeLeft({
         d: Math.floor(diff / 86400000),
@@ -44,7 +46,7 @@ function useCountdown(targetDate: Date) {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [targetDate]);
+  }, [targetTime]);
   return timeLeft;
 }
 
@@ -131,10 +133,12 @@ export default function SchedulePage() {
           {/* Right: trophy + team badge pills */}
           <div className="hidden lg:flex justify-end items-center gap-8 h-img">
             <div className="relative w-48 h-48 flex-shrink-0">
-              <img
+              <Image
+                fill
                 src="/images/hero_arena.png"
-                alt="Trophy"
-                className="w-full h-full object-cover rounded-full opacity-80 transition-all duration-700"
+                alt="Arena"
+                className="object-cover rounded-full opacity-80 transition-all duration-700"
+                sizes="192px"
               />
               <div className="absolute inset-0 rounded-full border border-white/10" />
             </div>
@@ -151,8 +155,8 @@ export default function SchedulePage() {
                     className="flex items-center gap-4 px-5 py-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all"
                     style={{ minWidth: "220px" }}
                   >
-                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-white/10">
-                      <img src={teamImgs[t.id]} alt={t.name} className="w-full h-full object-cover" />
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-white/10 relative">
+                      <Image fill src={teamImgs[t.id]} alt={t.name} className="object-cover" sizes="40px" />
                     </div>
                     <div className="min-w-0">
                       <div className="font-cinzel tracking-widest text-sm leading-tight text-white mb-0.5">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 export default function LegacyCTA() {
@@ -17,13 +18,13 @@ export default function LegacyCTA() {
           {/* LEFT: trophy (2 cols) */}
           <div className="lg:col-span-2 flex items-center justify-center relative group">
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 90% 80% at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%)" }} />
-            <img
+            <Image
               src="/images/hero-trophy.jpg"
               alt="Championship Trophy"
+              width={260}
+              height={320}
               className="relative z-10 object-contain trophy-glow group-hover:scale-105 transition-transform duration-700"
-              style={{ 
-                height: "320px", 
-                maxWidth: "260px", 
+              style={{
                 mixBlendMode: "lighten",
                 maskImage: "radial-gradient(circle 50% at 50% 50%, black 60%, transparent 100%)",
                 WebkitMaskImage: "radial-gradient(circle 50% at 50% 50%, black 60%, transparent 100%)"
@@ -51,7 +52,7 @@ export default function LegacyCTA() {
               <Link href="/contact" className="btn-primary">
                 Contact Us Today <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
-              <Link href="/gallery" className="btn-secondary">
+              <Link href="/web-partner" className="btn-secondary">
                 View Our Work <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>

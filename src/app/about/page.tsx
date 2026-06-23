@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Target,
@@ -172,8 +173,8 @@ export default function AboutPage() {
 
           <div className="h-card relative">
             <div className="glass-card relative overflow-hidden p-10 border-white/10 bg-white/[0.02]">
-              <div className="flex justify-center mb-8">
-                <img src="/images/hero_arena.png" alt="Championship" className="w-full h-48 object-cover rounded-xl border border-white/10" style={{ filter: "contrast(110%)" }} />
+              <div className="relative w-full h-48 mb-8 rounded-xl overflow-hidden border border-white/10">
+                <Image fill src="/images/hero_arena.png" alt="Championship" className="object-cover" sizes="(max-width:768px) 100vw, 400px" style={{ filter: "contrast(110%)" }} />
               </div>
 
               <h3 className="font-cinzel font-light tracking-widest text-[#D4AF37] text-xl text-center mb-2 uppercase">
@@ -280,7 +281,7 @@ export default function AboutPage() {
             {LEADERSHIP.map((leader) => (
               <div key={leader.name} className="group relative">
                 <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/10 relative">
-                  <img src={leader.img} alt={leader.name} className="w-full h-full object-cover filter opacity-70 group-hover:opacity-100 transition-all duration-700" />
+                  <Image fill src={leader.img} alt={leader.name} className="object-cover opacity-70 group-hover:opacity-100 transition-all duration-700" sizes="(max-width:640px) 50vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
                   
                   <div className="absolute bottom-6 left-6 right-6">

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
@@ -79,8 +80,8 @@ export default function LeaderboardPage() {
       <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center pr-12 opacity-80" style={{ width: "40%" }}>
-          <img src="/images/hero_arena.png" alt="Trophy" className="h-full w-full object-cover object-center" style={{ maskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", filter: "contrast(110%)" }} />
+        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center pr-12 opacity-80" style={{ width: "40%", position: "relative" }}>
+          <Image fill src="/images/hero_arena.png" alt="Trophy" className="object-cover object-center" sizes="40vw" style={{ maskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", filter: "contrast(110%)" }} />
         </div>
         
         <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-20 z-10">
@@ -236,8 +237,8 @@ export default function LeaderboardPage() {
                   <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
                     <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
                     <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/20 p-1">
-                      <div className="w-full h-full rounded-full overflow-hidden">
-                        <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
+                      <div className="w-full h-full rounded-full overflow-hidden relative">
+                        <Image fill src={p.img} alt={p.name} className="object-cover object-top" sizes="64px" />
                       </div>
                     </div>
                     <div className="font-cinzel tracking-wider text-white text-[11px] mb-1">{p.name}</div>

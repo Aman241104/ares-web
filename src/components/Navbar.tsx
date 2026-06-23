@@ -68,7 +68,7 @@ export default function Navbar() {
                 alt="ARES Logo" 
                 width={80} 
                 height={80} 
-                unoptimized
+                priority
                 className="w-full h-full object-contain transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]" 
               />
             </div>
