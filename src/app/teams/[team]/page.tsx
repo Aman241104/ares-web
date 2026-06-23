@@ -123,6 +123,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                        src={TEAM_IMAGES[team.id]}
                        alt={team.name}
                        fill
+                       sizes="(max-width: 768px) 100vw, 400px"
                        className="object-contain opacity-70"
                     />
                  </div>

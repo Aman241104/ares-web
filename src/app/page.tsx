@@ -114,6 +114,7 @@ export default function HomePage() {
             src="/images/hero_arena.png"
             alt="Hero Arena"
             fill
+            sizes="100vw"
             className="object-cover object-center scale-105"
             priority
           />
@@ -293,7 +294,8 @@ export default function HomePage() {
                       <Image 
                         src={portrait} 
                         alt={team.name} 
-                        fill 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -342,7 +344,7 @@ export default function HomePage() {
                   <article key={post.id} className="group flex gap-6 items-center">
                     <div className="w-24 h-24 flex-shrink-0 relative overflow-hidden bg-white/5">
                       {blogImg ? (
-                        <Image src={blogImg} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
+                        <Image src={blogImg} alt={post.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <BookOpen className="w-5 h-5 text-white/20" />
