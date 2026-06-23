@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 
@@ -56,24 +57,13 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
             {/* Helmet icon */}
             <div className="w-9 h-9 flex-shrink-0">
-              <svg viewBox="0 0 80 80" fill="none" className="w-full h-full">
-                {/* Laurel left */}
-                <ellipse cx="12" cy="50" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(-30 12 50)" />
-                <ellipse cx="16" cy="44" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(-20 16 44)" />
-                <ellipse cx="20" cy="38" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(-10 20 38)" />
-                <ellipse cx="24" cy="33" rx="5" ry="3" fill="#DAA537" opacity="0.7" />
-                {/* Laurel right */}
-                <ellipse cx="68" cy="50" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(30 68 50)" />
-                <ellipse cx="64" cy="44" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(20 64 44)" />
-                <ellipse cx="60" cy="38" rx="5" ry="3" fill="#DAA537" opacity="0.7" transform="rotate(10 60 38)" />
-                <ellipse cx="56" cy="33" rx="5" ry="3" fill="#DAA537" opacity="0.7" />
-                {/* Helmet */}
-                <path d="M40 8 L58 28 L58 52 L40 58 L22 52 L22 28 Z" fill="#DAA537" />
-                <path d="M32 38 L28 58 L40 62 L52 58 L48 38 Z" fill="#B8862A" />
-                <path d="M35 36 L45 36 L48 52 L32 52 Z" fill="#DAA537" />
-                {/* Crest */}
-                <path d="M40 6 L43 18 L40 16 L37 18 Z" fill="#F5D078" />
-              </svg>
+              <Image 
+                src="/images/logos/logo-3.png" 
+                alt="ARES Logo" 
+                width={80} 
+                height={80} 
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div className="hidden sm:block">
               <div className="font-cinzel text-[#DAA537] font-black text-base leading-none tracking-widest group-hover:text-[#F5D078] transition-colors" style={{textShadow:"0 0 18px rgba(218,165,55,0.55)"}}>ARES</div>
