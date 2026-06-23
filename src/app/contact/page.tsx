@@ -52,7 +52,7 @@ const SOCIAL = [
 ];
 
 const INTERESTS = [
-  { title: "Register as a Player", desc: "Join one of the 4 elite teams for ABL 2026." },
+  { title: "Build Your Website", desc: "Get a premium website for your business by our Web Partner." },
   { title: "Become a Partner", desc: "Align your brand with India's premier business league." },
   { title: "Sponsorship Inquiry", desc: "Premium visibility across all tournament touchpoints." },
   { title: "Media Coverage", desc: "Exclusive access and press credentials for journalists." },
@@ -292,7 +292,7 @@ export default function ContactPage() {
                       className="w-full rounded-xl px-5 py-4 font-montserrat text-white text-sm focus:outline-none transition-all appearance-none pr-12 cursor-pointer bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
                     >
                       <option value="" className="bg-[#050505]">Select a subject...</option>
-                      <option value="register" className="bg-[#050505]">Register as a Player</option>
+                      <option value="website" className="bg-[#050505]">Build Your Website</option>
                       <option value="partner" className="bg-[#050505]">Become a Partner</option>
                       <option value="sponsor" className="bg-[#050505]">Sponsorship Inquiry</option>
                       <option value="media" className="bg-[#050505]">Media and Press</option>

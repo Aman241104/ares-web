@@ -81,6 +81,7 @@ export default function Footer() {
                 { href: "/wall-of-fame", label: "Wall of Fame" },
                 { href: "/blog", label: "Blog" },
                 { href: "/partners", label: "Partners" },
+                { href: "/web-partner", label: "Build Your Website" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="font-montserrat text-white/40 text-xs hover:text-[#D4AF37] transition-colors tracking-wide flex items-center gap-2 group">

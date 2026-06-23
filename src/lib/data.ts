@@ -342,7 +342,7 @@ export const partners: Partner[] = [
   { name: "GiFT", tier: "Gifting Partner", tagline: "Gifting Partner" },
   { name: "PrintVista", tier: "Print Partner", tagline: "Print Partner" },
   { name: "The Logo Co", tier: "Branding Partner", tagline: "Branding Partner" },
-  { name: "WebHance", tier: "Digital Partner", tagline: "Digital Partner" },
+  { name: "WebHance", tier: "Web Partner", tagline: "Building Digital Legacies" },
   { name: "Digital 360", tier: "Marketing Partner", tagline: "360° Marketing" },
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Users, BarChart2, Trophy, Handshake, Megaphone, Target, Globe, Building2 } from "lucide-react";
+import { ArrowRight, Users, BarChart2, Trophy, Handshake, Megaphone, Target, Globe, Building2, Star } from "lucide-react";
 import { partners } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -90,6 +90,42 @@ export default function PartnersPage() {
               <div className="font-montserrat text-white/50 text-[10px] uppercase tracking-widest">{s.label}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ─── FEATURED WEB PARTNER ─── */}
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
+        <div className="max-w-7xl mx-auto">
+          <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-4 text-center">Featured Partner</div>
+          <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl text-center mb-12">
+            OFFICIAL <span className="text-[#D4AF37]">WEB PARTNER</span>
+          </h2>
+
+          <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden border border-[#D4AF37]/30 bg-white/[0.02] p-10 lg:p-14 text-center"
+            style={{ background: "linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 60%)" }}>
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 80%)" }} />
+
+            <div className="relative">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Star className="w-5 h-5 text-[#D4AF37]" />
+                <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">Web Partner</span>
+                <Star className="w-5 h-5 text-[#D4AF37]" />
+              </div>
+              <h3 className="font-cinzel text-white text-4xl sm:text-5xl tracking-widest mb-4">WebHance</h3>
+              <p className="font-montserrat text-white/50 text-sm leading-relaxed max-w-xl mx-auto mb-8">
+                Building digital legacies for India&apos;s top business owners. WebHance is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/web-partner" className="btn-primary">
+                  Build Your Website <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link href="/contact" className="btn-secondary">
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

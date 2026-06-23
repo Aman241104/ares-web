@@ -124,10 +124,10 @@ export default function Navbar() {
           {/* ── CTA Button ── */}
           <div className="hidden xl:block ml-4 lg:ml-8 flex-shrink-0">
             <Link
-              href="/contact"
+              href="/web-partner"
               className="btn-primary whitespace-nowrap"
             >
-              Register Team
+              Build Your Website
             </Link>
           </div>
 
