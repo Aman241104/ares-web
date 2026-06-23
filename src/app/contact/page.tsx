@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   Phone,
@@ -60,6 +60,18 @@ const INTERESTS = [
 
 export default function ContactPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", business: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.subject || !form.message) return;
+    const text = encodeURIComponent(
+      `*New Enquiry — ARES Business League*\n\n*Name:* ${form.name}\n*Email:* ${form.email}${form.phone ? `\n*Phone:* ${form.phone}` : ""}${form.business ? `\n*Business:* ${form.business}` : ""}\n*Subject:* ${form.subject}\n\n*Message:*\n${form.message}`
+    );
+    window.open(`https://wa.me/919768010720?text=${text}`, "_blank");
+    setSent(true);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -233,101 +245,131 @@ export default function ContactPage() {
               {/* Top accent line */}
               <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50" />
 
-              <form className="p-8 sm:p-10 space-y-8">
-                {/* Row 1 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {sent ? (
+                <div className="p-10 sm:p-14 text-center">
+                  <div className="w-20 h-20 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center mx-auto mb-6">
+                    <Send className="w-8 h-8 text-[#D4AF37]" />
+                  </div>
+                  <h3 className="font-cinzel text-white text-2xl mb-4">Message Sent!</h3>
+                  <p className="font-montserrat text-white/50 text-sm leading-relaxed mb-8">
+                    Your enquiry has been opened in WhatsApp. We&apos;ll get back to you shortly.
+                  </p>
+                  <button onClick={() => setSent(false)} className="btn-secondary text-[10px]">
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="p-8 sm:p-10 space-y-8">
+                  {/* Row 1 */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                      <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
+                        Full Name <span className="text-[#D4AF37]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your full name"
+                        value={form.name}
+                        onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                        className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                      />
+                    </div>
+                    <div>
+                      <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
+                        Email Address <span className="text-[#D4AF37]">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="your@email.com"
+                        value={form.email}
+                        onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                        className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                      <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+91 98765 43210"
+                        value={form.phone}
+                        onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                        className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                      />
+                    </div>
+                    <div>
+                      <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
+                        Business Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Your company name"
+                        value={form.business}
+                        onChange={(e) => setForm((f) => ({ ...f, business: e.target.value }))}
+                        className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Subject */}
                   <div>
                     <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                      Full Name <span className="text-[#D4AF37]">*</span>
+                      Subject <span className="text-[#D4AF37]">*</span>
                     </label>
-                    <input
-                      type="text"
-                      placeholder="Your full name"
-                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
-                    />
+                    <div className="relative">
+                      <select
+                        required
+                        value={form.subject}
+                        onChange={(e) => setForm((f) => ({ ...f, subject: e.target.value }))}
+                        className="w-full rounded-xl px-5 py-4 font-montserrat text-white text-sm focus:outline-none transition-all appearance-none pr-12 cursor-pointer bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                      >
+                        <option value="" className="bg-[#050505]">Select a subject...</option>
+                        <option value="Build Your Website" className="bg-[#050505]">Build Your Website</option>
+                        <option value="Become a Partner" className="bg-[#050505]">Become a Partner</option>
+                        <option value="Sponsorship Inquiry" className="bg-[#050505]">Sponsorship Inquiry</option>
+                        <option value="Media and Press" className="bg-[#050505]">Media and Press</option>
+                        <option value="General Inquiry" className="bg-[#050505]">General Inquiry</option>
+                      </select>
+                      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                    </div>
                   </div>
+
+                  {/* Message */}
                   <div>
                     <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                      Email Address <span className="text-[#D4AF37]">*</span>
+                      Message <span className="text-[#D4AF37]">*</span>
                     </label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
+                    <textarea
+                      rows={6}
+                      required
+                      placeholder="Tell us how we can help you..."
+                      value={form.message}
+                      onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all resize-none bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
                     />
                   </div>
-                </div>
 
-                {/* Row 2 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                  <div>
-                    <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
-                    />
-                  </div>
-                  <div>
-                    <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                      Business Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your company name"
-                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
-                    />
-                  </div>
-                </div>
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    className="btn-primary w-full justify-center py-4"
+                  >
+                    <Send className="w-4 h-4 mr-2" />
+                    Send via WhatsApp
+                  </button>
 
-                {/* Subject */}
-                <div>
-                  <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                    Subject <span className="text-[#D4AF37]">*</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      className="w-full rounded-xl px-5 py-4 font-montserrat text-white text-sm focus:outline-none transition-all appearance-none pr-12 cursor-pointer bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
-                    >
-                      <option value="" className="bg-[#050505]">Select a subject...</option>
-                      <option value="website" className="bg-[#050505]">Build Your Website</option>
-                      <option value="partner" className="bg-[#050505]">Become a Partner</option>
-                      <option value="sponsor" className="bg-[#050505]">Sponsorship Inquiry</option>
-                      <option value="media" className="bg-[#050505]">Media and Press</option>
-                      <option value="general" className="bg-[#050505]">General Inquiry</option>
-                      <option value="website" className="bg-[#050505]">Website for My Business</option>
-                    </select>
-                    <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-3 block">
-                    Message <span className="text-[#D4AF37]">*</span>
-                  </label>
-                  <textarea
-                    rows={6}
-                    placeholder="Tell us how we can help you..."
-                    className="w-full rounded-xl px-5 py-4 font-montserrat text-white placeholder-white/20 text-sm focus:outline-none transition-all resize-none bg-white/[0.02] border border-white/10 focus:border-[#D4AF37]/50 focus:bg-white/[0.04]"
-                  />
-                </div>
-
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="btn-primary w-full justify-center py-4"
-                >
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </button>
-
-                <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest text-center mt-6">
-                  We respect your privacy. Your information will never be shared.
-                </p>
-              </form>
+                  <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest text-center mt-6">
+                    We respect your privacy. Your information will never be shared.
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>

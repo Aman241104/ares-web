@@ -19,13 +19,24 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "ARES Business League 2026 - Nation Builders Edition",
-  description: "A high-stakes, one-month business tournament bringing together 30 elite business owners competing in 4 iconic teams. Strategy. Leadership. Execution. One Winner.",
-  keywords: "ARES Business League, ABL 2026, Nation Builders, BNI, business tournament",
+  metadataBase: new URL("https://aresbusinessleague.com"),
+  title: {
+    default: "ARES Business League 2026 — Nation Builders Edition",
+    template: "%s | ARES Business League 2026",
+  },
+  description: "A high-stakes, one-month business tournament featuring 30 elite BNI business owners competing in 4 iconic teams. Strategy. Leadership. Execution. One Winner.",
+  keywords: "ARES Business League, ABL 2026, Nation Builders, BNI, business tournament, India",
   openGraph: {
-    title: "ARES Business League 2026 - Nation Builders Edition",
-    description: "4 Teams. 4 Leaders. 1 Mission. June 24 - July 22, 2026",
+    title: "ARES Business League 2026 — Nation Builders Edition",
+    description: "4 Teams. 4 Leaders. 1 Mission. June 24 – July 22, 2026",
     type: "website",
+    url: "https://aresbusinessleague.com",
+    siteName: "ARES Business League",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ARES Business League 2026 — Nation Builders Edition",
+    description: "4 Teams. 4 Leaders. 1 Mission. June 24 – July 22, 2026",
   },
 };
 

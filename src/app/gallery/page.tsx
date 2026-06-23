@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function GalleryPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const placeholders = Array.from({ length: 12 }, (_, i) => i + 1);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,36 +70,26 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          {/* Coming Soon Banner */}
-          <div className="glass-card border-[#D4AF37]/30 rounded-2xl p-12 text-center mb-16 relative overflow-hidden sr">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="glass-card border-[#D4AF37]/30 rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden sr">
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 80%)" }} />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50" />
             <div className="relative">
-              <div className="w-20 h-20 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-24 h-24 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-full flex items-center justify-center mx-auto mb-8">
                 <svg className="w-10 h-10 text-[#D4AF37]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/>
                 </svg>
               </div>
-              <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl mb-4">
-                GALLERY COMING <span className="text-[#D4AF37]">SOON</span>
+              <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-6">Tournament · June 24 – July 22, 2026</div>
+              <h2 className="font-cinzel font-light text-white text-4xl sm:text-5xl mb-6">
+                GALLERY COMING <span className="text-[#D4AF37] italic">SOON</span>
               </h2>
+              <div className="w-16 h-px mx-auto mb-8 bg-white/20" />
               <p className="font-montserrat text-white/50 text-sm max-w-xl mx-auto leading-relaxed">
-                Photos and videos from events will be published here during the tournament. Check back after June 24, 2026!
+                Photos, highlights and videos from every event will be published here throughout the tournament. Follow along and relive every milestone.
               </p>
             </div>
-          </div>
-
-          {/* Placeholder grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sr-stagger">
-            {placeholders.map((i) => (
-              <div key={i} className="aspect-square glass-card border-white/10 flex items-center justify-center hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300">
-                <div className="text-center">
-                  <div className="w-12 h-12 border border-white/10 rounded-xl mx-auto mb-3 opacity-20" />
-                  <div className="font-montserrat text-white/30 text-[10px] uppercase tracking-widest">Photo {i}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

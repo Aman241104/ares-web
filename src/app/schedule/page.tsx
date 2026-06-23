@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
@@ -28,8 +28,38 @@ const specialEventImages = [
   "/images/luxury_boardroom.png",
 ];
 
+function useCountdown(targetDate: Date) {
+  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  useEffect(() => {
+    const tick = () => {
+      const diff = targetDate.getTime() - Date.now();
+      if (diff <= 0) { setTimeLeft({ d: 0, h: 0, m: 0, s: 0 }); return; }
+      setTimeLeft({
+        d: Math.floor(diff / 86400000),
+        h: Math.floor((diff % 86400000) / 3600000),
+        m: Math.floor((diff % 3600000) / 60000),
+        s: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [targetDate]);
+  return timeLeft;
+}
+
 export default function SchedulePage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeWeek, setActiveWeek] = useState(0);
+
+  const weekEndDates = [
+    new Date("2026-06-30T23:59:59"),
+    new Date("2026-07-07T23:59:59"),
+    new Date("2026-07-14T23:59:59"),
+    new Date("2026-07-22T23:59:59"),
+  ];
+  const countdown = useCountdown(weekEndDates[activeWeek]);
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -88,12 +118,12 @@ export default function SchedulePage() {
                 Dynamic schedule. Real-time updates. Maximum Impact. Keep track of all upcoming events, challenges and milestones.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="btn-primary">
-                  <Calendar className="w-4 h-4 ml-2" /> Calendar View
-                </button>
-                <button className="btn-secondary">
-                  <Clock className="w-4 h-4 mr-2" /> Timeline View
-                </button>
+                <Link href="/leaderboard" className="btn-primary">
+                  <Calendar className="w-4 h-4 mr-2" /> Live Standings
+                </Link>
+                <Link href="/rules" className="btn-secondary">
+                  <Clock className="w-4 h-4 mr-2" /> Scoring Rules
+                </Link>
               </div>
             </div>
           </div>
@@ -162,50 +192,46 @@ export default function SchedulePage() {
             {/* Week buttons */}
             <div className="space-y-2 mb-10">
               {weeklyEvents.map((week, i) => (
-                <div
+                <button
                   key={week.week}
-                  className={`w-full text-left px-5 py-4 rounded-xl transition-all cursor-default ${
-                    i === 1
+                  onClick={() => setActiveWeek(i)}
+                  className={`w-full text-left px-5 py-4 rounded-xl transition-all ${
+                    i === activeWeek
                       ? "bg-white/10 border border-white/20"
                       : "hover:bg-white/5 text-white/40 border border-transparent"
                   }`}
                 >
-                  <div
-                    className={`font-cinzel tracking-widest text-sm ${
-                      i === 1 ? "text-white font-bold" : "text-white/40"
-                    }`}
-                  >
+                  <div className={`font-cinzel tracking-widest text-sm ${i === activeWeek ? "text-white font-bold" : "text-white/40"}`}>
                     WEEK {week.week}
                   </div>
-                </div>
+                  <div className={`font-montserrat text-[9px] uppercase tracking-widest mt-0.5 ${i === activeWeek ? "text-[#D4AF37]/70" : "text-white/20"}`}>
+                    {week.dates}
+                  </div>
+                </button>
               ))}
             </div>
 
             {/* Selected week details */}
             <div className="pt-8 border-t border-white/10">
               <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">
-                WEEK 2 THEME
+                WEEK {weeklyEvents[activeWeek].week} THEME
               </div>
-              <h3 className="font-cinzel text-white text-xl leading-tight mb-4 tracking-wider">
-                STRONGER IMPACT.
+              <h3 className="font-cinzel text-white text-base leading-tight mb-3 tracking-wider">
+                {weeklyEvents[activeWeek].theme}
               </h3>
               <p className="font-montserrat text-white/50 text-xs leading-relaxed mb-8">
-                Maintaining the league with focus, energy and meaningful connections.
+                {weeklyEvents[activeWeek].description}
               </p>
 
-              {/* LIVE + countdown */}
+              {/* Live countdown */}
               <div className="space-y-2 glass-card p-4 border-white/5 bg-white/[0.01]">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full pulse-live flex-shrink-0" />
-                  <span className="font-montserrat text-green-400 text-[10px] font-bold tracking-[0.2em]">
-                    LIVE
-                  </span>
+                  <span className="font-montserrat text-green-400 text-[10px] font-bold tracking-[0.2em]">LIVE</span>
                 </div>
-                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">
-                  ENDS IN:
-                </div>
+                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">ENDS IN:</div>
                 <div className="font-cinzel font-light text-white text-2xl tracking-widest">
-                  04:12:36:58
+                  {countdown.d > 0 ? `${countdown.d}D ` : ""}{pad(countdown.h)}:{pad(countdown.m)}:{pad(countdown.s)}
                 </div>
               </div>
             </div>

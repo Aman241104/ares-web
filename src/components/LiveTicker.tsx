@@ -4,11 +4,12 @@ import { Bell } from "lucide-react";
 import gsap from "gsap";
 
 const activities = [
-  "Rahul Sharma passed a ₹2.5L referral to Priya Mehta",
-  "Team Modi secured 50 points from 1-to-1 meetings",
-  "Amit Shah Warriors just updated their TYFCB score",
-  "New Blog Post published: Execution is Everything",
-  "Dev Sharma just joined the 100+ points club",
+  "🏆 Team Modi leads with 1,285 points — Week 1 Champions",
+  "🤝 610 referrals passed across all teams this week",
+  "📈 ₹3.4M in TYFCB generated — and the season has just begun",
+  "🔥 1,078 one-to-one meetings completed across 4 teams",
+  "⚡ Week 1: STRONG START. STRONGER IMPACT. — underway",
+  "👑 Team Doval closing in — only 125 points behind the lead",
 ];
 
 export default function LiveTicker() {

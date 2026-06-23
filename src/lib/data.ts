@@ -137,8 +137,8 @@ export const teams: Team[] = [
     motto: "Execution is Everything",
     color: "#B91C1C",
     colorName: "Red",
-    icon: "shield",
-    mascot: "Shield",
+    icon: "tiger",
+    mascot: "Tiger",
     rank: 3,
     points: 1085,
     weekPoints: 548,
@@ -308,7 +308,7 @@ export const specialEvents: SpecialEvent[] = [
   {
     name: "Opening Ceremony",
     desc: "The grand opening of ARES Business League 2026. Let the legacy begin!",
-    date: "Jul 24, 2026",
+    date: "Jun 24, 2026",
     time: "6:00 PM",
     status: "upcoming",
   },
@@ -366,7 +366,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 29, 2026",
     readTime: "4 min read",
     category: "Strategy",
-    image: "/images/blog_strategy.png",
+    image: "/images/blog-strategy.jpg",
   },
   {
     id: "leadership-in-the-arena",
@@ -376,7 +376,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 27, 2026",
     readTime: "5 min read",
     category: "Leadership",
-    image: "/images/blog_leadership.png",
+    image: "/images/blog-leadership.jpg",
   },
   {
     id: "building-connections",
@@ -386,7 +386,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 25, 2026",
     readTime: "3 min read",
     category: "Networking",
-    image: "/images/blog_networking.png",
+    image: "/images/blog-networking.jpg",
   },
   {
     id: "execution-is-everything",
@@ -396,7 +396,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 24, 2026",
     readTime: "4 min read",
     category: "Execution",
-    image: "/images/blog_growth.png",
+    image: "/images/blog-growth.jpg",
   },
 ];
 

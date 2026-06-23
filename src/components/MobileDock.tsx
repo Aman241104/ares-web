@@ -53,8 +53,8 @@ export default function MobileDock() {
           </div>
 
           <div className="pt-4 border-t border-white/10">
-            <Link href="/contact" className="btn-primary w-full justify-center" onClick={() => setMenuOpen(false)}>
-              Register Team
+            <Link href="/web-partner" className="btn-primary w-full justify-center" onClick={() => setMenuOpen(false)}>
+              Build Your Website
             </Link>
           </div>
         </div>

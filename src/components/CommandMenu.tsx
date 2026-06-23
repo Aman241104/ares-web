@@ -52,6 +52,7 @@ export default function CommandMenu() {
             <Command.Item onSelect={() => { setOpen(false); router.push("/schedule") }} className="px-3 py-2 rounded-lg cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white">Schedule</Command.Item>
             <Command.Item onSelect={() => { setOpen(false); router.push("/blog") }} className="px-3 py-2 rounded-lg cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white">The Arena Blog</Command.Item>
             <Command.Item onSelect={() => { setOpen(false); router.push("/wall-of-fame") }} className="px-3 py-2 rounded-lg cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white">Wall of Fame</Command.Item>
+            <Command.Item onSelect={() => { setOpen(false); router.push("/web-partner") }} className="px-3 py-2 rounded-lg cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white">Build Your Website</Command.Item>
           </Command.Group>
         </Command.List>
       </Command>
