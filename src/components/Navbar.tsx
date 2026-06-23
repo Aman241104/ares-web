@@ -64,10 +64,11 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-4 flex-shrink-0 group">
             <div className={`flex-shrink-0 opacity-80 group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${scrolled ? "w-12 h-12" : "w-14 h-14 xl:w-16 xl:h-16"}`}>
               <Image 
-                src="/images/logos/logo-1.png" 
+                src="/images/brand-icon.png" 
                 alt="ARES Logo" 
                 width={80} 
                 height={80} 
+                unoptimized
                 className="w-full h-full object-contain transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]" 
               />
             </div>

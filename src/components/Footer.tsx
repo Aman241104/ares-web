@@ -30,10 +30,11 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-5 mb-8 group">
               <div className="w-14 h-14 flex-shrink-0 opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
                 <Image 
-                  src="/images/logos/logo-1.png" 
+                  src="/images/brand-icon.png" 
                   alt="ARES Logo" 
                   width={80} 
                   height={80} 
+                  unoptimized
                   className="w-full h-full object-contain transition-all duration-500" 
                 />
               </div>
