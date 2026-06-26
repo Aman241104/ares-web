@@ -25,8 +25,8 @@ const statusDot: Record<string, string> = {
 const specialEventImages = [
   "/images/blog_strategy.png",
   "/images/luxury_boardroom.png",
-  "/images/luxury_boardroom.png",
-  "/images/luxury_boardroom.png",
+  "/images/blog_leadership.png",
+  "/images/blog-networking.png",
 ];
 
 function useCountdown(targetDate: Date) {
@@ -98,56 +98,68 @@ export default function SchedulePage() {
   return (
     <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
-      <section className="relative py-20 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(circle at 70% 50%, rgba(212,175,55,0.05) 0%, transparent 60%)",
-          }}
-        />
-        <div className="max-w-7xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[55vh] flex items-center bg-[#080600]">
+        {/* BG image */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/images/luxury_boardroom.png" alt="" fill sizes="100vw" className="object-cover object-center" style={{ filter: "brightness(0.12) saturate(0.5)" }} priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080600] via-[#080600]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/60 via-transparent to-[#080600]" />
+        </div>
+        <div className="absolute inset-0 bg-grid-fine opacity-50 pointer-events-none z-[1]" />
+
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <h1 className="h-title font-cinzel font-light text-white mb-6 leading-none" style={{ fontSize: "clamp(36px,7vw,90px)" }}>
-              SCHEDULE<br/><span className="text-gold-gradient tracking-widest text-[0.8em]">EVENTS</span>
-            </h1>
+            <div className="h-title">
+              <div className="section-label mb-6">42 Challenges · 4 Weeks · 1 Champion</div>
+              <h1 className="font-cinzel font-light text-white mb-6 leading-none">
+                <span style={{ fontSize: "clamp(40px,8vw,96px)", display: "block" }}>SCHEDULE</span>
+                <span style={{
+                  fontSize: "clamp(40px,8vw,96px)",
+                  display: "block",
+                  background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  letterSpacing: "0.06em",
+                  lineHeight: 1,
+                }}>EVENTS</span>
+              </h1>
+            </div>
             <div className="h-sub">
-              <div className="font-montserrat text-white/50 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 flex items-center gap-4">
-                42 CHALLENGES <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> 4 WEEKS <span className="w-1.5 h-1.5 rounded-full bg-white/20" /> 1 CHAMPION
-              </div>
-              <p className="font-montserrat text-white/60 text-sm leading-relaxed mb-10 max-w-md tracking-wide">
+              <p className="font-montserrat text-white/50 text-sm leading-[2] mb-10 max-w-md tracking-wide">
                 Dynamic schedule. Real-time updates. Maximum Impact. Keep track of all upcoming events, challenges and milestones.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/leaderboard" className="btn-primary">
-                  <Calendar className="w-4 h-4 mr-2" /> Live Standings
+                  <Calendar className="w-4 h-4" /> Live Standings
                 </Link>
                 <Link href="/rules" className="btn-secondary">
-                  <Clock className="w-4 h-4 mr-2" /> Scoring Rules
+                  <Clock className="w-4 h-4" /> Scoring Rules
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Right: trophy + team badge pills */}
-          <div className="hidden lg:flex justify-end items-center gap-8 h-img">
-            <div className="relative flex-shrink-0 flex items-center justify-center ml-4">
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
+          {/* Right: trophy + team pills */}
+          <div className="hidden lg:flex justify-end items-center gap-7 h-img">
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 pointer-events-none blur-[60px] opacity-20" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)" }} />
               <Image
                 src="/images/hero-trophy.jpg"
                 alt="Championship Trophy"
-                width={280}
-                height={340}
-                className="relative z-10 object-contain mix-blend-screen opacity-90 drop-shadow-2xl"
+                width={260}
+                height={320}
+                className="relative z-10 object-contain mix-blend-screen"
                 style={{
-                  maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-                  filter: "brightness(1.1) contrast(1.1)",
+                  opacity: 0.9,
+                  maskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)",
+                  filter: "brightness(1.15) contrast(1.1)",
                 }}
               />
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               {teams.map((t) => {
                 const teamImgs: Record<string,string> = {
                   modi:"/images/team_modi.png", doval:"/images/team_doval.png",
@@ -157,20 +169,21 @@ export default function SchedulePage() {
                   <Link
                     key={t.id}
                     href={`/teams/${t.id}`}
-                    className="flex items-center gap-4 px-5 py-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all"
-                    style={{ minWidth: "220px" }}
+                    className="flex items-center gap-3.5 px-4 py-3 border border-white/6 bg-white/[0.025] hover:bg-white/[0.05] hover:border-[rgba(212,175,55,0.2)] transition-all duration-300 group"
+                    style={{ minWidth: "210px" }}
                   >
-                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-white/10 relative">
-                      <Image fill src={teamImgs[t.id]} alt={t.name} className="object-cover" sizes="40px" />
+                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-white/10 relative">
+                      <Image fill src={teamImgs[t.id]} alt={t.name} className="object-cover" sizes="36px" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-cinzel tracking-widest text-sm leading-tight text-white mb-0.5">
+                      <div className="font-cinzel tracking-wider text-xs leading-tight text-white group-hover:text-[#D4AF37] transition-colors">
                         {t.name.toUpperCase()}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest truncate">
-                        {t.fullName.toUpperCase()}
+                      <div className="font-montserrat text-white/30 text-[7px] uppercase tracking-widest truncate mt-0.5">
+                        {t.fullName.split(" ").slice(-1)[0]}
                       </div>
                     </div>
+                    <div className="ml-auto w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: t.color }} />
                   </Link>
                 );
               })}
@@ -180,67 +193,65 @@ export default function SchedulePage() {
       </section>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
-        <div className="max-w-7xl mx-auto mb-12 sr">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-8 h-px bg-[#D4AF37]" />
-            <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
-              Live Updates
-            </div>
-          </div>
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 relative">
+        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
+        <div className="max-w-7xl mx-auto mb-12 sr relative">
+          <div className="section-label mb-4">Live Updates</div>
           <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">
-            THIS WEEK'S <span className="text-[#D4AF37]">SCHEDULE</span>
+            THIS WEEK&rsquo;S <span className="text-[#D4AF37]">SCHEDULE</span>
           </h2>
         </div>
 
-        {/* 3-column layout: week selector | events table | bonus sidebar */}
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-0 rounded-2xl overflow-hidden glass-card border-white/10 sr">
-          
+        {/* 3-column layout */}
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-0 overflow-hidden border border-[rgba(212,175,55,0.12)] relative sr">
+          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent)" }} />
+
           {/* ── Left: Week Selector ── */}
-          <div className="flex-shrink-0 lg:w-72 bg-white/[0.02] border-r border-white/10 p-8" style={{ minWidth: 260 }}>
+          <div className="flex-shrink-0 lg:w-72 bg-[#0C0900] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
             {/* Week buttons */}
-            <div className="space-y-2 mb-10">
+            <div className="space-y-2 mb-8">
               {weeklyEvents.map((week, i) => (
                 <button
                   key={week.week}
                   onClick={() => setActiveWeek(i)}
-                  className={`w-full text-left px-5 py-4 rounded-xl transition-all ${
+                  className={`w-full text-left px-5 py-4 transition-all duration-300 border relative overflow-hidden ${
                     i === activeWeek
-                      ? "bg-white/10 border border-white/20"
-                      : "hover:bg-white/5 text-white/40 border border-transparent"
+                      ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6 text-white"
+                      : "border-white/5 hover:border-white/10 text-white/35 hover:text-white/70 hover:bg-white/[0.02]"
                   }`}
                 >
-                  <div className={`font-cinzel tracking-widest text-sm ${i === activeWeek ? "text-white font-bold" : "text-white/40"}`}>
+                  {i === activeWeek && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#D4AF37]" />}
+                  <div className={`font-cinzel tracking-widest text-sm ${i === activeWeek ? "text-[#D4AF37]" : ""}`}>
                     WEEK {week.week}
                   </div>
-                  <div className={`font-montserrat text-[9px] uppercase tracking-widest mt-0.5 ${i === activeWeek ? "text-[#D4AF37]/70" : "text-white/20"}`}>
+                  <div className={`font-montserrat text-[8px] uppercase tracking-[0.2em] mt-0.5 ${i === activeWeek ? "text-white/50" : "text-white/20"}`}>
                     {week.dates}
                   </div>
                 </button>
               ))}
             </div>
 
-            {/* Selected week details */}
-            <div className="pt-8 border-t border-white/10">
-              <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">
-                WEEK {weeklyEvents[activeWeek].week} THEME
+            {/* Week details */}
+            <div className="pt-6 border-t border-white/8">
+              <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.3em] mb-2">
+                Week {weeklyEvents[activeWeek].week} Theme
               </div>
-              <h3 className="font-cinzel text-white text-base leading-tight mb-3 tracking-wider">
+              <h3 className="font-cinzel text-white text-sm leading-tight mb-3 tracking-wider">
                 {weeklyEvents[activeWeek].theme}
               </h3>
-              <p className="font-montserrat text-white/50 text-xs leading-relaxed mb-8">
+              <p className="font-montserrat text-white/40 text-[10px] leading-relaxed mb-7 tracking-wide">
                 {weeklyEvents[activeWeek].description}
               </p>
 
               {/* Live countdown */}
-              <div className="space-y-2 glass-card p-4 border-white/5 bg-white/[0.01]">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full pulse-live flex-shrink-0" />
-                  <span className="font-montserrat text-green-400 text-[10px] font-bold tracking-[0.2em]">LIVE</span>
+              <div className="border border-[rgba(212,175,55,0.15)] bg-[#D4AF37]/5 p-5">
+                <div className="absolute top-0 left-0 right-0 h-px bg-[#D4AF37]/30" />
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full pulse-live flex-shrink-0" />
+                  <span className="font-montserrat text-green-400/80 text-[8px] font-bold tracking-[0.3em] uppercase">Live · Ends in</span>
                 </div>
-                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">ENDS IN:</div>
-                <div className="font-cinzel font-light text-white text-2xl tracking-widest">
-                  {countdown.d > 0 ? `${countdown.d}D ` : ""}{pad(countdown.h)}:{pad(countdown.m)}:{pad(countdown.s)}
+                <div className="font-cinzel font-light text-white text-2xl tracking-[0.15em]">
+                  {countdown.d > 0 ? `${countdown.d}d ` : ""}{pad(countdown.h)}:{pad(countdown.m)}:{pad(countdown.s)}
                 </div>
               </div>
             </div>

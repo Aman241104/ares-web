@@ -27,14 +27,11 @@ const MASCOT_IMAGES: Record<string, string> = {
 function SectionHeader({ eyebrow, title, accent, desc }: { eyebrow: string; title: string; accent: string; desc: string }) {
   return (
     <div className="mb-14 sr">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="w-8 h-px bg-[#D4AF37]" />
-        <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">{eyebrow}</span>
-      </div>
-      <h2 className="font-cinzel font-light text-white leading-tight mb-4" style={{ fontSize: "clamp(28px,4vw,52px)" }}>
-        {title} <span className="text-gold-gradient italic">{accent}</span>
+      <div className="section-label mb-5">{eyebrow}</div>
+      <h2 className="font-cinzel font-light text-white leading-tight mb-5" style={{ fontSize: "clamp(26px,4vw,50px)" }}>
+        {title} <span className="text-gold-gradient">{accent}</span>
       </h2>
-      <p className="font-montserrat text-white/50 text-sm leading-relaxed max-w-xl">{desc}</p>
+      <p className="font-montserrat text-white/40 text-xs sm:text-sm leading-[2] max-w-xl tracking-wide">{desc}</p>
     </div>
   );
 }
@@ -78,51 +75,62 @@ export default function WallOfFamePage() {
 
       {/* ══════════════ HERO ══════════════ */}
       <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 30% 50%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/images/luxury_boardroom.png" alt="" fill sizes="100vw" className="object-cover object-center" style={{ filter: "brightness(0.14) saturate(0.5)" }} priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080600] via-[#080600]/65 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/50 via-transparent to-[#080600]" />
+        </div>
+        <div className="absolute inset-0 bg-grid-fine opacity-40 pointer-events-none z-[1]" />
 
         {/* Trophy right */}
-        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center pr-8 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center pr-10 overflow-hidden pointer-events-none z-[2]">
+          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 60% 50%, rgba(212,175,55,0.12) 0%, transparent 60%)" }} />
           <Image
             src="/images/hero-trophy.jpg"
             alt="Trophy"
-            width={380}
-            height={450}
+            width={360}
+            height={430}
             className="relative z-10 object-contain mix-blend-screen"
             style={{
-              maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-              filter: "brightness(1.1) contrast(1.1)",
+              opacity: 0.9,
+              maskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
+              filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
             }}
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-24">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-8 h-badge">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] block" />
-              <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">Nation Builders Edition · ABL 2026</span>
+            <div className="h-badge inline-flex items-center gap-3 mb-8 relative">
+              <div className="absolute inset-0 rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/6 backdrop-blur-xl" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block relative z-10" />
+              <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · ABL 2026</span>
             </div>
 
-            <h1 className="h-title font-cinzel font-light text-white leading-[1.05] mb-6" style={{ fontSize: "clamp(44px,9vw,108px)" }}>
-              WALL<br />
-              <span className="text-gold-gradient">OF FAME</span>
+            <h1 className="h-title font-cinzel font-light text-white leading-none mb-7">
+              <span style={{ fontSize: "clamp(48px,10vw,110px)", display: "block" }}>WALL</span>
+              <span style={{
+                fontSize: "clamp(48px,10vw,110px)",
+                display: "block",
+                background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                lineHeight: 1,
+              }}>OF FAME</span>
             </h1>
 
-            <div className="w-20 h-px bg-white/20 mb-8" />
+            <div className="gold-divider max-w-[120px] mb-8" />
 
-            <p className="h-sub font-montserrat text-white/55 text-sm sm:text-base tracking-wide leading-relaxed max-w-lg mb-10">
+            <p className="h-sub font-montserrat text-white/50 text-sm sm:text-base tracking-wide leading-[2] max-w-lg mb-10">
               This page is dedicated to every person who believed in this vision — our partners who powered the league, the warriors who competed with honour, and the guardians who kept it fair. You are the legacy.
             </p>
 
             <div className="h-cta flex flex-wrap gap-4">
-              <Link href="/teams" className="btn-primary">
-                Meet the Teams <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-              <Link href="/partners" className="btn-secondary">
-                Our Partners
-              </Link>
+              <Link href="/teams" className="btn-primary">Meet the Teams <ArrowRight className="w-4 h-4" /></Link>
+              <Link href="/partners" className="btn-secondary">Our Partners</Link>
             </div>
           </div>
         </div>

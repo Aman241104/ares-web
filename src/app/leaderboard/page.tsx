@@ -77,29 +77,60 @@ export default function LeaderboardPage() {
     <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center justify-center pr-8 pointer-events-none" style={{ width: "45%" }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
-          <Image src="/images/hero-trophy.jpg" alt="Championship Trophy" width={380} height={450} className="relative z-10 object-contain mix-blend-screen" style={{ maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", filter: "brightness(1.1) contrast(1.1)" }} />
+      <section className="relative overflow-hidden bg-[#080600]" style={{ minHeight: "380px" }}>
+        <div className="absolute inset-0 bg-grid-fine opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
+        {/* Trophy right side */}
+        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "45%" }}>
+          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 70% 50%, rgba(212,175,55,0.12) 0%, transparent 65%)" }} />
+          <div className="absolute inset-0 flex items-center justify-center pr-8">
+            <Image
+              src="/images/hero-trophy.jpg"
+              alt="Championship Trophy"
+              width={360}
+              height={430}
+              className="relative z-10 object-contain mix-blend-screen"
+              style={{
+                opacity: 0.9,
+                maskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
+                filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
+              }}
+            />
+          </div>
         </div>
-        
-        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-20 z-10">
+
+        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-24 z-10">
           <div className="max-w-2xl">
-            <div className="h-badge inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-6">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full pulse-live block"/>
-              <span className="font-montserrat text-green-400/80 text-[10px] font-bold tracking-[0.3em] uppercase">Live Rankings</span>
+            <div className="h-badge inline-flex items-center gap-3 mb-7">
+              <div className="absolute inset-0 rounded-full border border-white/10 bg-white/4 backdrop-blur-md" />
+              <span className="w-1.5 h-1.5 bg-green-400 rounded-full pulse-live block relative z-10" />
+              <span className="font-montserrat text-green-400/80 text-[9px] font-bold tracking-[0.4em] uppercase relative z-10">Live Rankings</span>
             </div>
-            
-            <h1 className="h-title font-cinzel font-light text-white mb-4" style={{ fontSize: "clamp(36px, 7vw, 90px)", lineHeight: 1 }}>
-              LEADER<br/>
-              <span className="text-gold-gradient tracking-widest">BOARD</span>
+
+            <h1 className="h-title font-cinzel font-light text-white mb-6 leading-none">
+              <span style={{ fontSize: "clamp(40px, 8vw, 100px)", display: "block" }}>LEADER</span>
+              <span
+                style={{
+                  fontSize: "clamp(40px, 8vw, 100px)",
+                  display: "block",
+                  background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                BOARD
+              </span>
             </h1>
-            
-            <div className="h-sub">
-              <div className="font-montserrat text-white/60 text-xs font-bold tracking-[0.3em] uppercase mb-2">Live Standings. Real Impact.</div>
-              <p className="font-montserrat text-white/30 text-[10px] uppercase tracking-widest">Updated every Wednesday @ 8:00 PM</p>
+
+            <div className="h-sub flex items-center gap-4">
+              <div className="h-px w-8 bg-[#D4AF37]/40" />
+              <div>
+                <div className="font-montserrat text-white/55 text-[10px] font-bold tracking-[0.35em] uppercase mb-1">Live Standings · Real Impact</div>
+                <p className="font-montserrat text-white/25 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
+              </div>
             </div>
           </div>
         </div>
@@ -133,9 +164,19 @@ export default function LeaderboardPage() {
 
                   <div className="sr-stagger">
                     {sorted.map((team, i) => (
-                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.02] transition-colors relative" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}10 0%, transparent 100%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color : 'transparent'}` }}>
+                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.025] transition-all duration-300 relative group" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}08 0%, transparent 60%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color + "80" : 'transparent'}` }}>
+                        {/* Gold shimmer on hover for rank 1 */}
+                        {i === 0 && <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}05, transparent)` }} />}
                         <div className="col-span-1">
-                          <div className="font-cinzel text-lg" style={{ color: i === 0 ? "#D4AF37" : i === 1 ? "#C0C0C0" : i === 2 ? "#CD7F32" : "rgba(255,255,255,0.3)" }}>0{i+1}</div>
+                          <div
+                            className="font-cinzel text-xl font-light"
+                            style={{
+                              color: i===0?"#D4AF37":i===1?"#b0bec5":i===2?"#CD7F32":"rgba(255,255,255,0.25)",
+                              textShadow: i===0?"0 0 20px rgba(212,175,55,0.5)":i===1?"0 0 15px rgba(176,190,197,0.3)":i===2?"0 0 15px rgba(205,127,50,0.3)":"none",
+                            }}
+                          >
+                            {String(i+1).padStart(2,"0")}
+                          </div>
                         </div>
                         
                         <div className="col-span-4 flex items-center gap-4">

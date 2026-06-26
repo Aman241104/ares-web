@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { tournamentRules } from "@/lib/data";
 import LegacyCTA from "@/components/LegacyCTA";
 import Link from "next/link";
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,12 +47,12 @@ export default function RulesPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero
+      const title = new SplitType(".h-title-split", { types: "chars" });
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
-        .from(".h-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
-        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
-        .from(".h-links", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+      tl.from(".h-badge",   { opacity: 0, y: -20, duration: 0.8 })
+        .from(title.chars,  { opacity: 0, y: 50, stagger: 0.04, duration: 0.7, ease: "back.out(1.4)" }, "-=0.4")
+        .from(".h-sub",     { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-links",   { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
 
       // Scroll reveals
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
@@ -87,39 +89,64 @@ export default function RulesPage() {
     <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }}
-        />
+      <section className="relative min-h-[65vh] flex items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden py-28">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero_arena.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ filter: "brightness(0.14) saturate(0.6)" }}
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/30 via-transparent to-[#080600]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080600]/50 via-transparent to-[#080600]/50" />
+        </div>
+        <div className="absolute inset-0 pointer-events-none z-[1]"
+          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.07) 0%, transparent 70%)" }} />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-4 mb-8 h-badge">
-            <div className="h-px w-12 bg-[#D4AF37]/40" />
-            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
-              Know the Game
-            </span>
-            <div className="h-px w-12 bg-[#D4AF37]/40" />
+          <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
+            <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
+            <Scale className="w-3.5 h-3.5 text-[#D4AF37] relative z-10" />
+            <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Know the Game</span>
           </div>
 
-          <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-8" style={{ fontSize: "clamp(36px,8vw,90px)" }}>
-            RULES &amp; <span className="text-gold-gradient italic">REGULATIONS</span>
+          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+            <span className="block text-white/30 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Tournament</span>
+            <span
+              className="h-title-split block"
+              style={{
+                fontSize: "clamp(52px, 13vw, 130px)",
+                background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              RULES
+            </span>
           </h1>
 
-          <div className="w-24 h-px mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }} />
+          <div className="flex items-center justify-center gap-4 mb-7 h-sub">
+            <div className="h-px w-12 bg-[#D4AF37]/30" />
+            <p className="font-montserrat text-white/40 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+              ABL 2026 · Official Regulations
+            </p>
+            <div className="h-px w-12 bg-[#D4AF37]/30" />
+          </div>
 
-          <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-2xl mx-auto">
+          <p className="font-montserrat text-white/35 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide mb-10">
             Everything you need to know to compete, score, and win in the ARES Business League 2026 arena.
           </p>
 
-          {/* Quick links */}
-          <div className="flex flex-wrap justify-center gap-3 mt-10 h-links">
+          <div className="flex flex-wrap justify-center gap-2.5 h-links">
             {["Scoring", "Bonuses", "Deductions", "Eligibility", "Format", "Prizes"].map((label) => (
               <button
                 key={label}
                 onClick={() => scrollToSection(label)}
-                className="font-montserrat text-[10px] uppercase tracking-widest font-bold px-5 py-2.5 rounded-full border border-white/10 text-white/50 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/5 cursor-pointer transition-all duration-300 bg-white/[0.02]"
+                className="font-montserrat text-[8px] uppercase tracking-[0.25em] font-bold px-4 py-2 border border-white/10 text-white/45 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/6 cursor-pointer transition-all duration-300 bg-white/[0.02]"
               >
                 {label}
               </button>
@@ -129,75 +156,70 @@ export default function RulesPage() {
       </section>
 
       {/* ── RULES GRID ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-4 mb-12 sr">
-            <div className="w-8 h-px bg-[#D4AF37]" />
-            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
-              Tournament Rules
-            </span>
-          </div>
+          <div className="section-label mb-12 sr">Tournament Rules</div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sr-stagger">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sr-stagger">
             {tournamentRules.map((section, sectionIdx) => {
               const meta = SECTION_META[section.section] || {
                 icon: <Award className="w-5 h-5" />,
                 accent: "#D4AF37",
                 number: String(sectionIdx + 1).padStart(2, "0"),
               };
-              
               const idLabel = section.section.split(" ")[0];
 
               return (
                 <div
                   key={section.section}
                   id={`section-${idLabel}`}
-                  className="group relative glass-card overflow-hidden border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
+                  className="group relative border border-white/6 bg-[#100D04] hover:bg-[#130f03] hover:border-[rgba(212,175,55,0.18)] transition-all duration-500 overflow-hidden"
                 >
-                  {/* Left accent stripe */}
+                  {/* Color left accent */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute left-0 top-0 bottom-0 w-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                     style={{ background: `linear-gradient(to bottom, transparent, ${meta.accent}, transparent)` }}
                   />
-
-                  {/* Section number watermark */}
+                  {/* Top line on hover */}
                   <div
-                    className="absolute top-6 right-8 font-cinzel font-light text-6xl leading-none select-none pointer-events-none transition-colors duration-500"
-                    style={{ color: meta.accent + "10" }}
+                    className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                    style={{ background: `linear-gradient(90deg, transparent, ${meta.accent}80, transparent)` }}
+                  />
+                  {/* Ghost number watermark */}
+                  <div
+                    className="absolute -bottom-2 -right-2 font-cinzel font-light text-[80px] leading-none select-none pointer-events-none"
+                    style={{ color: meta.accent + "08" }}
                   >
                     {meta.number}
                   </div>
 
                   <div className="p-8 sm:p-10 relative">
-                    {/* Header */}
-                    <div className="flex items-center gap-5 mb-8">
+                    <div className="flex items-center gap-4 mb-7">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border bg-white/[0.02] border-white/10 group-hover:bg-opacity-20 transition-all duration-500"
+                        className="w-10 h-10 flex-shrink-0 flex items-center justify-center border bg-white/[0.02] border-white/10 group-hover:border-opacity-40 transition-all duration-400"
                         style={{ color: meta.accent }}
                       >
                         {meta.icon}
                       </div>
                       <div>
-                        <div className="font-montserrat text-[9px] font-bold tracking-[0.4em] uppercase mb-1.5" style={{ color: meta.accent }}>
+                        <div className="font-montserrat text-[8px] font-bold tracking-[0.35em] uppercase mb-1" style={{ color: meta.accent + "90" }}>
                           Section {meta.number}
                         </div>
-                        <h3 className="font-cinzel text-white text-xl tracking-wider">{section.section}</h3>
+                        <h3 className="font-cinzel text-white text-lg tracking-wider group-hover:text-[#F0D060] transition-colors duration-300">{section.section}</h3>
                       </div>
                     </div>
 
-                    {/* Divider */}
-                    <div className="mb-6 h-px w-full" style={{ background: `linear-gradient(90deg, ${meta.accent}40, transparent)` }} />
+                    <div className="mb-6 h-px w-full" style={{ background: `linear-gradient(90deg, ${meta.accent}35, transparent)` }} />
 
-                    {/* Rules list */}
-                    <ul className="space-y-4">
+                    <ul className="space-y-3.5">
                       {section.rules.map((rule, i) => (
-                        <li key={i} className="flex items-start gap-4">
+                        <li key={i} className="flex items-start gap-3.5">
                           <div
-                            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-[9px] font-bold bg-white/[0.02] border border-white/10 text-white/50"
+                            className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-[8px] font-bold font-montserrat border border-white/10 text-white/35"
                           >
                             {i + 1}
                           </div>
-                          <span className="font-montserrat text-white/60 text-sm leading-relaxed">{rule}</span>
+                          <span className="font-montserrat text-white/55 text-[11px] leading-[1.85] tracking-wide">{rule}</span>
                         </li>
                       ))}
                     </ul>
@@ -210,43 +232,35 @@ export default function RulesPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] sr">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5 sr">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-4 mb-6">
-              <div className="h-px w-8 bg-[#D4AF37]" />
-              <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
-                Common Questions
-              </span>
-              <div className="h-px w-8 bg-[#D4AF37]" />
-            </div>
-            <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl leading-tight">
-              FREQUENTLY ASKED <span className="text-gold-gradient italic">QUESTIONS</span>
-            </h2>
-          </div>
+          <div className="section-label mx-auto mb-10">Common Questions</div>
+          <h2 className="font-cinzel font-light text-white text-center mb-12" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+            Frequently Asked <span className="text-[#D4AF37]">Questions</span>
+          </h2>
 
-          <div className="space-y-4 sr-stagger">
+          <div className="space-y-2.5 sr-stagger">
             {faqs.map((faq, i) => (
               <details
                 key={i}
-                className="group glass-card border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300"
+                className="group border border-white/6 bg-[#0C0900] hover:border-[rgba(212,175,55,0.18)] overflow-hidden transition-all duration-300"
               >
-                <summary className="flex items-center justify-between gap-6 p-6 sm:p-8 cursor-pointer list-none">
+                <summary className="flex items-center justify-between gap-6 p-6 cursor-pointer list-none">
                   <div className="flex items-center gap-4 min-w-0">
-                    <div className="w-8 h-8 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center flex-shrink-0">
-                      <ChevronRight className="w-4 h-4 text-[#D4AF37] group-open:rotate-90 transition-transform duration-300" />
+                    <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+                      <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]/60 group-open:rotate-90 transition-transform duration-300" />
                     </div>
-                    <span className="font-cinzel tracking-wider text-white text-base leading-relaxed group-open:text-[#D4AF37] transition-colors">
+                    <span className="font-cinzel tracking-wider text-white text-sm leading-relaxed group-open:text-[#D4AF37] transition-colors">
                       {faq.q}
                     </span>
                   </div>
-                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#D4AF37]/50 transition-colors">
-                    <span className="text-[#D4AF37] font-light text-xl leading-none group-open:hidden">+</span>
-                    <span className="text-[#D4AF37] font-light text-xl leading-none hidden group-open:block">-</span>
+                  <div className="w-7 h-7 border border-white/8 flex items-center justify-center flex-shrink-0 group-hover:border-[#D4AF37]/35 transition-colors">
+                    <span className="text-[#D4AF37]/70 font-light text-lg leading-none group-open:hidden">+</span>
+                    <span className="text-[#D4AF37]/70 font-light text-lg leading-none hidden group-open:block">−</span>
                   </div>
                 </summary>
-                <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
-                  <div className="ml-12 font-montserrat text-white/50 text-sm leading-relaxed border-t border-white/5 pt-6">
+                <div className="px-6 pb-6 pt-0">
+                  <div className="ml-10 font-montserrat text-white/45 text-[11px] leading-[1.9] border-t border-white/5 pt-5 tracking-wide">
                     {faq.a}
                   </div>
                 </div>
@@ -257,29 +271,25 @@ export default function RulesPage() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="relative py-32 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#0C0900] border-t border-white/5 sr">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }}
-        />
+      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#0C0900] border-t border-white/5 sr">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
 
-        <div className="relative max-w-3xl mx-auto text-center glass-card p-12 lg:p-16 border-white/10 rounded-3xl">
-          <div className="w-20 h-20 rounded-full bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-8">
-            <Scale className="w-8 h-8 text-[#D4AF37]" />
+        <div className="relative max-w-2xl mx-auto text-center border border-[rgba(212,175,55,0.2)] bg-[#100D04] p-12 lg:p-16 overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
+          <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-8">
+            <Scale className="w-6 h-6 text-[#D4AF37]" />
           </div>
-          <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl mb-6 leading-tight">
-            PLAY FAIR. <span className="text-[#D4AF37] italic">WIN HARD.</span>
+          <h2 className="font-cinzel font-light text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+            PLAY FAIR. <span className="text-[#D4AF37]">WIN HARD.</span>
           </h2>
-          <p className="font-montserrat text-white/60 text-base mb-4">
-            The arena rewards discipline, strategy, and relentless execution.
-          </p>
-          <p className="font-montserrat text-white/40 text-sm mb-10">
-            Still have questions? Our team is here to help.
+          <div className="gold-divider max-w-xs mx-auto mb-6" />
+          <p className="font-montserrat text-white/40 text-xs leading-[2] mb-10 tracking-wide">
+            The arena rewards discipline, strategy, and relentless execution. Still have questions? Our team is here to help.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn-primary">
-              Contact Us <ArrowRight className="w-4 h-4 ml-2" />
+              Contact Us <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/leaderboard" className="btn-secondary">
               View Standings
