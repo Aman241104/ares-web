@@ -82,19 +82,20 @@ export default function WallOfFamePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 30% 50%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
 
         {/* Trophy right */}
-        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:block overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center relative h-img">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
           <Image
             src="/images/hero-trophy.jpg"
             alt="Trophy"
-            fill
-            sizes="45vw"
-            className="object-cover object-left opacity-70"
+            width={380}
+            height={450}
+            className="relative z-10 object-contain mix-blend-screen"
             style={{
-              maskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, transparent 100%)",
+              maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+              filter: "brightness(1.1) contrast(1.1)",
             }}
           />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 70% 50%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-20">

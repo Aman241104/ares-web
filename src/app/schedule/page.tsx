@@ -132,15 +132,20 @@ export default function SchedulePage() {
 
           {/* Right: trophy + team badge pills */}
           <div className="hidden lg:flex justify-end items-center gap-8 h-img">
-            <div className="relative w-48 h-48 flex-shrink-0">
+            <div className="relative flex-shrink-0 flex items-center justify-center ml-4">
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
               <Image
-                fill
-                src="/images/hero_arena.png"
-                alt="Arena"
-                className="object-cover rounded-full opacity-80 transition-all duration-700"
-                sizes="192px"
+                src="/images/hero-trophy.jpg"
+                alt="Championship Trophy"
+                width={280}
+                height={340}
+                className="relative z-10 object-contain mix-blend-screen opacity-90 drop-shadow-2xl"
+                style={{
+                  maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+                  filter: "brightness(1.1) contrast(1.1)",
+                }}
               />
-              <div className="absolute inset-0 rounded-full border border-white/10" />
             </div>
             <div className="flex flex-col gap-4">
               {teams.map((t) => {

@@ -175,19 +175,19 @@ export default function HomePage() {
 
             {/* Right: trophy (desktop only) */}
             <div className="hidden lg:flex items-center justify-center relative">
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 80% at 50% 50%, rgba(212,175,55,0.18) 0%, transparent 70%)" }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
               <Image
                 src="/images/hero-trophy.jpg"
                 alt="ARES Championship Trophy"
-                width={380}
-                height={500}
+                width={480}
+                height={550}
                 priority
-                className="relative z-10 object-contain drop-shadow-2xl"
+                className="relative z-10 object-contain drop-shadow-2xl mix-blend-screen"
                 style={{
-                  maskImage: "radial-gradient(ellipse 75% 90% at 50% 45%, black 55%, transparent 100%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 75% 90% at 50% 45%, black 55%, transparent 100%)",
-                  filter: "brightness(1.05) contrast(1.05)",
-                  maxHeight: "500px",
+                  maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
+                  filter: "brightness(1.1) contrast(1.1)",
+                  maxHeight: "550px",
                 }}
               />
             </div>

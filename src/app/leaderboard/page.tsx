@@ -80,9 +80,9 @@ export default function LeaderboardPage() {
       <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center justify-center pr-8 pointer-events-none" style={{ width: "42%" }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 90% at 60% 50%, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
-          <Image src="/images/hero-trophy.jpg" alt="Championship Trophy" width={260} height={340} className="relative z-10 object-contain opacity-75" style={{ maskImage: "radial-gradient(ellipse 70% 85% at 50% 40%, black 50%, transparent 100%)", WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 40%, black 50%, transparent 100%)", filter: "brightness(1.0) contrast(1.0)" }} />
+        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex justify-end items-center relative">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
+          <Image src="/images/hero-trophy.jpg" alt="Championship Trophy" width={380} height={450} className="relative z-10 object-contain mix-blend-screen" style={{ maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", filter: "brightness(1.1) contrast(1.1)" }} />
         </div>
         
         <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-20 z-10">
