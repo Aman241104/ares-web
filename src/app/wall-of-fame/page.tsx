@@ -82,7 +82,7 @@ export default function WallOfFamePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 30% 50%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
 
         {/* Trophy right */}
-        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center relative h-img">
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center pr-8 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
           <Image
             src="/images/hero-trophy.jpg"

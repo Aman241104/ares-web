@@ -51,7 +51,8 @@ export default function HomePage() {
         .from(bl.chars, { opacity: 0, x: -20, stagger: 0.02, duration: 0.8 }, "-=0.5")
         .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
         .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
-        .from(".h-stats", { opacity: 0, y: 15, duration: 0.8, stagger: 0.1 }, "-=0.5");
+        .from(".h-dock", { opacity: 0, y: 30, duration: 1, ease: "power3.out" }, "-=0.4")
+        .from(".h-stat-item", { opacity: 0, y: 15, duration: 0.8, stagger: 0.1 }, "-=0.8");
 
       // Scroll reveals
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
@@ -105,93 +106,94 @@ export default function HomePage() {
     <div ref={heroRef} className="overflow-x-hidden bg-[#080600]">
 
       {/* ═══════════════════════════════════════════
-          HERO (CINEMATIC)
+          HERO (CENTERED CINEMATIC MASTERPIECE)
       ═══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden" onMouseMove={handleMouseMove}>
-        {/* Background Image */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20" onMouseMove={handleMouseMove}>
+        {/* Background Image with Cinematic Scale */}
         <div className="absolute inset-[-5%] z-0 parallax-bg" style={{ width: "110%", height: "110%" }}>
           <Image 
             src="/images/hero_arena.png"
             alt="Hero Arena"
             fill
             sizes="100vw"
-            className="object-cover object-center scale-105"
+            className="object-cover object-center scale-110 opacity-30 transition-transform duration-[10s] ease-out"
             priority
+            style={{ filter: "blur(3px) brightness(0.5)" }}
           />
-          {/* Overlays for readable text */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#080600_90%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080600]" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-12 w-full parallax-fg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: text */}
-            <div>
-              <div className="h-badge inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block" />
-                <span className="font-montserrat text-white/80 text-[10px] font-bold tracking-[0.3em] uppercase">Nation Builders Edition 2026</span>
-              </div>
+        {/* The Z-Layered Composition */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 mt-4 sm:mt-12 parallax-fg">
+          
+          <div className="h-badge inline-flex items-center gap-3 bg-[#D4AF37]/10 backdrop-blur-md border border-[#D4AF37]/30 rounded-full px-6 py-2.5 mb-10 shadow-[0_0_40px_rgba(212,175,55,0.15)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block" />
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">Nation Builders Edition 2026</span>
+          </div>
 
-              <div className="mb-8">
-                <h1 className="font-cinzel font-light leading-[1.1]">
-                  <span className="h-title-ares block text-white tracking-widest" style={{ fontSize: "clamp(32px, 8vw, 110px)" }}>ARES</span>
-                  <span className="h-title-bl block text-[#D4AF37] tracking-[0.2em]" style={{ fontSize: "clamp(24px, 3.5vw, 40px)" }}>BUSINESS LEAGUE</span>
-                </h1>
-              </div>
+          {/* Intersecting Typography & Trophy */}
+          <div className="relative w-full max-w-5xl flex flex-col items-center justify-center mb-12 sm:mb-16 h-[400px] sm:h-[550px]">
+             
+             {/* Layer 1: The Trophy (Background Focal Point) */}
+             <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none translate-y-4 sm:translate-y-8 scale-[1.15] sm:scale-[1.35]">
+               <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 60%)" }} />
+               <Image
+                  src="/images/hero-trophy.jpg"
+                  alt="ARES Championship Trophy"
+                  width={600}
+                  height={700}
+                  priority
+                  className="relative object-contain mix-blend-screen opacity-90"
+                  style={{
+                    maskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 60%)",
+                    WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 60%)",
+                    filter: "brightness(1.1) contrast(1.2)",
+                  }}
+                />
+             </div>
 
-              <div className="h-sub mb-10">
-                <p className="font-montserrat text-white/60 text-base sm:text-lg tracking-[0.1em] mb-4 max-w-xl leading-relaxed">
-                  4 Teams. 4 Leaders. 1 Mission. Experience the ultimate high-stakes corporate tournament.
-                </p>
-                <p className="font-montserrat text-[#D4AF37]/80 text-xs font-medium tracking-[0.2em] uppercase">
-                  June 24 – July 22, 2026
-                </p>
-              </div>
+             {/* Layer 2: The Typography (Foreground) */}
+             <div className="relative z-20 flex flex-col items-center justify-center w-full pointer-events-none mt-16 sm:mt-32">
+                 <h1 className="font-cinzel font-black leading-none text-center">
+                    <span className="h-title-ares block text-white tracking-[0.15em] sm:tracking-[0.2em] drop-shadow-[0_15px_25px_rgba(0,0,0,1)]" style={{ fontSize: "clamp(60px, 15vw, 180px)" }}>ARES</span>
+                    <span className="h-title-bl block text-[#D4AF37] tracking-[0.4em] sm:tracking-[0.6em] mt-2 sm:mt-6 drop-shadow-[0_10px_15px_rgba(0,0,0,1)] font-bold bg-black/20 px-4 py-2 rounded-full backdrop-blur-sm mx-auto w-max" style={{ fontSize: "clamp(11px, 2.5vw, 22px)" }}>BUSINESS LEAGUE</span>
+                 </h1>
+             </div>
+          </div>
 
-              <div className="h-btns flex flex-wrap gap-4 mb-14">
-                <Link href="/teams" className="btn-primary">
-                  Explore Teams <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-                <Link href="/leaderboard" className="btn-secondary">
-                  View Leaderboard
-                </Link>
-              </div>
-
-              {/* Stats row */}
-              <div className="flex flex-wrap gap-8 sm:gap-12 mt-4 sm:mt-0">
-                {[
-                  { n: "30", l: "Business Owners" },
-                  { n: "4",  l: "Teams" },
-                  { n: "1",  l: "Month" },
-                  { n: "1",  l: "Winner" },
-                ].map((s, i) => (
-                  <div key={s.l} className={`h-stats flex flex-col items-start w-[40%] sm:w-auto ${i > 1 ? "hidden sm:flex" : ""}`}>
-                    <div className="font-cinzel font-light text-3xl sm:text-4xl text-white mb-1 sm:mb-2">{s.n}</div>
-                    <div className="font-montserrat text-white/40 text-[8px] sm:text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: trophy (desktop only) */}
-            <div className="hidden lg:flex items-center justify-center relative">
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
-              <Image
-                src="/images/hero-trophy.jpg"
-                alt="ARES Championship Trophy"
-                width={480}
-                height={550}
-                priority
-                className="relative z-10 object-contain drop-shadow-2xl mix-blend-screen"
-                style={{
-                  maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)",
-                  filter: "brightness(1.1) contrast(1.1)",
-                  maxHeight: "550px",
-                }}
-              />
+          <div className="h-sub text-center flex flex-col items-center max-w-2xl mx-auto mb-16 relative z-30 pt-10 sm:pt-20">
+            <p className="font-montserrat text-white/70 text-sm sm:text-base tracking-[0.15em] mb-8 leading-loose px-4">
+              4 Teams. 4 Leaders. 1 Mission.<br className="hidden sm:block" /> Experience the ultimate high-stakes corporate tournament.
+            </p>
+            <div className="h-btns flex flex-wrap justify-center gap-6">
+              <Link href="/teams" className="btn-primary px-8 py-4 text-[11px] sm:text-xs tracking-[0.2em] shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_50px_rgba(212,175,55,0.4)] transition-shadow duration-500">
+                Explore Teams <ArrowRight className="w-4 h-4 ml-3" />
+              </Link>
+              <Link href="/leaderboard" className="btn-secondary px-8 py-4 text-[11px] sm:text-xs tracking-[0.2em] bg-white/[0.02] hover:bg-white/[0.05] border-white/10 backdrop-blur-md transition-all duration-500">
+                View Leaderboard
+              </Link>
             </div>
           </div>
+        </div>
+
+        {/* Floating Glassmorphic Stats Dock at the bottom */}
+        <div className="relative z-30 w-full max-w-4xl mx-auto px-6 mt-auto pb-12 h-dock">
+           <div className="flex justify-between items-center bg-black/40 backdrop-blur-2xl border border-white/5 rounded-2xl sm:rounded-full p-6 sm:px-14 sm:py-7 shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/5 to-transparent opacity-50" />
+              {[
+                { n: "30", l: "Owners" },
+                { n: "4",  l: "Teams" },
+                { n: "1",  l: "Month" },
+                { n: "1",  l: "Winner" },
+              ].map((s, i) => (
+                <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-2 sm:px-6 relative z-10">
+                  {i !== 0 && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-10 bg-gradient-to-b from-transparent via-white/10 to-transparent hidden sm:block" />}
+                  <div className="font-cinzel font-light text-3xl sm:text-4xl text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">{s.n}</div>
+                  <div className="font-montserrat text-[#D4AF37] text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-semibold">{s.l}</div>
+                </div>
+              ))}
+           </div>
         </div>
       </section>
 

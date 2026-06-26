@@ -80,7 +80,7 @@ export default function LeaderboardPage() {
       <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex justify-end items-center relative">
+        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center justify-center pr-8 pointer-events-none" style={{ width: "45%" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 60%)" }} />
           <Image src="/images/hero-trophy.jpg" alt="Championship Trophy" width={380} height={450} className="relative z-10 object-contain mix-blend-screen" style={{ maskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 50%, black 50%, transparent 100%)", filter: "brightness(1.1) contrast(1.1)" }} />
         </div>
