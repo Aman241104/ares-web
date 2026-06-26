@@ -32,6 +32,12 @@ export interface WeeklyMember {
   name: string;
   industry: string;
   points: number;
+  image?: string;
+  company: string;
+  companyDesc: string;
+  product: string;
+  category: string;
+  idealConnect: string;
 }
 
 export interface PerformanceStats {
@@ -58,6 +64,8 @@ export interface Team {
   business: string;
   referrals: number;
   meetings: number;
+  visitors: number;
+  induction: number;
   winRate: string;
   members: number;
   owner: Owner;

@@ -84,7 +84,7 @@ export default function RulesPage() {
   };
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
@@ -96,18 +96,18 @@ export default function RulesPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-4 mb-8 h-badge">
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
               Know the Game
             </span>
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
           </div>
 
           <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-8" style={{ fontSize: "clamp(36px,8vw,90px)" }}>
-            RULES &amp; <span className="text-[#D4AF37] italic">REGULATIONS</span>
+            RULES &amp; <span className="text-gold-gradient italic">REGULATIONS</span>
           </h1>
 
-          <div className="w-24 h-px mx-auto mb-8 bg-white/20" />
+          <div className="w-24 h-px mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }} />
 
           <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-2xl mx-auto">
             Everything you need to know to compete, score, and win in the ARES Business League 2026 arena.
@@ -129,7 +129,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── RULES GRID ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-12 sr">
             <div className="w-8 h-px bg-[#D4AF37]" />
@@ -210,7 +210,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] sr">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-4 mb-6">
@@ -221,7 +221,7 @@ export default function RulesPage() {
               <div className="h-px w-8 bg-[#D4AF37]" />
             </div>
             <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl leading-tight">
-              FREQUENTLY ASKED <span className="text-[#D4AF37] italic">QUESTIONS</span>
+              FREQUENTLY ASKED <span className="text-gold-gradient italic">QUESTIONS</span>
             </h2>
           </div>
 
@@ -257,7 +257,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="relative py-32 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#050505] border-t border-white/5 sr">
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#0C0900] border-t border-white/5 sr">
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"

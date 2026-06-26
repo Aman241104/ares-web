@@ -42,7 +42,7 @@ export default function GalleryPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
@@ -70,7 +70,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
         <div className="max-w-4xl mx-auto">
           <div className="glass-card border-[#D4AF37]/30 rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden sr">
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 80%)" }} />

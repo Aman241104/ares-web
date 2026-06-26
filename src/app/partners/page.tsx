@@ -45,7 +45,7 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
@@ -54,18 +54,18 @@ export default function PartnersPage() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-4 mb-8 h-badge">
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
               Building Together
             </span>
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
           </div>
           
           <h1 className="h-title font-cinzel font-light text-white mb-8 leading-[1.1]" style={{ fontSize: "clamp(36px,8vw,90px)" }}>
-            OUR <span className="text-[#D4AF37] italic">PARTNERS</span>
+            OUR <span className="text-gold-gradient italic">PARTNERS</span>
           </h1>
           
-          <div className="w-24 h-px mx-auto mb-8 bg-white/20" />
+          <div className="w-24 h-px mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }} />
           
           <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-2xl mx-auto">
             Proud partners who believe in our mission and power the ARES Business League 2026 — building businesses, building the nation.
@@ -74,7 +74,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5 sr">
+      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { icon: <Users className="w-6 h-6 text-[#D4AF37]" />, num: "18+", label: "Trusted Partners" },
@@ -94,11 +94,11 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── FEATURED WEB PARTNER ─── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] sr">
         <div className="max-w-7xl mx-auto">
           <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-4 text-center">Featured Partner</div>
           <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl text-center mb-12">
-            OFFICIAL <span className="text-[#D4AF37]">WEB PARTNER</span>
+            OFFICIAL <span className="text-gold-gradient">WEB PARTNER</span>
           </h2>
 
           <div className="max-w-3xl mx-auto relative rounded-3xl overflow-hidden border border-[#D4AF37]/30 bg-white/[0.02] p-10 lg:p-14 text-center"
@@ -130,7 +130,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── PARTNERS GRID ─── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-6">
             <div>
@@ -194,7 +194,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── BECOME A PARTNER CTA ─── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-t border-white/5 sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5 sr">
         <div className="max-w-5xl mx-auto">
           <div className="glass-card border-[#D4AF37]/30 rounded-3xl p-10 lg:p-16 text-center relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 80%)" }} />
@@ -206,7 +206,7 @@ export default function PartnersPage() {
               
               <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl lg:text-5xl mb-6">
                 PROUD PARTNERS IN <br className="hidden sm:block"/>
-                <span className="text-[#D4AF37] italic">BUILDING THE NATION</span>
+                <span className="text-gold-gradient italic">BUILDING THE NATION</span>
               </h2>
               
               <p className="font-montserrat text-white/50 text-sm mb-12 max-w-2xl mx-auto leading-relaxed">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Montserrat } from "next/font/google";
+import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,7 +11,7 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const montserrat = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-montserrat",
@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable}`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col antialiased bg-[#000000] text-[#F2F2F2]">
+      <body className="min-h-full flex flex-col antialiased bg-[#080600] text-[#F0EAD6]">
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
         <SmoothScroll>
           <Navbar />

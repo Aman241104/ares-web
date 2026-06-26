@@ -74,14 +74,15 @@ export default function LeaderboardPage() {
   };
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden" style={{ minHeight: "320px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "50%", background: "radial-gradient(ellipse 70% 90% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center pr-12 opacity-80" style={{ width: "40%", position: "relative" }}>
-          <Image fill src="/images/hero_arena.png" alt="Trophy" className="object-cover object-center" sizes="40vw" style={{ maskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%)", filter: "contrast(110%)" }} />
+        <div className="absolute right-0 top-0 bottom-0 hidden lg:flex items-center justify-center pr-8 pointer-events-none" style={{ width: "42%" }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 90% at 60% 50%, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
+          <Image src="/images/hero-trophy.jpg" alt="Championship Trophy" width={260} height={340} className="relative z-10 object-contain opacity-75" style={{ maskImage: "radial-gradient(ellipse 70% 85% at 50% 40%, black 50%, transparent 100%)", WebkitMaskImage: "radial-gradient(ellipse 70% 85% at 50% 40%, black 50%, transparent 100%)", filter: "brightness(1.0) contrast(1.0)" }} />
         </div>
         
         <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-20 z-10">
@@ -93,7 +94,7 @@ export default function LeaderboardPage() {
             
             <h1 className="h-title font-cinzel font-light text-white mb-4" style={{ fontSize: "clamp(36px, 7vw, 90px)", lineHeight: 1 }}>
               LEADER<br/>
-              <span className="text-[#D4AF37] tracking-widest">BOARD</span>
+              <span className="text-gold-gradient tracking-widest">BOARD</span>
             </h1>
             
             <div className="h-sub">
@@ -105,7 +106,7 @@ export default function LeaderboardPage() {
       </section>
 
       {/* ─── MAIN CONTENT ─── */}
-      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           {/* TABLE + FILTERS */}
@@ -252,7 +253,7 @@ export default function LeaderboardPage() {
 
           {/* SIDEBAR */}
           <div className="space-y-6">
-            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#050505]">
+            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#0C0900]">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
               <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
 

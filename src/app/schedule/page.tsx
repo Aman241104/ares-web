@@ -96,7 +96,7 @@ export default function SchedulePage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
       <section className="relative py-20 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center">
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
@@ -110,7 +110,7 @@ export default function SchedulePage() {
           {/* Left */}
           <div>
             <h1 className="h-title font-cinzel font-light text-white mb-6 leading-none" style={{ fontSize: "clamp(36px,7vw,90px)" }}>
-              SCHEDULE<br/><span className="text-[#D4AF37] tracking-widest text-[0.8em]">EVENTS</span>
+              SCHEDULE<br/><span className="text-gold-gradient tracking-widest text-[0.8em]">EVENTS</span>
             </h1>
             <div className="h-sub">
               <div className="font-montserrat text-white/50 text-[10px] font-bold tracking-[0.4em] uppercase mb-6 flex items-center gap-4">
@@ -175,7 +175,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
         <div className="max-w-7xl mx-auto mb-12 sr">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-8 h-px bg-[#D4AF37]" />
@@ -287,15 +287,6 @@ export default function SchedulePage() {
               </div>
             </div>
 
-            {/* View full schedule button */}
-            <div className="mt-8 text-center sm:text-left">
-              <Link
-                href="/schedule"
-                className="inline-flex items-center gap-3 font-montserrat text-[10px] font-bold text-white uppercase tracking-widest hover:text-[#D4AF37] transition-colors py-2"
-              >
-                VIEW FULL SCHEDULE <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
           </div>
 
           {/* ── Right: Bonus Points Sidebar ── */}
@@ -364,7 +355,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ── SPECIAL EVENTS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center justify-between mb-12">
             <div>

@@ -26,7 +26,7 @@ export default function MobileDock() {
         onClick={() => setMenuOpen(false)}
       >
         <div 
-          className={`absolute bottom-0 left-0 right-0 bg-[#050505] border-t border-white/10 rounded-t-3xl pt-6 pb-24 px-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`absolute bottom-0 left-0 right-0 bg-[#0C0900] border-t border-white/10 rounded-t-3xl pt-6 pb-24 px-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             menuOpen ? "translate-y-0" : "translate-y-full"
           }`}
           onClick={e => e.stopPropagation()}
@@ -62,7 +62,7 @@ export default function MobileDock() {
 
       {/* Floating Dock */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] xl:hidden w-[calc(100%-2rem)] max-w-sm">
-        <div className="bg-[#050505]/90 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.8)] px-2 py-2 flex justify-between items-center">
+        <div className="bg-[#0C0900]/90 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.8)] px-2 py-2 flex justify-between items-center">
           {dockItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (

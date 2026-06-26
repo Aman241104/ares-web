@@ -17,7 +17,7 @@ export const navLinks = [
       { href: "/teams/jaishankar", label: "Team Jaishankar", color: "var(--team-jaishankar)" },
     ],
   },
-  { href: "/schedule", label: "Schedule" },
+  { href: "/schedule", label: "Events" },
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/wall-of-fame", label: "Wall of Fame" },
   { href: "/blog", label: "Blog" },
@@ -53,28 +53,24 @@ export default function Navbar() {
       <header
         className={`pointer-events-auto transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] w-full ${
           scrolled
-            ? "bg-[#050505]/80 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.8)] rounded-full px-2 max-w-[1300px]"
-            : "bg-gradient-to-b from-black/80 via-black/40 to-transparent max-w-[90rem]"
+            ? "bg-[#080600]/92 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] shadow-[0_8px_40px_rgba(0,0,0,0.9)] rounded-full px-2 max-w-[1300px]"
+            : "bg-gradient-to-b from-[#080600]/85 via-[#080600]/40 to-transparent max-w-[90rem]"
         }`}
       >
         <div className={`mx-auto transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled ? "px-6" : "px-0"}`}>
           <div className={`flex items-center justify-center lg:justify-between gap-6 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled ? "h-[60px]" : "h-[80px]"}`}>
 
           {/* ── Logo ── */}
-          <Link href="/" className="flex items-center gap-4 flex-shrink-0 group">
-            <div className={`flex-shrink-0 opacity-80 group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${scrolled ? "w-12 h-12" : "w-14 h-14 xl:w-16 xl:h-16"}`}>
-              <Image 
-                src="/images/brand-icon.png" 
-                alt="ARES Logo" 
-                width={80} 
-                height={80} 
+          <Link href="/" className="flex items-center flex-shrink-0 group">
+            <div className={`flex-shrink-0 opacity-90 group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 ${scrolled ? "w-10 h-10" : "w-14 h-14 xl:w-16 xl:h-16"}`}>
+              <Image
+                src="/images/logo.png"
+                alt="ARES Business League 2026"
+                width={80}
+                height={80}
                 priority
-                className="w-full h-full object-contain transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                className="w-full h-full object-contain transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               />
-            </div>
-            <div className={`hidden sm:block overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled ? "max-w-0 opacity-0" : "max-w-[200px] opacity-100"}`}>
-              <div className="font-cinzel text-white font-light text-2xl tracking-[0.2em] group-hover:text-[#D4AF37] transition-colors duration-500 whitespace-nowrap">ARES</div>
-              <div className="font-montserrat text-white/40 text-[9px] leading-tight tracking-[0.4em] uppercase mt-1 whitespace-nowrap">Business League</div>
             </div>
           </Link>
 
@@ -91,7 +87,7 @@ export default function Navbar() {
                     {link.label}
                     <ChevronDown className="w-3 h-3 opacity-40 group-hover:rotate-180 transition-transform duration-300" />
                   </button>
-                  <div className="absolute top-full left-0 mt-2 bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-xl py-3 min-w-[240px] opacity-0 translate-y-4 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 shadow-2xl z-50">
+                  <div className="absolute top-full left-0 mt-2 bg-[#0C0900]/98 backdrop-blur-2xl border border-[rgba(212,175,55,0.18)] rounded-sm py-3 min-w-[240px] opacity-0 translate-y-4 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 shadow-2xl z-50">
                     <div className="px-6 py-2 mb-2 border-b border-white/5">
                       <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.2em]">Select a Team</div>
                     </div>
@@ -122,12 +118,12 @@ export default function Navbar() {
           </nav>
 
           {/* ── CTA Button ── */}
-          <div className="hidden xl:block ml-4 lg:ml-8 flex-shrink-0">
-            <Link
-              href="/web-partner"
-              className="btn-primary whitespace-nowrap"
-            >
-              Build Your Website
+          <div className="hidden xl:flex items-center gap-3 ml-4 lg:ml-6 flex-shrink-0">
+            <Link href="/contact" className="btn-secondary whitespace-nowrap" style={{ padding: "10px 20px", fontSize: "10px" }}>
+              Contact
+            </Link>
+            <Link href="/web-partner" className="btn-primary whitespace-nowrap" style={{ padding: "10px 22px", fontSize: "10px" }}>
+              Register Your Team
             </Link>
           </div>
 

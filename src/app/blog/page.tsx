@@ -56,7 +56,7 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[50vh] flex items-center justify-center">
@@ -68,20 +68,20 @@ export default function BlogPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-4 mb-8 h-badge">
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
               Insights from the Arena
             </span>
-            <div className="h-px w-12 bg-white/10" />
+            <div className="h-px w-12 bg-[#D4AF37]/40" />
           </div>
 
           <h1 className="h-title font-cinzel font-light leading-[1.1] mb-8" style={{ fontSize: "clamp(36px,8vw,90px)" }}>
             <span className="text-white">THE ARENA</span>
             <br />
-            <span className="text-[#D4AF37] italic">BLOG</span>
+            <span className="text-gold-gradient italic">BLOG</span>
           </h1>
 
-          <div className="w-24 h-px mx-auto mb-8 bg-white/20" />
+          <div className="w-24 h-px mx-auto mb-8" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }} />
 
           <p className="h-sub font-montserrat text-white/50 text-sm tracking-wide leading-relaxed max-w-2xl mx-auto">
             Stories, strategies, and unfiltered insights from the ARES Business League 2026 arena.
@@ -90,7 +90,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── FEATURED POST ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-8 h-px bg-[#D4AF37]" />
@@ -114,7 +114,7 @@ export default function BlogPage() {
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               ) : (
-                <div className="w-full h-full bg-[#000000] flex items-center justify-center">
+                <div className="w-full h-full bg-[#080600] flex items-center justify-center">
                   <BookOpen className="w-20 h-20 text-[#D4AF37]/20" />
                 </div>
               )}
@@ -161,7 +161,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── ALL POSTS + SIDEBAR ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 

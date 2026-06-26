@@ -17,7 +17,7 @@ const footerTeams = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#000000] overflow-hidden border-t border-white/5">
+    <footer className="relative bg-[#080600] overflow-hidden border-t border-white/5">
       {/* Atmospheric overlays */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
@@ -27,21 +27,16 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-5 mb-8 group">
-              <div className="w-14 h-14 flex-shrink-0 opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
-                <Image 
-                  src="/images/brand-icon.png" 
-                  alt="ARES Logo" 
-                  width={80} 
-                  height={80} 
+            <Link href="/" className="inline-flex mb-8 group">
+              <div className="w-24 h-24 flex-shrink-0 opacity-85 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                <Image
+                  src="/images/logo.png"
+                  alt="ARES Business League 2026"
+                  width={96}
+                  height={96}
                   priority
-                  className="w-full h-full object-contain transition-all duration-500" 
+                  className="w-full h-full object-contain transition-all duration-500"
                 />
-              </div>
-              <div>
-                <div className="font-cinzel text-white font-light text-2xl tracking-[0.2em] transition-colors">ARES</div>
-                <div className="font-montserrat text-white/40 text-[9px] leading-tight tracking-[0.4em] uppercase mt-1">Business League</div>
-                <div className="font-montserrat text-[#D4AF37]/60 text-[8px] leading-tight tracking-[0.3em] uppercase mt-2">2026 — Nation Builders</div>
               </div>
             </Link>
             <p className="font-montserrat text-white/40 text-xs leading-relaxed mb-10 max-w-sm">

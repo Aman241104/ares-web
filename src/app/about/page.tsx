@@ -13,9 +13,17 @@ import {
   Medal,
   ShieldCheck,
   Flame,
+  Handshake,
+  TrendingUp,
+  CalendarCheck,
+  UserPlus,
+  Sparkles,
+  MinusCircle,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LegacyCTA from "@/components/LegacyCTA";
+import { tournamentRules } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,7 +79,7 @@ const LEADERSHIP = [
   { name: "Narendra Modi", role: "Team Leader — Lions", img: "/images/owner_modi.png" },
   { name: "Ajit Doval", role: "Team Leader — Eagles", img: "/images/owner_doval.png" },
   { name: "Amit Shah", role: "Team Leader — Tigers", img: "/images/owner_shah.png" },
-  { name: "Dr. S. Jaishankar", role: "Team Leader — Lotus", img: "/images/owner-portrait-4.jpg" },
+  { name: "Dr. S. Jaishankar", role: "Team Leader — Lotus", img: "/images/owner_jaishankar.png" },
 ];
 
 const QUOTES = [
@@ -123,7 +131,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <section className="relative min-h-[85vh] flex items-center px-6 sm:px-10 lg:px-16 overflow-hidden">
@@ -139,7 +147,7 @@ export default function AboutPage() {
 
             <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(36px, 6vw, 80px)" }}>
               ABOUT<br/>
-              <span className="text-[#D4AF37] tracking-widest">ABL 2026</span>
+              <span className="text-gold-gradient tracking-widest">ABL 2026</span>
             </h1>
 
             <div className="h-sub">
@@ -202,7 +210,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── MISSION ─── */}
-      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#050505]">
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#0C0900]">
         <div className="max-w-7xl mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
             <div className="sr">
@@ -244,7 +252,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── VALUES ─── */}
-      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto relative sr">
           <div className="text-center mb-20">
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">Core Principles</span>
@@ -268,7 +276,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── LEADERSHIP ─── */}
-      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#050505]">
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#0C0900]">
         <div className="max-w-7xl mx-auto relative sr">
           <div className="text-center mb-20">
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">The Champions</span>
@@ -295,8 +303,116 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── POINT SYSTEM ─── */}
+      <section className="relative py-32 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header */}
+          <div className="text-center mb-16 sr">
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase block mb-4">How Points Work</span>
+            <h2 className="font-cinzel font-light text-white leading-tight mb-4" style={{ fontSize: "clamp(32px,4vw,52px)" }}>
+              THE POINT <span className="text-[#D4AF37]">SYSTEM</span>
+            </h2>
+            <p className="font-montserrat text-white/45 text-sm leading-relaxed max-w-xl mx-auto">
+              Every referral, every meeting, every business generated earns points for your team. Here is exactly how the scoreboard moves.
+            </p>
+          </div>
+
+          {/* Core scoring + bonus side by side */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 sr">
+
+            {/* Scoring categories */}
+            <div className="lg:col-span-2 glass-card overflow-hidden border-white/8">
+              <div className="px-7 py-5 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
+                <Trophy className="w-4 h-4 text-[#D4AF37]" />
+                <span className="font-montserrat text-white font-medium text-[10px] uppercase tracking-[0.3em]">Core Scoring</span>
+                <span className="ml-auto font-montserrat text-white/30 text-[9px] uppercase tracking-widest">Per Week</span>
+              </div>
+              <div className="divide-y divide-white/5">
+                {[
+                  { icon: <TrendingUp className="w-4 h-4" />,    label: "Business Growth (TYFCB)",  pts: "Up to 300",  color: "#D4AF37" },
+                  { icon: <UserPlus className="w-4 h-4" />,      label: "Referrals Generated",      pts: "Up to 250",  color: "#C0C0C0" },
+                  { icon: <Handshake className="w-4 h-4" />,     label: "1 to 1 Meetings",          pts: "Up to 200",  color: "#CD7F32" },
+                  { icon: <Users className="w-4 h-4" />,         label: "One-to-Ones Conducted",    pts: "Up to 150",  color: "#D4AF37" },
+                  { icon: <CalendarCheck className="w-4 h-4" />, label: "Event Participation",      pts: "Up to 100",  color: "#C0C0C0" },
+                ].map((row) => (
+                  <div key={row.label} className="flex items-center gap-4 px-7 py-4 hover:bg-white/[0.02] transition-colors group">
+                    <div
+                      className="w-8 h-8 flex-shrink-0 flex items-center justify-center border"
+                      style={{ color: row.color, borderColor: `${row.color}30`, background: `${row.color}0d` }}
+                    >
+                      {row.icon}
+                    </div>
+                    <span className="font-montserrat text-white/70 text-xs tracking-wider flex-1">{row.label}</span>
+                    <span className="font-cinzel text-sm flex-shrink-0" style={{ color: row.color }}>{row.pts}</span>
+                  </div>
+                ))}
+                <div className="flex items-center justify-between px-7 py-4 bg-[#D4AF37]/5 border-t border-[#D4AF37]/15">
+                  <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-[0.2em]">Maximum Core Points</span>
+                  <span className="font-cinzel text-[#D4AF37] text-lg">1,000 / week</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bonus + Deductions stacked */}
+            <div className="flex flex-col gap-5">
+              {/* Bonus */}
+              <div className="glass-card overflow-hidden border-white/8 flex-1">
+                <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
+                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+                  <span className="font-montserrat text-white font-medium text-[10px] uppercase tracking-[0.3em]">Bonus Points</span>
+                </div>
+                <div className="divide-y divide-white/5">
+                  {[
+                    { label: "Early Bird",        pts: "+25" },
+                    { label: "Weekly Top Scorer", pts: "+50" },
+                    { label: "Perfect Attendance", pts: "+30" },
+                    { label: "Special Events",    pts: "+100" },
+                  ].map((b) => (
+                    <div key={b.label} className="flex items-center justify-between px-6 py-3 hover:bg-white/[0.02] transition-colors">
+                      <span className="font-montserrat text-white/55 text-[10px] tracking-wider">{b.label}</span>
+                      <span className="font-cinzel text-[#D4AF37] text-sm">{b.pts}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Deductions */}
+              <div className="glass-card overflow-hidden border-white/8">
+                <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
+                  <MinusCircle className="w-4 h-4 text-red-400/70" />
+                  <span className="font-montserrat text-white font-medium text-[10px] uppercase tracking-[0.3em]">Deductions</span>
+                </div>
+                <div className="divide-y divide-white/5">
+                  {[
+                    { label: "Absence (unexcused)", pts: "−25" },
+                    { label: "Late Submission",     pts: "−15" },
+                  ].map((d) => (
+                    <div key={d.label} className="flex items-center justify-between px-6 py-3 hover:bg-white/[0.02] transition-colors">
+                      <span className="font-montserrat text-white/55 text-[10px] tracking-wider">{d.label}</span>
+                      <span className="font-cinzel text-red-400/80 text-sm">{d.pts}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Rules summary from data */}
+          {tournamentRules.slice(0, 2).map((section) => (
+            <div key={section.section} className="sr" />
+          ))}
+
+          <div className="text-center sr">
+            <Link href="/rules" className="inline-flex items-center gap-2 font-montserrat text-white/40 hover:text-white transition-colors text-[10px] uppercase tracking-[0.2em]">
+              View Full Rules & Scoring Guide <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── BOTTOM CTA ─── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000] text-center border-t border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600] text-center border-t border-white/5">
         <div className="max-w-3xl mx-auto sr">
           <h2 className="font-cinzel font-light text-white mb-6" style={{ fontSize: "clamp(36px,5vw,64px)" }}>
             READY TO <span className="text-[#D4AF37] italic">COMPETE?</span>
@@ -315,6 +431,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <LegacyCTA />
     </div>
   );
 }

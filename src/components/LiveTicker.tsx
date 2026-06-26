@@ -27,7 +27,7 @@ export default function LiveTicker() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[900] bg-[#050505]/80 backdrop-blur-xl px-5 py-4 rounded-xl border border-white/10 flex items-center gap-4 shadow-2xl">
+    <div className="fixed bottom-6 right-6 z-[900] bg-[#0C0900]/80 backdrop-blur-xl px-5 py-4 rounded-xl border border-white/10 flex items-center gap-4 shadow-2xl">
       <div className="relative flex items-center justify-center">
         <div className="absolute w-3 h-3 rounded-full bg-green-500/50 animate-ping" />
         <div className="w-2 h-2 rounded-full bg-green-500 relative z-10" />

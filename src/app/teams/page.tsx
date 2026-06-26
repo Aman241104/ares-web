@@ -72,7 +72,7 @@ export default function TeamsPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
@@ -101,7 +101,7 @@ export default function TeamsPage() {
               </div>
 
               <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(36px,7vw,84px)" }}>
-                THE <span className="text-[#D4AF37] tracking-widest block">4 TEAMS</span>
+                THE <span className="text-gold-gradient tracking-widest block">4 TEAMS</span>
               </h1>
 
               <p className="h-sub font-montserrat text-white/50 text-base leading-relaxed mb-10 max-w-lg tracking-wide">
@@ -169,7 +169,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── QUICK STATS ── */}
-      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#050505] border-y border-white/5 relative">
+      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { icon: <Users className="w-5 h-5 text-[#D4AF37]" />, value: "30", label: "Business Owners" },
@@ -191,7 +191,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── CINEMATIC TEAM CARDS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-4 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">
@@ -350,7 +350,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#050505] border-t border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0C0900] border-t border-white/5">
         <div className="max-w-2xl mx-auto sr">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-8 h-px bg-white/10" />
