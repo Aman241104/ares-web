@@ -116,237 +116,158 @@ export default function HomePage() {
     <div ref={heroRef} className="overflow-x-hidden bg-[#0B132B]">
 
       {/* ═══════════════════════════════════════════
-          HERO — CINEMATIC
+          HERO — CINEMATIC (trophy stadium left-split)
       ═══════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20" onMouseMove={handleMouseMove}>
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
 
-        {/* Background */}
-        <div className="absolute inset-[-5%] z-0 parallax-bg" style={{ width: "110%", height: "110%" }}>
+        {/* ── FULL-BLEED BACKGROUND IMAGE ── */}
+        <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero_arena.png"
-            alt="Hero Arena"
+            src="/images/hero_trophy_stadium.png"
+            alt="ARES Business League 2026 — Championship Trophy"
             fill
             sizes="100vw"
-            className="object-cover object-center scale-110"
+            className="object-cover object-center"
             priority
-            style={{ filter: "blur(1.5px) brightness(0.55) saturate(1.3)" }}
-          />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,194,0,0.14) 0%, transparent 70%)" }} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0B132B_80%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/20 via-transparent to-[#0B132B]" />
-        </div>
-
-        {/* ── DRAMATIC LIGHT RAYS — symmetrical stadium spotlights for centered hero */}
-        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-
-          {/* Primary fan from upper-right */}
-          <div
-            className="absolute inset-[-8%] rays-breathe"
-            style={{
-              background: `conic-gradient(
-                from 0deg at 78% 0%,
-                transparent   0deg,
-                transparent 178deg,
-                rgba(255,194,0,0.24) 192deg,
-                rgba(255,210,0,0.16) 202deg,
-                transparent         212deg,
-                rgba(255,194,0,0.20) 222deg,
-                rgba(255,210,0,0.12) 230deg,
-                transparent         240deg,
-                rgba(255,194,0,0.14) 250deg,
-                transparent         264deg,
-                rgba(255,194,0,0.10) 274deg,
-                transparent         290deg,
-                transparent         360deg
-              )`,
-              filter: "blur(4px)",
-            }}
-          />
-          {/* Mirror fan from upper-left (softer) */}
-          <div
-            className="absolute inset-[-8%]"
-            style={{
-              background: `conic-gradient(
-                from 0deg at 22% 0%,
-                transparent 0deg,
-                rgba(255,194,0,0.08) 72deg,
-                transparent         88deg,
-                rgba(255,194,0,0.12) 104deg,
-                transparent         118deg,
-                rgba(255,194,0,0.08) 132deg,
-                transparent         150deg,
-                transparent         360deg
-              )`,
-              filter: "blur(10px)",
-            }}
-          />
-          {/* Bloom — upper-right floodlight */}
-          <div
-            className="absolute top-[-8%] right-[-5%]"
-            style={{
-              width: "45%", height: "55%",
-              background: "radial-gradient(ellipse 78% 72% at 85% 8%, rgba(212,175,55,0.24) 0%, rgba(255,194,0,0.14) 40%, transparent 68%)",
-              filter: "blur(28px)",
-            }}
-          />
-          {/* Bloom — upper-left (weaker) */}
-          <div
-            className="absolute top-[-5%] left-[-5%]"
-            style={{
-              width: "36%", height: "42%",
-              background: "radial-gradient(ellipse 70% 60% at 14% 6%, rgba(255,194,0,0.20) 0%, transparent 70%)",
-              filter: "blur(36px)",
-            }}
-          />
-          {/* Central trophy glow */}
-          <div
-            className="absolute top-[15%] left-1/2 -translate-x-1/2 blur-[120px]"
-            style={{
-              width: "680px", height: "680px",
-              background: "radial-gradient(circle, rgba(212,175,55,0.40) 0%, transparent 65%)",
-              opacity: 0.22,
-            }}
+            style={{ filter: "brightness(0.85) saturate(1.1)" }}
           />
         </div>
 
-        {/* ── FLOATING GOLD PARTICLES */}
+        {/* ── GRADIENT OVERLAYS — darken left so text pops, let right show trophy ── */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          {/* Strong dark veil over left half */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(95deg, rgba(7,12,28,0.97) 0%, rgba(7,12,28,0.90) 28%, rgba(7,12,28,0.55) 52%, rgba(7,12,28,0.10) 70%, transparent 85%)" }} />
+          {/* Top fade for navbar */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/70 via-transparent to-transparent" style={{ height: "22%" }} />
+          {/* Bottom fade into next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0B132B] to-transparent" />
+          {/* Diagonal gold accent line (matches the one in the reference image) */}
+          <div className="absolute top-0 bottom-0 left-[48%] w-px pointer-events-none hidden lg:block" style={{ background: "linear-gradient(180deg, transparent 0%, rgba(255,194,0,0.12) 30%, rgba(255,194,0,0.08) 70%, transparent 100%)" }} />
+        </div>
+
+        {/* ── FLOATING GOLD PARTICLES ── z-[2] (left half only) */}
         <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
           {[
-            { x: 38, delay: 0,   dur: 6,   size: 1.5, op: 0.35 },
-            { x: 44, delay: 1.5, dur: 5.5, size: 1.0, op: 0.28 },
-            { x: 50, delay: 0.8, dur: 7.0, size: 2.0, op: 0.32 },
-            { x: 55, delay: 2.2, dur: 5.0, size: 1.5, op: 0.40 },
-            { x: 60, delay: 0.3, dur: 6.5, size: 1.2, op: 0.30 },
-            { x: 65, delay: 1.8, dur: 8.0, size: 2.0, op: 0.22 },
-            { x: 70, delay: 3.0, dur: 5.8, size: 1.0, op: 0.35 },
-            { x: 42, delay: 4.0, dur: 7.5, size: 2.5, op: 0.25 },
-            { x: 58, delay: 0.5, dur: 6.2, size: 1.8, op: 0.28 },
-            { x: 73, delay: 1.2, dur: 5.2, size: 1.5, op: 0.30 },
-            { x: 47, delay: 2.8, dur: 6.8, size: 1.0, op: 0.38 },
-            { x: 62, delay: 0.9, dur: 7.2, size: 2.0, op: 0.24 },
+            { x: 6,  delay: 0,   dur: 7.0, size: 1.5, op: 0.45 },
+            { x: 12, delay: 1.4, dur: 5.5, size: 1.0, op: 0.35 },
+            { x: 18, delay: 0.7, dur: 8.0, size: 2.0, op: 0.30 },
+            { x: 24, delay: 2.1, dur: 6.2, size: 1.5, op: 0.40 },
+            { x: 30, delay: 0.3, dur: 5.8, size: 1.2, op: 0.28 },
+            { x: 36, delay: 1.9, dur: 7.5, size: 2.5, op: 0.25 },
+            { x: 42, delay: 3.2, dur: 6.0, size: 1.0, op: 0.38 },
+            { x: 9,  delay: 0.6, dur: 9.0, size: 1.8, op: 0.22 },
+            { x: 20, delay: 4.0, dur: 5.2, size: 1.2, op: 0.32 },
           ].map((p, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full particle-float"
+            <div key={i} className="absolute rounded-full particle-float"
               style={{
-                left: `${p.x}%`, bottom: "5%",
+                left: `${p.x}%`, bottom: "8%",
                 width: `${p.size}px`, height: `${p.size}px`,
-                background: `rgba(212,175,55,${p.op})`,
-                boxShadow: `0 0 ${p.size * 3}px rgba(212,175,55,${p.op * 0.6})`,
+                background: `rgba(255,194,0,${p.op})`,
+                boxShadow: `0 0 ${p.size * 4}px rgba(255,194,0,${p.op * 0.7})`,
                 animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`,
               }}
             />
           ))}
         </div>
 
-        {/* ── GRAIN OVERLAY */}
-        <div
-          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.025]"
-          style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }}
-        />
+        {/* ── GRAIN OVERLAY ── z-[3] */}
+        <div className="absolute inset-0 z-[3] pointer-events-none opacity-[0.03]"
+          style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 parallax-fg">
+        {/* ── HERO CONTENT — LEFT SIDE ── */}
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-24 pb-0 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto w-full">
+          <div className="max-w-[600px] lg:max-w-[52%]">
 
-          {/* Live badge */}
-          <div className="h-badge inline-flex items-center gap-3 mb-10 px-6 py-3 relative">
-            <div className="absolute inset-0 rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/8 backdrop-blur-xl" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block relative z-10" />
-            <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · 2026</span>
-          </div>
+            {/* Live badge */}
+            <div className="h-badge inline-flex items-center gap-3 mb-8 px-5 py-2.5 relative">
+              <div className="absolute inset-0 border border-[#FFC200]/30 bg-[#FFC200]/8 backdrop-blur-xl" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFC200] pulse-live block relative z-10" />
+              <span className="font-montserrat text-[#FFC200] text-[8px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · 2026</span>
+            </div>
 
-          {/* Typography + Trophy composition */}
-          <div className="relative w-full max-w-5xl flex flex-col items-center justify-center mb-8 sm:mb-12 h-[380px] sm:h-[520px]">
-
-            {/* Trophy layer */}
-            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none translate-y-2 sm:translate-y-6">
-              <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 55%, rgba(212,175,55,0.12) 0%, transparent 55%)" }} />
-              <Image
-                src="/images/hero-trophy.jpg"
-                alt="ARES Championship Trophy"
-                width={580}
-                height={680}
-                priority
-                className="relative object-contain mix-blend-screen"
+            {/* Main title */}
+            <h1 className="font-cinzel font-black leading-none mb-2">
+              <span
+                className="h-title-ares block text-white"
                 style={{
-                  opacity: 0.95,
-                  maskImage: "radial-gradient(ellipse 55% 55% at 50% 48%, black 10%, rgba(0,0,0,0.8) 35%, transparent 65%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 55% 55% at 50% 48%, black 10%, rgba(0,0,0,0.8) 35%, transparent 65%)",
-                  filter: "brightness(1.15) contrast(1.15) saturate(1.1)",
+                  fontSize: "clamp(72px, 14vw, 160px)",
+                  letterSpacing: "0.08em",
+                  textShadow: "0 4px 40px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.6)",
+                  lineHeight: 0.92,
                 }}
-              />
+              >
+                ARES
+              </span>
+              <span
+                className="h-title-bl block font-bold"
+                style={{
+                  fontSize: "clamp(12px, 2.6vw, 28px)",
+                  letterSpacing: "0.6em",
+                  background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  marginTop: "0.3em",
+                }}
+              >
+                BUSINESS LEAGUE
+              </span>
+            </h1>
+
+            {/* Gold divider */}
+            <div className="flex items-center gap-4 my-7">
+              <div className="h-[1.5px] w-16 bg-gradient-to-r from-[#FFC200] to-transparent" />
+              <span className="font-montserrat text-[#FFC200]/70 text-[8px] tracking-[0.45em] uppercase font-bold">Est. 2026</span>
             </div>
 
-            {/* Title layer */}
-            <div className="relative z-20 flex flex-col items-center justify-center w-full pointer-events-none mt-10 sm:mt-24">
-              <h1 className="font-cinzel font-black leading-none text-center">
-                <span
-                  className="h-title-ares block text-white tracking-[0.12em] sm:tracking-[0.18em]"
-                  style={{
-                    fontSize: "clamp(64px, 16vw, 190px)",
-                    textShadow: "0 20px 60px rgba(0,0,0,1), 0 0 120px rgba(0,0,0,0.8)",
-                  }}
-                >
-                  ARES
-                </span>
-                <span
-                  className="h-title-bl block tracking-[0.5em] sm:tracking-[0.7em] mt-1 sm:mt-4 font-semibold"
-                  style={{
-                    fontSize: "clamp(10px, 2.2vw, 20px)",
-                    background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    textShadow: "none",
-                  }}
-                >
-                  BUSINESS LEAGUE
-                </span>
-              </h1>
+            {/* Subtext */}
+            <div className="h-sub mb-10">
+              <p className="font-cormorant italic text-white/85 leading-relaxed mb-3"
+                style={{ fontSize: "clamp(18px, 2.2vw, 26px)", letterSpacing: "0.02em" }}>
+                India's most elite business tournament.
+              </p>
+              <p className="font-montserrat text-white/55 text-xs sm:text-sm tracking-[0.15em] uppercase">
+                4 Teams · 4 Leaders · 1 Mission · June 24 – July 22
+              </p>
             </div>
-          </div>
 
-          {/* Subtext + CTA */}
-          <div className="h-sub text-center flex flex-col items-center max-w-xl mx-auto mb-14 relative z-30">
-            <div className="flex items-center gap-4 mb-5">
-              <div className="h-px w-8 bg-[#FFC200]/60" />
-              <p className="font-montserrat text-white/80 text-[10px] sm:text-xs tracking-[0.3em] uppercase">4 Teams · 4 Leaders · 1 Mission</p>
-              <div className="h-px w-8 bg-[#FFC200]/60" />
-            </div>
-            <p className="font-montserrat text-white/70 text-xs sm:text-sm leading-loose tracking-wider mb-10 px-4">
-              The ultimate high-stakes corporate tournament.<br className="hidden sm:block" />
-              June 24 – July 22, 2026.
-            </p>
-            <div className="h-btns flex flex-wrap justify-center gap-5">
-              <Link href="/teams" className="btn-primary px-9 py-4 text-[11px] tracking-[0.22em]">
+            {/* CTAs */}
+            <div className="h-btns flex flex-wrap gap-4">
+              <Link href="/teams" className="btn-primary px-8 py-4 text-[10px] tracking-[0.25em]">
                 Explore Teams <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <Link href="/leaderboard" className="btn-secondary px-9 py-4 text-[11px] tracking-[0.22em]">
-                Leaderboard
+              <Link href="/leaderboard" className="btn-secondary px-8 py-4 text-[10px] tracking-[0.25em]">
+                Live Leaderboard
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Stats dock */}
-        <div className="relative z-30 w-full max-w-3xl mx-auto px-6 pb-14 h-dock">
-          <div className="relative overflow-hidden rounded-2xl sm:rounded-full border border-white/8 bg-black/50 backdrop-blur-2xl shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/4 to-transparent" />
-            <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-            <div className="flex justify-around items-center sm:divide-x divide-white/8 p-6 sm:py-7 relative z-10">
+        {/* ── STATS DOCK — anchored at bottom ── */}
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pb-10 mt-auto">
+          <div className="max-w-2xl relative overflow-hidden border border-[rgba(255,194,0,0.22)] bg-black/70 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+            <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.9), rgba(255,210,0,1) 30%, rgba(255,194,0,0.6) 60%, transparent)" }} />
+            <div className="absolute top-0 bottom-0 w-[1.5px] pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.5), transparent)", animation: "scan-dock 4s ease-in-out infinite" }} />
+            <div className="flex divide-x divide-[rgba(255,194,0,0.10)] py-5 relative z-10">
               {[
-                { n: "30", l: "Owners" },
-                { n: "4",  l: "Teams" },
-                { n: "1",  l: "Month" },
-                { n: "1",  l: "Winner" },
+                { n: "30",  l: "Owners" },
+                { n: "4",   l: "Factions" },
+                { n: "28",  l: "Days Left" },
+                { n: "₹1Cr",l: "Stakes" },
               ].map((s) => (
-                <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-4 sm:px-8">
-                  <div className="font-cinzel font-light text-[28px] sm:text-[38px] text-white mb-1.5 number-glow" style={{ lineHeight: 1 }}>{s.n}</div>
-                  <div className="font-montserrat text-[#D4AF37] text-[8px] sm:text-[9px] uppercase tracking-[0.35em] font-semibold">{s.l}</div>
+                <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-6 sm:px-10 flex-1">
+                  <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(22px, 4vw, 36px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
+                  <div className="font-montserrat text-white/55 text-[7px] uppercase tracking-[0.38em] font-bold mt-1.5">{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 right-8 z-10 hidden lg:flex flex-col items-center gap-2 opacity-40 hover:opacity-70 transition-opacity">
+          <span className="font-montserrat text-[7px] uppercase tracking-[0.4em] text-white/60" style={{ writingMode: "vertical-rl" }}>Scroll</span>
+          <div className="w-px h-10 bg-gradient-to-b from-[#FFC200]/60 to-transparent" style={{ animation: "float-slow 2s ease-in-out infinite" }} />
         </div>
       </section>
 
@@ -363,24 +284,28 @@ export default function HomePage() {
             <div className="section-label mx-auto mb-5">Tournament at a Glance</div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 sr overflow-hidden rounded-sm">
+          <div className="grid grid-cols-2 lg:grid-cols-4 sr overflow-hidden border border-[rgba(255,194,0,0.12)] rounded-sm">
             {[
-              { n: "30", label: "Elite Owners", sub: "Competing across 4 factions" },
-              { n: "4",  label: "Iconic Teams",  sub: "Led by national leaders" },
-              { n: "1",  label: "Month",         sub: "June 24 – July 22, 2026" },
-              { n: "1",  label: "Grand Winner",  sub: "One champion, one legacy" },
+              { n: "30",  label: "Elite Owners",  sub: "Competing across 4 factions", suffix: "+" },
+              { n: "4",   label: "Iconic Teams",   sub: "Led by national leaders",     suffix: "" },
+              { n: "28",  label: "Days of Battle", sub: "June 24 – July 22, 2026",     suffix: "" },
+              { n: "∞",   label: "Legacy",         sub: "One champion, one legend",    suffix: "" },
             ].map((s, i) => (
-              <div key={s.label} className="relative bg-[#0D1424] flex flex-col items-center justify-center text-center px-8 py-12 group hover:bg-[#0e1830] transition-colors overflow-hidden">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 80% at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
-                {i === 0 && <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />}
+              <div key={s.label} className="relative bg-[#0D1424] flex flex-col items-center justify-center text-center px-6 py-14 group hover:bg-[#0e1830] transition-all duration-500 overflow-hidden border-r border-[rgba(255,194,0,0.08)] last:border-r-0">
+                {/* Ghost chapter number */}
+                <div className="absolute top-4 right-4 font-cinzel text-[64px] font-black text-white/[0.03] select-none leading-none pointer-events-none">{String(i+1).padStart(2,"0")}</div>
+                {/* Hover gold floor glow */}
+                <div className="absolute bottom-0 left-0 right-0 h-[60%] opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 50% 100%, rgba(255,194,0,0.10) 0%, transparent 70%)" }} />
+                {/* Top accent on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.8), transparent)" }} />
                 <div
-                  className="font-cinzel font-light text-[#D4AF37] mb-4 number-glow"
-                  style={{ fontSize: "clamp(52px, 7vw, 80px)", lineHeight: 1 }}
+                  className="font-cinzel font-bold text-[#FFC200] mb-3 number-glow relative z-10"
+                  style={{ fontSize: "clamp(56px, 8vw, 100px)", lineHeight: 1, textShadow: "0 0 40px rgba(255,194,0,0.4), 0 4px 20px rgba(0,0,0,0.8)" }}
                 >
-                  {s.n}
+                  {s.n}{s.suffix && <span className="text-[0.4em] align-top mt-2 inline-block text-[#D4AF37]">{s.suffix}</span>}
                 </div>
-                <div className="font-cinzel text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-2">{s.label}</div>
-                <div className="font-montserrat text-white/55 text-[8px] sm:text-[9px] uppercase tracking-[0.2em]">{s.sub}</div>
+                <div className="font-cinzel text-white text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-2 relative z-10">{s.label}</div>
+                <div className="font-montserrat text-white/55 text-[7px] sm:text-[8px] uppercase tracking-[0.2em] relative z-10">{s.sub}</div>
               </div>
             ))}
           </div>
@@ -409,14 +334,14 @@ export default function HomePage() {
                       <span className="font-montserrat text-green-400/80 text-[8px] font-bold uppercase tracking-[0.25em]">Live</span>
                     </span>
                   </div>
-                  <p className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.25em]">Updated in real-time</p>
+                  <p className="font-cormorant italic text-white/60 text-sm">Updated in real-time</p>
                 </div>
                 <Link href="/leaderboard" className="font-montserrat text-[#D4AF37]/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em] inline-flex items-center gap-2">
                   Full Standings <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
 
-              <div className="overflow-hidden border border-[rgba(212,175,55,0.15)] rounded-sm backdrop-blur-sm">
+              <div className="overflow-hidden border border-[rgba(255,194,0,0.20)] rounded-sm backdrop-blur-sm shadow-[0_0_0_0.5px_rgba(255,194,0,0.08)]">
                 {/* Header */}
                 <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
                   <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">#</div>
@@ -428,11 +353,15 @@ export default function HomePage() {
 
                 {/* Rows */}
                 {sorted.map((team, i) => (
-                  <Link key={team.id} href={`/teams/${team.id}`} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.025] transition-colors group relative overflow-hidden">
-                    {/* Team color left accent */}
-                    <div className="absolute left-0 top-0 bottom-0 w-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: team.color }} />
-                    {/* Gold shimmer for #1 */}
-                    {i === 0 && <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{ background: `linear-gradient(90deg, transparent, ${team.color}40, transparent)` }} />}
+                  <Link key={team.id} href={`/teams/${team.id}`} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 transition-all duration-300 group relative overflow-hidden"
+                    style={{ background: i === 0 ? `linear-gradient(90deg, rgba(255,194,0,0.07) 0%, transparent 50%)` : undefined }}
+                  >
+                    {/* Left team-color bar — always visible for top 3 */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: i < 3 ? team.color : "transparent", boxShadow: i === 0 ? `0 0 12px ${team.color}` : "none", opacity: i === 0 ? 1 : 0.5 }} />
+                    {/* Hover tint */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}06 0%, transparent 60%)` }} />
+                    {/* #1 LEADER badge */}
+                    {i === 0 && <div className="absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/8 px-2 py-0.5">LEADER</div>}
 
                     <div className="col-span-1">
                       <div
@@ -524,6 +453,7 @@ export default function HomePage() {
           <div className="mb-14 sr text-center">
             <div className="section-label mx-auto mb-4">The Factions</div>
             <h2 className="font-cinzel text-white text-2xl sm:text-3xl tracking-[0.2em] text-shadow-gold">Choose Your Side</h2>
+            <p className="font-cormorant italic text-white/50 text-base sm:text-lg mt-2">Four factions. One championship. Eternal legacy.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
@@ -536,7 +466,13 @@ export default function HomePage() {
                   style={{ background: team.color, boxShadow: `0 0 20px ${team.color}, 0 0 40px ${team.color}60` }}
                 />
 
-                <div className="overflow-hidden border border-[rgba(255,194,0,0.22)] group-hover:border-[rgba(255,194,0,0.50)] group-hover:shadow-[0_0_40px_rgba(255,194,0,0.12)] transition-all duration-500 bg-[#111827] rounded-sm">
+                <div className="overflow-hidden border transition-all duration-500 bg-[#111827] rounded-sm relative"
+                  style={{
+                    borderColor: "rgba(255,194,0,0.22)",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = team.color + "99"; (e.currentTarget as HTMLElement).style.boxShadow = `0 0 50px ${team.color}25, 0 20px 60px rgba(0,0,0,0.5)`; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,194,0,0.22)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+                >
                   {/* Image area */}
                   <Link href={`/teams/${team.id}`} className="block">
                     <div className="relative aspect-[3/4] overflow-hidden">
@@ -557,8 +493,13 @@ export default function HomePage() {
 
                       {/* Team color gradient overlay */}
                       <div
-                        className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500"
-                        style={{ background: `linear-gradient(180deg, ${team.color}00 0%, ${team.color}80 100%)` }}
+                        className="absolute inset-0 opacity-25 group-hover:opacity-50 transition-opacity duration-500"
+                        style={{ background: `linear-gradient(180deg, ${team.color}00 0%, ${team.color}90 100%)` }}
+                      />
+                      {/* Team color ambient flood on hover */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                        style={{ background: `radial-gradient(ellipse 120% 80% at 50% 110%, ${team.color}30 0%, transparent 60%)` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
@@ -638,35 +579,42 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="space-y-3 sr-stagger">
+            {/* Timeline style */}
+            <div className="relative sr-stagger">
+              {/* Vertical gold connector line */}
+              <div className="absolute left-5 top-6 bottom-6 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.4) 15%, rgba(255,194,0,0.4) 85%, transparent)" }} />
+              <div className="space-y-4">
               {specialEvents.map((ev, i) => (
-                <div key={ev.name} className="group relative overflow-hidden border border-[rgba(212,175,55,0.10)] hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400">
-                  {/* Number */}
-                  <div className="absolute top-0 right-0 bottom-0 flex items-center px-5 pointer-events-none">
-                    <span className="font-cinzel text-[48px] font-black text-white/[0.025] select-none leading-none">{String(i+1).padStart(2,"0")}</span>
-                  </div>
+                <div key={ev.name} className="group relative overflow-hidden flex items-start gap-5 pl-12">
+                  {/* Timeline node */}
+                  <div className={`absolute left-[14px] top-5 w-3 h-3 rounded-full border-2 z-10 transition-all duration-300 group-hover:scale-125 ${ev.status === "completed" ? "bg-green-400 border-green-400 shadow-[0_0_10px_rgba(74,222,128,0.6)]" : "bg-[#FFC200] border-[#FFC200] shadow-[0_0_10px_rgba(255,194,0,0.6)]"}`} />
 
-                  <div className="flex items-start gap-4 p-5 relative z-10">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-sm flex items-center justify-center mt-0.5" style={{ background: "rgba(255,194,0,0.12)", border: "1px solid rgba(212,175,55,0.18)" }}>
-                      <Star className="w-4 h-4 text-[#D4AF37]/70" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                        <h3 className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">{ev.name}</h3>
-                        <span className={`flex-shrink-0 font-montserrat text-[7px] uppercase tracking-[0.25em] px-2 py-0.5 rounded-full border ${ev.status === "completed" ? "text-green-400/80 border-green-500/20 bg-green-500/5" : "text-white/60 border-white/10 bg-white/[0.02]"}`}>
-                          {ev.status === "completed" ? "Done" : "Upcoming"}
-                        </span>
-                      </div>
-                      <p className="font-montserrat text-white/60 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
-                      <div className="flex items-center gap-3">
-                        <span className="font-montserrat text-[#D4AF37]/55 text-[8px] uppercase tracking-[0.18em]">{ev.date}</span>
-                        <span className="text-white/10 text-xs">·</span>
-                        <span className="font-montserrat text-white/70 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
+                  <div className="flex-1 border border-[rgba(255,194,0,0.10)] hover:border-[rgba(255,194,0,0.30)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 relative overflow-hidden">
+                    {/* Top line on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
+                    {/* Ghost number */}
+                    <div className="absolute bottom-0 right-3 font-cinzel text-[52px] font-black text-white/[0.03] select-none leading-none pointer-events-none">{String(i+1).padStart(2,"0")}</div>
+
+                    <div className="flex items-start gap-4 p-5 relative z-10">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                          <h3 className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#FFC200] transition-colors">{ev.name}</h3>
+                          <span className={`flex-shrink-0 font-montserrat text-[7px] uppercase tracking-[0.25em] px-2 py-0.5 border ${ev.status === "completed" ? "text-green-400 border-green-500/30 bg-green-500/8" : "text-[#FFC200] border-[#FFC200]/25 bg-[#FFC200]/5"}`}>
+                            {ev.status === "completed" ? "Completed" : "Upcoming"}
+                          </span>
+                        </div>
+                        <p className="font-montserrat text-white/60 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
+                        <div className="flex items-center gap-3">
+                          <span className="font-montserrat text-[#FFC200] text-[8px] uppercase tracking-[0.18em] font-bold">{ev.date}</span>
+                          <span className="text-white/20">·</span>
+                          <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
 
@@ -777,7 +725,8 @@ export default function HomePage() {
             ].map((link) => (
               <Link key={link.href} href={link.href} className="group block">
                 <div className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-[rgba(212,175,55,0.28)] transition-all duration-400 relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 100% at 0% 100%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,194,0,0.06) 0%, transparent 60%)" }} />
+                  <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
                   <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/8 border border-[#D4AF37]/15 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/30">
                     {link.icon}
                   </div>

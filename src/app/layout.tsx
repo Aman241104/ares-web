@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter } from "next/font/google";
+import { Cinzel, Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,10 +11,18 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
-const montserrat = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -54,8 +62,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable}`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col antialiased bg-[#0B132B] text-[#F0EAD6]">
+    <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable} ${cormorant.variable}`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col antialiased bg-[#0B132B] text-white">
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
         <SmoothScroll>
           <Navbar />

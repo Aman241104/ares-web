@@ -28,6 +28,7 @@
   /* ── Fonts ── */
   --font-cinzel:     var(--font-cinzel);
   --font-montserrat: var(--font-montserrat);
+  --font-cormorant:  var(--font-cormorant);
 }
 
 /* ══════════════════════════════════════
@@ -44,13 +45,25 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-cinzel), Georgia, serif;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
+    font-feature-settings: "kern" 1;
+  }
+
+  /* Luxury subheading / editorial text */
+  .text-sub, p.sub, .hero-sub {
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.75;
   }
 
   ::selection      { background: rgba(212,175,55,0.35); color: #fff; }
@@ -62,6 +75,23 @@
 ══════════════════════════════════════ */
 .font-cinzel     { font-family: var(--font-cinzel), Georgia, serif; }
 .font-montserrat { font-family: var(--font-montserrat), system-ui, sans-serif; }
+.font-cormorant  { font-family: var(--font-cormorant), Georgia, serif; }
+
+/* ══════════════════════════════════════
+   CORMORANT LUXURY UTILITY CLASSES
+══════════════════════════════════════ */
+.text-luxury {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+.text-luxury-bold {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
 
 /* ══════════════════════════════════════
    GOLD TEXT GRADIENTS
@@ -102,9 +132,9 @@
   background-size: 200% auto;
   color: #000;
   font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.25em;
   padding: 14px 36px;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -141,9 +171,9 @@
   background: transparent;
   color: #D4AF37;
   font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.25em;
   padding: 14px 36px;
   border: 1px solid rgba(212,175,55,0.35);
   border-radius: 4px;
@@ -264,9 +294,9 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 9px;
-  letter-spacing: 0.45em;
+  font-weight: 800;
+  font-size: 8.5px;
+  letter-spacing: 0.55em;
   text-transform: uppercase;
   color: #FFC200;
   text-shadow: 0 0 20px rgba(255,194,0,0.4);
@@ -449,6 +479,14 @@ input::placeholder, textarea::placeholder { color: rgba(240,234,214,0.2) !import
 /* ══════════════════════════════════════
    HERO VISUAL SYSTEM
 ══════════════════════════════════════ */
+
+/* Dock scan line */
+@keyframes scan-dock {
+  0%   { left: -4px; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
 
 /* Gold particle floating upward */
 @keyframes particle-float {
