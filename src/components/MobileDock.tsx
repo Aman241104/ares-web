@@ -41,7 +41,7 @@ export default function MobileDock() {
           <div className="flex justify-between items-center mb-5 px-1">
             <div>
               <div className="font-cinzel text-[#D4AF37] text-base tracking-widest">Navigation</div>
-              <div className="font-montserrat text-white/25 text-[8px] uppercase tracking-[0.3em] mt-0.5">ARES Business League</div>
+              <div className="font-montserrat text-white/45 text-[8px] uppercase tracking-[0.3em] mt-0.5">ARES Business League</div>
             </div>
             <button
               onClick={() => setMenuOpen(false)}
@@ -99,7 +99,7 @@ export default function MobileDock() {
                 key={item.label}
                 href={item.href}
                 className={`flex-1 flex flex-col items-center justify-center py-2 rounded-xl transition-all duration-300 relative ${
-                  isActive ? "text-[#D4AF37]" : "text-white/35 hover:text-white/70"
+                  isActive ? "text-[#D4AF37]" : "text-white/60 hover:text-white/70"
                 }`}
                 onClick={() => setMenuOpen(false)}
               >
@@ -115,7 +115,7 @@ export default function MobileDock() {
           {/* More button */}
           <button
             className={`flex-1 flex flex-col items-center justify-center py-2 rounded-xl transition-all duration-300 relative ${
-              menuOpen ? "text-[#D4AF37]" : "text-white/35 hover:text-white/70"
+              menuOpen ? "text-[#D4AF37]" : "text-white/60 hover:text-white/70"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
           >

@@ -190,7 +190,7 @@ export default function WallOfFamePage() {
                     <Building2 className="w-5 h-5" style={{ color: accentColor }} />
                   </div>
                   <div className="font-cinzel text-white text-sm tracking-wider leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors">{p.name}</div>
-                  <div className="font-montserrat text-[9px] italic text-white/35 mb-3">{p.tagline}</div>
+                  <div className="font-montserrat text-[9px] italic text-white/60 mb-3">{p.tagline}</div>
                   <span
                     className="font-montserrat text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 border"
                     style={{ color: accentColor, borderColor: `${accentColor}35`, background: `${accentColor}08` }}
@@ -242,7 +242,7 @@ export default function WallOfFamePage() {
                   <div className="font-montserrat text-[9px] uppercase tracking-widest mb-1" style={{ color: team.color }}>{team.name}</div>
                   <div className="font-cinzel text-white text-base tracking-wider mb-1">{team.owner.name}</div>
                   <div className="font-montserrat text-white/40 text-[10px] leading-relaxed line-clamp-2">{team.owner.leadershipStyle}</div>
-                  <div className="flex items-center gap-1.5 mt-4 font-montserrat text-[9px] uppercase tracking-widest text-white/30 group-hover:text-white/60 transition-colors">
+                  <div className="flex items-center gap-1.5 mt-4 font-montserrat text-[9px] uppercase tracking-widest text-white/55 group-hover:text-white/60 transition-colors">
                     View Profile <ArrowRight className="w-3 h-3" />
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function WallOfFamePage() {
                   {m.name.charAt(0)}
                 </div>
                 <div className="font-cinzel text-white text-sm tracking-wider leading-tight mb-1 group-hover:text-[#D4AF37] transition-colors">{m.name}</div>
-                <div className="font-montserrat text-white/35 text-[9px] uppercase tracking-widest mb-3">{m.industry}</div>
+                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-3">{m.industry}</div>
                 <div className="flex items-center justify-between pt-3 border-t border-white/5">
                   <span className="font-montserrat text-[8px] uppercase tracking-widest" style={{ color: m.teamColor }}>
                     {m.teamName.replace("Team ", "")}
@@ -309,7 +309,7 @@ export default function WallOfFamePage() {
                 </div>
                 <div className="font-cinzel text-white text-sm mb-1 tracking-wider">{c.name}</div>
                 <div className="font-montserrat text-[8px] uppercase tracking-widest font-bold mb-3" style={{ color: "#D4AF37" }}>{c.role}</div>
-                <div className="font-montserrat text-white/35 text-[9px] leading-relaxed">{c.desc}</div>
+                <div className="font-montserrat text-white/60 text-[9px] leading-relaxed">{c.desc}</div>
               </div>
             ))}
           </div>
@@ -356,7 +356,7 @@ export default function WallOfFamePage() {
             <div className="h-px flex-1 max-w-[100px] bg-white/10" />
           </div>
 
-          <p className="font-montserrat text-white/45 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-12 tracking-wide">
+          <p className="font-montserrat text-white/70 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-12 tracking-wide">
             The next edition of ARES Business League is being forged. New teams, new battles, new legends. The arena will be bigger, the stakes will be higher, and the legacy will be greater.
           </p>
 
@@ -368,7 +368,7 @@ export default function WallOfFamePage() {
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="font-cinzel font-light text-3xl sm:text-4xl text-white mb-1">{s.n}</div>
-                <div className="font-montserrat text-white/30 text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
+                <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
               </div>
             ))}
           </div>

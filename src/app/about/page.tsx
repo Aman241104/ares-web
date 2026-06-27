@@ -129,7 +129,7 @@ export default function AboutPage() {
                   <div key={s.label} className="relative">
                     {i !== 0 && <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />}
                     <div className="font-cinzel font-light text-[#D4AF37] text-3xl mb-1 number-glow">{s.val}</div>
-                    <div className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
+                    <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -158,7 +158,7 @@ export default function AboutPage() {
               </div>
 
               <h3 className="font-cinzel font-light tracking-widest text-[#D4AF37] text-lg text-center mb-1 uppercase">Ares Business League</h3>
-              <div className="font-montserrat text-white/30 text-[8px] tracking-[0.3em] uppercase text-center mb-7">2026 — Nation Builders Edition</div>
+              <div className="font-montserrat text-white/55 text-[8px] tracking-[0.3em] uppercase text-center mb-7">2026 — Nation Builders Edition</div>
 
               <div className="space-y-0 divide-y divide-white/5">
                 {[
@@ -168,7 +168,7 @@ export default function AboutPage() {
                   { label: "Organized", value: "ARES League Committee" },
                 ].map((item) => (
                   <div key={item.label} className="flex justify-between items-center py-3.5">
-                    <span className="font-montserrat text-white/30 text-[9px] uppercase tracking-[0.22em]">{item.label}</span>
+                    <span className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.22em]">{item.label}</span>
                     <span className="font-cinzel text-white/85 text-xs tracking-wider">{item.value}</span>
                   </div>
                 ))}
@@ -196,7 +196,7 @@ export default function AboutPage() {
                   Leaders Compete.<br />
                   <span className="text-[#D4AF37]">Nation Progresses.</span>
                 </p>
-                <div className="mt-6 font-montserrat text-white/25 text-[9px] tracking-[0.35em] uppercase">The ABL 2026 Creed</div>
+                <div className="mt-6 font-montserrat text-white/45 text-[9px] tracking-[0.35em] uppercase">The ABL 2026 Creed</div>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ export default function AboutPage() {
               <p className="font-montserrat text-white/55 text-sm leading-[2] tracking-wide mb-6">
                 It is NOT just a competition. ARES Business League exists to build a nation through business growth, member collaboration, and forging legendary enterprises that generate massive TYFCB revenue together.
               </p>
-              <p className="font-montserrat text-white/35 text-xs leading-relaxed tracking-wide">
+              <p className="font-montserrat text-white/60 text-xs leading-relaxed tracking-wide">
                 Over 4 weeks, 30 elite business owners will compete, collaborate, and create impact — shaping the future of business in India.
               </p>
             </div>
@@ -257,7 +257,7 @@ export default function AboutPage() {
                   {v.icon}
                 </div>
                 <h3 className="font-cinzel tracking-[0.2em] text-white text-base mb-3 group-hover:text-[#D4AF37] transition-colors">{v.title}</h3>
-                <p className="font-montserrat text-white/35 text-[10px] leading-relaxed tracking-wider">{v.desc}</p>
+                <p className="font-montserrat text-white/60 text-[10px] leading-relaxed tracking-wider">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -331,7 +331,7 @@ export default function AboutPage() {
               <div className="px-7 py-5 border-b border-white/5 flex items-center gap-3 bg-[#D4AF37]/5">
                 <Trophy className="w-4 h-4 text-[#D4AF37]" />
                 <span className="font-cinzel text-white text-xs tracking-[0.25em] uppercase">Core Scoring</span>
-                <span className="ml-auto font-montserrat text-white/25 text-[8px] uppercase tracking-widest">Per Week</span>
+                <span className="ml-auto font-montserrat text-white/45 text-[8px] uppercase tracking-widest">Per Week</span>
               </div>
               <div className="divide-y divide-white/5 bg-[#111827]">
                 {[
@@ -350,7 +350,7 @@ export default function AboutPage() {
                   </div>
                 ))}
                 <div className="flex items-center justify-between px-7 py-5 bg-[#D4AF37]/6 border-t border-[#D4AF37]/15">
-                  <span className="font-montserrat text-white/45 text-[9px] uppercase tracking-[0.22em]">Maximum Core Points</span>
+                  <span className="font-montserrat text-white/70 text-[9px] uppercase tracking-[0.22em]">Maximum Core Points</span>
                   <span className="font-cinzel text-[#D4AF37] text-xl">1,000 <span className="text-xs text-[#D4AF37]/50">/ week</span></span>
                 </div>
               </div>
@@ -399,7 +399,7 @@ export default function AboutPage() {
           </div>
 
           <div className="text-center sr">
-            <Link href="/rules" className="inline-flex items-center gap-2 font-montserrat text-white/35 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em]">
+            <Link href="/rules" className="inline-flex items-center gap-2 font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em]">
               View Full Rules & Scoring Guide <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -416,7 +416,7 @@ export default function AboutPage() {
           <h2 className="font-cinzel font-light text-white mb-6" style={{ fontSize: "clamp(32px,5vw,64px)" }}>
             READY TO <span className="text-[#D4AF37]">COMPETE?</span>
           </h2>
-          <p className="font-montserrat text-white/45 text-sm tracking-wide mb-10 max-w-xl mx-auto leading-[2]">
+          <p className="font-montserrat text-white/70 text-sm tracking-wide mb-10 max-w-xl mx-auto leading-[2]">
             Be part of the most exciting business tournament of 2026. Connect with elite business owners, compete for glory, and build your legacy.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

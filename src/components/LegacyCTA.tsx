@@ -81,7 +81,7 @@ export default function LegacyCTA() {
               <span className="text-gold-gradient"> FOR YOUR BUSINESS?</span>
             </h2>
 
-            <p className="font-montserrat text-white/45 text-sm mb-7 leading-[2] max-w-xl tracking-wide">
+            <p className="font-montserrat text-white/70 text-sm mb-7 leading-[2] max-w-xl tracking-wide">
               From a high-performance website to custom business software and accounting systems — we build digital products that work as hard as you do.
             </p>
 
@@ -109,7 +109,7 @@ export default function LegacyCTA() {
                   </div>
                   <div>
                     <div className="font-cinzel text-white text-xs tracking-wider mb-1 group-hover:text-[#D4AF37] transition-colors">{o.title}</div>
-                    <div className="font-montserrat text-white/30 text-[8px] leading-relaxed tracking-wide">{o.desc}</div>
+                    <div className="font-montserrat text-white/55 text-[8px] leading-relaxed tracking-wide">{o.desc}</div>
                   </div>
                 </div>
               ))}

@@ -65,7 +65,7 @@ export default function PageHero({
           sizes="100vw"
           className="object-cover object-center"
           priority
-          style={{ filter: "blur(0.5px) brightness(0.28) saturate(1.1)" }}
+          style={{ filter: "blur(0.5px) brightness(0.38) saturate(1.3)" }}
         />
       </div>
 

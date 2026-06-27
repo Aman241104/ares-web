@@ -84,7 +84,7 @@ export default function GalleryPage() {
 
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <p className="font-montserrat text-white/45 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+            <p className="font-montserrat text-white/70 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
               June 24 – July 22, 2026
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
@@ -129,7 +129,7 @@ export default function GalleryPage() {
                 ].map((s) => (
                   <div key={s.l} className="text-center border border-white/5 py-4 bg-white/[0.02]">
                     <div className="font-cinzel text-[#D4AF37] text-2xl mb-1 number-glow">{s.n}</div>
-                    <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.2em]">{s.l}</div>
+                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em]">{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -150,7 +150,7 @@ export default function GalleryPage() {
               <div className="section-label mb-2">Sneak Peek</div>
               <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">Preview Gallery</h2>
             </div>
-            <div className="font-montserrat text-white/25 text-[8px] uppercase tracking-[0.3em]">More coming soon</div>
+            <div className="font-montserrat text-white/45 text-[8px] uppercase tracking-[0.3em]">More coming soon</div>
           </div>
 
           {/* Masonry-style grid */}
@@ -200,11 +200,11 @@ export default function GalleryPage() {
             ].map((w) => (
               <div key={w.week} className={`relative p-6 border transition-all duration-300 ${w.status === "in-progress" ? "border-[rgba(212,175,55,0.25)] bg-[#D4AF37]/5" : w.status === "completed" ? "border-green-500/20 bg-green-500/4" : "border-white/6 bg-[#111827]"}`}>
                 {w.status === "in-progress" && <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />}
-                <div className={`font-montserrat text-[7px] uppercase tracking-[0.3em] mb-2 font-semibold ${w.status === "in-progress" ? "text-[#D4AF37]" : w.status === "completed" ? "text-green-400/70" : "text-white/25"}`}>
+                <div className={`font-montserrat text-[7px] uppercase tracking-[0.3em] mb-2 font-semibold ${w.status === "in-progress" ? "text-[#D4AF37]" : w.status === "completed" ? "text-green-400/70" : "text-white/45"}`}>
                   {w.status === "in-progress" ? "● Live" : w.status === "completed" ? "✓ Captured" : "○ Upcoming"}
                 </div>
                 <div className="font-cinzel text-white text-base tracking-widest mb-1">{w.week}</div>
-                <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.2em] mb-3">{w.dates}</div>
+                <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em] mb-3">{w.dates}</div>
                 <div className="font-montserrat text-white/40 text-[9px] leading-relaxed">{w.events}</div>
               </div>
             ))}

@@ -34,7 +34,7 @@ function PointsTrendChart({ teamId, color }: { teamId: string; color: string }) 
     <div>
       <div className="flex items-center justify-between mb-3">
         <span className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">Points Trend</span>
-        <span className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest">4 Weeks</span>
+        <span className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">4 Weeks</span>
       </div>
       <svg viewBox={`0 0 ${w} ${h + 20}`} className="w-full" style={{ height: 90 }}>
         <defs>
@@ -102,7 +102,7 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
           {/* Company */}
           <div className="bg-white/[0.03] border border-white/5 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Building2 className="w-3.5 h-3.5 text-white/30" />
+              <Building2 className="w-3.5 h-3.5 text-white/55" />
               <span className="font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Company</span>
             </div>
             <div className="font-cinzel text-white text-base tracking-wider mb-2">{member.company}</div>
@@ -112,7 +112,7 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
           {/* Product / Services */}
           <div className="bg-white/[0.03] border border-white/5 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Package className="w-3.5 h-3.5 text-white/30" />
+              <Package className="w-3.5 h-3.5 text-white/55" />
               <span className="font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Products & Services</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -130,7 +130,7 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
           {/* Ideal Connect */}
           <div className="bg-white/[0.03] border border-white/5 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Handshake className="w-3.5 h-3.5 text-white/30" />
+              <Handshake className="w-3.5 h-3.5 text-white/55" />
               <span className="font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]">Ideal Connect</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -148,7 +148,7 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
 
           {/* Points */}
           <div className="flex items-center justify-between pt-2 border-t border-white/5">
-            <span className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest">League Points</span>
+            <span className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">League Points</span>
             <span className="font-cinzel text-xl" style={{ color }}>{member.points} pts</span>
           </div>
         </div>
@@ -411,7 +411,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                   <div className="font-cinzel tracking-wider text-white text-sm leading-tight mb-1 truncate">{m.name}</div>
                   <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest truncate mb-3">{m.industry}</div>
                   <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    <span className="font-montserrat text-white/25 text-[9px] uppercase tracking-widest truncate pr-2">{m.company.split(" ").slice(0, 2).join(" ")}</span>
+                    <span className="font-montserrat text-white/45 text-[9px] uppercase tracking-widest truncate pr-2">{m.company.split(" ").slice(0, 2).join(" ")}</span>
                     <span className="font-cinzel text-xs flex-shrink-0" style={{ color: team.color }}>{m.points} pts</span>
                   </div>
                 </div>

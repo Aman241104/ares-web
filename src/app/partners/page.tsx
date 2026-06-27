@@ -59,7 +59,7 @@ export default function PartnersPage() {
           </div>
 
           <h1 className="font-cinzel font-light text-white mb-8 leading-none">
-            <span className="block text-white/30 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Our</span>
+            <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Our</span>
             <span
               className="h-title-split block"
               style={{
@@ -82,7 +82,7 @@ export default function PartnersPage() {
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
 
-          <p className="font-montserrat text-white/35 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
+          <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
             Proud partners who believe in our mission and power the ARES Business League 2026 — building businesses, building the nation.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function PartnersPage() {
                 {s.icon}
               </div>
               <div className="font-cinzel font-light text-3xl text-[#D4AF37] mb-1.5 number-glow">{s.num}</div>
-              <div className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
+              <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
             </div>
           ))}
         </div>
@@ -123,11 +123,11 @@ export default function PartnersPage() {
 
             <div className="relative">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-[#D4AF37]/40" />
+                <div className="h-px w-8 bg-[#FFC200]/65" />
                 <Star className="w-3.5 h-3.5 text-[#D4AF37]" />
                 <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.45em] uppercase">Official Web Partner</span>
                 <Star className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <div className="h-px w-8 bg-[#D4AF37]/40" />
+                <div className="h-px w-8 bg-[#FFC200]/65" />
               </div>
               <h3
                 className="font-cinzel font-light mb-4 tracking-widest"
@@ -277,7 +277,7 @@ export default function PartnersPage() {
                       {b.icon}
                     </div>
                     <div className="font-cinzel text-white text-xs tracking-wider mb-2 group-hover:text-[#D4AF37] transition-colors">{b.title}</div>
-                    <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.2em] leading-relaxed">{b.desc}</div>
+                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em] leading-relaxed">{b.desc}</div>
                   </div>
                 ))}
               </div>

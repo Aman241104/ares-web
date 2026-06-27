@@ -32,7 +32,7 @@ export default function CommandMenu() {
           <Search className="w-4 h-4 text-white/40" />
           <Command.Input 
             autoFocus
-            className="w-full bg-transparent border-none text-white p-4 focus:outline-none focus:ring-0 placeholder:text-white/30 font-montserrat" 
+            className="w-full bg-transparent border-none text-white p-4 focus:outline-none focus:ring-0 placeholder:text-white/55 font-montserrat" 
             placeholder="Search teams, members, or events..." 
           />
         </div>

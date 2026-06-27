@@ -125,10 +125,10 @@ export default function LeaderboardPage() {
             </h1>
 
             <div className="h-sub flex items-center gap-4">
-              <div className="h-px w-8 bg-[#D4AF37]/40" />
+              <div className="h-px w-8 bg-[#FFC200]/65" />
               <div>
                 <div className="font-montserrat text-white/55 text-[10px] font-bold tracking-[0.35em] uppercase mb-1">Live Standings · Real Impact</div>
-                <p className="font-montserrat text-white/25 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
+                <p className="font-montserrat text-white/45 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
               </div>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function LeaderboardPage() {
                   {label:"Top Growth",name:"Anil Desai",team:"Team Amit Shah",teamColor:"#C0392B",value:"₹24.8L",img:"/images/owner-portrait-4.jpg"},
                 ].map((p)=>(
                   <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
-                    <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
+                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
                     <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/20 p-1">
                       <div className="w-full h-full rounded-full overflow-hidden relative">
                         <Image fill src={p.img} alt={p.name} className="object-cover object-top" sizes="64px" />
@@ -295,7 +295,7 @@ export default function LeaderboardPage() {
           <div className="space-y-6">
             <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#0D1424]">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
-              <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
+              <p className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
 
               <div className="mb-6">
                 <div className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold uppercase tracking-widest mb-3">Core Categories (Max 1,000 pts)</div>
@@ -336,7 +336,7 @@ export default function LeaderboardPage() {
               <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center">
                 <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
                 <div className="font-cinzel font-light text-5xl text-[#D4AF37] mb-1">1,500</div>
-                <div className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest">PTS</div>
+                <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">PTS</div>
               </div>
             </div>
           </div>

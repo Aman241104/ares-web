@@ -62,7 +62,7 @@ export default function BlogPage() {
           </div>
 
           <h1 className="font-cinzel font-light text-white mb-8 leading-none">
-            <span className="block font-montserrat text-white/30 text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">The Arena</span>
+            <span className="block font-montserrat text-white/55 text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">The Arena</span>
             <span
               className="h-title-split block"
               style={{
@@ -85,7 +85,7 @@ export default function BlogPage() {
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
 
-          <p className="font-montserrat text-white/35 text-xs sm:text-sm leading-[2] max-w-lg mx-auto tracking-wide">
+          <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-[2] max-w-lg mx-auto tracking-wide">
             From the arena floor to the boardroom — every perspective, every victory, every lesson from ABL 2026.
           </p>
         </div>
@@ -143,7 +143,7 @@ export default function BlogPage() {
                   {featured.category}
                 </span>
                 <span className="font-montserrat text-white/40 text-[9px] tracking-widest uppercase">{featured.date}</span>
-                <span className="font-montserrat text-white/25 text-[9px]">·</span>
+                <span className="font-montserrat text-white/45 text-[9px]">·</span>
                 <span className="font-montserrat text-white/40 text-[9px] tracking-widest uppercase">{featured.readTime}</span>
               </div>
 
@@ -233,9 +233,9 @@ export default function BlogPage() {
                               >
                                 {post.author}
                               </span>
-                              <span className="font-montserrat text-white/35 text-[8px] uppercase tracking-widest">{post.date}</span>
-                              <span className="font-montserrat text-white/25 text-[8px]">·</span>
-                              <span className="font-montserrat text-white/35 text-[8px] uppercase tracking-widest">{post.readTime}</span>
+                              <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{post.date}</span>
+                              <span className="font-montserrat text-white/45 text-[8px]">·</span>
+                              <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{post.readTime}</span>
                             </div>
 
                             <h2 className="font-cinzel text-white text-lg leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors duration-300 tracking-wide">
@@ -308,7 +308,7 @@ export default function BlogPage() {
                         <div className="font-cinzel tracking-wider text-white text-[10px] group-hover:text-[#D4AF37] transition-colors truncate">
                           {team.name}
                         </div>
-                        <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.15em] mt-0.5">{team.tagline}</div>
+                        <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.15em] mt-0.5">{team.tagline}</div>
                       </div>
                       <div
                         className="font-montserrat text-[7px] font-bold px-2 py-0.5 flex-shrink-0"
@@ -331,7 +331,7 @@ export default function BlogPage() {
                     <PenLine className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <h3 className="font-cinzel font-light text-white text-base tracking-wider mb-3">Want to Contribute?</h3>
-                  <p className="font-montserrat text-white/35 text-[9px] leading-[1.9] mb-7 tracking-wide">
+                  <p className="font-montserrat text-white/60 text-[9px] leading-[1.9] mb-7 tracking-wide">
                     Share your thoughts on business, leadership, and nation-building with the Arena community.
                   </p>
                   <Link href="/contact" className="btn-primary w-full justify-center text-[9px]">

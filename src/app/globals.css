@@ -39,7 +39,7 @@
 
   body {
     background-color: var(--bg-base);
-    color: #F0EAD6;
+    color: #FFFFFF;
     font-family: var(--font-montserrat), system-ui, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -186,9 +186,9 @@
   transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
 }
 .glass-card:hover {
-  border-color: rgba(212,175,55,0.32);
+  border-color: rgba(255,194,0,0.45);
   background: rgba(17,28,56,0.92);
-  box-shadow: 0 0 40px rgba(255,194,0,0.08), 0 20px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 0 50px rgba(255,194,0,0.14), 0 20px 60px rgba(0,0,0,0.5);
 }
 
 .card {
@@ -214,9 +214,9 @@
   transition: all 0.4s ease;
 }
 .card-glow:hover {
-  border-color: rgba(212,175,55,0.35);
-  border-top-color: rgba(212,175,55,0.7);
-  box-shadow: 0 -4px 30px rgba(212,175,55,0.15), 0 20px 50px rgba(0,0,0,0.5);
+  border-color: rgba(255,194,0,0.45);
+  border-top-color: rgba(255,210,0,0.85);
+  box-shadow: 0 -4px 40px rgba(255,194,0,0.22), 0 20px 50px rgba(0,0,0,0.5);
 }
 
 /* ══════════════════════════════════════
@@ -252,7 +252,7 @@
 ══════════════════════════════════════ */
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.6) 30%, rgba(240,208,96,0.9) 50%, rgba(212,175,55,0.6) 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,194,0,0.75) 30%, rgba(255,210,0,1.0) 50%, rgba(255,194,0,0.75) 70%, transparent 100%);
   border: none;
 }
 
@@ -268,7 +268,8 @@
   font-size: 9px;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #FFC200;
+  text-shadow: 0 0 20px rgba(255,194,0,0.4);
 }
 .section-label::before,
 .section-label::after {
@@ -276,10 +277,10 @@
   display: block;
   width: 32px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.6));
+  background: linear-gradient(90deg, transparent, rgba(255,194,0,0.8));
 }
 .section-label::after {
-  background: linear-gradient(90deg, rgba(212,175,55,0.6), transparent);
+  background: linear-gradient(90deg, rgba(255,194,0,0.8), transparent);
 }
 
 /* ══════════════════════════════════════
@@ -287,15 +288,15 @@
 ══════════════════════════════════════ */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(212,175,55,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,175,55,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(255,194,0,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,194,0,0.045) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
 .bg-grid-fine {
   background-image:
-    linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255,194,0,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,194,0,0.055) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -309,10 +310,10 @@
   filter: blur(80px);
 }
 .ambient-orb-gold {
-  background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,194,0,0.28) 0%, transparent 70%);
 }
 .ambient-orb-warm {
-  background: radial-gradient(circle, rgba(201,146,26,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,194,0,0.18) 0%, transparent 70%);
 }
 
 /* ══════════════════════════════════════
@@ -328,7 +329,7 @@
 /* ══════════════════════════════════════
    TEXT SHADOWS
 ══════════════════════════════════════ */
-.text-shadow-gold { text-shadow: 0 2px 20px rgba(212,175,55,0.25), 0 0 80px rgba(212,175,55,0.1); }
+.text-shadow-gold { text-shadow: 0 2px 24px rgba(255,194,0,0.45), 0 0 80px rgba(255,194,0,0.2); }
 .text-shadow-strong { text-shadow: 0 4px 30px rgba(0,0,0,1), 0 0 60px rgba(0,0,0,0.8); }
 
 /* ══════════════════════════════════════

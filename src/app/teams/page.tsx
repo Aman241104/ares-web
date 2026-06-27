@@ -79,7 +79,7 @@ export default function TeamsPage() {
       <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[60vh] py-20 px-6 sm:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 font-montserrat text-xs text-white/30 mb-10 h-badge">
+          <div className="flex items-center gap-1.5 font-montserrat text-xs text-white/55 mb-10 h-badge">
             <Link href="/" className="hover:text-[#D4AF37] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#D4AF37]">Teams</span>
@@ -147,7 +147,7 @@ export default function TeamsPage() {
                         {team.name.toUpperCase()}
                       </div>
                       <div className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest mb-1.5">{team.tagline}</div>
-                      <div className="font-montserrat text-white/30 text-[9px] uppercase tracking-wider">
+                      <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-wider">
                         {team.points.toLocaleString()} pts · {team.winRate} WR
                       </div>
                     </div>
@@ -235,7 +235,7 @@ export default function TeamsPage() {
                         {team.name}
                       </h2>
                       <div className="font-montserrat text-white/50 text-[11px] uppercase tracking-widest mb-2">{team.tagline}</div>
-                      <div className="font-montserrat text-white/30 text-[10px] uppercase tracking-widest italic mb-6">"{team.motto}"</div>
+                      <div className="font-montserrat text-white/55 text-[10px] uppercase tracking-widest italic mb-6">"{team.motto}"</div>
 
                       <p className="font-montserrat text-white/50 text-sm leading-relaxed mb-8">
                         {team.description}

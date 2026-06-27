@@ -172,7 +172,7 @@ export default function SchedulePage() {
                       <div className="font-cinzel tracking-wider text-xs leading-tight text-white group-hover:text-[#D4AF37] transition-colors">
                         {t.name.toUpperCase()}
                       </div>
-                      <div className="font-montserrat text-white/30 text-[7px] uppercase tracking-widest truncate mt-0.5">
+                      <div className="font-montserrat text-white/55 text-[7px] uppercase tracking-widest truncate mt-0.5">
                         {t.fullName.split(" ").slice(-1)[0]}
                       </div>
                     </div>
@@ -197,7 +197,7 @@ export default function SchedulePage() {
 
         {/* 3-column layout */}
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-0 overflow-hidden border border-[rgba(212,175,55,0.12)] relative sr">
-          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent)" }} />
+          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.60), transparent)" }} />
 
           {/* ── Left: Week Selector ── */}
           <div className="flex-shrink-0 lg:w-72 bg-[#0D1424] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
@@ -210,7 +210,7 @@ export default function SchedulePage() {
                   className={`w-full text-left px-5 py-4 transition-all duration-300 border relative overflow-hidden ${
                     i === activeWeek
                       ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6 text-white"
-                      : "border-white/5 hover:border-white/10 text-white/35 hover:text-white/70 hover:bg-white/[0.02]"
+                      : "border-white/5 hover:border-white/10 text-white/60 hover:text-white/70 hover:bg-white/[0.02]"
                   }`}
                 >
                   {i === activeWeek && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#D4AF37]" />}
@@ -226,7 +226,7 @@ export default function SchedulePage() {
 
             {/* Week details */}
             <div className="pt-6 border-t border-white/8">
-              <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.3em] mb-2">
+              <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.3em] mb-2">
                 Week {weeklyEvents[activeWeek].week} Theme
               </div>
               <h3 className="font-cinzel text-white text-sm leading-tight mb-3 tracking-wider">
@@ -256,10 +256,10 @@ export default function SchedulePage() {
               <div className="min-w-[600px]">
                 {/* Table header */}
                 <div className="grid grid-cols-12 gap-4 px-4 py-3 mb-4 border-b border-white/5">
-                  <div className="col-span-5 font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">EVENT NAME</div>
-                  <div className="col-span-3 font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">CATEGORY</div>
-                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">PTS</div>
-                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/30 uppercase tracking-[0.2em]">STATUS</div>
+                  <div className="col-span-5 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">EVENT NAME</div>
+                  <div className="col-span-3 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">CATEGORY</div>
+                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">PTS</div>
+                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">STATUS</div>
                 </div>
 
                 {/* Event rows */}
@@ -337,7 +337,7 @@ export default function SchedulePage() {
               <div className="font-cinzel font-light text-4xl text-[#D4AF37] mb-1">
                 350
               </div>
-              <div className="font-montserrat text-white/30 text-[9px] tracking-widest uppercase">
+              <div className="font-montserrat text-white/55 text-[9px] tracking-widest uppercase">
                 PTS
               </div>
             </div>

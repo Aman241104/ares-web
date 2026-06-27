@@ -112,7 +112,7 @@ export default function ContactPage() {
           </div>
 
           <h1 className="font-cinzel font-light text-white mb-8 leading-none">
-            <span className="block text-white/30 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Let's Build</span>
+            <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Let's Build</span>
             <span
               className="h-title-split block"
               style={{
@@ -141,7 +141,7 @@ export default function ContactPage() {
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
 
-          <p className="font-montserrat text-white/35 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
+          <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
             Whether you need a website, custom business software, or a mobile app — tell us what you want to build.
           </p>
         </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                   {s.icon}
                 </div>
                 <div className="font-cinzel text-white text-[10px] tracking-wider leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors">{s.title}</div>
-                <div className="font-montserrat text-white/25 text-[8px] leading-relaxed hidden sm:block">{s.desc}</div>
+                <div className="font-montserrat text-white/45 text-[8px] leading-relaxed hidden sm:block">{s.desc}</div>
               </div>
             ))}
           </div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
               <h2 className="font-cinzel font-light text-white mb-3" style={{ fontSize: "clamp(22px, 3vw, 38px)" }}>
                 Contact <span className="text-[#D4AF37]">Channels</span>
               </h2>
-              <p className="font-montserrat text-white/35 text-[10px] leading-[1.9] tracking-wide">
+              <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] tracking-wide">
                 Talk to us directly — describe what you need and we'll get back with a clear plan and estimate.
               </p>
             </div>
@@ -212,9 +212,9 @@ export default function ContactPage() {
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em] mb-1">{c.label}</div>
+                      <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] mb-1">{c.label}</div>
                       <div className="font-cinzel text-white text-xs tracking-wide truncate mb-0.5 group-hover:text-[#F0D060] transition-colors">{c.value}</div>
-                      <div className="font-montserrat text-white/25 text-[8px] tracking-wider">{c.sub}</div>
+                      <div className="font-montserrat text-white/45 text-[8px] tracking-wider">{c.sub}</div>
                       {c.href && (
                         <a href={c.href} target="_blank" rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 mt-2 font-montserrat text-[8px] uppercase tracking-[0.2em] text-[#D4AF37]/50 hover:text-[#D4AF37] transition-colors">
@@ -248,7 +248,7 @@ export default function ContactPage() {
                 { icon: <InstagramIcon className="w-4 h-4" />, label: "Instagram", href: "https://instagram.com" },
               ].map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 border border-white/8 hover:border-[#D4AF37]/25 hover:text-[#D4AF37] text-white/35 font-montserrat text-[8px] uppercase tracking-[0.2em] transition-all duration-300">
+                  className="flex items-center gap-2 px-4 py-2.5 border border-white/8 hover:border-[#D4AF37]/25 hover:text-[#D4AF37] text-white/60 font-montserrat text-[8px] uppercase tracking-[0.2em] transition-all duration-300">
                   {s.icon} {s.label}
                 </a>
               ))}
@@ -288,7 +288,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
+                      <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
                         Full Name <span className="text-[#D4AF37]">*</span>
                       </label>
                       <input type="text" required placeholder="Your full name"
@@ -296,7 +296,7 @@ export default function ContactPage() {
                         className={inputCls} />
                     </div>
                     <div>
-                      <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
+                      <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
                         Email Address <span className="text-[#D4AF37]">*</span>
                       </label>
                       <input type="email" required placeholder="your@email.com"
@@ -307,13 +307,13 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Phone Number</label>
+                      <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Phone Number</label>
                       <input type="tel" placeholder="+91 98765 43210"
                         value={form.phone} onChange={(e) => setForm(f => ({ ...f, phone: e.target.value }))}
                         className={inputCls} />
                     </div>
                     <div>
-                      <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Business / Company</label>
+                      <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Business / Company</label>
                       <input type="text" placeholder="Your company name"
                         value={form.business} onChange={(e) => setForm(f => ({ ...f, business: e.target.value }))}
                         className={inputCls} />
@@ -321,7 +321,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
+                    <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
                       What Do You Want to Build? <span className="text-[#D4AF37]">*</span>
                     </label>
                     <div className="relative">
@@ -337,12 +337,12 @@ export default function ContactPage() {
                         <option value="Custom Software Solution" className="bg-[#0D1424]">Custom Software Solution</option>
                         <option value="Not Sure — Need Consultation" className="bg-[#0D1424]">Not Sure — Need Consultation</option>
                       </select>
-                      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35 pointer-events-none" />
+                      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60 pointer-events-none" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Approximate Budget</label>
+                    <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">Approximate Budget</label>
                     <div className="relative">
                       <select value={form.budget}
                         onChange={(e) => setForm(f => ({ ...f, budget: e.target.value }))}
@@ -355,12 +355,12 @@ export default function ContactPage() {
                         <option value="Above ₹10,00,000" className="bg-[#0D1424]">Above ₹10,00,000</option>
                         <option value="Let's Discuss" className="bg-[#0D1424]">Let's Discuss</option>
                       </select>
-                      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35 pointer-events-none" />
+                      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60 pointer-events-none" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
+                    <label className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em] mb-2.5 block">
                       Project Details <span className="text-[#D4AF37]">*</span>
                     </label>
                     <textarea rows={5} required

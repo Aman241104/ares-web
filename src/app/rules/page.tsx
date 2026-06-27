@@ -99,7 +99,7 @@ export default function RulesPage() {
           </div>
 
           <h1 className="font-cinzel font-light text-white mb-8 leading-none">
-            <span className="block text-white/30 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Tournament</span>
+            <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Tournament</span>
             <span
               className="h-title-split block"
               style={{
@@ -122,7 +122,7 @@ export default function RulesPage() {
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
 
-          <p className="font-montserrat text-white/35 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide mb-10">
+          <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide mb-10">
             Everything you need to know to compete, score, and win in the ARES Business League 2026 arena.
           </p>
 
@@ -131,7 +131,7 @@ export default function RulesPage() {
               <button
                 key={label}
                 onClick={() => scrollToSection(label)}
-                className="font-montserrat text-[8px] uppercase tracking-[0.25em] font-bold px-4 py-2 border border-white/10 text-white/45 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/6 cursor-pointer transition-all duration-300 bg-white/[0.02]"
+                className="font-montserrat text-[8px] uppercase tracking-[0.25em] font-bold px-4 py-2 border border-white/10 text-white/70 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/6 cursor-pointer transition-all duration-300 bg-white/[0.02]"
               >
                 {label}
               </button>
@@ -200,7 +200,7 @@ export default function RulesPage() {
                       {section.rules.map((rule, i) => (
                         <li key={i} className="flex items-start gap-3.5">
                           <div
-                            className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-[8px] font-bold font-montserrat border border-white/10 text-white/35"
+                            className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-[8px] font-bold font-montserrat border border-white/10 text-white/60"
                           >
                             {i + 1}
                           </div>
@@ -245,7 +245,7 @@ export default function RulesPage() {
                   </div>
                 </summary>
                 <div className="px-6 pb-6 pt-0">
-                  <div className="ml-10 font-montserrat text-white/45 text-[11px] leading-[1.9] border-t border-white/5 pt-5 tracking-wide">
+                  <div className="ml-10 font-montserrat text-white/70 text-[11px] leading-[1.9] border-t border-white/5 pt-5 tracking-wide">
                     {faq.a}
                   </div>
                 </div>

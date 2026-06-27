@@ -51,7 +51,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="font-montserrat text-white/35 text-[10px] sm:text-xs leading-[1.9] mb-8 max-w-xs tracking-wide">
+            <p className="font-montserrat text-white/60 text-[10px] sm:text-xs leading-[1.9] mb-8 max-w-xs tracking-wide">
               A high-stakes, one-month business tournament featuring 30 elite BNI business owners competing in 4 iconic teams for one ultimate goal: Nation Building.
             </p>
 
@@ -69,7 +69,7 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center text-white/30 bg-white/[0.025] border border-white/6 transition-all duration-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/6 rounded-lg hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(212,175,55,0.15)]"
+                  className="w-10 h-10 flex items-center justify-center text-white/55 bg-white/[0.025] border border-white/6 transition-all duration-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/6 rounded-lg hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(212,175,55,0.15)]"
                 >
                   {icon}
                 </a>
@@ -95,7 +95,7 @@ export default function Footer() {
                 { href: "/web-partner",  label: "Build Your Site" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="font-montserrat text-white/35 text-[10px] sm:text-xs hover:text-[#D4AF37] transition-colors tracking-wide flex items-center gap-2 group">
+                  <Link href={link.href} className="font-montserrat text-white/60 text-[10px] sm:text-xs hover:text-[#D4AF37] transition-colors tracking-wide flex items-center gap-2 group">
                     <span className="w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-4 flex-shrink-0" />
                     {link.label}
                   </Link>
@@ -114,7 +114,7 @@ export default function Footer() {
                 <li key={team.href}>
                   <Link href={team.href} className="flex items-center gap-3 group">
                     <span className="w-2 h-2 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-125" style={{ backgroundColor: team.color, opacity: 0.5, boxShadow: `0 0 6px ${team.color}` }} />
-                    <span className="font-montserrat text-[10px] sm:text-xs text-white/35 group-hover:text-white transition-colors tracking-wide">
+                    <span className="font-montserrat text-[10px] sm:text-xs text-white/60 group-hover:text-white transition-colors tracking-wide">
                       {team.label}
                     </span>
                   </Link>
@@ -126,7 +126,7 @@ export default function Footer() {
             <div className="mt-8 p-4 border border-[rgba(212,175,55,0.12)] bg-[#D4AF37]/4 rounded-sm">
               <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] text-[#D4AF37]/60 mb-2">Tournament Window</div>
               <div className="font-cinzel text-white text-sm tracking-wider">June 24 – July 22</div>
-              <div className="font-montserrat text-white/30 text-[8px] tracking-wider mt-0.5">2026</div>
+              <div className="font-montserrat text-white/55 text-[8px] tracking-wider mt-0.5">2026</div>
             </div>
           </div>
 
@@ -142,10 +142,10 @@ export default function Footer() {
                 { icon: <MapPin className="w-3.5 h-3.5" />, text: "India" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-full bg-white/[0.025] border border-white/6 flex items-center justify-center text-white/30 group-hover:border-[#D4AF37]/25 group-hover:text-[#D4AF37]/70 transition-all duration-300 flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-white/[0.025] border border-white/6 flex items-center justify-center text-white/55 group-hover:border-[#D4AF37]/25 group-hover:text-[#D4AF37]/70 transition-all duration-300 flex-shrink-0">
                     {item.icon}
                   </div>
-                  <span className="font-montserrat text-white/35 text-[10px] sm:text-xs group-hover:text-white/70 transition-colors tracking-wide">{item.text}</span>
+                  <span className="font-montserrat text-white/60 text-[10px] sm:text-xs group-hover:text-white/70 transition-colors tracking-wide">{item.text}</span>
                 </li>
               ))}
             </ul>
@@ -170,7 +170,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-5">
           <div className="flex items-center gap-3">
-            <p className="font-montserrat text-white/25 text-[9px] tracking-[0.25em] uppercase">
+            <p className="font-montserrat text-white/45 text-[9px] tracking-[0.25em] uppercase">
               © 2026 ARES Business League
             </p>
             <span className="w-1 h-1 rounded-full bg-white/15" />
@@ -179,11 +179,11 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/rules"   className="font-montserrat text-white/30 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">Rules & FAQ</Link>
+            <Link href="/rules"   className="font-montserrat text-white/55 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">Rules & FAQ</Link>
             <span className="w-1 h-1 rounded-full bg-white/15" />
-            <Link href="/contact" className="font-montserrat text-white/30 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">Contact</Link>
+            <Link href="/contact" className="font-montserrat text-white/55 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">Contact</Link>
             <span className="w-1 h-1 rounded-full bg-white/15" />
-            <Link href="/about"   className="font-montserrat text-white/30 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">About</Link>
+            <Link href="/about"   className="font-montserrat text-white/55 text-[8px] font-semibold uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">About</Link>
           </div>
         </div>
       </div>

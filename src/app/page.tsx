@@ -129,11 +129,11 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center scale-110"
             priority
-            style={{ filter: "blur(2px) brightness(0.45) saturate(1.15)" }}
+            style={{ filter: "blur(1.5px) brightness(0.55) saturate(1.3)" }}
           />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,194,0,0.10) 0%, transparent 70%)" }} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0B132B_85%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/30 via-transparent to-[#0B132B]" />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,194,0,0.14) 0%, transparent 70%)" }} />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0B132B_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/20 via-transparent to-[#0B132B]" />
         </div>
 
         {/* ── DRAMATIC LIGHT RAYS — symmetrical stadium spotlights for centered hero */}
@@ -293,7 +293,7 @@ export default function HomePage() {
                   className="h-title-bl block tracking-[0.5em] sm:tracking-[0.7em] mt-1 sm:mt-4 font-semibold"
                   style={{
                     fontSize: "clamp(10px, 2.2vw, 20px)",
-                    background: "linear-gradient(90deg, #C9921A, #F0D060, #D4AF37, #F0D060, #C9921A)",
+                    background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -309,11 +309,11 @@ export default function HomePage() {
           {/* Subtext + CTA */}
           <div className="h-sub text-center flex flex-col items-center max-w-xl mx-auto mb-14 relative z-30">
             <div className="flex items-center gap-4 mb-5">
-              <div className="h-px w-8 bg-[#D4AF37]/40" />
-              <p className="font-montserrat text-white/55 text-[10px] sm:text-xs tracking-[0.3em] uppercase">4 Teams · 4 Leaders · 1 Mission</p>
-              <div className="h-px w-8 bg-[#D4AF37]/40" />
+              <div className="h-px w-8 bg-[#FFC200]/60" />
+              <p className="font-montserrat text-white/80 text-[10px] sm:text-xs tracking-[0.3em] uppercase">4 Teams · 4 Leaders · 1 Mission</p>
+              <div className="h-px w-8 bg-[#FFC200]/60" />
             </div>
-            <p className="font-montserrat text-white/45 text-xs sm:text-sm leading-loose tracking-wider mb-10 px-4">
+            <p className="font-montserrat text-white/70 text-xs sm:text-sm leading-loose tracking-wider mb-10 px-4">
               The ultimate high-stakes corporate tournament.<br className="hidden sm:block" />
               June 24 – July 22, 2026.
             </p>
@@ -380,7 +380,7 @@ export default function HomePage() {
                   {s.n}
                 </div>
                 <div className="font-cinzel text-white text-xs sm:text-sm tracking-[0.2em] uppercase mb-2">{s.label}</div>
-                <div className="font-montserrat text-white/30 text-[8px] sm:text-[9px] uppercase tracking-[0.2em]">{s.sub}</div>
+                <div className="font-montserrat text-white/55 text-[8px] sm:text-[9px] uppercase tracking-[0.2em]">{s.sub}</div>
               </div>
             ))}
           </div>
@@ -409,7 +409,7 @@ export default function HomePage() {
                       <span className="font-montserrat text-green-400/80 text-[8px] font-bold uppercase tracking-[0.25em]">Live</span>
                     </span>
                   </div>
-                  <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-[0.25em]">Updated in real-time</p>
+                  <p className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.25em]">Updated in real-time</p>
                 </div>
                 <Link href="/leaderboard" className="font-montserrat text-[#D4AF37]/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em] inline-flex items-center gap-2">
                   Full Standings <ArrowRight className="w-3 h-3" />
@@ -419,11 +419,11 @@ export default function HomePage() {
               <div className="overflow-hidden border border-[rgba(212,175,55,0.15)] rounded-sm backdrop-blur-sm">
                 {/* Header */}
                 <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
-                  <div className="col-span-1 font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em]">#</div>
-                  <div className="col-span-6 font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em]">Team</div>
-                  <div className="col-span-2 font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em] text-right">Pts</div>
-                  <div className="col-span-2 font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em] text-right">Week</div>
-                  <div className="col-span-1 font-montserrat text-white/30 text-[8px] uppercase tracking-[0.25em] text-center">Trend</div>
+                  <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">#</div>
+                  <div className="col-span-6 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">Team</div>
+                  <div className="col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Pts</div>
+                  <div className="col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Week</div>
+                  <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-center">Trend</div>
                 </div>
 
                 {/* Rows */}
@@ -465,7 +465,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="col-span-2 text-right">
-                      <span className="font-montserrat text-xs text-white/35 tracking-wider">+{team.weekPoints}</span>
+                      <span className="font-montserrat text-xs text-white/60 tracking-wider">+{team.weekPoints}</span>
                     </div>
 
                     <div className="col-span-1 flex justify-center">
@@ -490,7 +490,7 @@ export default function HomePage() {
               ].map((m) => (
                 <div key={m.label} className="card-glow p-6 group hover:translate-y-[-2px] transition-transform duration-300">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="font-montserrat text-white/35 text-[8px] uppercase tracking-[0.25em]">{m.label}</div>
+                    <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em]">{m.label}</div>
                     <div className="text-[#D4AF37]/30 group-hover:text-[#D4AF37]/60 transition-colors">{m.icon}</div>
                   </div>
                   <div className="font-cinzel text-white text-3xl sm:text-4xl mb-1">{m.value}</div>
@@ -502,7 +502,7 @@ export default function HomePage() {
               <Link href="/leaderboard" className="group block mt-1">
                 <div className="glass-card p-5 flex items-center justify-between hover:border-[#D4AF37]/30 transition-all">
                   <div>
-                    <div className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-white/30 mb-1">Full Breakdown</div>
+                    <div className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-white/55 mb-1">Full Breakdown</div>
                     <div className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">View Analytics</div>
                   </div>
                   <TrendingUp className="w-5 h-5 text-[#D4AF37]/40 group-hover:text-[#D4AF37] transition-colors" />
@@ -518,7 +518,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 relative">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35) 30%, rgba(212,175,55,0.35) 70%, transparent)" }} />
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)" }} />
 
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
@@ -536,7 +536,7 @@ export default function HomePage() {
                   style={{ background: team.color, boxShadow: `0 0 20px ${team.color}, 0 0 40px ${team.color}60` }}
                 />
 
-                <div className="overflow-hidden border border-[rgba(212,175,55,0.12)] group-hover:border-[rgba(212,175,55,0.28)] transition-all duration-500 bg-[#111827] rounded-sm">
+                <div className="overflow-hidden border border-[rgba(255,194,0,0.22)] group-hover:border-[rgba(255,194,0,0.50)] group-hover:shadow-[0_0_40px_rgba(255,194,0,0.12)] transition-all duration-500 bg-[#111827] rounded-sm">
                   {/* Image area */}
                   <Link href={`/teams/${team.id}`} className="block">
                     <div className="relative aspect-[3/4] overflow-hidden">
@@ -580,7 +580,7 @@ export default function HomePage() {
                       <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                         <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Captain</div>
                         <div className="font-cinzel text-white text-base tracking-wider leading-tight">{team.owner.name}</div>
-                        <div className="font-montserrat text-white/45 text-[9px] mt-1.5 tracking-wider leading-relaxed">{team.owner.leadershipStyle}</div>
+                        <div className="font-montserrat text-white/70 text-[9px] mt-1.5 tracking-wider leading-relaxed">{team.owner.leadershipStyle}</div>
                       </div>
                     </div>
                   </Link>
@@ -588,7 +588,7 @@ export default function HomePage() {
                   {/* Footer */}
                   <div className="p-4 border-t border-white/5">
                     <div className="flex justify-between items-center mb-3">
-                      <div className="font-montserrat text-white/25 text-[8px] uppercase tracking-widest">Points</div>
+                      <div className="font-montserrat text-white/70 text-[8px] uppercase tracking-widest">Points</div>
                       <div className="font-cinzel text-sm" style={{ color: team.color }}>{team.points.toLocaleString()}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -633,7 +633,7 @@ export default function HomePage() {
                 <div className="section-label mb-2">Special Events</div>
                 <h2 className="font-cinzel text-white text-xl tracking-widest">Key Milestones</h2>
               </div>
-              <Link href="/schedule" className="font-montserrat text-white/35 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
+              <Link href="/schedule" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
                 All Events <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -653,15 +653,15 @@ export default function HomePage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-1.5">
                         <h3 className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">{ev.name}</h3>
-                        <span className={`flex-shrink-0 font-montserrat text-[7px] uppercase tracking-[0.25em] px-2 py-0.5 rounded-full border ${ev.status === "completed" ? "text-green-400/80 border-green-500/20 bg-green-500/5" : "text-white/35 border-white/10 bg-white/[0.02]"}`}>
+                        <span className={`flex-shrink-0 font-montserrat text-[7px] uppercase tracking-[0.25em] px-2 py-0.5 rounded-full border ${ev.status === "completed" ? "text-green-400/80 border-green-500/20 bg-green-500/5" : "text-white/60 border-white/10 bg-white/[0.02]"}`}>
                           {ev.status === "completed" ? "Done" : "Upcoming"}
                         </span>
                       </div>
-                      <p className="font-montserrat text-white/35 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
+                      <p className="font-montserrat text-white/60 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
                       <div className="flex items-center gap-3">
                         <span className="font-montserrat text-[#D4AF37]/55 text-[8px] uppercase tracking-[0.18em]">{ev.date}</span>
                         <span className="text-white/10 text-xs">·</span>
-                        <span className="font-montserrat text-white/25 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
+                        <span className="font-montserrat text-white/70 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
                       </div>
                     </div>
                   </div>
@@ -677,7 +677,7 @@ export default function HomePage() {
                 <div className="section-label mb-2">Partners</div>
                 <h2 className="font-cinzel text-white text-xl tracking-widest">Allies & Sponsors</h2>
               </div>
-              <Link href="/partners" className="font-montserrat text-white/35 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
+              <Link href="/partners" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
                 All <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -696,7 +696,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-5 sr">
-              <Link href="/partners" className="w-full flex items-center justify-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-white/30 hover:text-[#D4AF37] border border-white/6 hover:border-[#D4AF37]/25 py-4 transition-all duration-300">
+              <Link href="/partners" className="w-full flex items-center justify-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-white/55 hover:text-[#D4AF37] border border-white/6 hover:border-[#D4AF37]/25 py-4 transition-all duration-300">
                 View All Partners <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -717,7 +717,7 @@ export default function HomePage() {
               <div className="section-label mb-2">Schedule</div>
               <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">This Week</h2>
             </div>
-            <Link href="/schedule" className="font-montserrat text-white/35 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
+            <Link href="/schedule" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
               Full Schedule <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -733,7 +733,7 @@ export default function HomePage() {
                 ? "text-green-400/70 border-green-500/20 bg-green-500/5"
                 : ev.status === "in-progress"
                 ? "text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/5"
-                : "text-white/30 border-white/10 bg-white/[0.02]";
+                : "text-white/55 border-white/10 bg-white/[0.02]";
               return (
                 <div key={ev.name} className="group glass-card p-6 hover:border-[rgba(212,175,55,0.25)] transition-all duration-400 relative overflow-hidden">
                   {ev.status === "in-progress" && (
@@ -747,7 +747,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-cinzel text-white text-sm tracking-wider mb-1 group-hover:text-[#F0D060] transition-colors">{ev.name}</h3>
                   <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
-                    <span className="font-montserrat text-white/25 text-[8px] uppercase tracking-[0.18em]">{ev.category}</span>
+                    <span className="font-montserrat text-white/70 text-[8px] uppercase tracking-[0.18em]">{ev.category}</span>
                     <span className="font-cinzel text-[#D4AF37] text-sm">+{ev.points} pts</span>
                   </div>
                 </div>
@@ -783,7 +783,7 @@ export default function HomePage() {
                   </div>
                   <div className="relative z-10">
                     <div className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">{link.title}</div>
-                    <div className="font-montserrat text-white/25 text-[8px] uppercase tracking-widest mt-0.5">{link.desc}</div>
+                    <div className="font-montserrat text-white/70 text-[8px] uppercase tracking-widest mt-0.5">{link.desc}</div>
                   </div>
                   <ArrowRight className="w-3.5 h-3.5 text-white/15 group-hover:text-[#D4AF37]/50 ml-auto flex-shrink-0 transition-all duration-300 group-hover:translate-x-0.5 hidden sm:block" />
                 </div>
@@ -794,7 +794,7 @@ export default function HomePage() {
           {/* Website CTA */}
           <div className="sr">
             <Link href="/web-partner" className="group block">
-              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)] bg-[#111827] hover:bg-[#0D1424] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
+              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(255,194,0,0.60)] bg-[#111827] hover:bg-[#0D1424] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
                 {/* Background image hint */}
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ background: "linear-gradient(135deg, #D4AF37 0%, transparent 60%)" }} />
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4) 40%, rgba(212,175,55,0.4) 60%, transparent)" }} />
@@ -806,7 +806,7 @@ export default function HomePage() {
                   <div>
                     <div className="font-montserrat text-[#D4AF37]/60 text-[8px] uppercase tracking-[0.35em] mb-2">Exclusive Offer — ABL Members</div>
                     <h3 className="font-cinzel text-white text-xl sm:text-2xl tracking-wider mb-2 group-hover:text-[#D4AF37] transition-colors">Want to Build Your Website?</h3>
-                    <p className="font-montserrat text-white/35 text-[10px] sm:text-xs tracking-wider leading-relaxed max-w-lg">
+                    <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-wider leading-relaxed max-w-lg">
                       Get a professional, high-performance website crafted for your business — built by the same team behind this platform.
                     </p>
                   </div>

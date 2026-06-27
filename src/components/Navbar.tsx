@@ -52,7 +52,7 @@ export default function Navbar() {
       >
         {/* Top gold line when scrolled */}
         {scrolled && (
-          <div className="absolute top-0 left-8 right-8 h-px rounded-full" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35) 30%, rgba(212,175,55,0.35) 70%, transparent)" }} />
+          <div className="absolute top-0 left-8 right-8 h-px rounded-full" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)" }} />
         )}
 
         <div className={`transition-all duration-700 ${scrolled ? "px-5 sm:px-6" : "px-4 sm:px-10 lg:px-16"}`}>
@@ -99,13 +99,13 @@ export default function Navbar() {
                       <div className="bg-[#0D1424]/97 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_0_0.5px_rgba(212,175,55,0.08)] min-w-[230px] overflow-hidden">
                         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                         <div className="px-5 py-3 border-b border-white/5">
-                          <div className="font-montserrat text-white/25 text-[7px] uppercase tracking-[0.3em]">Select a Team</div>
+                          <div className="font-montserrat text-white/45 text-[7px] uppercase tracking-[0.3em]">Select a Team</div>
                         </div>
                         {link.dropdown.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="flex items-center gap-3.5 px-5 py-3.5 font-montserrat text-[10px] tracking-[0.12em] text-white/45 hover:text-white hover:bg-white/[0.04] transition-all duration-200 whitespace-nowrap group/item"
+                            className="flex items-center gap-3.5 px-5 py-3.5 font-montserrat text-[10px] tracking-[0.12em] text-white/70 hover:text-white hover:bg-white/[0.04] transition-all duration-200 whitespace-nowrap group/item"
                           >
                             <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300 group-hover/item:scale-125" style={{ backgroundColor: item.color, boxShadow: `0 0 6px ${item.color}` }} />
                             <span className="flex-1">{item.label}</span>
