@@ -100,10 +100,10 @@ export default function HomePage() {
   };
 
   const mascots: Record<string, string> = {
-    modi:        "/images/mascot_lion.png",
-    doval:       "/images/mascot_eagle.png",
-    "amit-shah": "/images/mascot_tiger.png",
-    jaishankar:  "/images/mascot_lotus.png",
+    modi:        "/images/poster_modi.png",
+    doval:       "/images/poster_doval.png",
+    "amit-shah": "/images/poster_amitshah.png",
+    jaishankar:  "/images/poster_jaishankar.png",
   };
   const ownerImgs: Record<string, string> = {
     modi:        "/images/owner_modi.png",
@@ -496,9 +496,9 @@ export default function HomePage() {
                         className="object-cover object-top transition-all duration-700 opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100"
                       />
 
-                      {/* Team color gradient overlay */}
+                      {/* Team color gradient overlay — lighter on default (poster has own design) */}
                       <div
-                        className="absolute inset-0 opacity-25 group-hover:opacity-50 transition-opacity duration-500"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500"
                         style={{ background: `linear-gradient(180deg, ${team.color}00 0%, ${team.color}90 100%)` }}
                       />
                       {/* Team color ambient flood on hover */}
@@ -506,7 +506,8 @@ export default function HomePage() {
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                         style={{ background: `radial-gradient(ellipse 120% 80% at 50% 110%, ${team.color}30 0%, transparent 60%)` }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      {/* Scrim — invisible on default (poster has its own), appears on hover for owner card */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Rank badge */}
                       <div className="absolute top-4 right-4 z-10">
@@ -516,14 +517,8 @@ export default function HomePage() {
                         </div>
                       </div>
 
-                      {/* Normal state overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-3">
-                        <div className="font-cinzel text-white text-xl tracking-widest mb-1">{team.name}</div>
-                        <div className="font-montserrat text-[9px] uppercase tracking-[0.22em]" style={{ color: team.color }}>{team.fullName.split(" ").at(-1)}</div>
-                      </div>
-
-                      {/* Hover state overlay */}
-                      <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                      {/* Hover state overlay — owner reveal */}
+                      <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10">
                         <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Captain</div>
                         <div className="font-cinzel text-white text-base tracking-wider leading-tight">{team.owner.name}</div>
                         <div className="font-montserrat text-white/70 text-[9px] mt-1.5 tracking-wider leading-relaxed">{team.owner.leadershipStyle}</div>
