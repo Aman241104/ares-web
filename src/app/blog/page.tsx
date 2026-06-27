@@ -185,7 +185,7 @@ export default function BlogPage() {
                   return (
                     <article
                       key={post.id}
-                      className="group relative overflow-hidden border border-white/6 hover:border-[rgba(212,175,55,0.2)] bg-[#0A0800] hover:bg-[#0D0A01] transition-all duration-500"
+                      className="group relative overflow-hidden border border-white/6 hover:border-[rgba(212,175,55,0.2)] bg-[#0B132B] hover:bg-[#111827] transition-all duration-500"
                       style={{ borderLeft: `2px solid ${tc}30` }}
                     >
                       {/* Team color left accent on hover */}
@@ -209,8 +209,8 @@ export default function BlogPage() {
                               <BookOpen className="w-12 h-12 text-white/20" />
                             </div>
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0A0800] opacity-80 sm:block hidden" />
-                          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0800] opacity-80 sm:hidden block" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0B132B] opacity-80 sm:block hidden" />
+                          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0B132B] opacity-80 sm:hidden block" />
                           {/* Category badge */}
                           <div className="absolute top-4 left-4">
                             <span className="font-montserrat text-[7px] font-bold px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] border border-[#D4AF37]/30 uppercase tracking-[0.2em]">

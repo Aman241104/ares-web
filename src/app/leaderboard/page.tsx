@@ -136,7 +136,7 @@ export default function LeaderboardPage() {
       </PageHero>
 
       {/* ─── MAIN CONTENT ─── */}
-      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           {/* TABLE + FILTERS */}

@@ -218,7 +218,7 @@ export default function AboutPage() {
           {/* Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sr-stagger">
             {PILLARS.map((item) => (
-              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#111827] hover:bg-[#130f03] transition-all duration-500 p-8">
+              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-500 p-8">
                 {/* Ghost number */}
                 <div className="absolute top-4 right-4 font-cinzel text-[72px] font-black text-white/[0.03] leading-none select-none pointer-events-none">{item.num}</div>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4AF37]/0 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:via-[#D4AF37]/40 group-hover:to-transparent transition-all duration-500" />
@@ -250,7 +250,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
             {VALUES.map((v) => (
-              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#111827] hover:bg-[#130f03] transition-all duration-500 p-8">
+              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-500 p-8">
                 {/* Top accent line in value color */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, transparent, ${v.accent}, transparent)` }} />
                 <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-6 transition-all duration-400" style={{ color: v.accent, background: `${v.accent}12`, border: `1px solid ${v.accent}25` }}>

@@ -159,7 +159,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── PARTNERS GRID ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-5">
             <div>
@@ -197,7 +197,7 @@ export default function PartnersPage() {
               return (
                 <div
                   key={p.name}
-                  className="group relative border bg-[#0A0800] hover:bg-[#0D0A01] transition-all duration-400 p-7 flex flex-col items-center justify-center text-center min-h-[140px] overflow-hidden"
+                  className="group relative border bg-[#0D1424] hover:bg-[#111827] transition-all duration-400 p-7 flex flex-col items-center justify-center text-center min-h-[140px] overflow-hidden"
                   style={{ borderColor: isPremium ? "rgba(212,175,55,0.15)" : "rgba(255,255,255,0.06)" }}
                 >
                   {isPremium && (

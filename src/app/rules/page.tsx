@@ -158,7 +158,7 @@ export default function RulesPage() {
                 <div
                   key={section.section}
                   id={`section-${idLabel}`}
-                  className="group relative border border-white/6 bg-[#111827] hover:bg-[#130f03] hover:border-[rgba(212,175,55,0.18)] transition-all duration-500 overflow-hidden"
+                  className="group relative border border-white/6 bg-[#111827] hover:bg-[#0D1424] hover:border-[rgba(212,175,55,0.18)] transition-all duration-500 overflow-hidden"
                 >
                   {/* Color left accent */}
                   <div

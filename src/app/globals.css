@@ -107,6 +107,7 @@
   letter-spacing: 0.2em;
   padding: 14px 36px;
   border: 1px solid transparent;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
   text-decoration: none;
@@ -145,6 +146,7 @@
   letter-spacing: 0.2em;
   padding: 14px 36px;
   border: 1px solid rgba(212,175,55,0.35);
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.4s ease;
   text-decoration: none;

@@ -161,7 +161,7 @@ export default function ContactPage() {
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="group relative border border-white/6 hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400 p-5 text-center overflow-hidden cursor-default"
+                className="group relative border border-white/6 hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 p-5 text-center overflow-hidden cursor-default"
               >
                 {/* Ghost number */}
                 <div className="absolute -top-2 -right-1 font-cinzel text-white/4 text-4xl font-light leading-none select-none pointer-events-none">

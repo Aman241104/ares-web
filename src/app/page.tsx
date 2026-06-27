@@ -640,7 +640,7 @@ export default function HomePage() {
 
             <div className="space-y-3 sr-stagger">
               {specialEvents.map((ev, i) => (
-                <div key={ev.name} className="group relative overflow-hidden border border-[rgba(212,175,55,0.10)] hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400">
+                <div key={ev.name} className="group relative overflow-hidden border border-[rgba(212,175,55,0.10)] hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400">
                   {/* Number */}
                   <div className="absolute top-0 right-0 bottom-0 flex items-center px-5 pointer-events-none">
                     <span className="font-cinzel text-[48px] font-black text-white/[0.025] select-none leading-none">{String(i+1).padStart(2,"0")}</span>
@@ -684,7 +684,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sr-stagger">
               {partners.slice(0,6).map((p) => (
-                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
+                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
                   <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-white/[0.03] border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors">
                     <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
@@ -794,7 +794,7 @@ export default function HomePage() {
           {/* Website CTA */}
           <div className="sr">
             <Link href="/web-partner" className="group block">
-              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)] bg-[#111827] hover:bg-[#130f03] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
+              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)] bg-[#111827] hover:bg-[#0D1424] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
                 {/* Background image hint */}
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ background: "linear-gradient(135deg, #D4AF37 0%, transparent 60%)" }} />
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4) 40%, rgba(212,175,55,0.4) 60%, transparent)" }} />
