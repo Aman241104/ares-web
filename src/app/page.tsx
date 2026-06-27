@@ -180,7 +180,7 @@ export default function HomePage() {
 
             {/* Live badge */}
             <div className="h-badge inline-flex items-center gap-3 mb-8 px-5 py-2.5 relative">
-              <div className="absolute inset-0 border border-[#FFC200]/30 bg-[#FFC200]/8 backdrop-blur-xl" />
+              <div className="absolute inset-0 border border-[#FFC200]/30 bg-[#FFC200]/14 backdrop-blur-xl" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC200] pulse-live block relative z-10" />
               <span className="font-montserrat text-[#FFC200] text-[8px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · 2026</span>
             </div>
@@ -346,7 +346,7 @@ export default function HomePage() {
 
               <div className="overflow-hidden border border-[rgba(255,194,0,0.20)] rounded-sm backdrop-blur-sm shadow-[0_0_0_0.5px_rgba(255,194,0,0.08)]">
                 {/* Header */}
-                <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+                <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.05]">
                   <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">#</div>
                   <div className="col-span-6 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">Team</div>
                   <div className="col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Pts</div>
@@ -364,7 +364,7 @@ export default function HomePage() {
                     {/* Hover tint */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}06 0%, transparent 60%)` }} />
                     {/* #1 LEADER badge */}
-                    {i === 0 && <div className="absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/8 px-2 py-0.5">LEADER</div>}
+                    {i === 0 && <div className="absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-2 py-0.5">LEADER</div>}
 
                     <div className="col-span-1">
                       <div
@@ -684,7 +684,7 @@ export default function HomePage() {
                 ? "text-green-400/70 border-green-500/20 bg-green-500/5"
                 : ev.status === "in-progress"
                 ? "text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/5"
-                : "text-white/55 border-white/10 bg-white/[0.02]";
+                : "text-white/55 border-white/10 bg-white/[0.05]";
               return (
                 <div key={ev.name} className="group glass-card p-6 hover:border-[rgba(212,175,55,0.25)] transition-all duration-400 relative overflow-hidden">
                   {ev.status === "in-progress" && (
@@ -730,7 +730,7 @@ export default function HomePage() {
                 <div className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-[rgba(212,175,55,0.28)] transition-all duration-400 relative overflow-hidden">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,194,0,0.06) 0%, transparent 60%)" }} />
                   <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
-                  <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/8 border border-[#D4AF37]/15 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/30">
+                  <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/15 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/30">
                     {link.icon}
                   </div>
                   <div className="relative z-10">
@@ -752,7 +752,7 @@ export default function HomePage() {
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4) 40%, rgba(212,175,55,0.4) 60%, transparent)" }} />
 
                 <div className="flex items-start gap-6 relative z-10">
-                  <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/8 border border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/40">
+                  <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/40">
                     <Globe className="w-6 h-6" />
                   </div>
                   <div>

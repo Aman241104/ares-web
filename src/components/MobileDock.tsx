@@ -62,7 +62,7 @@ export default function MobileDock() {
                   className={`flex items-center justify-between px-5 py-4 border transition-all duration-300 ${
                     isActive
                       ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6 text-[#D4AF37]"
-                      : "border-white/5 bg-white/[0.02] text-white/60 hover:bg-white/[0.04] hover:text-white hover:border-white/10"
+                      : "border-white/5 bg-white/[0.05] text-white/60 hover:bg-white/[0.04] hover:text-white hover:border-white/10"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -104,7 +104,7 @@ export default function MobileDock() {
                 onClick={() => setMenuOpen(false)}
               >
                 {isActive && (
-                  <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/8 border border-[#D4AF37]/15" />
+                  <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/14 border border-[#D4AF37]/15" />
                 )}
                 <span className="relative z-10">{item.icon}</span>
                 <span className="relative z-10 text-[7px] font-montserrat uppercase tracking-[0.15em] mt-1 font-semibold">{item.label}</span>
@@ -119,7 +119,7 @@ export default function MobileDock() {
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen && <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/8 border border-[#D4AF37]/15" />}
+            {menuOpen && <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/14 border border-[#D4AF37]/15" />}
             <span className="relative z-10">{menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}</span>
             <span className="relative z-10 text-[7px] font-montserrat uppercase tracking-[0.15em] mt-1 font-semibold">More</span>
           </button>

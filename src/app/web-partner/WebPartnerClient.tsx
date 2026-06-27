@@ -158,7 +158,7 @@ export default function WebPartnerPage() {
 
             <div className="space-y-4 sr-stagger">
               {WHY_POINTS.map((point) => (
-                <div key={point} className="flex items-start gap-4 p-5 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300">
+                <div key={point} className="flex items-start gap-4 p-5 bg-white/[0.05] border border-white/5 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300">
                   <CheckCircle className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                   <span className="font-montserrat text-white/70 text-sm">{point}</span>
                 </div>

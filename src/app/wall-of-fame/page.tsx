@@ -29,7 +29,7 @@ function SectionHeader({ eyebrow, title, accent, desc }: { eyebrow: string; titl
   return (
     <div className="mb-14 sr">
       <div className="section-label mb-5">{eyebrow}</div>
-      <h2 className="font-cinzel font-light text-white leading-tight mb-5" style={{ fontSize: "clamp(26px,4vw,50px)" }}>
+      <h2 className="font-cinzel font-bold text-white leading-tight mb-5" style={{ fontSize: "clamp(26px,4vw,50px)" }}>
         {title} <span className="text-gold-gradient">{accent}</span>
       </h2>
       <p className="font-montserrat text-white/40 text-xs sm:text-sm leading-[2] max-w-xl tracking-wide">{desc}</p>
@@ -84,7 +84,7 @@ export default function WallOfFamePage() {
               <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · ABL 2026</span>
             </div>
 
-            <h1 className="h-title font-cinzel font-light text-white leading-none mb-7">
+            <h1 className="h-title font-cinzel font-bold text-white leading-none mb-7">
               <span style={{ fontSize: "clamp(48px,10vw,110px)", display: "block" }}>WALL</span>
               <span style={{
                 fontSize: "clamp(48px,10vw,110px)",
@@ -121,10 +121,10 @@ export default function WallOfFamePage() {
             { num: "6",   label: "League Guardians", icon: <Shield   className="w-5 h-5 text-[#D4AF37]" /> },
           ].map((s) => (
             <div key={s.label} className="glass-card p-6 text-center hover:border-[#D4AF37]/20 transition-colors">
-              <div className="w-10 h-10 rounded-sm bg-[#D4AF37]/8 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-4">
+              <div className="w-10 h-10 rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-4">
                 {s.icon}
               </div>
-              <div className="font-cinzel font-light text-3xl text-white mb-1">{s.num}</div>
+              <div className="font-cinzel font-bold text-3xl text-white mb-1">{s.num}</div>
               <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.label}</div>
             </div>
           ))}
@@ -279,7 +279,7 @@ export default function WallOfFamePage() {
                 key={c.name}
                 className="glass-card p-6 text-center hover:border-[#D4AF37]/20 hover:bg-white/[0.03] transition-all duration-300 group"
               >
-                <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/25 bg-[#D4AF37]/8 group-hover:bg-[#D4AF37]/15 transition-colors">
+                <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/25 bg-[#D4AF37]/14 group-hover:bg-[#D4AF37]/15 transition-colors">
                   <Shield className="w-6 h-6 text-[#D4AF37]" />
                 </div>
                 <div className="font-cinzel text-white text-sm mb-1 tracking-wider">{c.name}</div>
@@ -314,13 +314,13 @@ export default function WallOfFamePage() {
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-3 bg-[#D4AF37]/8 border border-[#D4AF37]/25 px-5 py-2.5 mb-10">
+          <div className="inline-flex items-center gap-3 bg-[#D4AF37]/14 border border-[#D4AF37]/25 px-5 py-2.5 mb-10">
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">The Next Chapter</span>
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
           </div>
 
-          <h2 className="font-cinzel font-light text-white leading-[1.05] mb-6" style={{ fontSize: "clamp(40px,9vw,110px)" }}>
+          <h2 className="font-cinzel font-bold text-white leading-[1.05] mb-6" style={{ fontSize: "clamp(40px,9vw,110px)" }}>
             ABL<br />
             <span className="text-[#D4AF37]">2026</span>
           </h2>
@@ -342,7 +342,7 @@ export default function WallOfFamePage() {
               { n: "1",    l: "Champion" },
             ].map((s) => (
               <div key={s.l} className="text-center">
-                <div className="font-cinzel font-light text-3xl sm:text-4xl text-white mb-1">{s.n}</div>
+                <div className="font-cinzel font-bold text-3xl sm:text-4xl text-white mb-1">{s.n}</div>
                 <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
               </div>
             ))}

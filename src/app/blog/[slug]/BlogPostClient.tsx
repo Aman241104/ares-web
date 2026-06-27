@@ -68,7 +68,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             {post.image ? (
               <Image fill src={post.image} alt={post.title} className="object-cover" sizes="(max-width:768px) 100vw, 800px" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+              <div className="w-full h-full flex items-center justify-center bg-white/[0.05]">
                 <BookOpen className="w-12 h-12 text-[#D4AF37]/40" />
               </div>
             )}

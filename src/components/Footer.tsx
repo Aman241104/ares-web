@@ -69,7 +69,7 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center text-white/55 bg-white/[0.025] border border-white/6 transition-all duration-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/6 rounded-lg hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(212,175,55,0.15)]"
+                  className="w-10 h-10 flex items-center justify-center text-white/55 bg-white/[0.05] border border-white/6 transition-all duration-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/6 rounded-lg hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(212,175,55,0.15)]"
                 >
                   {icon}
                 </a>
@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="font-cinzel text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-white/6">
+            <h4 className="font-cinzel font-bold text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-[rgba(255,194,0,0.18)]">
               Explore
             </h4>
             <ul className="space-y-3.5">
@@ -106,7 +106,7 @@ export default function Footer() {
 
           {/* Teams */}
           <div className="lg:col-span-3">
-            <h4 className="font-cinzel text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-white/6">
+            <h4 className="font-cinzel font-bold text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-[rgba(255,194,0,0.18)]">
               The Factions
             </h4>
             <ul className="space-y-4">
@@ -132,7 +132,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-3">
-            <h4 className="font-cinzel text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-white/6">
+            <h4 className="font-cinzel font-bold text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-[rgba(255,194,0,0.18)]">
               Connect
             </h4>
             <ul className="space-y-4 mb-8">
@@ -142,7 +142,7 @@ export default function Footer() {
                 { icon: <MapPin className="w-3.5 h-3.5" />, text: "India" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-full bg-white/[0.025] border border-white/6 flex items-center justify-center text-white/55 group-hover:border-[#D4AF37]/25 group-hover:text-[#D4AF37]/70 transition-all duration-300 flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/6 flex items-center justify-center text-white/55 group-hover:border-[#D4AF37]/25 group-hover:text-[#D4AF37]/70 transition-all duration-300 flex-shrink-0">
                     {item.icon}
                   </div>
                   <span className="font-montserrat text-white/60 text-[10px] sm:text-xs group-hover:text-white/70 transition-colors tracking-wide">{item.text}</span>

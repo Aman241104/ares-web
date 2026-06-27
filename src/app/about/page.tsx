@@ -341,7 +341,7 @@ export default function AboutPage() {
                   { icon: <Users className="w-4 h-4" />,         label: "One-to-Ones Conducted",    pts: "Up to 150",  color: "#D4AF37" },
                   { icon: <CalendarCheck className="w-4 h-4" />, label: "Event Participation",      pts: "Up to 100",  color: "#b0bec5" },
                 ].map((row) => (
-                  <div key={row.label} className="flex items-center gap-5 px-7 py-4 hover:bg-white/[0.025] transition-colors group">
+                  <div key={row.label} className="flex items-center gap-5 px-7 py-4 hover:bg-white/[0.05] transition-colors group">
                     <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-sm border" style={{ color: row.color, borderColor: `${row.color}30`, background: `${row.color}0d` }}>
                       {row.icon}
                     </div>
@@ -370,7 +370,7 @@ export default function AboutPage() {
                     { label: "Perfect Attendance",  pts: "+30"  },
                     { label: "Special Events",      pts: "+100" },
                   ].map((b) => (
-                    <div key={b.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.025] transition-colors">
+                    <div key={b.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.05] transition-colors">
                       <span className="font-montserrat text-white/50 text-[10px] tracking-wide">{b.label}</span>
                       <span className="font-cinzel text-[#D4AF37] text-sm">{b.pts}</span>
                     </div>
@@ -388,7 +388,7 @@ export default function AboutPage() {
                     { label: "Absence (unexcused)", pts: "−25" },
                     { label: "Late Submission",     pts: "−15" },
                   ].map((d) => (
-                    <div key={d.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.025] transition-colors">
+                    <div key={d.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.05] transition-colors">
                       <span className="font-montserrat text-white/50 text-[10px] tracking-wide">{d.label}</span>
                       <span className="font-cinzel text-red-400/80 text-sm">{d.pts}</span>
                     </div>

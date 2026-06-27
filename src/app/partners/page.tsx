@@ -98,7 +98,7 @@ export default function PartnersPage() {
             { icon: <Globe className="w-5 h-5" />,    num: "∞",   label: "Endless Impact" },
           ].map((s) => (
             <div key={s.label} className="text-center p-8 bg-[#0D1424] hover:bg-[#111827] transition-colors duration-300 group">
-              <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
+              <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
                 {s.icon}
               </div>
               <div className="font-cinzel font-bold text-3xl text-[#D4AF37] mb-1.5 number-glow">{s.num}</div>
@@ -250,7 +250,7 @@ export default function PartnersPage() {
               style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 80%)" }} />
 
             <div className="relative">
-              <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-8">
+              <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-8">
                 <Handshake className="w-6 h-6 text-[#D4AF37]" />
               </div>
 
@@ -273,7 +273,7 @@ export default function PartnersPage() {
                 ].map((b) => (
                   <div key={b.title} className="relative p-6 border border-white/6 bg-[#0D1424] hover:border-[rgba(212,175,55,0.15)] transition-colors group overflow-hidden">
                     <div className="absolute top-2 right-3 font-cinzel text-white/4 text-3xl font-light leading-none select-none">{b.num}</div>
-                    <div className="w-9 h-9 border border-[#D4AF37]/18 bg-[#D4AF37]/8 text-[#D4AF37]/60 group-hover:text-[#D4AF37] flex items-center justify-center mb-4 transition-colors">
+                    <div className="w-9 h-9 border border-[#D4AF37]/18 bg-[#D4AF37]/14 text-[#D4AF37]/60 group-hover:text-[#D4AF37] flex items-center justify-center mb-4 transition-colors">
                       {b.icon}
                     </div>
                     <div className="font-cinzel text-white text-xs tracking-wider mb-2 group-hover:text-[#D4AF37] transition-colors">{b.title}</div>

@@ -136,7 +136,7 @@ export default function LeaderboardPage() {
             <div className="glass-card overflow-hidden sr border-white/10">
               <div className="w-full overflow-x-auto custom-scrollbar">
                 <div className="min-w-[800px]">
-                  <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+                  <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.05]">
                     {[["col-span-1", "Rk"], ["col-span-4", "Team"], ["col-span-2 text-right", "Total Pts"], ["col-span-2 text-right", "Wk2 Pts"], ["col-span-2 text-center", "Trend"], ["col-span-1 text-center", "↕"]].map(([cls, h]) => (
                       <div key={h} className={`${cls} font-montserrat text-white/60 text-[9px] uppercase tracking-[0.2em]`}>{h}</div>
                     ))}
@@ -144,7 +144,7 @@ export default function LeaderboardPage() {
 
                   <div className="sr-stagger">
                     {sorted.map((team, i) => (
-                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.025] transition-all duration-300 relative group" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}08 0%, transparent 60%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color + "80" : 'transparent'}` }}>
+                      <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.05] transition-all duration-300 relative group" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}08 0%, transparent 60%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color + "80" : 'transparent'}` }}>
                         {/* Gold shimmer on hover for rank 1 */}
                         {i === 0 && <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}05, transparent)` }} />}
                         <div className="col-span-1">
@@ -314,7 +314,7 @@ export default function LeaderboardPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center">
+              <div className="p-6 bg-white/[0.05] border border-white/5 rounded-xl text-center">
                 <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
                 <div className="font-cinzel font-bold text-5xl text-[#D4AF37] mb-1">1,500</div>
                 <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">PTS</div>

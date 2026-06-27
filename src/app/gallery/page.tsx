@@ -105,7 +105,7 @@ export default function GalleryPage() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
 
             <div className="p-12 lg:p-20 text-center relative z-10">
-              <div className="w-20 h-20 rounded-sm bg-[#D4AF37]/8 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-8">
+              <div className="w-20 h-20 rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-8">
                 <Clock className="w-9 h-9 text-[#D4AF37]/70" />
               </div>
 
@@ -127,7 +127,7 @@ export default function GalleryPage() {
                   { n: "30",  l: "Warriors" },
                   { n: "4W",  l: "Coverage" },
                 ].map((s) => (
-                  <div key={s.l} className="text-center border border-white/5 py-4 bg-white/[0.02]">
+                  <div key={s.l} className="text-center border border-white/5 py-4 bg-white/[0.05]">
                     <div className="font-cinzel text-[#D4AF37] text-2xl mb-1 number-glow">{s.n}</div>
                     <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em]">{s.l}</div>
                   </div>
@@ -168,7 +168,7 @@ export default function GalleryPage() {
                   fill
                   sizes={i === 0 ? "(max-width:768px) 100vw, 50vw" : "(max-width:768px) 50vw, 25vw"}
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  style={{ filter: "brightness(0.75) saturate(0.85)" }}
+                  style={{ filter: "brightness(0.90) saturate(1.0)" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">

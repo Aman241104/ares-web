@@ -248,7 +248,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                   { icon: <Star className="w-4 h-4" />, n: team.points.toLocaleString(), l: "Points" },
                   { icon: <TrendingUp className="w-4 h-4" />, n: `Rank #${team.rank}`, l: "" },
                 ].map((s, idx) => (
-                  <div key={idx} className="flex items-center gap-2 px-4 py-2 glass-card bg-white/[0.02] border-white/5">
+                  <div key={idx} className="flex items-center gap-2 px-4 py-2 glass-card bg-white/[0.05] border-white/5">
                     <span style={{ color: team.color }}>{s.icon}</span>
                     <span className="font-cinzel text-sm text-white">{s.n}</span>
                     {s.l && <span className="font-montserrat text-[9px] uppercase tracking-widest text-white/40">{s.l}</span>}
@@ -275,7 +275,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                     />
                  </div>
                ) : (
-                 <div className="w-[300px] h-[300px] rounded-full flex items-center justify-center border border-white/5 bg-white/[0.02]">
+                 <div className="w-[300px] h-[300px] rounded-full flex items-center justify-center border border-white/5 bg-white/[0.05]">
                     <span className="font-cinzel text-9xl text-white/10">{team.name.charAt(0)}</span>
                  </div>
                )}
@@ -341,14 +341,14 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 { l: "This Week",    v: team.weekPoints.toLocaleString() },
                 { l: "Members",      v: String(team.members) },
               ].map((s) => (
-                <div key={s.l} className="p-5 bg-white/[0.02] border border-white/5 text-center">
+                <div key={s.l} className="p-5 bg-white/[0.05] border border-white/5 text-center">
                   <div className="font-cinzel font-light text-3xl text-white mb-2">{s.v}</div>
                   <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.l}</div>
                 </div>
               ))}
             </div>
 
-            <div className="p-5 bg-white/[0.02] border border-white/5 mb-8">
+            <div className="p-5 bg-white/[0.05] border border-white/5 mb-8">
               <PointsTrendChart teamId={team.id} color={team.color} />
             </div>
 
@@ -457,7 +457,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
               <h3 className="font-cinzel tracking-widest text-white/60 text-sm mb-8 uppercase">Recent Achievements</h3>
               <div className="space-y-4">
                 {team.achievements.map((a) => (
-                  <div key={a.title} className="flex gap-4 p-5 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                  <div key={a.title} className="flex gap-4 p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
                     <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0">
                       <Trophy className="w-4 h-4 text-white/60" />
                     </div>

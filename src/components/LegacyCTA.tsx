@@ -76,7 +76,7 @@ export default function LegacyCTA() {
           <div className="lg:col-span-8">
             <div className="section-label mb-6">Exclusive for ABL Members</div>
 
-            <h2 className="font-cinzel font-light text-white leading-tight mb-5" style={{ fontSize: "clamp(28px,3.2vw,46px)" }}>
+            <h2 className="font-cinzel font-bold text-white leading-tight mb-5" style={{ fontSize: "clamp(28px,3.2vw,46px)" }}>
               WANT TO BUILD SOMETHING<br className="hidden sm:block" />
               <span className="text-gold-gradient"> FOR YOUR BUSINESS?</span>
             </h2>
@@ -104,7 +104,7 @@ export default function LegacyCTA() {
                       {o.badge}
                     </div>
                   )}
-                  <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-sm border border-[#D4AF37]/15 bg-[#D4AF37]/8 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 group-hover:border-[#D4AF37]/28 transition-all duration-300 mt-0.5">
+                  <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-sm border border-[#D4AF37]/15 bg-[#D4AF37]/14 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 group-hover:border-[#D4AF37]/28 transition-all duration-300 mt-0.5">
                     {o.icon}
                   </div>
                   <div>

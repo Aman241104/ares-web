@@ -157,7 +157,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
             </div>
             
             <div className="flex items-center gap-6 mb-8 pb-8 border-b border-white/10">
-              <div className="w-20 h-20 bg-white/[0.02] border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-20 h-20 bg-white/[0.05] border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
                 <Building2 className="w-8 h-8 text-[#D4AF37]"/>
               </div>
               <div>
@@ -220,7 +220,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
                 { label: "HR & Talent Partners", icon: <Newspaper className="w-5 h-5"/> },
                 { label: "Sales & Business Development", icon: <BookOpen className="w-5 h-5"/> },
               ].map((c)=>(
-                <div key={c.label} className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                <div key={c.label} className="flex items-start gap-4 p-4 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
                   <span className="text-[#D4AF37] flex-shrink-0">{c.icon}</span>
                   <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-wider leading-relaxed">{c.label}</span>
                 </div>
@@ -243,7 +243,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
                 { icon: <Briefcase className="w-6 h-6"/>, n: "Business Consulting", d: "Strategic guidance for sustainable growth." },
                 { icon: <BarChart2 className="w-6 h-6"/>, n: "Data Analytics", d: "Turn data into actionable insights." },
               ].map((s)=>(
-                <div key={s.n} className="p-5 bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/20 transition-colors">
+                <div key={s.n} className="p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:border-white/20 transition-colors">
                   <div className="text-[#D4AF37] mb-3">{s.icon}</div>
                   <div className="font-cinzel text-white text-sm tracking-wider mb-2">{s.n}</div>
                   <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest leading-relaxed">{s.d}</div>

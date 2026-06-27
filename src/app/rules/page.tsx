@@ -131,7 +131,7 @@ export default function RulesPage() {
               <button
                 key={label}
                 onClick={() => scrollToSection(label)}
-                className="font-montserrat text-[8px] uppercase tracking-[0.25em] font-bold px-4 py-2 border border-white/10 text-white/70 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/6 cursor-pointer transition-all duration-300 bg-white/[0.02]"
+                className="font-montserrat text-[8px] uppercase tracking-[0.25em] font-bold px-4 py-2 border border-white/10 text-white/70 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] hover:bg-[#D4AF37]/6 cursor-pointer transition-all duration-300 bg-white/[0.05]"
               >
                 {label}
               </button>
@@ -181,7 +181,7 @@ export default function RulesPage() {
                   <div className="p-8 sm:p-10 relative">
                     <div className="flex items-center gap-4 mb-7">
                       <div
-                        className="w-10 h-10 flex-shrink-0 flex items-center justify-center border bg-white/[0.02] border-white/10 group-hover:border-opacity-40 transition-all duration-400"
+                        className="w-10 h-10 flex-shrink-0 flex items-center justify-center border bg-white/[0.05] border-white/10 group-hover:border-opacity-40 transition-all duration-400"
                         style={{ color: meta.accent }}
                       >
                         {meta.icon}
@@ -262,7 +262,7 @@ export default function RulesPage() {
 
         <div className="relative max-w-2xl mx-auto text-center border border-[rgba(212,175,55,0.2)] bg-[#111827] p-12 lg:p-16 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
-          <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-8">
+          <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-8">
             <Scale className="w-6 h-6 text-[#D4AF37]" />
           </div>
           <h2 className="font-cinzel font-bold text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>

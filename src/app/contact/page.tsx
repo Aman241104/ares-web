@@ -97,7 +97,7 @@ export default function ContactPage() {
     return () => ctx.revert();
   }, []);
 
-  const inputCls = "w-full px-5 py-4 font-montserrat text-white placeholder-white/20 text-[11px] tracking-wide focus:outline-none transition-all bg-white/[0.025] border border-white/8 focus:border-[#D4AF37]/40 focus:bg-white/[0.04]";
+  const inputCls = "w-full px-5 py-4 font-montserrat text-white placeholder-white/20 text-[11px] tracking-wide focus:outline-none transition-all bg-white/[0.05] border border-white/8 focus:border-[#D4AF37]/40 focus:bg-white/[0.04]";
 
   return (
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
@@ -164,14 +164,14 @@ export default function ContactPage() {
                 className="group relative border border-white/6 hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 p-5 text-center overflow-hidden cursor-default"
               >
                 {/* Ghost number */}
-                <div className="absolute -top-2 -right-1 font-cinzel text-white/4 text-4xl font-light leading-none select-none pointer-events-none">
+                <div className="absolute -top-2 -right-1 font-cinzel text-white/[0.09] text-4xl font-light leading-none select-none pointer-events-none">
                   {s.num}
                 </div>
                 {/* Top shimmer on hover */}
                 <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                   style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
 
-                <div className="w-9 h-9 flex items-center justify-center border border-[#D4AF37]/15 bg-[#D4AF37]/8 mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 group-hover:border-[#D4AF37]/28 transition-all duration-300">
+                <div className="w-9 h-9 flex items-center justify-center border border-[#D4AF37]/15 bg-[#D4AF37]/14 mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 group-hover:border-[#D4AF37]/28 transition-all duration-300">
                   {s.icon}
                 </div>
                 <div className="font-cinzel text-white text-[10px] tracking-wider leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors">{s.title}</div>
@@ -208,7 +208,7 @@ export default function ContactPage() {
                   {/* Gold left accent */}
                   <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-start gap-4">
-                    <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/18 bg-[#D4AF37]/8 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 transition-all duration-300">
+                    <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/18 bg-[#D4AF37]/14 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 transition-all duration-300">
                       {c.icon}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -272,7 +272,7 @@ export default function ContactPage() {
 
               {sent ? (
                 <div className="p-10 sm:p-14 text-center">
-                  <div className="w-14 h-14 border border-[#D4AF37]/30 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-6">
+                  <div className="w-14 h-14 border border-[#D4AF37]/30 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-6">
                     <Send className="w-6 h-6 text-[#D4AF37]" />
                   </div>
                   <h3 className="font-cinzel text-white text-2xl mb-3 tracking-wider">Inquiry Sent!</h3>
@@ -401,12 +401,12 @@ export default function ContactPage() {
                 <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                   style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
                 {/* Ghost step number */}
-                <div className="absolute -bottom-4 -right-2 font-cinzel text-white/4 text-8xl font-light leading-none select-none pointer-events-none">
+                <div className="absolute -bottom-4 -right-2 font-cinzel text-white/[0.09] text-8xl font-light leading-none select-none pointer-events-none">
                   {p.step}
                 </div>
 
                 <div className="flex items-center gap-4 mb-7">
-                  <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/25 bg-[#D4AF37]/8 text-[#D4AF37]/70 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/14 group-hover:border-[#D4AF37]/35 transition-all duration-300">
+                  <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/25 bg-[#D4AF37]/14 text-[#D4AF37]/70 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/14 group-hover:border-[#D4AF37]/35 transition-all duration-300">
                     {p.icon}
                   </div>
                   {i < PROCESS.length - 1 && (

@@ -194,7 +194,7 @@ export default function SchedulePage() {
                   className={`w-full text-left px-5 py-4 transition-all duration-300 border relative overflow-hidden ${
                     i === activeWeek
                       ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6 text-white"
-                      : "border-white/5 hover:border-white/10 text-white/60 hover:text-white/70 hover:bg-white/[0.02]"
+                      : "border-white/5 hover:border-white/10 text-white/60 hover:text-white/70 hover:bg-white/[0.05]"
                   }`}
                 >
                   {i === activeWeek && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#D4AF37]" />}
@@ -251,7 +251,7 @@ export default function SchedulePage() {
                   {scheduleEvents.map((event, i) => (
                     <div
                       key={event.name}
-                      className="grid grid-cols-12 gap-4 px-4 py-5 rounded-xl transition-all hover:bg-white/[0.02] items-center border border-white/5"
+                      className="grid grid-cols-12 gap-4 px-4 py-5 rounded-xl transition-all hover:bg-white/[0.05] items-center border border-white/5"
                     >
                       <div className="col-span-5 font-cinzel text-white text-sm tracking-wide truncate">
                         {event.name}
@@ -283,7 +283,7 @@ export default function SchedulePage() {
           </div>
 
           {/* ── Right: Bonus Points Sidebar ── */}
-          <div className="flex-shrink-0 lg:w-72 bg-white/[0.02] border-l border-white/10 p-8" style={{ minWidth: 260 }}>
+          <div className="flex-shrink-0 lg:w-72 bg-white/[0.05] border-l border-white/10 p-8" style={{ minWidth: 260 }}>
             <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">
               BONUS POINTS
             </h3>
@@ -314,7 +314,7 @@ export default function SchedulePage() {
             </div>
 
             {/* Max bonus highlight */}
-            <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center mb-8">
+            <div className="p-6 bg-white/[0.05] border border-white/5 rounded-xl text-center mb-8">
               <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">
                 MAX BONUS POINTS<br />PER WEEK
               </div>

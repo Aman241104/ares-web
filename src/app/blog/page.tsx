@@ -109,7 +109,7 @@ export default function BlogPage() {
                   fill
                   sizes="100vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  style={{ filter: "brightness(0.75) saturate(0.9)" }}
+                  style={{ filter: "brightness(0.90) saturate(1.0)" }}
                 />
               ) : (
                 <div className="w-full h-full bg-[#0B132B] flex items-center justify-center">
@@ -202,10 +202,10 @@ export default function BlogPage() {
                               fill
                               sizes="(max-width:768px) 100vw, 40vw"
                               className="object-cover transition-transform duration-700 group-hover:scale-105"
-                              style={{ filter: "brightness(0.7) saturate(0.85)" }}
+                              style={{ filter: "brightness(0.85) saturate(1.0)" }}
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+                            <div className="w-full h-full flex items-center justify-center bg-white/[0.05]">
                               <BookOpen className="w-12 h-12 text-white/20" />
                             </div>
                           )}
@@ -277,7 +277,7 @@ export default function BlogPage() {
                   {blogCategories.map((cat) => (
                     <span
                       key={cat}
-                      className="font-montserrat text-[8px] font-bold border border-white/8 px-3 py-1.5 text-white/60 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/8 cursor-pointer transition-all duration-300 uppercase tracking-[0.2em]"
+                      className="font-montserrat text-[8px] font-bold border border-white/8 px-3 py-1.5 text-white/60 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/14 cursor-pointer transition-all duration-300 uppercase tracking-[0.2em]"
                     >
                       {cat}
                     </span>
@@ -296,7 +296,7 @@ export default function BlogPage() {
                   {teams.map((team) => (
                     <div
                       key={team.id}
-                      className="flex items-center gap-3 p-3.5 border border-transparent hover:border-white/8 hover:bg-white/[0.025] transition-all duration-300 cursor-pointer group"
+                      className="flex items-center gap-3 p-3.5 border border-transparent hover:border-white/8 hover:bg-white/[0.05] transition-all duration-300 cursor-pointer group"
                     >
                       <div
                         className="w-8 h-8 font-cinzel text-sm flex items-center justify-center flex-shrink-0 border"
@@ -327,7 +327,7 @@ export default function BlogPage() {
                 <div className="absolute inset-0 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse 70% 70% at 50% 100%, rgba(212,175,55,0.07) 0%, transparent 70%)" }} />
                 <div className="relative">
-                  <div className="w-12 h-12 border border-[#D4AF37]/30 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-5">
+                  <div className="w-12 h-12 border border-[#D4AF37]/30 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-5">
                     <PenLine className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <h3 className="font-cinzel font-bold text-white text-base tracking-wider mb-3">Want to Contribute?</h3>

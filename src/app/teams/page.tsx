@@ -277,7 +277,7 @@ export default function TeamsPage() {
                         ].map((s) => (
                           <div
                             key={s.l}
-                            className="text-center p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors"
+                            className="text-center p-4 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors"
                           >
                             <div className="font-cinzel font-bold text-xl mb-1 text-white">{s.v}</div>
                             <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{s.l}</div>
@@ -305,7 +305,7 @@ export default function TeamsPage() {
                     {/* ── Right: Owner + CTA ── */}
                     <div className="lg:col-span-4 flex flex-col justify-between h-full">
                       {/* Owner card */}
-                      <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors mb-6">
+                      <div className="p-6 bg-white/[0.05] border border-white/5 rounded-xl hover:border-white/10 transition-colors mb-6">
                         <div className="font-montserrat text-[8px] text-white/60 uppercase tracking-widest mb-3">Team Owner</div>
                         <div className="font-cinzel font-bold text-white text-xl mb-1">
                           {team.owner.name}
