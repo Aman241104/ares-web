@@ -99,13 +99,13 @@ export default function SchedulePage() {
   return (
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
-      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="left" className="py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
+      <PageHero layout="left" className="py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
             <div className="h-title">
               <div className="section-label mb-6">42 Challenges · 4 Weeks · 1 Champion</div>
-              <h1 className="font-cinzel font-light text-white mb-6 leading-none">
+              <h1 className="font-cinzel font-bold text-white mb-6 leading-none">
                 <span style={{ fontSize: "clamp(40px,8vw,96px)", display: "block" }}>SCHEDULE</span>
                 <span style={{
                   fontSize: "clamp(40px,8vw,96px)",
@@ -134,25 +134,9 @@ export default function SchedulePage() {
             </div>
           </div>
 
-          {/* Right: trophy + team pills */}
-          <div className="hidden lg:flex justify-end items-center gap-7 h-img">
-            <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 pointer-events-none blur-[60px] opacity-20" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)" }} />
-              <Image
-                src="/images/hero-trophy.jpg"
-                alt="Championship Trophy"
-                width={260}
-                height={320}
-                className="relative z-10 object-contain mix-blend-screen"
-                style={{
-                  opacity: 0.9,
-                  maskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)",
-                  WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 100%)",
-                  filter: "brightness(1.15) contrast(1.1)",
-                }}
-              />
-            </div>
-            <div className="flex flex-col gap-3">
+          {/* Right: team pills — dark panel so they stay readable over the trophy bg */}
+          <div className="hidden lg:flex justify-end items-center h-img">
+            <div className="flex flex-col gap-2 p-4 backdrop-blur-xl rounded-sm" style={{ background: "rgba(5,9,22,0.75)", border: "1px solid rgba(255,194,0,0.12)" }}>
               {teams.map((t) => {
                 const teamImgs: Record<string,string> = {
                   modi:"/images/team_modi.png", doval:"/images/team_doval.png",
@@ -162,8 +146,8 @@ export default function SchedulePage() {
                   <Link
                     key={t.id}
                     href={`/teams/${t.id}`}
-                    className="flex items-center gap-3.5 px-4 py-3 border border-white/6 bg-white/[0.025] hover:bg-white/[0.05] hover:border-[rgba(212,175,55,0.2)] transition-all duration-300 group"
-                    style={{ minWidth: "210px" }}
+                    className="flex items-center gap-3.5 px-4 py-3 border border-white/8 bg-white/[0.04] hover:bg-white/[0.08] hover:border-[rgba(255,194,0,0.25)] transition-all duration-300 group rounded-sm"
+                    style={{ minWidth: "220px" }}
                   >
                     <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-white/10 relative">
                       <Image fill src={teamImgs[t.id]} alt={t.name} className="object-cover" sizes="36px" />
@@ -190,7 +174,7 @@ export default function SchedulePage() {
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto mb-12 sr relative">
           <div className="section-label mb-4">Live Updates</div>
-          <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">
+          <h2 className="font-cinzel font-bold text-white text-3xl sm:text-4xl">
             THIS WEEK&rsquo;S <span className="text-[#D4AF37]">SCHEDULE</span>
           </h2>
         </div>
@@ -232,7 +216,7 @@ export default function SchedulePage() {
               <h3 className="font-cinzel text-white text-sm leading-tight mb-3 tracking-wider">
                 {weeklyEvents[activeWeek].theme}
               </h3>
-              <p className="font-montserrat text-white/40 text-[10px] leading-relaxed mb-7 tracking-wide">
+              <p className="font-montserrat text-white/60 text-[10px] leading-relaxed mb-7 tracking-wide">
                 {weeklyEvents[activeWeek].description}
               </p>
 
@@ -243,7 +227,7 @@ export default function SchedulePage() {
                   <div className="w-1.5 h-1.5 bg-green-400 rounded-full pulse-live flex-shrink-0" />
                   <span className="font-montserrat text-green-400/80 text-[8px] font-bold tracking-[0.3em] uppercase">Live · Ends in</span>
                 </div>
-                <div className="font-cinzel font-light text-white text-2xl tracking-[0.15em]">
+                <div className="font-cinzel font-bold text-white text-2xl tracking-[0.15em]">
                   {countdown.d > 0 ? `${countdown.d}d ` : ""}{pad(countdown.h)}:{pad(countdown.m)}:{pad(countdown.s)}
                 </div>
               </div>
@@ -272,7 +256,7 @@ export default function SchedulePage() {
                       <div className="col-span-5 font-cinzel text-white text-sm tracking-wide truncate">
                         {event.name}
                       </div>
-                      <div className="col-span-3 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                      <div className="col-span-3 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
                         {event.category}
                       </div>
                       <div className="col-span-2 text-right font-cinzel text-[#D4AF37] text-base">
@@ -317,7 +301,7 @@ export default function SchedulePage() {
                       <div className="font-montserrat text-white text-[10px] uppercase tracking-widest mb-1.5">
                         {b.name}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[9px] leading-snug">
+                      <div className="font-montserrat text-white/60 text-[9px] leading-snug">
                         {b.desc}
                       </div>
                     </div>
@@ -331,10 +315,10 @@ export default function SchedulePage() {
 
             {/* Max bonus highlight */}
             <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center mb-8">
-              <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">
+              <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">
                 MAX BONUS POINTS<br />PER WEEK
               </div>
-              <div className="font-cinzel font-light text-4xl text-[#D4AF37] mb-1">
+              <div className="font-cinzel font-bold text-4xl text-[#D4AF37] mb-1">
                 350
               </div>
               <div className="font-montserrat text-white/55 text-[9px] tracking-widest uppercase">
@@ -353,7 +337,7 @@ export default function SchedulePage() {
                   { l: "Upcoming", v: "34" },
                 ].map((s) => (
                   <div key={s.l} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-                    <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest">{s.l}</span>
+                    <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest">{s.l}</span>
                     <span className="font-cinzel text-white text-sm">{s.v}</span>
                   </div>
                 ))}
@@ -371,7 +355,7 @@ export default function SchedulePage() {
               <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-2">
                 Premium Competitions
               </div>
-              <h2 className="font-cinzel font-light text-white text-3xl sm:text-4xl">
+              <h2 className="font-cinzel font-bold text-white text-3xl sm:text-4xl">
                 SPECIAL <span className="text-[#D4AF37]">EVENTS</span>
               </h2>
             </div>
@@ -421,11 +405,11 @@ export default function SchedulePage() {
                 <div className="p-6">
                   <p className="font-montserrat text-white/50 text-[11px] mb-6 leading-relaxed min-h-[40px]">{event.desc}</p>
                   <div className="flex items-center gap-6 border-t border-white/5 pt-4">
-                    <span className="flex items-center gap-2 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                    <span className="flex items-center gap-2 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
                       <Calendar className="w-3.5 h-3.5" />
                       {event.date}
                     </span>
-                    <span className="flex items-center gap-2 font-montserrat text-white/40 text-[10px] uppercase tracking-widest">
+                    <span className="flex items-center gap-2 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
                       <Clock className="w-3.5 h-3.5" />
                       {event.time}
                     </span>

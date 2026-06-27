@@ -94,7 +94,7 @@ export default function TeamsPage() {
                 <div className="h-px w-12 bg-white/10" />
               </div>
 
-              <h1 className="h-title font-cinzel font-light text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(36px,7vw,84px)" }}>
+              <h1 className="h-title font-cinzel font-bold text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(36px,7vw,84px)" }}>
                 THE <span className="text-gold-gradient tracking-widest block">4 TEAMS</span>
               </h1>
 
@@ -136,7 +136,7 @@ export default function TeamsPage() {
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center font-cinzel font-light text-xl" style={{ background: team.color + "20", color: team.color }}>
+                          <div className="w-full h-full flex items-center justify-center font-cinzel font-bold text-xl" style={{ background: team.color + "20", color: team.color }}>
                             {team.name.charAt(0)}
                           </div>
                         )}
@@ -146,7 +146,7 @@ export default function TeamsPage() {
                       <div className="font-cinzel tracking-widest text-sm leading-tight mb-1" style={{ color: team.color }}>
                         {team.name.toUpperCase()}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest mb-1.5">{team.tagline}</div>
+                      <div className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest mb-1.5">{team.tagline}</div>
                       <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-wider">
                         {team.points.toLocaleString()} pts · {team.winRate} WR
                       </div>
@@ -176,8 +176,8 @@ export default function TeamsPage() {
                 {s.icon}
               </div>
               <div>
-                <div className="font-cinzel font-light text-2xl text-white mb-1 leading-none">{s.value}</div>
-                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.label}</div>
+                <div className="font-cinzel font-bold text-2xl text-white mb-1 leading-none">{s.value}</div>
+                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest">{s.label}</div>
               </div>
             </div>
           ))}
@@ -188,7 +188,7 @@ export default function TeamsPage() {
       <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-4 mb-16">
-            <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">
+            <h2 className="font-cinzel font-bold text-white text-3xl tracking-widest uppercase">
               Meet the <span className="text-[#D4AF37]">Teams</span>
             </h2>
             <div className="flex-1 h-px bg-white/10" />
@@ -231,7 +231,7 @@ export default function TeamsPage() {
                       </div>
 
                       {/* Team name */}
-                      <h2 className="font-cinzel font-light text-3xl lg:text-4xl leading-tight mb-2 uppercase" style={{ color: team.color }}>
+                      <h2 className="font-cinzel font-bold text-3xl lg:text-4xl leading-tight mb-2 uppercase" style={{ color: team.color }}>
                         {team.name}
                       </h2>
                       <div className="font-montserrat text-white/50 text-[11px] uppercase tracking-widest mb-2">{team.tagline}</div>
@@ -256,7 +256,7 @@ export default function TeamsPage() {
                             </div>
                           </div>
                           <div>
-                            <div className="font-montserrat text-[8px] text-white/40 uppercase tracking-widest mb-1">Mascot</div>
+                            <div className="font-montserrat text-[8px] text-white/60 uppercase tracking-widest mb-1">Mascot</div>
                             <div className="font-cinzel tracking-wider text-sm text-white">{team.mascot}</div>
                           </div>
                         </div>
@@ -265,7 +265,7 @@ export default function TeamsPage() {
 
                     {/* ── Middle: Stats ── */}
                     <div className="lg:col-span-4">
-                      <div className="font-montserrat text-[9px] text-white/40 uppercase tracking-widest mb-4">Performance</div>
+                      <div className="font-montserrat text-[9px] text-white/60 uppercase tracking-widest mb-4">Performance</div>
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
                         {[
                           { l: "Total Pts", v: team.points.toLocaleString() },
@@ -279,8 +279,8 @@ export default function TeamsPage() {
                             key={s.l}
                             className="text-center p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors"
                           >
-                            <div className="font-cinzel font-light text-xl mb-1 text-white">{s.v}</div>
-                            <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-widest">{s.l}</div>
+                            <div className="font-cinzel font-bold text-xl mb-1 text-white">{s.v}</div>
+                            <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{s.l}</div>
                           </div>
                         ))}
                       </div>
@@ -288,7 +288,7 @@ export default function TeamsPage() {
                       {/* Progress bar — win rate visual */}
                       <div>
                         <div className="flex justify-between items-center mb-3">
-                          <span className="font-montserrat text-[9px] text-white/40 uppercase tracking-widest">League Standing</span>
+                          <span className="font-montserrat text-[9px] text-white/60 uppercase tracking-widest">League Standing</span>
                           <span className="font-montserrat text-[10px] font-bold" style={{ color: team.color }}>
                             #{team.rank} of 4
                           </span>
@@ -306,14 +306,14 @@ export default function TeamsPage() {
                     <div className="lg:col-span-4 flex flex-col justify-between h-full">
                       {/* Owner card */}
                       <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl hover:border-white/10 transition-colors mb-6">
-                        <div className="font-montserrat text-[8px] text-white/40 uppercase tracking-widest mb-3">Team Owner</div>
-                        <div className="font-cinzel font-light text-white text-xl mb-1">
+                        <div className="font-montserrat text-[8px] text-white/60 uppercase tracking-widest mb-3">Team Owner</div>
+                        <div className="font-cinzel font-bold text-white text-xl mb-1">
                           {team.owner.name}
                         </div>
                         <div className="font-montserrat text-[10px] uppercase tracking-widest mb-4" style={{ color: team.color }}>
                           {team.owner.title}
                         </div>
-                        <div className="font-montserrat text-white/40 text-xs italic leading-relaxed">
+                        <div className="font-montserrat text-white/60 text-xs italic leading-relaxed">
                           "{team.owner.quote}"
                         </div>
                       </div>
@@ -353,7 +353,7 @@ export default function TeamsPage() {
             </span>
             <div className="w-8 h-px bg-white/10" />
           </div>
-          <h2 className="font-cinzel font-light text-white text-4xl sm:text-5xl mb-6">
+          <h2 className="font-cinzel font-bold text-white text-4xl sm:text-5xl mb-6">
             ONE LEGACY TO <span className="text-[#D4AF37] italic">BUILD.</span>
           </h2>
           <p className="font-montserrat text-white/50 text-sm tracking-wide mb-10 max-w-md mx-auto">

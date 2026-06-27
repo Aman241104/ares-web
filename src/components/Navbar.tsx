@@ -132,18 +132,18 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Buttons */}
-            <div className="hidden xl:flex items-center gap-2.5 flex-shrink-0">
+            <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
               <Link
                 href="/contact"
-                className="btn-secondary whitespace-nowrap"
-                style={{ padding: "9px 18px", fontSize: "9.5px", letterSpacing: "0.18em" }}
+                className="btn-ghost whitespace-nowrap"
+                style={{ fontSize: "9px", letterSpacing: "0.2em" }}
               >
                 Contact
               </Link>
               <Link
                 href="/web-partner"
                 className="btn-primary whitespace-nowrap"
-                style={{ padding: "9px 20px", fontSize: "9.5px", letterSpacing: "0.18em" }}
+                style={{ padding: "9px 22px", fontSize: "9px", letterSpacing: "0.22em" }}
               >
                 Build Your Site
               </Link>

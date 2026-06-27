@@ -98,7 +98,7 @@ export default function RulesPage() {
             <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Know the Game</span>
           </div>
 
-          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+          <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Tournament</span>
             <span
               className="h-title-split block"
@@ -116,7 +116,7 @@ export default function RulesPage() {
 
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <p className="font-montserrat text-white/40 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+            <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
               ABL 2026 · Official Regulations
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
@@ -172,7 +172,7 @@ export default function RulesPage() {
                   />
                   {/* Ghost number watermark */}
                   <div
-                    className="absolute -bottom-2 -right-2 font-cinzel font-light text-[80px] leading-none select-none pointer-events-none"
+                    className="absolute -bottom-2 -right-2 font-cinzel font-bold text-[80px] leading-none select-none pointer-events-none"
                     style={{ color: meta.accent + "08" }}
                   >
                     {meta.number}
@@ -220,7 +220,7 @@ export default function RulesPage() {
       <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5 sr">
         <div className="max-w-4xl mx-auto">
           <div className="section-label mx-auto mb-10">Common Questions</div>
-          <h2 className="font-cinzel font-light text-white text-center mb-12" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+          <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
             Frequently Asked <span className="text-[#D4AF37]">Questions</span>
           </h2>
 
@@ -265,11 +265,11 @@ export default function RulesPage() {
           <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-8">
             <Scale className="w-6 h-6 text-[#D4AF37]" />
           </div>
-          <h2 className="font-cinzel font-light text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+          <h2 className="font-cinzel font-bold text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
             PLAY FAIR. <span className="text-[#D4AF37]">WIN HARD.</span>
           </h2>
           <div className="gold-divider max-w-xs mx-auto mb-6" />
-          <p className="font-montserrat text-white/40 text-xs leading-[2] mb-10 tracking-wide">
+          <p className="font-montserrat text-white/60 text-xs leading-[2] mb-10 tracking-wide">
             The arena rewards discipline, strategy, and relentless execution. Still have questions? Our team is here to help.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

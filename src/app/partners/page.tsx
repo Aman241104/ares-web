@@ -58,7 +58,7 @@ export default function PartnersPage() {
             <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Building Together</span>
           </div>
 
-          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+          <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Our</span>
             <span
               className="h-title-split block"
@@ -76,7 +76,7 @@ export default function PartnersPage() {
 
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <p className="font-montserrat text-white/40 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+            <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
               ABL 2026 · Official Supporters
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
@@ -101,7 +101,7 @@ export default function PartnersPage() {
               <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
                 {s.icon}
               </div>
-              <div className="font-cinzel font-light text-3xl text-[#D4AF37] mb-1.5 number-glow">{s.num}</div>
+              <div className="font-cinzel font-bold text-3xl text-[#D4AF37] mb-1.5 number-glow">{s.num}</div>
               <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
             </div>
           ))}
@@ -112,7 +112,7 @@ export default function PartnersPage() {
       <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <div className="section-label mx-auto mb-3">Featured Partner</div>
-          <h2 className="font-cinzel font-light text-white text-center mb-12" style={{ fontSize: "clamp(24px, 3.5vw, 44px)" }}>
+          <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 3.5vw, 44px)" }}>
             Official <span className="text-[#D4AF37]">Web Partner</span>
           </h2>
 
@@ -130,7 +130,7 @@ export default function PartnersPage() {
                 <div className="h-px w-8 bg-[#FFC200]/65" />
               </div>
               <h3
-                className="font-cinzel font-light mb-4 tracking-widest"
+                className="font-cinzel font-bold mb-4 tracking-widest"
                 style={{
                   fontSize: "clamp(32px, 6vw, 64px)",
                   background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #F0D060 100%)",
@@ -142,7 +142,7 @@ export default function PartnersPage() {
                 WebHance
               </h3>
               <div className="gold-divider max-w-xs mx-auto mb-7" />
-              <p className="font-montserrat text-white/40 text-[11px] leading-[2] max-w-lg mx-auto mb-9 tracking-wide">
+              <p className="font-montserrat text-white/60 text-[11px] leading-[2] max-w-lg mx-auto mb-9 tracking-wide">
                 Building digital legacies for India's top business owners. WebHance is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
@@ -166,11 +166,11 @@ export default function PartnersPage() {
               <div className="section-label mb-2 text-left" style={{ textAlign: "left" }}>
                 <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.4em] uppercase">Network</span>
               </div>
-              <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(22px, 3vw, 40px)" }}>
+              <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(22px, 3vw, 40px)" }}>
                 Our <span className="text-[#D4AF37]">Partners</span>
               </h2>
             </div>
-            <Link href="/contact" className="hidden sm:inline-flex items-center gap-2 font-montserrat text-[9px] font-bold text-white/40 uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">
+            <Link href="/contact" className="hidden sm:inline-flex items-center gap-2 font-montserrat text-[9px] font-bold text-white/60 uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">
               Become a Partner <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -254,14 +254,14 @@ export default function PartnersPage() {
                 <Handshake className="w-6 h-6 text-[#D4AF37]" />
               </div>
 
-              <h2 className="font-cinzel font-light text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+              <h2 className="font-cinzel font-bold text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
                 PROUD PARTNERS IN<br className="hidden sm:block" />
                 <span className="text-[#D4AF37]"> BUILDING THE NATION</span>
               </h2>
 
               <div className="gold-divider max-w-xs mx-auto mb-7" />
 
-              <p className="font-montserrat text-white/40 text-[11px] mb-11 max-w-xl mx-auto leading-[2] tracking-wide">
+              <p className="font-montserrat text-white/60 text-[11px] mb-11 max-w-xl mx-auto leading-[2] tracking-wide">
                 Join us as a partner and get exclusive visibility, networking opportunities, and brand association with India's elite business owners and their networks.
               </p>
 

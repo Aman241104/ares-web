@@ -7,6 +7,7 @@ import { teams, partners, commissioners } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,33 +75,7 @@ export default function WallOfFamePage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
-      <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <Image src="/images/luxury_boardroom.png" alt="" fill sizes="100vw" className="object-cover object-center" style={{ filter: "brightness(0.14) saturate(0.5)" }} priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B] via-[#0B132B]/65 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/50 via-transparent to-[#0B132B]" />
-        </div>
-        <div className="absolute inset-0 bg-grid-fine opacity-40 pointer-events-none z-[1]" />
-
-        {/* Trophy right */}
-        <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden lg:flex justify-end items-center pr-10 overflow-hidden pointer-events-none z-[2]">
-          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 60% 50%, rgba(212,175,55,0.12) 0%, transparent 60%)" }} />
-          <Image
-            src="/images/hero-trophy.jpg"
-            alt="Trophy"
-            width={360}
-            height={430}
-            className="relative z-10 object-contain mix-blend-screen"
-            style={{
-              opacity: 0.9,
-              maskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
-              filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
-            }}
-          />
-        </div>
-
+      <PageHero layout="left" className="min-h-[70vh]">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-24">
           <div className="max-w-2xl">
             <div className="h-badge inline-flex items-center gap-3 mb-8 relative">
@@ -134,7 +109,7 @@ export default function WallOfFamePage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* ══════════════ STATS BAR ══════════════ */}
       <section className="py-14 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">

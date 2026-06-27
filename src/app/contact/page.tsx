@@ -111,7 +111,7 @@ export default function ContactPage() {
             <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Software & Digital Solutions</span>
           </div>
 
-          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+          <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Let's Build</span>
             <span
               className="h-title-split block"
@@ -126,7 +126,7 @@ export default function ContactPage() {
               SOMETHING
             </span>
             <span
-              className="block font-cinzel font-light text-white"
+              className="block font-cinzel font-bold text-white"
               style={{ fontSize: "clamp(28px, 6vw, 72px)" }}
             >
               GREAT
@@ -135,7 +135,7 @@ export default function ContactPage() {
 
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <p className="font-montserrat text-white/40 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+            <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
               Website · Software · Mobile · ERP
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
@@ -152,7 +152,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="sr mb-12 text-center">
             <div className="section-label mx-auto mb-2">What We Build</div>
-            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}>
+            <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}>
               Our <span className="text-[#D4AF37]">Services</span>
             </h2>
           </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                   {s.icon}
                 </div>
                 <div className="font-cinzel text-white text-[10px] tracking-wider leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors">{s.title}</div>
-                <div className="font-montserrat text-white/45 text-[8px] leading-relaxed hidden sm:block">{s.desc}</div>
+                <div className="font-montserrat text-white/65 text-[8px] leading-relaxed hidden sm:block">{s.desc}</div>
               </div>
             ))}
           </div>
@@ -193,7 +193,7 @@ export default function ContactPage() {
               <div className="section-label mb-4 text-left" style={{ textAlign: "left" }}>
                 <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.4em] uppercase">Reach Us</span>
               </div>
-              <h2 className="font-cinzel font-light text-white mb-3" style={{ fontSize: "clamp(22px, 3vw, 38px)" }}>
+              <h2 className="font-cinzel font-bold text-white mb-3" style={{ fontSize: "clamp(22px, 3vw, 38px)" }}>
                 Contact <span className="text-[#D4AF37]">Channels</span>
               </h2>
               <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] tracking-wide">
@@ -214,7 +214,7 @@ export default function ContactPage() {
                     <div className="flex-1 min-w-0">
                       <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] mb-1">{c.label}</div>
                       <div className="font-cinzel text-white text-xs tracking-wide truncate mb-0.5 group-hover:text-[#F0D060] transition-colors">{c.value}</div>
-                      <div className="font-montserrat text-white/45 text-[8px] tracking-wider">{c.sub}</div>
+                      <div className="font-montserrat text-white/65 text-[8px] tracking-wider">{c.sub}</div>
                       {c.href && (
                         <a href={c.href} target="_blank" rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 mt-2 font-montserrat text-[8px] uppercase tracking-[0.2em] text-[#D4AF37]/50 hover:text-[#D4AF37] transition-colors">
@@ -261,7 +261,7 @@ export default function ContactPage() {
               <div className="section-label mb-4 text-left" style={{ textAlign: "left" }}>
                 <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.4em] uppercase">Start Your Project</span>
               </div>
-              <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(22px, 3vw, 38px)" }}>
+              <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(22px, 3vw, 38px)" }}>
                 Tell Us What You <span className="text-[#D4AF37]">Need</span>
               </h2>
             </div>
@@ -276,7 +276,7 @@ export default function ContactPage() {
                     <Send className="w-6 h-6 text-[#D4AF37]" />
                   </div>
                   <h3 className="font-cinzel text-white text-2xl mb-3 tracking-wider">Inquiry Sent!</h3>
-                  <p className="font-montserrat text-white/40 text-[10px] leading-[1.9] mb-8 max-w-sm mx-auto tracking-wide">
+                  <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] mb-8 max-w-sm mx-auto tracking-wide">
                     Your message has been opened in WhatsApp. We'll review your project requirements and get back to you shortly.
                   </p>
                   <button onClick={() => setSent(false)} className="btn-secondary text-[9px]">
@@ -389,7 +389,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="sr text-center mb-14">
             <div className="section-label mx-auto mb-3">Our Process</div>
-            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}>
+            <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(26px, 3.5vw, 44px)" }}>
               How We <span className="text-[#D4AF37]">Work</span>
             </h2>
           </div>
@@ -419,7 +419,7 @@ export default function ContactPage() {
 
                 <div className="font-montserrat text-[#D4AF37]/50 text-[8px] uppercase tracking-[0.35em] mb-2">Step {p.step}</div>
                 <h3 className="font-cinzel text-white text-xl tracking-widest mb-4 group-hover:text-[#D4AF37] transition-colors">{p.title}</h3>
-                <p className="font-montserrat text-white/40 text-[10px] leading-[1.9] tracking-wide">{p.desc}</p>
+                <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] tracking-wide">{p.desc}</p>
               </div>
             ))}
           </div>

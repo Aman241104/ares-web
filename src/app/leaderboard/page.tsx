@@ -78,26 +78,7 @@ export default function LeaderboardPage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
-      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[380px]">
-        {/* Trophy right side — z-[6] to sit above PageHero visual layers */}
-        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block z-[6]" style={{ width: "45%" }}>
-          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 70% 50%, rgba(212,175,55,0.12) 0%, transparent 65%)" }} />
-          <div className="absolute inset-0 flex items-center justify-center pr-8">
-            <Image
-              src="/images/hero-trophy.jpg"
-              alt="Championship Trophy"
-              width={360}
-              height={430}
-              className="relative z-10 object-contain mix-blend-screen"
-              style={{
-                opacity: 0.9,
-                maskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
-                WebkitMaskImage: "radial-gradient(ellipse 65% 75% at 50% 50%, black 30%, transparent 100%)",
-                filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
-              }}
-            />
-          </div>
-        </div>
+      <PageHero layout="left" className="min-h-[380px]">
 
         <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-24 z-10">
           <div className="max-w-2xl">
@@ -107,7 +88,7 @@ export default function LeaderboardPage() {
               <span className="font-montserrat text-green-400/80 text-[9px] font-bold tracking-[0.4em] uppercase relative z-10">Live Rankings</span>
             </div>
 
-            <h1 className="h-title font-cinzel font-light text-white mb-6 leading-none">
+            <h1 className="h-title font-cinzel font-bold text-white mb-6 leading-none">
               <span style={{ fontSize: "clamp(40px, 8vw, 100px)", display: "block" }}>LEADER</span>
               <span
                 style={{
@@ -128,7 +109,7 @@ export default function LeaderboardPage() {
               <div className="h-px w-8 bg-[#FFC200]/65" />
               <div>
                 <div className="font-montserrat text-white/55 text-[10px] font-bold tracking-[0.35em] uppercase mb-1">Live Standings · Real Impact</div>
-                <p className="font-montserrat text-white/45 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
+                <p className="font-montserrat text-white/65 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
               </div>
             </div>
           </div>
@@ -145,7 +126,7 @@ export default function LeaderboardPage() {
             {/* Filters */}
             <div className="flex flex-wrap gap-2 sr">
               {["Week 2 (Current)", "All Teams", "All Categories", "Reset Filters"].map((f, i) => (
-                <button key={f} className={`font-montserrat text-[10px] font-bold px-4 py-2 rounded-full border transition-all uppercase tracking-wider ${i === 3 ? "border-white/10 text-white/40 hover:bg-white/5" : "border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"}`}>
+                <button key={f} className={`font-montserrat text-[10px] font-bold px-4 py-2 rounded-full border transition-all uppercase tracking-wider ${i === 3 ? "border-white/10 text-white/60 hover:bg-white/5" : "border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"}`}>
                   {f}
                 </button>
               ))}
@@ -157,7 +138,7 @@ export default function LeaderboardPage() {
                 <div className="min-w-[800px]">
                   <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.02]">
                     {[["col-span-1", "Rk"], ["col-span-4", "Team"], ["col-span-2 text-right", "Total Pts"], ["col-span-2 text-right", "Wk2 Pts"], ["col-span-2 text-center", "Trend"], ["col-span-1 text-center", "↕"]].map(([cls, h]) => (
-                      <div key={h} className={`${cls} font-montserrat text-white/40 text-[9px] uppercase tracking-[0.2em]`}>{h}</div>
+                      <div key={h} className={`${cls} font-montserrat text-white/60 text-[9px] uppercase tracking-[0.2em]`}>{h}</div>
                     ))}
                   </div>
 
@@ -186,12 +167,12 @@ export default function LeaderboardPage() {
                             <Link href={`/teams/${team.id}`} className="font-cinzel tracking-widest text-white text-sm hover:text-[#D4AF37] transition-colors uppercase block">
                               {team.name}
                             </Link>
-                            <div className="font-montserrat text-white/40 text-[9px] mt-1 tracking-widest uppercase">{team.fullName.split(" ").at(-1)}</div>
+                            <div className="font-montserrat text-white/60 text-[9px] mt-1 tracking-widest uppercase">{team.fullName.split(" ").at(-1)}</div>
                           </div>
                         </div>
                         
                         <div className="col-span-2 text-right">
-                          <span className="font-cinzel font-light text-2xl" style={{ color: team.color }}>{team.points.toLocaleString()}</span>
+                          <span className="font-cinzel font-bold text-2xl" style={{ color: team.color }}>{team.points.toLocaleString()}</span>
                         </div>
                         
                         <div className="col-span-2 text-right">
@@ -283,8 +264,8 @@ export default function LeaderboardPage() {
                       </div>
                     </div>
                     <div className="font-cinzel tracking-wider text-white text-[11px] mb-1">{p.name}</div>
-                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/40">{p.team}</div>
-                    <div className="font-cinzel font-light text-lg" style={{color:p.teamColor}}>{p.value}</div>
+                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/60">{p.team}</div>
+                    <div className="font-cinzel font-bold text-lg" style={{color:p.teamColor}}>{p.value}</div>
                   </div>
                 ))}
               </div>
@@ -334,8 +315,8 @@ export default function LeaderboardPage() {
               </div>
 
               <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl text-center">
-                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
-                <div className="font-cinzel font-light text-5xl text-[#D4AF37] mb-1">1,500</div>
+                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
+                <div className="font-cinzel font-bold text-5xl text-[#D4AF37] mb-1">1,500</div>
                 <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">PTS</div>
               </div>
             </div>

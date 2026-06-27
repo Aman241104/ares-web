@@ -3,60 +3,44 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 
-/* Fixed particle coords — stable across renders */
 const PARTICLES = [
-  { x: 42, delay: 0,   dur: 5.5, size: 1.5, op: 0.35 },
-  { x: 55, delay: 1.2, dur: 6.2, size: 1.0, op: 0.28 },
-  { x: 63, delay: 0.7, dur: 4.8, size: 2.0, op: 0.32 },
-  { x: 71, delay: 2.1, dur: 7.0, size: 1.5, op: 0.22 },
-  { x: 48, delay: 0.4, dur: 5.0, size: 2.5, op: 0.40 },
-  { x: 59, delay: 1.8, dur: 6.5, size: 1.0, op: 0.30 },
-  { x: 68, delay: 0.9, dur: 8.0, size: 1.8, op: 0.24 },
-  { x: 75, delay: 3.0, dur: 5.2, size: 1.2, op: 0.35 },
-  { x: 82, delay: 1.5, dur: 6.8, size: 2.0, op: 0.20 },
-  { x: 38, delay: 2.5, dur: 4.5, size: 1.5, op: 0.40 },
-  { x: 52, delay: 4.0, dur: 7.5, size: 1.0, op: 0.30 },
-  { x: 65, delay: 0.2, dur: 5.8, size: 2.2, op: 0.26 },
-  { x: 79, delay: 1.1, dur: 6.3, size: 1.0, op: 0.22 },
-  { x: 86, delay: 3.5, dur: 4.2, size: 1.8, op: 0.30 },
-  { x: 44, delay: 2.8, dur: 7.2, size: 2.0, op: 0.24 },
-  { x: 57, delay: 0.6, dur: 5.4, size: 1.5, op: 0.32 },
-  { x: 73, delay: 1.9, dur: 6.0, size: 1.0, op: 0.28 },
-  { x: 88, delay: 4.5, dur: 8.5, size: 2.5, op: 0.18 },
+  { x: 6,  y: 72, delay: 0,   dur: 7.0, size: 1.5, op: 0.50 },
+  { x: 14, y: 58, delay: 1.4, dur: 5.5, size: 1.0, op: 0.40 },
+  { x: 22, y: 80, delay: 0.7, dur: 8.0, size: 2.0, op: 0.35 },
+  { x: 30, y: 45, delay: 2.1, dur: 6.2, size: 1.5, op: 0.45 },
+  { x: 38, y: 68, delay: 0.3, dur: 5.8, size: 1.2, op: 0.38 },
+  { x: 11, y: 35, delay: 1.9, dur: 7.5, size: 2.0, op: 0.28 },
+  { x: 26, y: 88, delay: 3.2, dur: 6.0, size: 1.0, op: 0.42 },
+  { x: 18, y: 52, delay: 0.6, dur: 9.0, size: 1.8, op: 0.30 },
+  { x: 8,  y: 25, delay: 4.0, dur: 5.2, size: 1.2, op: 0.32 },
+  { x: 34, y: 75, delay: 1.5, dur: 6.8, size: 2.0, op: 0.25 },
+  { x: 42, y: 40, delay: 2.5, dur: 4.5, size: 1.5, op: 0.30 },
+  { x: 20, y: 62, delay: 0.2, dur: 5.8, size: 1.0, op: 0.28 },
 ];
 
 interface PageHeroProps {
-  /** Background image for the hero. Defaults to hero_arena.png. */
+  /** Override default background. Defaults to hero_trophy_stadium.png */
   backgroundImage?: string;
-  /** Show the championship trophy on the right side. */
+  /** @deprecated — trophy is now in the background image, not a separate overlay */
   showTrophy?: boolean;
-  /** Shifts the central ambient glow: "centered" = 50%, "left" = 38% */
   layout?: "centered" | "left";
-  /** Page hero content — rendered above all visual layers. */
   children: ReactNode;
-  /** Extra Tailwind classes on the <section> (height, padding, etc.) */
   className?: string;
+  /** How bright the background image should be — adjust per page. Default 0.72 */
+  imageBrightness?: number;
 }
 
-/**
- * Cinematic hero container shared by all inner pages.
- * Provides: background image, dramatic conic-gradient light rays from top-right,
- * floating gold particles, subtle grain, and an optional trophy.
- * Pages pass their own badge/title/cta JSX as children (keeps existing GSAP hooks intact).
- */
 export default function PageHero({
-  backgroundImage = "/images/hero_arena.png",
-  showTrophy = false,
+  backgroundImage = "/images/hero_trophy_stadium.png",
   layout = "centered",
   children,
   className = "",
+  imageBrightness = 0.72,
 }: PageHeroProps) {
-  const glowX = layout === "centered" ? "50%" : "38%";
-
   return (
     <section className={`relative flex items-center overflow-hidden ${className}`}>
 
-      {/* ── BACKGROUND IMAGE ─────────────────── z-0 */}
+      {/* ── FULL-BLEED BACKGROUND — trophy stadium, large and cinematic ── z-0 */}
       <div className="absolute inset-0 z-0">
         <Image
           src={backgroundImage}
@@ -65,143 +49,85 @@ export default function PageHero({
           sizes="100vw"
           className="object-cover object-center"
           priority
-          style={{ filter: "blur(0.5px) brightness(0.38) saturate(1.3)" }}
+          style={{ filter: `brightness(${imageBrightness}) saturate(1.1)` }}
         />
       </div>
 
-      {/* ── GRADIENT OVERLAYS ────────────────── z-[1] */}
+      {/* ── DIRECTIONAL OVERLAY — dark left (text), let right show image ── z-[1] */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/40 via-transparent to-[#0B132B]/95" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/55 via-transparent to-[#0B132B]/30" />
+        {/* Main left-to-right gradient — dark left for text, fades right to show trophy */}
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(95deg, rgba(7,12,28,0.97) 0%, rgba(7,12,28,0.94) 25%, rgba(7,12,28,0.72) 45%, rgba(7,12,28,0.25) 65%, transparent 80%)"
+        }} />
+        {/* Top fade for navbar */}
+        <div className="absolute top-0 left-0 right-0" style={{
+          height: "28%",
+          background: "linear-gradient(180deg, rgba(7,12,28,0.80) 0%, transparent 100%)"
+        }} />
+        {/* Bottom fade into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B132B] to-transparent" />
+        {/* Subtle right vignette — doesn't kill the image, just softens the hard edge */}
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(270deg, rgba(7,12,28,0.45) 0%, transparent 30%)"
+        }} />
       </div>
 
-      {/* ── DRAMATIC LIGHT RAYS (top-right origin) ── z-[2] */}
+      {/* ── SUBTLE GOLD RAYS from top-right ── z-[2] */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-
-        {/* Primary fan — main golden rays fanning toward bottom-left */}
-        <div
-          className="absolute inset-[-8%] rays-breathe"
-          style={{
-            background: `conic-gradient(
-              from 0deg at 94% 0%,
-              transparent   0deg,
-              transparent 183deg,
-              rgba(255,194,0,0.28) 196deg,
-              rgba(255,210,0,0.18) 206deg,
-              transparent         216deg,
-              rgba(255,194,0,0.22) 226deg,
-              rgba(255,210,0,0.14) 234deg,
-              transparent         244deg,
-              rgba(255,194,0,0.16) 254deg,
-              rgba(255,194,0,0.08) 264deg,
-              transparent         274deg,
-              rgba(255,194,0,0.12) 284deg,
-              transparent         298deg,
-              transparent         360deg
-            )`,
-            filter: "blur(4px)",
-          }}
-        />
-
-        {/* Secondary, softer rays — slightly offset origin for depth */}
-        <div
-          className="absolute inset-[-8%]"
-          style={{
-            background: `conic-gradient(
-              from 0deg at 88% 0%,
-              transparent   0deg,
-              transparent 198deg,
-              rgba(255,194,0,0.14) 212deg,
-              transparent         228deg,
-              rgba(255,194,0,0.10) 244deg,
-              transparent         262deg,
-              rgba(255,194,0,0.07) 278deg,
-              transparent         296deg,
-              transparent         360deg
-            )`,
-            filter: "blur(14px)",
-          }}
-        />
-
-        {/* Bloom hotspot — stadium floodlight glow at top-right */}
-        <div
-          className="absolute top-[-8%] right-[-5%]"
-          style={{
-            width: "48%",
-            height: "60%",
-            background:
-              "radial-gradient(ellipse 76% 76% at 88% 8%, rgba(255,194,0,0.38) 0%, rgba(255,194,0,0.12) 38%, transparent 68%)",
-            filter: "blur(28px)",
-          }}
-        />
-
-        {/* Central ambient gold glow */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 74% 64% at ${glowX} 56%, rgba(255,194,0,0.10) 0%, transparent 72%)`,
-          }}
-        />
+        <div className="absolute inset-[-10%]" style={{
+          background: `conic-gradient(
+            from 0deg at 93% -4%,
+            transparent   0deg,
+            transparent 176deg,
+            rgba(255,194,0,0.07) 186deg,
+            rgba(255,220,0,0.10) 194deg,
+            transparent         204deg,
+            rgba(255,194,0,0.06) 214deg,
+            transparent         226deg,
+            transparent         360deg
+          )`,
+          filter: "blur(3px)",
+        }} />
       </div>
 
-      {/* ── FLOATING GOLD PARTICLES ──────────── z-[3] */}
-      <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
+      {/* ── FINE GRID TEXTURE ── z-[3] */}
+      <div className="absolute inset-0 z-[3] pointer-events-none" style={{
+        backgroundImage: "linear-gradient(rgba(255,194,0,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,194,0,0.022) 1px, transparent 1px)",
+        backgroundSize: "60px 60px",
+      }} />
+
+      {/* ── STRUCTURAL GOLD LINES ── z-[4] */}
+      <div className="absolute inset-0 z-[4] pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.40) 20%, rgba(255,194,0,0.60) 45%, rgba(255,194,0,0.25) 70%, transparent)" }} />
+        <div className="absolute top-[15%] bottom-[15%] left-0 w-[2px]" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.55) 30%, rgba(255,194,0,0.80) 50%, rgba(255,194,0,0.55) 70%, transparent)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-[1px]" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.50) 0%, rgba(255,194,0,0.18) 45%, transparent 70%)" }} />
+      </div>
+
+      {/* ── FLOATING GOLD PARTICLES (left side only — text area) ── z-[5] */}
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
         {PARTICLES.map((p, i) => (
           <div
             key={i}
             className="absolute rounded-full particle-float"
             style={{
               left: `${p.x}%`,
-              bottom: "4%",
-              width:  `${p.size}px`,
+              top: `${p.y}%`,
+              width: `${p.size}px`,
               height: `${p.size}px`,
               background: `rgba(255,194,0,${p.op})`,
-              boxShadow: `0 0 ${p.size * 3}px rgba(255,194,0,${p.op * 0.6})`,
-              animationDelay:    `${p.delay}s`,
+              boxShadow: `0 0 ${p.size * 4}px rgba(255,194,0,${p.op * 0.5})`,
+              animationDelay: `${p.delay}s`,
               animationDuration: `${p.dur}s`,
             }}
           />
         ))}
       </div>
 
-      {/* ── GRAIN OVERLAY ────────────────────── z-[4] */}
-      <div
-        className="absolute inset-0 z-[4] pointer-events-none opacity-[0.025]"
-        style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }}
-      />
+      {/* ── GRAIN OVERLAY ── z-[6] */}
+      <div className="absolute inset-0 z-[6] pointer-events-none opacity-[0.03]"
+        style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
-      {/* ── OPTIONAL TROPHY (right side) ─────── z-[5] */}
-      {showTrophy && (
-        <div
-          className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:flex items-center justify-center z-[5]"
-          style={{ width: "44%" }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(circle at 62% 50%, rgba(255,194,0,0.22) 0%, transparent 65%)",
-            }}
-          />
-          <Image
-            src="/images/hero-trophy.jpg"
-            alt="Championship Trophy"
-            width={360}
-            height={440}
-            className="relative object-contain mix-blend-screen"
-            style={{
-              opacity: 0.90,
-              maskImage:
-                "radial-gradient(ellipse 62% 72% at 50% 50%, black 20%, rgba(0,0,0,0.55) 55%, transparent 82%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 62% 72% at 50% 50%, black 20%, rgba(0,0,0,0.55) 55%, transparent 82%)",
-              filter: "brightness(1.22) contrast(1.18) saturate(1.15)",
-            }}
-          />
-        </div>
-      )}
-
-      {/* ── PAGE CONTENT (children must use z-10+) ── */}
+      {/* ── PAGE CONTENT ── z-10+ */}
       {children}
 
     </section>

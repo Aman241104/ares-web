@@ -222,17 +222,22 @@ export default function HomePage() {
 
             {/* Subtext */}
             <div className="h-sub mb-10">
-              <p className="font-cormorant italic text-white/85 leading-relaxed mb-3"
-                style={{ fontSize: "clamp(18px, 2.2vw, 26px)", letterSpacing: "0.02em" }}>
-                India's most elite business tournament.
+              {/* Primary tagline — design guide hero statement */}
+              <p className="font-cinzel font-bold text-white leading-[1.15] mb-4"
+                style={{ fontSize: "clamp(14px, 2.2vw, 22px)", letterSpacing: "0.12em", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
+                COMPETE.{" "}
+                <span style={{ background: "linear-gradient(90deg, #FFC200, #FFD700)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  COLLABORATE.
+                </span>{" "}
+                CREATE IMPACT.
               </p>
-              <p className="font-montserrat text-white/55 text-xs sm:text-sm tracking-[0.15em] uppercase">
+              <p className="font-montserrat text-white/50 text-[9px] sm:text-[10px] tracking-[0.3em] uppercase">
                 4 Teams · 4 Leaders · 1 Mission · June 24 – July 22
               </p>
             </div>
 
             {/* CTAs */}
-            <div className="h-btns flex flex-wrap gap-4">
+            <div className="h-btns flex flex-wrap gap-4 mb-10">
               <Link href="/teams" className="btn-primary px-8 py-4 text-[10px] tracking-[0.25em]">
                 Explore Teams <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -240,26 +245,24 @@ export default function HomePage() {
                 Live Leaderboard
               </Link>
             </div>
-          </div>
-        </div>
 
-        {/* ── STATS DOCK — anchored at bottom ── */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 pb-10 mt-auto">
-          <div className="max-w-2xl relative overflow-hidden border border-[rgba(255,194,0,0.22)] bg-black/70 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
-            <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.9), rgba(255,210,0,1) 30%, rgba(255,194,0,0.6) 60%, transparent)" }} />
-            <div className="absolute top-0 bottom-0 w-[1.5px] pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.5), transparent)", animation: "scan-dock 4s ease-in-out infinite" }} />
-            <div className="flex divide-x divide-[rgba(255,194,0,0.10)] py-5 relative z-10">
-              {[
-                { n: "30",  l: "Owners" },
-                { n: "4",   l: "Factions" },
-                { n: "28",  l: "Days Left" },
-                { n: "₹1Cr",l: "Stakes" },
-              ].map((s) => (
-                <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-6 sm:px-10 flex-1">
-                  <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(22px, 4vw, 36px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
-                  <div className="font-montserrat text-white/55 text-[7px] uppercase tracking-[0.38em] font-bold mt-1.5">{s.l}</div>
-                </div>
-              ))}
+            {/* ── STATS DOCK — inline below CTAs ── */}
+            <div className="h-dock w-full max-w-lg relative overflow-hidden border border-[rgba(255,194,0,0.22)] bg-black/70 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+              <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.9), rgba(255,210,0,1) 30%, rgba(255,194,0,0.6) 60%, transparent)" }} />
+              <div className="absolute top-0 bottom-0 w-[1.5px] pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.5), transparent)", animation: "scan-dock 4s ease-in-out infinite" }} />
+              <div className="flex divide-x divide-[rgba(255,194,0,0.10)] py-5 relative z-10">
+                {[
+                  { n: "30+", l: "Business Owners" },
+                  { n: "4",   l: "Teams" },
+                  { n: "1",   l: "Mission" },
+                  { n: "∞",   l: "Possibilities" },
+                ].map((s) => (
+                  <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-4 sm:px-6 flex-1">
+                    <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(20px, 3vw, 32px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
+                    <div className="font-montserrat text-white/55 text-[6px] uppercase tracking-[0.3em] font-bold mt-1.5 leading-tight">{s.l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

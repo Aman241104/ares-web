@@ -67,7 +67,7 @@ export default function GalleryPage() {
             <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Relive the Moments</span>
           </div>
 
-          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+          <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span
               className="h-title-split block"
               style={{
@@ -90,7 +90,7 @@ export default function GalleryPage() {
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
 
-          <p className="font-montserrat text-white/40 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
+          <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-[2] max-w-xl mx-auto tracking-wide">
             Every milestone, every victory, every connection from ARES Business League 2026 — captured and preserved forever.
           </p>
         </div>
@@ -111,13 +111,13 @@ export default function GalleryPage() {
 
               <div className="section-label mx-auto mb-5">Tournament in Progress</div>
 
-              <h2 className="font-cinzel font-light text-white mb-5" style={{ fontSize: "clamp(28px,5vw,56px)" }}>
+              <h2 className="font-cinzel font-bold text-white mb-5" style={{ fontSize: "clamp(28px,5vw,56px)" }}>
                 PHOTOS ARRIVING <span className="text-[#D4AF37]">SOON</span>
               </h2>
 
               <div className="gold-divider max-w-xs mx-auto mb-7" />
 
-              <p className="font-montserrat text-white/40 text-xs sm:text-sm max-w-xl mx-auto leading-[2] tracking-wide mb-10">
+              <p className="font-montserrat text-white/60 text-xs sm:text-sm max-w-xl mx-auto leading-[2] tracking-wide mb-10">
                 Official photos, highlights and videos from every event will be published here throughout the tournament. Check back after each weekly event.
               </p>
 
@@ -150,7 +150,7 @@ export default function GalleryPage() {
               <div className="section-label mb-2">Sneak Peek</div>
               <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">Preview Gallery</h2>
             </div>
-            <div className="font-montserrat text-white/45 text-[8px] uppercase tracking-[0.3em]">More coming soon</div>
+            <div className="font-montserrat text-white/65 text-[8px] uppercase tracking-[0.3em]">More coming soon</div>
           </div>
 
           {/* Masonry-style grid */}
@@ -175,7 +175,7 @@ export default function GalleryPage() {
                   <div className="font-cinzel text-white text-xs tracking-wider">{img.label}</div>
                 </div>
                 {/* Placeholder overlay */}
-                <div className="absolute top-3 right-3 font-montserrat text-[7px] uppercase tracking-[0.2em] text-white/40 bg-black/60 border border-white/10 px-2 py-1">
+                <div className="absolute top-3 right-3 font-montserrat text-[7px] uppercase tracking-[0.2em] text-white/60 bg-black/60 border border-white/10 px-2 py-1">
                   Preview
                 </div>
               </div>
@@ -200,12 +200,12 @@ export default function GalleryPage() {
             ].map((w) => (
               <div key={w.week} className={`relative p-6 border transition-all duration-300 ${w.status === "in-progress" ? "border-[rgba(212,175,55,0.25)] bg-[#D4AF37]/5" : w.status === "completed" ? "border-green-500/20 bg-green-500/4" : "border-white/6 bg-[#111827]"}`}>
                 {w.status === "in-progress" && <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />}
-                <div className={`font-montserrat text-[7px] uppercase tracking-[0.3em] mb-2 font-semibold ${w.status === "in-progress" ? "text-[#D4AF37]" : w.status === "completed" ? "text-green-400/70" : "text-white/45"}`}>
+                <div className={`font-montserrat text-[7px] uppercase tracking-[0.3em] mb-2 font-semibold ${w.status === "in-progress" ? "text-[#D4AF37]" : w.status === "completed" ? "text-green-400/70" : "text-white/65"}`}>
                   {w.status === "in-progress" ? "● Live" : w.status === "completed" ? "✓ Captured" : "○ Upcoming"}
                 </div>
                 <div className="font-cinzel text-white text-base tracking-widest mb-1">{w.week}</div>
                 <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em] mb-3">{w.dates}</div>
-                <div className="font-montserrat text-white/40 text-[9px] leading-relaxed">{w.events}</div>
+                <div className="font-montserrat text-white/60 text-[9px] leading-relaxed">{w.events}</div>
               </div>
             ))}
           </div>

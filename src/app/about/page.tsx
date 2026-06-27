@@ -99,7 +99,7 @@ export default function AboutPage() {
               <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">The Arena Is Set · 2026</span>
             </div>
 
-            <h1 className="font-cinzel font-light text-white leading-none mb-8">
+            <h1 className="font-cinzel font-bold text-white leading-none mb-8">
               <span className="h-title-split block" style={{ fontSize: "clamp(44px, 8vw, 96px)" }}>ABOUT</span>
               <span
                 className="block mt-2 tracking-[0.08em]"
@@ -128,7 +128,7 @@ export default function AboutPage() {
                 ].map((s, i) => (
                   <div key={s.label} className="relative">
                     {i !== 0 && <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />}
-                    <div className="font-cinzel font-light text-[#D4AF37] text-3xl mb-1 number-glow">{s.val}</div>
+                    <div className="font-cinzel font-bold text-[#D4AF37] text-3xl mb-1 number-glow">{s.val}</div>
                     <div className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.25em]">{s.label}</div>
                   </div>
                 ))}
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <h3 className="font-cinzel font-light tracking-widest text-[#D4AF37] text-lg text-center mb-1 uppercase">Ares Business League</h3>
+              <h3 className="font-cinzel font-bold tracking-widest text-[#D4AF37] text-lg text-center mb-1 uppercase">Ares Business League</h3>
               <div className="font-montserrat text-white/55 text-[8px] tracking-[0.3em] uppercase text-center mb-7">2026 — Nation Builders Edition</div>
 
               <div className="space-y-0 divide-y divide-white/5">
@@ -196,14 +196,14 @@ export default function AboutPage() {
                   Leaders Compete.<br />
                   <span className="text-[#D4AF37]">Nation Progresses.</span>
                 </p>
-                <div className="mt-6 font-montserrat text-white/45 text-[9px] tracking-[0.35em] uppercase">The ABL 2026 Creed</div>
+                <div className="mt-6 font-montserrat text-white/65 text-[9px] tracking-[0.35em] uppercase">The ABL 2026 Creed</div>
               </div>
             </div>
 
             {/* Mission text */}
             <div className="sr order-1 lg:order-2">
               <div className="section-label mb-5">Our Purpose</div>
-              <h2 className="font-cinzel font-light text-white leading-tight mb-7" style={{ fontSize: "clamp(32px,4.5vw,54px)" }}>
+              <h2 className="font-cinzel font-bold text-white leading-tight mb-7" style={{ fontSize: "clamp(32px,4.5vw,54px)" }}>
                 THE <span className="text-[#D4AF37]">MISSION</span>
               </h2>
               <p className="font-montserrat text-white/55 text-sm leading-[2] tracking-wide mb-6">
@@ -227,7 +227,7 @@ export default function AboutPage() {
                   {item.icon}
                 </div>
                 <h3 className="font-cinzel tracking-[0.2em] text-white text-lg mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
-                <p className="font-montserrat text-white/40 text-[10px] leading-[1.9] tracking-wider">{item.desc}</p>
+                <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] tracking-wider">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -243,7 +243,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 sr">
             <div className="section-label mx-auto mb-5">Core Principles</div>
-            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(28px,4vw,48px)" }}>
+            <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(28px,4vw,48px)" }}>
               THE <span className="text-[#D4AF37]">VALUES</span>
             </h2>
           </div>
@@ -274,7 +274,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 sr">
             <div className="section-label mx-auto mb-5">The Champions</div>
-            <h2 className="font-cinzel font-light text-white" style={{ fontSize: "clamp(28px,4vw,48px)" }}>
+            <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(28px,4vw,48px)" }}>
               MEET THE <span className="text-[#D4AF37]">LEADERS</span>
             </h2>
           </div>
@@ -301,7 +301,7 @@ export default function AboutPage() {
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] mb-1.5" style={{ color: leader.color }}>{leader.role}</div>
                     <h3 className="font-cinzel tracking-wider text-white text-sm leading-tight mb-1">{leader.name}</h3>
-                    <div className="font-montserrat text-white/40 text-[8px] tracking-[0.2em] uppercase">{leader.faction}</div>
+                    <div className="font-montserrat text-white/60 text-[8px] tracking-[0.2em] uppercase">{leader.faction}</div>
                   </div>
                 </div>
               </div>
@@ -317,10 +317,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">How Points Work</div>
-            <h2 className="font-cinzel font-light text-white leading-tight mb-5" style={{ fontSize: "clamp(28px,4vw,52px)" }}>
+            <h2 className="font-cinzel font-bold text-white leading-tight mb-5" style={{ fontSize: "clamp(28px,4vw,52px)" }}>
               THE POINT <span className="text-[#D4AF37]">SYSTEM</span>
             </h2>
-            <p className="font-montserrat text-white/40 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto tracking-wide">
+            <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto tracking-wide">
               Every referral, every meeting, every business generated earns points. Here is exactly how the scoreboard moves.
             </p>
           </div>
@@ -331,7 +331,7 @@ export default function AboutPage() {
               <div className="px-7 py-5 border-b border-white/5 flex items-center gap-3 bg-[#D4AF37]/5">
                 <Trophy className="w-4 h-4 text-[#D4AF37]" />
                 <span className="font-cinzel text-white text-xs tracking-[0.25em] uppercase">Core Scoring</span>
-                <span className="ml-auto font-montserrat text-white/45 text-[8px] uppercase tracking-widest">Per Week</span>
+                <span className="ml-auto font-montserrat text-white/65 text-[8px] uppercase tracking-widest">Per Week</span>
               </div>
               <div className="divide-y divide-white/5 bg-[#111827]">
                 {[
@@ -413,7 +413,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
         <div className="max-w-3xl mx-auto sr relative">
           <div className="section-label mx-auto mb-6">Join The Arena</div>
-          <h2 className="font-cinzel font-light text-white mb-6" style={{ fontSize: "clamp(32px,5vw,64px)" }}>
+          <h2 className="font-cinzel font-bold text-white mb-6" style={{ fontSize: "clamp(32px,5vw,64px)" }}>
             READY TO <span className="text-[#D4AF37]">COMPETE?</span>
           </h2>
           <p className="font-montserrat text-white/70 text-sm tracking-wide mb-10 max-w-xl mx-auto leading-[2]">

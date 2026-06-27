@@ -61,7 +61,7 @@ export default function BlogPage() {
             <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Insights from the Arena</span>
           </div>
 
-          <h1 className="font-cinzel font-light text-white mb-8 leading-none">
+          <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block font-montserrat text-white/55 text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">The Arena</span>
             <span
               className="h-title-split block"
@@ -79,7 +79,7 @@ export default function BlogPage() {
 
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <p className="font-montserrat text-white/40 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
+            <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
               Stories · Strategies · Unfiltered Insights
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
@@ -142,13 +142,13 @@ export default function BlogPage() {
                 <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 border border-[#D4AF37]/30 bg-[#D4AF37]/10">
                   {featured.category}
                 </span>
-                <span className="font-montserrat text-white/40 text-[9px] tracking-widest uppercase">{featured.date}</span>
-                <span className="font-montserrat text-white/45 text-[9px]">·</span>
-                <span className="font-montserrat text-white/40 text-[9px] tracking-widest uppercase">{featured.readTime}</span>
+                <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.date}</span>
+                <span className="font-montserrat text-white/65 text-[9px]">·</span>
+                <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.readTime}</span>
               </div>
 
               <h2
-                className="font-cinzel font-light text-white mb-5 leading-tight group-hover:text-[#D4AF37] transition-colors duration-500"
+                className="font-cinzel font-bold text-white mb-5 leading-tight group-hover:text-[#D4AF37] transition-colors duration-500"
                 style={{ fontSize: "clamp(22px, 4vw, 52px)" }}
               >
                 {featured.title}
@@ -234,14 +234,14 @@ export default function BlogPage() {
                                 {post.author}
                               </span>
                               <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{post.date}</span>
-                              <span className="font-montserrat text-white/45 text-[8px]">·</span>
+                              <span className="font-montserrat text-white/65 text-[8px]">·</span>
                               <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-widest">{post.readTime}</span>
                             </div>
 
                             <h2 className="font-cinzel text-white text-lg leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors duration-300 tracking-wide">
                               {post.title}
                             </h2>
-                            <p className="font-montserrat text-white/40 text-[10px] leading-[1.9] line-clamp-3 tracking-wide">
+                            <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] line-clamp-3 tracking-wide">
                               {post.excerpt}
                             </p>
                           </div>
@@ -277,7 +277,7 @@ export default function BlogPage() {
                   {blogCategories.map((cat) => (
                     <span
                       key={cat}
-                      className="font-montserrat text-[8px] font-bold border border-white/8 px-3 py-1.5 text-white/40 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/8 cursor-pointer transition-all duration-300 uppercase tracking-[0.2em]"
+                      className="font-montserrat text-[8px] font-bold border border-white/8 px-3 py-1.5 text-white/60 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] hover:bg-[#D4AF37]/8 cursor-pointer transition-all duration-300 uppercase tracking-[0.2em]"
                     >
                       {cat}
                     </span>
@@ -330,7 +330,7 @@ export default function BlogPage() {
                   <div className="w-12 h-12 border border-[#D4AF37]/30 bg-[#D4AF37]/8 flex items-center justify-center mx-auto mb-5">
                     <PenLine className="w-5 h-5 text-[#D4AF37]" />
                   </div>
-                  <h3 className="font-cinzel font-light text-white text-base tracking-wider mb-3">Want to Contribute?</h3>
+                  <h3 className="font-cinzel font-bold text-white text-base tracking-wider mb-3">Want to Contribute?</h3>
                   <p className="font-montserrat text-white/60 text-[9px] leading-[1.9] mb-7 tracking-wide">
                     Share your thoughts on business, leadership, and nation-building with the Arena community.
                   </p>
