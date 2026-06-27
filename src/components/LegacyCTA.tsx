@@ -43,7 +43,7 @@ export default function LegacyCTA() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 80% at 50% 100%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 20%, rgba(240,208,96,0.8) 50%, rgba(212,175,55,0.5) 80%, transparent 100%)" }} />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32 relative">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 sm:pt-32 pb-36 sm:pb-32 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* LEFT — Trophy visual */}
@@ -98,10 +98,12 @@ export default function LegacyCTA() {
             {/* Offerings grid */}
             <div className="grid grid-cols-2 gap-3 mb-9">
               {OFFERINGS.map((o) => (
-                <div key={o.title} className="group relative flex items-start gap-3.5 p-5 border border-white/6 hover:border-[rgba(212,175,55,0.28)] bg-[#0D1424] hover:bg-[#111827] transition-all duration-400 overflow-hidden">
+                <div key={o.title} className={`group relative flex items-start gap-3.5 border border-white/6 hover:border-[rgba(212,175,55,0.28)] bg-[#0D1424] hover:bg-[#111827] transition-all duration-400 overflow-hidden ${o.badge ? "p-5 pt-8" : "p-5"}`}>
                   {o.badge && (
-                    <div className="absolute top-2.5 right-2.5 font-montserrat text-[6px] uppercase tracking-[0.2em] text-[#D4AF37] border border-[#D4AF37]/30 px-1.5 py-0.5">
-                      {o.badge}
+                    <div className="absolute top-2.5 left-0 right-0 flex justify-center pointer-events-none">
+                      <span className="font-montserrat text-[6px] uppercase tracking-[0.2em] text-[#D4AF37] border border-[#D4AF37]/30 bg-[#0D1424] px-2 py-0.5">
+                        {o.badge}
+                      </span>
                     </div>
                   )}
                   <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-sm border border-[#D4AF37]/15 bg-[#D4AF37]/14 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:bg-[#D4AF37]/12 group-hover:border-[#D4AF37]/28 transition-all duration-300 mt-0.5">

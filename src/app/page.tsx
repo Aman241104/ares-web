@@ -346,29 +346,29 @@ export default function HomePage() {
 
               <div className="overflow-hidden border border-[rgba(255,194,0,0.20)] rounded-sm backdrop-blur-sm shadow-[0_0_0_0.5px_rgba(255,194,0,0.08)]">
                 {/* Header */}
-                <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.05]">
-                  <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">#</div>
-                  <div className="col-span-6 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">Team</div>
-                  <div className="col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Pts</div>
-                  <div className="col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Week</div>
-                  <div className="col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-center">Trend</div>
+                <div className="grid grid-cols-[32px_1fr_auto] sm:grid-cols-12 px-4 sm:px-6 py-4 border-b border-white/5 bg-white/[0.05]">
+                  <div className="sm:col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">#</div>
+                  <div className="sm:col-span-6 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em]">Team</div>
+                  <div className="sm:col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Pts</div>
+                  <div className="hidden sm:block sm:col-span-2 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-right">Week</div>
+                  <div className="hidden sm:block sm:col-span-1 font-montserrat text-white/55 text-[8px] uppercase tracking-[0.25em] text-center">Trend</div>
                 </div>
 
                 {/* Rows */}
                 {sorted.map((team, i) => (
-                  <Link key={team.id} href={`/teams/${team.id}`} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 transition-all duration-300 group relative overflow-hidden"
+                  <Link key={team.id} href={`/teams/${team.id}`} className="grid grid-cols-[32px_1fr_auto] sm:grid-cols-12 px-4 sm:px-6 py-4 sm:py-5 items-center border-b border-white/5 transition-all duration-300 group relative overflow-hidden"
                     style={{ background: i === 0 ? `linear-gradient(90deg, rgba(255,194,0,0.07) 0%, transparent 50%)` : undefined }}
                   >
                     {/* Left team-color bar — always visible for top 3 */}
                     <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: i < 3 ? team.color : "transparent", boxShadow: i === 0 ? `0 0 12px ${team.color}` : "none", opacity: i === 0 ? 1 : 0.5 }} />
                     {/* Hover tint */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}06 0%, transparent 60%)` }} />
-                    {/* #1 LEADER badge */}
-                    {i === 0 && <div className="absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-2 py-0.5">LEADER</div>}
+                    {/* #1 LEADER badge — desktop only */}
+                    {i === 0 && <div className="hidden sm:block absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-2 py-0.5">LEADER</div>}
 
-                    <div className="col-span-1">
+                    <div className="sm:col-span-1 flex items-center">
                       <div
-                        className="font-cinzel text-xl font-light"
+                        className="font-cinzel text-lg sm:text-xl font-light"
                         style={{
                           color: i===0?"#D4AF37":i===1?"#b0bec5":i===2?"#CD7F32":"rgba(255,255,255,0.25)",
                           textShadow: i===0?"0 0 20px rgba(212,175,55,0.4)":i===1?"0 0 15px rgba(176,190,197,0.3)":i===2?"0 0 15px rgba(205,127,50,0.3)":"none",
@@ -378,29 +378,31 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center gap-3 sm:gap-4">
-                      <TeamCrest teamId={team.id} color={team.color} size="md" />
-                      <div>
-                        <div className="font-cinzel text-white text-xs sm:text-sm tracking-widest uppercase group-hover:text-[#F0D060] transition-colors">
+                    <div className="sm:col-span-6 flex items-center gap-2 sm:gap-4 min-w-0">
+                      <TeamCrest teamId={team.id} color={team.color} size="sm" />
+                      <div className="min-w-0">
+                        <div className="font-cinzel text-white text-[10px] sm:text-sm tracking-[0.12em] sm:tracking-widest uppercase group-hover:text-[#F0D060] transition-colors truncate">
                           {team.name}
                         </div>
-                        <div className="font-montserrat text-[9px] mt-0.5 tracking-[0.18em] uppercase opacity-70" style={{ color: team.color }}>
+                        <div className="font-montserrat text-[8px] mt-0.5 tracking-[0.15em] uppercase opacity-70" style={{ color: team.color }}>
                           {team.fullName.split(" ").at(-1)}
                         </div>
                       </div>
+                      {/* Mobile-only LEADER pill */}
+                      {i === 0 && <div className="sm:hidden flex-shrink-0 font-montserrat text-[6px] font-black uppercase tracking-[0.25em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-1.5 py-0.5">LEADER</div>}
                     </div>
 
-                    <div className="col-span-2 text-right">
-                      <span className="font-cinzel text-lg sm:text-xl" style={{ color: i===0?"#D4AF37":"rgba(240,234,214,0.85)" }}>
+                    <div className="sm:col-span-2 text-right">
+                      <span className="font-cinzel text-base sm:text-xl" style={{ color: i===0?"#D4AF37":"rgba(240,234,214,0.85)" }}>
                         {team.points.toLocaleString()}
                       </span>
                     </div>
 
-                    <div className="col-span-2 text-right">
+                    <div className="hidden sm:block sm:col-span-2 text-right">
                       <span className="font-montserrat text-xs text-white/60 tracking-wider">+{team.weekPoints}</span>
                     </div>
 
-                    <div className="col-span-1 flex justify-center">
+                    <div className="hidden sm:flex sm:col-span-1 justify-center">
                       <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
                     </div>
                   </Link>

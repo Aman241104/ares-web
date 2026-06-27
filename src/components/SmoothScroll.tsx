@@ -15,14 +15,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
+    const lenisRaf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(lenisRaf);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      gsap.ticker.remove(lenisRaf);
       lenis.destroy();
     };
   }, []);

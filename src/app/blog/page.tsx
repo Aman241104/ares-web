@@ -101,7 +101,7 @@ export default function BlogPage() {
             className="group block relative overflow-hidden border border-white/8 hover:border-[rgba(212,175,55,0.3)] transition-all duration-700"
           >
             {/* Full-bleed image */}
-            <div className="relative h-[240px] sm:h-[400px] lg:h-[540px] w-full overflow-hidden">
+            <div className="relative h-[220px] sm:h-[400px] lg:h-[540px] w-full overflow-hidden">
               {featured.image ? (
                 <Image
                   src={featured.image}
@@ -116,21 +116,56 @@ export default function BlogPage() {
                   <BookOpen className="w-20 h-20 text-[#D4AF37]/20" />
                 </div>
               )}
-              {/* Gradient overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0D1424 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.1) 100%)" }} />
+              {/* Gradient overlay — stronger on mobile so bottom fades cleanly */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0D1424 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.05) 100%)" }} />
               {/* Gold hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
               {/* Top gold line */}
               <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
+
+              {/* Desktop-only: content overlaid absolutely at bottom */}
+              <div className="hidden sm:block absolute bottom-0 left-0 right-0 p-14">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span
+                    className="font-montserrat text-[9px] font-bold px-3 py-1.5 border uppercase tracking-widest"
+                    style={{
+                      backgroundColor: (teamColors[featured.author] || "#D4AF37") + "18",
+                      color: teamColors[featured.author] || "#D4AF37",
+                      borderColor: (teamColors[featured.author] || "#D4AF37") + "40",
+                    }}
+                  >
+                    {featured.author}
+                  </span>
+                  <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 border border-[#D4AF37]/30 bg-[#D4AF37]/10">
+                    {featured.category}
+                  </span>
+                  <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.date}</span>
+                  <span className="font-montserrat text-white/65 text-[9px]">·</span>
+                  <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.readTime}</span>
+                </div>
+                <h2
+                  className="font-cinzel font-bold text-white mb-5 leading-tight group-hover:text-[#D4AF37] transition-colors duration-500"
+                  style={{ fontSize: "clamp(22px, 4vw, 52px)" }}
+                >
+                  {featured.title}
+                </h2>
+                <div className="gold-divider max-w-xs mb-5" />
+                <p className="font-montserrat text-white/50 text-sm leading-[2] max-w-2xl mb-8 tracking-wide">
+                  {featured.excerpt}
+                </p>
+                <span className="inline-flex items-center gap-3 font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-[0.25em] group-hover:gap-5 transition-all duration-300">
+                  Read Full Article <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
             </div>
 
-            {/* Content overlaid */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-14">
-              <div className="flex flex-wrap items-center gap-3 mb-5">
+            {/* Mobile-only: content stacked below image */}
+            <div className="sm:hidden p-6 bg-[#0D1424]">
+              <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span
-                  className="font-montserrat text-[9px] font-bold px-3 py-1.5 border uppercase tracking-widest"
+                  className="font-montserrat text-[8px] font-bold px-2.5 py-1 border uppercase tracking-widest"
                   style={{
                     backgroundColor: (teamColors[featured.author] || "#D4AF37") + "18",
                     color: teamColors[featured.author] || "#D4AF37",
@@ -139,29 +174,19 @@ export default function BlogPage() {
                 >
                   {featured.author}
                 </span>
-                <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 border border-[#D4AF37]/30 bg-[#D4AF37]/10">
+                <span className="font-montserrat text-[#D4AF37] text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 border border-[#D4AF37]/30 bg-[#D4AF37]/10">
                   {featured.category}
                 </span>
-                <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.date}</span>
-                <span className="font-montserrat text-white/65 text-[9px]">·</span>
-                <span className="font-montserrat text-white/60 text-[9px] tracking-widest uppercase">{featured.readTime}</span>
+                <span className="font-montserrat text-white/60 text-[8px] tracking-widest uppercase">{featured.date} · {featured.readTime}</span>
               </div>
-
-              <h2
-                className="font-cinzel font-bold text-white mb-5 leading-tight group-hover:text-[#D4AF37] transition-colors duration-500"
-                style={{ fontSize: "clamp(22px, 4vw, 52px)" }}
-              >
+              <h2 className="font-cinzel font-bold text-white text-xl leading-tight mb-3 group-hover:text-[#D4AF37] transition-colors duration-500">
                 {featured.title}
               </h2>
-
-              <div className="gold-divider max-w-xs mb-5" />
-
-              <p className="font-montserrat text-white/50 text-xs sm:text-sm leading-[2] max-w-2xl mb-8 tracking-wide">
+              <p className="font-montserrat text-white/55 text-[10px] leading-[1.9] mb-5 tracking-wide line-clamp-3">
                 {featured.excerpt}
               </p>
-
-              <span className="inline-flex items-center gap-3 font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-[0.25em] group-hover:gap-5 transition-all duration-300">
-                Read Full Article <ArrowRight className="w-4 h-4" />
+              <span className="inline-flex items-center gap-2 font-montserrat text-[#D4AF37] text-[9px] font-bold uppercase tracking-[0.2em]">
+                Read Article <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
           </Link>
@@ -194,7 +219,7 @@ export default function BlogPage() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-5 gap-0">
                         {/* Image */}
-                        <div className="sm:col-span-2 relative h-52 sm:h-full min-h-[200px] overflow-hidden">
+                        <div className="sm:col-span-2 relative h-48 sm:h-full sm:min-h-[220px] overflow-hidden">
                           {post.image ? (
                             <Image
                               src={post.image}
@@ -241,7 +266,7 @@ export default function BlogPage() {
                             <h2 className="font-cinzel text-white text-lg leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors duration-300 tracking-wide">
                               {post.title}
                             </h2>
-                            <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] line-clamp-3 tracking-wide">
+                            <p className="font-montserrat text-white/60 text-[10px] leading-[1.9] line-clamp-2 sm:line-clamp-3 tracking-wide">
                               {post.excerpt}
                             </p>
                           </div>
