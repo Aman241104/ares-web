@@ -53,7 +53,7 @@ export default function BlogPage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-28">
+      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -101,7 +101,7 @@ export default function BlogPage() {
             className="group block relative overflow-hidden border border-white/8 hover:border-[rgba(212,175,55,0.3)] transition-all duration-700"
           >
             {/* Full-bleed image */}
-            <div className="relative h-[440px] sm:h-[580px] w-full overflow-hidden">
+            <div className="relative h-[240px] sm:h-[400px] lg:h-[540px] w-full overflow-hidden">
               {featured.image ? (
                 <Image
                   src={featured.image}

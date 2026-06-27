@@ -59,7 +59,7 @@ export default function GalleryPage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="py-28 px-6 sm:px-10 lg:px-16 min-h-[60vh] justify-center">
+      <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="py-16 sm:py-28 px-6 sm:px-10 lg:px-16 min-h-[60vh] justify-center">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/6 backdrop-blur-xl" />

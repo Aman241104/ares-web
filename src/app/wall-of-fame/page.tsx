@@ -292,7 +292,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ABL 2026 COMING SOON ══════════════ */}
-      <section className="relative py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden border-t border-white/5 sr">
+      <section className="relative py-20 sm:py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden border-t border-white/5 sr">
         <div className="absolute inset-0 bg-grid opacity-5 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
 

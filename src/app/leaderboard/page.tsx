@@ -132,57 +132,39 @@ export default function LeaderboardPage() {
               ))}
             </div>
 
-            {/* Table */}
-            <div className="glass-card overflow-hidden sr border-white/10">
+            {/* Table — desktop */}
+            <div className="glass-card overflow-hidden sr border-white/10 hidden sm:block">
               <div className="w-full overflow-x-auto custom-scrollbar">
-                <div className="min-w-[800px]">
+                <div className="min-w-[600px]">
                   <div className="grid grid-cols-12 px-6 py-4 border-b border-white/5 bg-white/[0.05]">
-                    {[["col-span-1", "Rk"], ["col-span-4", "Team"], ["col-span-2 text-right", "Total Pts"], ["col-span-2 text-right", "Wk2 Pts"], ["col-span-2 text-center", "Trend"], ["col-span-1 text-center", "↕"]].map(([cls, h]) => (
+                    {[["col-span-1", "Rk"], ["col-span-5", "Team"], ["col-span-3 text-right", "Total Pts"], ["col-span-2 text-right", "This Wk"], ["col-span-1 text-center", "↕"]].map(([cls, h]) => (
                       <div key={h} className={`${cls} font-montserrat text-white/60 text-[9px] uppercase tracking-[0.2em]`}>{h}</div>
                     ))}
                   </div>
-
                   <div className="sr-stagger">
                     {sorted.map((team, i) => (
                       <div key={team.id} className="grid grid-cols-12 px-6 py-5 items-center border-b border-white/5 hover:bg-white/[0.05] transition-all duration-300 relative group" style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}08 0%, transparent 60%)` : undefined, borderLeft: `2px solid ${i < 3 ? team.color + "80" : 'transparent'}` }}>
-                        {/* Gold shimmer on hover for rank 1 */}
                         {i === 0 && <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}05, transparent)` }} />}
                         <div className="col-span-1">
-                          <div
-                            className="font-cinzel text-xl font-light"
-                            style={{
-                              color: i===0?"#D4AF37":i===1?"#b0bec5":i===2?"#CD7F32":"rgba(255,255,255,0.25)",
-                              textShadow: i===0?"0 0 20px rgba(212,175,55,0.5)":i===1?"0 0 15px rgba(176,190,197,0.3)":i===2?"0 0 15px rgba(205,127,50,0.3)":"none",
-                            }}
-                          >
+                          <div className="font-cinzel text-xl font-bold" style={{ color: i===0?"#D4AF37":i===1?"#b0bec5":i===2?"#CD7F32":"rgba(255,255,255,0.25)", textShadow: i===0?"0 0 20px rgba(212,175,55,0.5)":"none" }}>
                             {String(i+1).padStart(2,"0")}
                           </div>
                         </div>
-                        
-                        <div className="col-span-4 flex items-center gap-4">
+                        <div className="col-span-5 flex items-center gap-4">
                           <div className="w-10 h-10 rounded-full flex items-center justify-center font-cinzel font-black text-sm flex-shrink-0" style={{ background: `linear-gradient(135deg, ${team.color}, ${team.color}cc)`, color: "#fff" }}>
                             {team.name.charAt(0)}
                           </div>
                           <div>
-                            <Link href={`/teams/${team.id}`} className="font-cinzel tracking-widest text-white text-sm hover:text-[#D4AF37] transition-colors uppercase block">
-                              {team.name}
-                            </Link>
+                            <Link href={`/teams/${team.id}`} className="font-cinzel tracking-widest text-white text-sm hover:text-[#D4AF37] transition-colors uppercase block">{team.name}</Link>
                             <div className="font-montserrat text-white/60 text-[9px] mt-1 tracking-widest uppercase">{team.fullName.split(" ").at(-1)}</div>
                           </div>
                         </div>
-                        
-                        <div className="col-span-2 text-right">
+                        <div className="col-span-3 text-right">
                           <span className="font-cinzel font-bold text-2xl" style={{ color: team.color }}>{team.points.toLocaleString()}</span>
                         </div>
-                        
                         <div className="col-span-2 text-right">
                           <span className="font-cinzel text-base text-white/50">{team.weekPoints}</span>
                         </div>
-                        
-                        <div className="col-span-2 flex justify-center">
-                          <MiniSparkline values={weekData[team.id] ?? [0,0,0,0]} color={team.color} />
-                        </div>
-                        
                         <div className="col-span-1 text-center">
                           {i === 1 ? <span className="font-montserrat text-green-400 text-[10px] font-bold">▲1</span> : i === 2 ? <span className="font-montserrat text-red-400 text-[10px] font-bold">▼1</span> : <span className="font-montserrat text-white/20 text-xs">—</span>}
                         </div>
@@ -196,6 +178,31 @@ export default function LeaderboardPage() {
                   View Detailed Analytics <ArrowRight className="w-3 h-3"/>
                 </a>
               </div>
+            </div>
+
+            {/* Table — mobile cards */}
+            <div className="sm:hidden space-y-3 sr-stagger">
+              {sorted.map((team, i) => (
+                <Link key={team.id} href={`/teams/${team.id}`}
+                  className="flex items-center gap-4 px-4 py-4 border border-white/8 hover:border-[rgba(255,194,0,0.25)] transition-all duration-300 rounded-sm"
+                  style={{ background: i === 0 ? `linear-gradient(90deg, ${team.color}10, rgba(11,19,43,0.9))` : "rgba(11,19,43,0.7)", borderLeft: `3px solid ${i < 3 ? team.color : 'transparent'}` }}
+                >
+                  <div className="font-cinzel font-bold text-lg w-8 flex-shrink-0 text-center" style={{ color: i===0?"#D4AF37":i===1?"#b0bec5":i===2?"#CD7F32":"rgba(255,255,255,0.3)" }}>
+                    {String(i+1).padStart(2,"0")}
+                  </div>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-cinzel font-black text-sm flex-shrink-0" style={{ background: `linear-gradient(135deg, ${team.color}, ${team.color}cc)`, color: "#fff" }}>
+                    {team.name.charAt(0)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-cinzel text-white text-sm tracking-widest uppercase truncate">{team.name}</div>
+                    <div className="font-montserrat text-white/55 text-[8px] tracking-widest uppercase mt-0.5">{team.fullName.split(" ").at(-1)}</div>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <div className="font-cinzel font-bold text-xl" style={{ color: team.color }}>{team.points.toLocaleString()}</div>
+                    <div className="font-montserrat text-white/45 text-[8px] uppercase tracking-widest">pts</div>
+                  </div>
+                </Link>
+              ))}
             </div>
 
             {/* SVG Chart */}

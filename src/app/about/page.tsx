@@ -181,7 +181,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           MISSION STATEMENT
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.3) 30%, rgba(212,175,55,0.3) 70%, transparent)" }} />
 
@@ -237,7 +237,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           VALUES
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
         <div className="max-w-7xl mx-auto">
@@ -267,7 +267,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           LEADERSHIP
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.25) 30%, rgba(212,175,55,0.25) 70%, transparent)" }} />
 
@@ -313,7 +313,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           POINT SYSTEM
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">How Points Work</div>
@@ -409,7 +409,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           BOTTOM CTA
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] text-center border-t border-white/5 overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] text-center border-t border-white/5 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
         <div className="max-w-3xl mx-auto sr relative">
           <div className="section-label mx-auto mb-6">Join The Arena</div>

@@ -175,11 +175,11 @@ export default function HomePage() {
           style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
         {/* ── HERO CONTENT — LEFT SIDE ── */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-24 pb-0 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto w-full">
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-20 sm:pt-24 pb-0 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto w-full">
           <div className="max-w-[600px] lg:max-w-[52%]">
 
             {/* Live badge */}
-            <div className="h-badge inline-flex items-center gap-3 mb-8 px-5 py-2.5 relative">
+            <div className="h-badge inline-flex items-center gap-3 mb-5 sm:mb-8 px-4 sm:px-5 py-2 sm:py-2.5 relative">
               <div className="absolute inset-0 border border-[#FFC200]/30 bg-[#FFC200]/14 backdrop-blur-xl" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC200] pulse-live block relative z-10" />
               <span className="font-montserrat text-[#FFC200] text-[8px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · 2026</span>

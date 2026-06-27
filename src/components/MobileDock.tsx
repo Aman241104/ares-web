@@ -107,7 +107,7 @@ export default function MobileDock() {
                   <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/14 border border-[#D4AF37]/15" />
                 )}
                 <span className="relative z-10">{item.icon}</span>
-                <span className="relative z-10 text-[7px] font-montserrat uppercase tracking-[0.15em] mt-1 font-semibold">{item.label}</span>
+                <span className="relative z-10 text-[9px] font-montserrat uppercase tracking-[0.12em] mt-1 font-semibold">{item.label}</span>
               </Link>
             );
           })}
@@ -121,7 +121,7 @@ export default function MobileDock() {
           >
             {menuOpen && <div className="absolute inset-0 rounded-xl bg-[#D4AF37]/14 border border-[#D4AF37]/15" />}
             <span className="relative z-10">{menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}</span>
-            <span className="relative z-10 text-[7px] font-montserrat uppercase tracking-[0.15em] mt-1 font-semibold">More</span>
+            <span className="relative z-10 text-[9px] font-montserrat uppercase tracking-[0.12em] mt-1 font-semibold">More</span>
           </button>
         </div>
       </div>

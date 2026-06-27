@@ -99,7 +99,7 @@ export default function SchedulePage() {
   return (
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
-      <PageHero layout="left" className="py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
+      <PageHero layout="left" className="py-14 sm:py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>

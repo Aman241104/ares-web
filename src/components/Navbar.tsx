@@ -44,16 +44,20 @@ export default function Navbar() {
       }`}
     >
       <header
-        className={`pointer-events-auto w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`pointer-events-auto w-full transition-[background,border-color,box-shadow,border-radius,max-width,backdrop-filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] border ${
           scrolled
-            ? "bg-[#0B132B]/94 backdrop-blur-2xl border border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1280px]"
-            : "bg-gradient-to-b from-[#0B132B]/75 via-[#0B132B]/35 to-transparent max-w-full"
+            ? "bg-[#0B132B]/94 backdrop-blur-2xl border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1280px]"
+            : "bg-gradient-to-b from-[#0B132B]/75 via-[#0B132B]/35 to-transparent border-transparent max-w-full rounded-none"
         }`}
       >
         {/* Top gold line when scrolled */}
-        {scrolled && (
-          <div className="absolute top-0 left-8 right-8 h-px rounded-full" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)" }} />
-        )}
+        <div
+          className="absolute top-0 left-8 right-8 h-px rounded-full transition-opacity duration-700"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)",
+            opacity: scrolled ? 1 : 0,
+          }}
+        />
 
         <div className={`transition-all duration-700 ${scrolled ? "px-5 sm:px-6" : "px-4 sm:px-10 lg:px-16"}`}>
           <div className={`flex items-center justify-between gap-6 transition-all duration-700 ${scrolled ? "h-[58px]" : "h-[76px]"}`}>

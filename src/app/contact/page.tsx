@@ -103,7 +103,7 @@ export default function ContactPage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
-      <PageHero backgroundImage="/images/blog_strategy.png" layout="centered" className="min-h-[60vh] justify-center px-6 sm:px-10 lg:px-16 py-28">
+      <PageHero backgroundImage="/images/blog_strategy.png" layout="centered" className="min-h-[60vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -157,7 +157,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sr-stagger">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sr-stagger">
             {SERVICES.map((s) => (
               <div
                 key={s.title}

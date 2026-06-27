@@ -76,7 +76,7 @@ export default function TeamsPage() {
     <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[60vh] py-20 px-6 sm:px-10 lg:px-16">
+      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[60vh] py-14 sm:py-20 px-6 sm:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           {/* Breadcrumb */}
           <div className="flex items-center gap-1.5 font-montserrat text-xs text-white/55 mb-10 h-badge">
