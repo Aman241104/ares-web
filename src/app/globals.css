@@ -4,20 +4,20 @@
   /* ── Gold Palette ── */
   --gold:        #D4AF37;
   --gold-warm:   #C9921A;
-  --gold-bright: #F0D060;
+  --gold-bright: #FFC200;
   --gold-dark:   #8B6914;
   --gold-light:  #F3E5AB;
   --gold-pale:   #FDF8E7;
 
   /* ── Backgrounds ── */
-  --bg-base:     #080600;
-  --bg-section:  #0C0900;
-  --bg-card:     #100D04;
-  --bg-card-hover: #161105;
+  --bg-base:     #0B132B;
+  --bg-section:  #0D1424;
+  --bg-card:     #111827;
+  --bg-card-hover: #1a2035;
 
   /* ── Borders ── */
-  --border-gold:  rgba(212,175,55,0.18);
-  --border-dim:   rgba(255,255,255,0.06);
+  --border-gold:  rgba(212,175,55,0.25);
+  --border-dim:   rgba(255,255,255,0.07);
 
   /* ── Team Colors ── */
   --team-modi:       #E07820;
@@ -67,14 +67,14 @@
    GOLD TEXT GRADIENTS
 ══════════════════════════════════════ */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%);
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #FFC200 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gold-shine {
-  background: linear-gradient(90deg, #C9921A 0%, #F0D060 30%, #D4AF37 50%, #F0D060 70%, #C9921A 100%);
+  background: linear-gradient(90deg, #C9921A 0%, #FFC200 30%, #D4AF37 50%, #FFC200 70%, #C9921A 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -86,7 +86,7 @@
   100% { background-position:  200% center; }
 }
 .animate-shimmer {
-  background: linear-gradient(90deg, #C9921A 0%, #F0D060 25%, #D4AF37 50%, #F0D060 75%, #C9921A 100%);
+  background: linear-gradient(90deg, #C9921A 0%, #FFC200 25%, #D4AF37 50%, #FFC200 75%, #C9921A 100%);
   background-size: 300% auto;
   animation: shimmer 6s linear infinite;
   -webkit-background-clip: text;
@@ -98,9 +98,9 @@
    BUTTONS
 ══════════════════════════════════════ */
 .btn-primary {
-  background: linear-gradient(135deg, #C9921A 0%, #E8C840 50%, #C9921A 100%);
+  background: linear-gradient(135deg, #C9921A 0%, #FFC200 50%, #C9921A 100%);
   background-size: 200% auto;
-  color: #0A0800;
+  color: #000;
   font-family: var(--font-montserrat), system-ui, sans-serif;
   font-weight: 700;
   font-size: 11px;
@@ -167,7 +167,7 @@
 .btn-secondary:hover::before { opacity: 1; }
 .btn-secondary:hover {
   border-color: rgba(212,175,55,0.65);
-  color: #F0D060;
+  color: #FFC200;
   transform: translateY(-2px);
   box-shadow: 0 4px 24px rgba(212,175,55,0.12);
 }
@@ -176,7 +176,7 @@
    CARDS
 ══════════════════════════════════════ */
 .glass-card {
-  background: rgba(16,13,4,0.8);
+  background: rgba(11,19,43,0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-gold);
@@ -185,8 +185,8 @@
 }
 .glass-card:hover {
   border-color: rgba(212,175,55,0.32);
-  background: rgba(22,17,5,0.85);
-  box-shadow: 0 0 40px rgba(212,175,55,0.06), 0 20px 60px rgba(0,0,0,0.4);
+  background: rgba(17,28,56,0.92);
+  box-shadow: 0 0 40px rgba(255,194,0,0.08), 0 20px 60px rgba(0,0,0,0.5);
 }
 
 .card {
@@ -204,7 +204,7 @@
 
 /* Gold-accented card with top glow line */
 .card-glow {
-  background: rgba(16,13,4,0.9);
+  background: rgba(11,19,43,0.92);
   border: 1px solid var(--border-gold);
   border-top: 1px solid rgba(212,175,55,0.5);
   border-radius: 2px;
@@ -243,7 +243,7 @@
 .nav-link:hover::after,
 .nav-link.active::after { left: 0; right: 0; }
 .nav-link:hover,
-.nav-link.active { color: #F0D060; }
+.nav-link.active { color: #FFC200; }
 
 /* ══════════════════════════════════════
    GOLD DIVIDERS
@@ -392,8 +392,8 @@
    FORM INPUTS
 ══════════════════════════════════════ */
 input, textarea, select {
-  background: rgba(16,13,4,0.8) !important;
-  border-color: rgba(212,175,55,0.15) !important;
+  background: rgba(11,19,43,0.75) !important;
+  border-color: rgba(212,175,55,0.18) !important;
   color: #F0EAD6 !important;
 }
 input:focus, textarea:focus, select:focus {
@@ -442,6 +442,30 @@ input::placeholder, textarea::placeholder { color: rgba(240,234,214,0.2) !import
   background: var(--accent-color, #D4AF37);
   box-shadow: 0 0 12px var(--accent-color, #D4AF37);
 }
+
+/* ══════════════════════════════════════
+   HERO VISUAL SYSTEM
+══════════════════════════════════════ */
+
+/* Gold particle floating upward */
+@keyframes particle-float {
+  0%   { transform: translateY(0px)    translateX(0px)  scale(1);    opacity: 0; }
+  8%   { opacity: 1; }
+  48%  { transform: translateY(-28vh)  translateX(6px)  scale(0.82); }
+  85%  { opacity: 0.45; }
+  100% { transform: translateY(-68vh)  translateX(-2px) scale(0.36); opacity: 0; }
+}
+.particle-float {
+  animation: particle-float linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Light-ray brightness pulse */
+@keyframes ray-breathe {
+  0%, 100% { opacity: 0.70; }
+  50%       { opacity: 1; }
+}
+.rays-breathe { animation: ray-breathe 5.5s ease-in-out infinite; }
 
 /* ══════════════════════════════════════
    REDUCED MOTION

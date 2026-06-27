@@ -206,7 +206,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {activeMember && <MemberModal member={activeMember} color={team.color} onClose={() => setActiveMember(null)} />}
       {/* HERO */}
       <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
@@ -285,7 +285,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* TEAM INFO BAR */}
-      <section className="py-8 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 sr">
+      <section className="py-8 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { l: "Team Color", v: team.colorName, dot: true },
@@ -307,7 +307,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* CAPTAIN + OVERVIEW */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 sr">
           
           {/* Owner card */}
@@ -373,7 +373,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* MEMBERS */}
-      <section id="members" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0C0900]">
+      <section id="members" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0D1424]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-6 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Roster <span className="text-white/40 text-sm tracking-widest">({team.members})</span></h2>
@@ -422,7 +422,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* PERFORMANCE */}
-      <section id="performance" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section id="performance" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-6 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Performance</h2>
@@ -474,7 +474,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* TEAM MOTTO CTA */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0C0900] border-t border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0D1424] border-t border-white/5">
         <div className="max-w-2xl mx-auto sr">
           <div className="w-12 h-px mx-auto mb-8 bg-white/20" />
           <h2 className="font-cinzel font-light text-white text-4xl sm:text-5xl mb-6 uppercase leading-tight">

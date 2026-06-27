@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 import LiveTicker from "@/components/LiveTicker";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -74,14 +75,12 @@ export default function LeaderboardPage() {
   };
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden bg-[#080600]" style={{ minHeight: "380px" }}>
-        <div className="absolute inset-0 bg-grid-fine opacity-50 pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
-        {/* Trophy right side */}
-        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block" style={{ width: "45%" }}>
+      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[380px]">
+        {/* Trophy right side — z-[6] to sit above PageHero visual layers */}
+        <div className="absolute right-0 top-0 bottom-0 pointer-events-none hidden lg:block z-[6]" style={{ width: "45%" }}>
           <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 70% 50%, rgba(212,175,55,0.12) 0%, transparent 65%)" }} />
           <div className="absolute inset-0 flex items-center justify-center pr-8">
             <Image
@@ -134,10 +133,10 @@ export default function LeaderboardPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* ─── MAIN CONTENT ─── */}
-      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-16 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           {/* TABLE + FILTERS */}
@@ -294,7 +293,7 @@ export default function LeaderboardPage() {
 
           {/* SIDEBAR */}
           <div className="space-y-6">
-            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#0C0900]">
+            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#0D1424]">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
               <p className="font-montserrat text-white/30 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
 

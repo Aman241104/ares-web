@@ -58,7 +58,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ minHeight: "640px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
@@ -147,7 +147,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
       </section>
 
       {/* COMPANY DETAILS */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sr">
           
           <div className="glass-card p-10 border-white/10">
@@ -199,7 +199,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
       </section>
 
       {/* CONNECTIONS + SERVICES */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sr-stagger">
           
           <div className="glass-card p-10 border-white/10">
@@ -256,7 +256,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
       </section>
 
       {/* CONNECT CTA */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5 sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto glass-card border-[#D4AF37]/30 rounded-2xl p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 40% 60% at 0% 50%, ${team.color}15 0%, transparent 70%)` }} />
           

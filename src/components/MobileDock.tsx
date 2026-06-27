@@ -33,7 +33,7 @@ export default function MobileDock() {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-[#0C0900] border-t border-[rgba(212,175,55,0.15)] rounded-t-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.9)] pb-28 pt-5 px-5">
+        <div className="bg-[#0D1424] border-t border-[rgba(212,175,55,0.15)] rounded-t-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.9)] pb-28 pt-5 px-5">
           {/* Handle bar */}
           <div className="w-10 h-1 bg-white/15 rounded-full mx-auto mb-6" />
 

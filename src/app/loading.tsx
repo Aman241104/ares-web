@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-[100] bg-[#080600] flex flex-col items-center justify-center">
+    <div className="fixed inset-0 z-[100] bg-[#0B132B] flex flex-col items-center justify-center">
       <div className="relative w-16 h-16 flex items-center justify-center">
         {/* Pulsing ring */}
         <div className="absolute inset-0 rounded-full border-t border-b border-[#D4AF37] opacity-60 animate-spin" style={{ animationDuration: '2s' }} />

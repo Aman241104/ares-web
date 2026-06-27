@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import PageHero from "@/components/PageHero";
 import {
   Phone,
   Mail,
@@ -99,29 +100,10 @@ export default function ContactPage() {
   const inputCls = "w-full px-5 py-4 font-montserrat text-white placeholder-white/20 text-[11px] tracking-wide focus:outline-none transition-all bg-white/[0.025] border border-white/8 focus:border-[#D4AF37]/40 focus:bg-white/[0.04]";
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
-      <section className="relative min-h-[60vh] flex items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden py-28">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/blog_strategy.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            style={{ filter: "brightness(0.15) saturate(0.6)" }}
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/40 via-transparent to-[#080600]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080600]/60 via-transparent to-[#080600]/60" />
-        </div>
-
-        {/* Ambient glow */}
-        <div className="absolute inset-0 pointer-events-none z-[1]"
-          style={{ background: "radial-gradient(ellipse 65% 60% at 50% 50%, rgba(212,175,55,0.07) 0%, transparent 70%)" }} />
-
+      <PageHero backgroundImage="/images/blog_strategy.png" layout="centered" className="min-h-[60vh] justify-center px-6 sm:px-10 lg:px-16 py-28">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -163,10 +145,10 @@ export default function ContactPage() {
             Whether you need a website, custom business software, or a mobile app — tell us what you want to build.
           </p>
         </div>
-      </section>
+      </PageHero>
 
       {/* ══════════════ SERVICES ══════════════ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr mb-12 text-center">
             <div className="section-label mx-auto mb-2">What We Build</div>
@@ -179,7 +161,7 @@ export default function ContactPage() {
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="group relative border border-white/6 hover:border-[rgba(212,175,55,0.25)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-400 p-5 text-center overflow-hidden cursor-default"
+                className="group relative border border-white/6 hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400 p-5 text-center overflow-hidden cursor-default"
               >
                 {/* Ghost number */}
                 <div className="absolute -top-2 -right-1 font-cinzel text-white/4 text-4xl font-light leading-none select-none pointer-events-none">
@@ -201,7 +183,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ FORM + CONTACT ══════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-14">
 
           {/* LEFT: contact info + why us */}
@@ -222,7 +204,7 @@ export default function ContactPage() {
             {/* Contact cards */}
             <div className="space-y-2.5">
               {CONTACT_ITEMS.map((c) => (
-                <div key={c.label} className="group relative border border-white/6 bg-[#0C0900] p-5 hover:border-[rgba(212,175,55,0.2)] transition-all duration-300 overflow-hidden">
+                <div key={c.label} className="group relative border border-white/6 bg-[#0D1424] p-5 hover:border-[rgba(212,175,55,0.2)] transition-all duration-300 overflow-hidden">
                   {/* Gold left accent */}
                   <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="flex items-start gap-4">
@@ -246,7 +228,7 @@ export default function ContactPage() {
             </div>
 
             {/* Why us */}
-            <div className="relative border border-[rgba(212,175,55,0.15)] bg-[#100D04] p-6 overflow-hidden">
+            <div className="relative border border-[rgba(212,175,55,0.15)] bg-[#111827] p-6 overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.45), transparent)" }} />
               <div className="font-montserrat text-[#D4AF37] text-[8px] uppercase tracking-[0.35em] font-bold mb-5">Why Work With Us</div>
               <div className="space-y-3">
@@ -284,7 +266,7 @@ export default function ContactPage() {
               </h2>
             </div>
 
-            <div className="relative border border-white/8 bg-[#0C0900] overflow-hidden">
+            <div className="relative border border-white/8 bg-[#0D1424] overflow-hidden">
               {/* Top gold line */}
               <div className="h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
 
@@ -346,14 +328,14 @@ export default function ContactPage() {
                       <select required value={form.service}
                         onChange={(e) => setForm(f => ({ ...f, service: e.target.value }))}
                         className={`${inputCls} appearance-none cursor-pointer pr-12`}>
-                        <option value="" className="bg-[#0C0900]">Select a service...</option>
-                        <option value="Website Design & Development" className="bg-[#0C0900]">Website Design & Development</option>
-                        <option value="Business Software / ERP" className="bg-[#0C0900]">Business Software / ERP</option>
-                        <option value="Accounting & Billing Software" className="bg-[#0C0900]">Accounting & Billing Software</option>
-                        <option value="Mobile App (iOS & Android)" className="bg-[#0C0900]">Mobile App (iOS & Android)</option>
-                        <option value="CRM & Client Management" className="bg-[#0C0900]">CRM & Client Management</option>
-                        <option value="Custom Software Solution" className="bg-[#0C0900]">Custom Software Solution</option>
-                        <option value="Not Sure — Need Consultation" className="bg-[#0C0900]">Not Sure — Need Consultation</option>
+                        <option value="" className="bg-[#0D1424]">Select a service...</option>
+                        <option value="Website Design & Development" className="bg-[#0D1424]">Website Design & Development</option>
+                        <option value="Business Software / ERP" className="bg-[#0D1424]">Business Software / ERP</option>
+                        <option value="Accounting & Billing Software" className="bg-[#0D1424]">Accounting & Billing Software</option>
+                        <option value="Mobile App (iOS & Android)" className="bg-[#0D1424]">Mobile App (iOS & Android)</option>
+                        <option value="CRM & Client Management" className="bg-[#0D1424]">CRM & Client Management</option>
+                        <option value="Custom Software Solution" className="bg-[#0D1424]">Custom Software Solution</option>
+                        <option value="Not Sure — Need Consultation" className="bg-[#0D1424]">Not Sure — Need Consultation</option>
                       </select>
                       <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35 pointer-events-none" />
                     </div>
@@ -365,13 +347,13 @@ export default function ContactPage() {
                       <select value={form.budget}
                         onChange={(e) => setForm(f => ({ ...f, budget: e.target.value }))}
                         className={`${inputCls} appearance-none cursor-pointer pr-12`}>
-                        <option value="" className="bg-[#0C0900]">Select a range (optional)</option>
-                        <option value="Under ₹50,000" className="bg-[#0C0900]">Under ₹50,000</option>
-                        <option value="₹50,000 – ₹1,00,000" className="bg-[#0C0900]">₹50,000 – ₹1,00,000</option>
-                        <option value="₹1,00,000 – ₹3,00,000" className="bg-[#0C0900]">₹1,00,000 – ₹3,00,000</option>
-                        <option value="₹3,00,000 – ₹10,00,000" className="bg-[#0C0900]">₹3,00,000 – ₹10,00,000</option>
-                        <option value="Above ₹10,00,000" className="bg-[#0C0900]">Above ₹10,00,000</option>
-                        <option value="Let's Discuss" className="bg-[#0C0900]">Let's Discuss</option>
+                        <option value="" className="bg-[#0D1424]">Select a range (optional)</option>
+                        <option value="Under ₹50,000" className="bg-[#0D1424]">Under ₹50,000</option>
+                        <option value="₹50,000 – ₹1,00,000" className="bg-[#0D1424]">₹50,000 – ₹1,00,000</option>
+                        <option value="₹1,00,000 – ₹3,00,000" className="bg-[#0D1424]">₹1,00,000 – ₹3,00,000</option>
+                        <option value="₹3,00,000 – ₹10,00,000" className="bg-[#0D1424]">₹3,00,000 – ₹10,00,000</option>
+                        <option value="Above ₹10,00,000" className="bg-[#0D1424]">Above ₹10,00,000</option>
+                        <option value="Let's Discuss" className="bg-[#0D1424]">Let's Discuss</option>
                       </select>
                       <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/35 pointer-events-none" />
                     </div>
@@ -403,7 +385,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ HOW WE WORK ══════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr text-center mb-14">
             <div className="section-label mx-auto mb-3">Our Process</div>
@@ -414,7 +396,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 sr-stagger">
             {PROCESS.map((p, i) => (
-              <div key={p.title} className="group relative bg-[#0C0900] p-10 hover:bg-[#100D04] transition-all duration-400 overflow-hidden">
+              <div key={p.title} className="group relative bg-[#0D1424] p-10 hover:bg-[#111827] transition-all duration-400 overflow-hidden">
                 {/* Top gold line on hover */}
                 <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                   style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />

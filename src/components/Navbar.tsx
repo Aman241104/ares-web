@@ -46,8 +46,8 @@ export default function Navbar() {
       <header
         className={`pointer-events-auto w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           scrolled
-            ? "bg-[#080600]/94 backdrop-blur-2xl border border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1280px]"
-            : "bg-gradient-to-b from-[#080600]/75 via-[#080600]/35 to-transparent max-w-full"
+            ? "bg-[#0B132B]/94 backdrop-blur-2xl border border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1280px]"
+            : "bg-gradient-to-b from-[#0B132B]/75 via-[#0B132B]/35 to-transparent max-w-full"
         }`}
       >
         {/* Top gold line when scrolled */}
@@ -96,7 +96,7 @@ export default function Navbar() {
 
                     {/* Dropdown */}
                     <div className="absolute top-full left-0 mt-2.5 opacity-0 translate-y-3 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50">
-                      <div className="bg-[#0C0900]/97 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_0_0.5px_rgba(212,175,55,0.08)] min-w-[230px] overflow-hidden">
+                      <div className="bg-[#0D1424]/97 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_0_0.5px_rgba(212,175,55,0.08)] min-w-[230px] overflow-hidden">
                         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                         <div className="px-5 py-3 border-b border-white/5">
                           <div className="font-montserrat text-white/25 text-[7px] uppercase tracking-[0.3em]">Select a Team</div>

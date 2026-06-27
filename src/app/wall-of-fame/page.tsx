@@ -71,15 +71,15 @@ export default function WallOfFamePage() {
   );
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
       <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image src="/images/luxury_boardroom.png" alt="" fill sizes="100vw" className="object-cover object-center" style={{ filter: "brightness(0.14) saturate(0.5)" }} priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080600] via-[#080600]/65 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/50 via-transparent to-[#080600]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B] via-[#0B132B]/65 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/50 via-transparent to-[#0B132B]" />
         </div>
         <div className="absolute inset-0 bg-grid-fine opacity-40 pointer-events-none z-[1]" />
 
@@ -137,7 +137,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ STATS BAR ══════════════ */}
-      <section className="py-14 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 sr">
+      <section className="py-14 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
           {[
             { num: "30",  label: "Warriors",        icon: <Users    className="w-5 h-5 text-[#D4AF37]" /> },
@@ -157,7 +157,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ PARTNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Backbone"
@@ -205,7 +205,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ TEAM OWNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Visionaries"
@@ -253,7 +253,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ALL WARRIORS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Competitors"
@@ -289,7 +289,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ COMMISSIONERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Guardians"
@@ -317,7 +317,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ABL 2026 COMING SOON ══════════════ */}
-      <section className="relative py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#080600] overflow-hidden border-t border-white/5 sr">
+      <section className="relative py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden border-t border-white/5 sr">
         <div className="absolute inset-0 bg-grid opacity-5 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
 

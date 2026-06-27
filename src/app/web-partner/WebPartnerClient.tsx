@@ -55,7 +55,7 @@ export default function WebPartnerPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ─── HERO ─── */}
       <section className="relative min-h-[70vh] flex items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
@@ -96,7 +96,7 @@ export default function WebPartnerPage() {
       </section>
 
       {/* ─── PARTNER BADGE ─── */}
-      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 sr">
+      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-6 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-2xl px-8 py-5">
             <Star className="w-6 h-6 text-[#D4AF37] flex-shrink-0" />
@@ -110,7 +110,7 @@ export default function WebPartnerPage() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600] sr">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B] sr">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-4">What We Build</div>
@@ -134,7 +134,7 @@ export default function WebPartnerPage() {
       </section>
 
       {/* ─── WHY WEBHANCE ─── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5 sr">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -169,7 +169,7 @@ export default function WebPartnerPage() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5 sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5 sr">
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-card border-[#D4AF37]/20 rounded-3xl p-10 lg:p-16 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 80%)" }} />

@@ -113,7 +113,7 @@ export default function HomePage() {
   };
 
   return (
-    <div ref={heroRef} className="overflow-x-hidden bg-[#080600]">
+    <div ref={heroRef} className="overflow-x-hidden bg-[#0B132B]">
 
       {/* ═══════════════════════════════════════════
           HERO — CINEMATIC
@@ -129,21 +129,121 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center scale-110"
             priority
-            style={{ filter: "blur(2px) brightness(0.35) saturate(0.8)" }}
+            style={{ filter: "blur(2px) brightness(0.45) saturate(1.15)" }}
           />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#080600_85%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/30 via-transparent to-[#080600]" />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,194,0,0.10) 0%, transparent 70%)" }} />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0B132B_85%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/30 via-transparent to-[#0B132B]" />
         </div>
 
-        {/* Decorative light beams */}
+        {/* ── DRAMATIC LIGHT RAYS — symmetrical stadium spotlights for centered hero */}
         <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full opacity-10" style={{ background: "linear-gradient(180deg, transparent 0%, #D4AF37 30%, #D4AF37 60%, transparent 100%)" }} />
-          <div className="absolute top-0 left-[35%] w-px h-3/4 opacity-5" style={{ background: "linear-gradient(180deg, transparent 0%, #D4AF37 50%, transparent 100%)" }} />
-          <div className="absolute top-0 right-[35%] w-px h-3/4 opacity-5" style={{ background: "linear-gradient(180deg, transparent 0%, #D4AF37 50%, transparent 100%)" }} />
-          {/* Radial ambient behind trophy */}
-          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] opacity-20 blur-[120px]" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.4) 0%, transparent 70%)" }} />
+
+          {/* Primary fan from upper-right */}
+          <div
+            className="absolute inset-[-8%] rays-breathe"
+            style={{
+              background: `conic-gradient(
+                from 0deg at 78% 0%,
+                transparent   0deg,
+                transparent 178deg,
+                rgba(255,194,0,0.24) 192deg,
+                rgba(255,210,0,0.16) 202deg,
+                transparent         212deg,
+                rgba(255,194,0,0.20) 222deg,
+                rgba(255,210,0,0.12) 230deg,
+                transparent         240deg,
+                rgba(255,194,0,0.14) 250deg,
+                transparent         264deg,
+                rgba(255,194,0,0.10) 274deg,
+                transparent         290deg,
+                transparent         360deg
+              )`,
+              filter: "blur(4px)",
+            }}
+          />
+          {/* Mirror fan from upper-left (softer) */}
+          <div
+            className="absolute inset-[-8%]"
+            style={{
+              background: `conic-gradient(
+                from 0deg at 22% 0%,
+                transparent 0deg,
+                rgba(255,194,0,0.08) 72deg,
+                transparent         88deg,
+                rgba(255,194,0,0.12) 104deg,
+                transparent         118deg,
+                rgba(255,194,0,0.08) 132deg,
+                transparent         150deg,
+                transparent         360deg
+              )`,
+              filter: "blur(10px)",
+            }}
+          />
+          {/* Bloom — upper-right floodlight */}
+          <div
+            className="absolute top-[-8%] right-[-5%]"
+            style={{
+              width: "45%", height: "55%",
+              background: "radial-gradient(ellipse 78% 72% at 85% 8%, rgba(212,175,55,0.24) 0%, rgba(255,194,0,0.14) 40%, transparent 68%)",
+              filter: "blur(28px)",
+            }}
+          />
+          {/* Bloom — upper-left (weaker) */}
+          <div
+            className="absolute top-[-5%] left-[-5%]"
+            style={{
+              width: "36%", height: "42%",
+              background: "radial-gradient(ellipse 70% 60% at 14% 6%, rgba(255,194,0,0.20) 0%, transparent 70%)",
+              filter: "blur(36px)",
+            }}
+          />
+          {/* Central trophy glow */}
+          <div
+            className="absolute top-[15%] left-1/2 -translate-x-1/2 blur-[120px]"
+            style={{
+              width: "680px", height: "680px",
+              background: "radial-gradient(circle, rgba(212,175,55,0.40) 0%, transparent 65%)",
+              opacity: 0.22,
+            }}
+          />
         </div>
+
+        {/* ── FLOATING GOLD PARTICLES */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+          {[
+            { x: 38, delay: 0,   dur: 6,   size: 1.5, op: 0.35 },
+            { x: 44, delay: 1.5, dur: 5.5, size: 1.0, op: 0.28 },
+            { x: 50, delay: 0.8, dur: 7.0, size: 2.0, op: 0.32 },
+            { x: 55, delay: 2.2, dur: 5.0, size: 1.5, op: 0.40 },
+            { x: 60, delay: 0.3, dur: 6.5, size: 1.2, op: 0.30 },
+            { x: 65, delay: 1.8, dur: 8.0, size: 2.0, op: 0.22 },
+            { x: 70, delay: 3.0, dur: 5.8, size: 1.0, op: 0.35 },
+            { x: 42, delay: 4.0, dur: 7.5, size: 2.5, op: 0.25 },
+            { x: 58, delay: 0.5, dur: 6.2, size: 1.8, op: 0.28 },
+            { x: 73, delay: 1.2, dur: 5.2, size: 1.5, op: 0.30 },
+            { x: 47, delay: 2.8, dur: 6.8, size: 1.0, op: 0.38 },
+            { x: 62, delay: 0.9, dur: 7.2, size: 2.0, op: 0.24 },
+          ].map((p, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full particle-float"
+              style={{
+                left: `${p.x}%`, bottom: "5%",
+                width: `${p.size}px`, height: `${p.size}px`,
+                background: `rgba(212,175,55,${p.op})`,
+                boxShadow: `0 0 ${p.size * 3}px rgba(212,175,55,${p.op * 0.6})`,
+                animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* ── GRAIN OVERLAY */}
+        <div
+          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.025]"
+          style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }}
+        />
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 parallax-fg">
@@ -253,9 +353,9 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TOURNAMENT METRICS STRIP
       ═══════════════════════════════════════════ */}
-      <section className="relative z-20 bg-[#0C0900] overflow-hidden">
+      <section className="relative z-20 bg-[#0D1424] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid-fine opacity-60" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 relative">
@@ -270,8 +370,8 @@ export default function HomePage() {
               { n: "1",  label: "Month",         sub: "June 24 – July 22, 2026" },
               { n: "1",  label: "Grand Winner",  sub: "One champion, one legacy" },
             ].map((s, i) => (
-              <div key={s.label} className="relative bg-[#0C0900] flex flex-col items-center justify-center text-center px-8 py-12 group hover:bg-[#0f0b01] transition-colors overflow-hidden">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 80% at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
+              <div key={s.label} className="relative bg-[#0D1424] flex flex-col items-center justify-center text-center px-8 py-12 group hover:bg-[#0e1830] transition-colors overflow-hidden">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 80% at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
                 {i === 0 && <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />}
                 <div
                   className="font-cinzel font-light text-[#D4AF37] mb-4 number-glow"
@@ -291,7 +391,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           LIVE LEADERBOARD
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] relative z-20">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] relative z-20">
         {/* Subtle ambient */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -416,7 +516,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TEAM SPOTLIGHT — THE FACTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 relative">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35) 30%, rgba(212,175,55,0.35) 70%, transparent)" }} />
 
@@ -436,7 +536,7 @@ export default function HomePage() {
                   style={{ background: team.color, boxShadow: `0 0 20px ${team.color}, 0 0 40px ${team.color}60` }}
                 />
 
-                <div className="overflow-hidden border border-[rgba(212,175,55,0.12)] group-hover:border-[rgba(212,175,55,0.28)] transition-all duration-500 bg-[#100D04] rounded-sm">
+                <div className="overflow-hidden border border-[rgba(212,175,55,0.12)] group-hover:border-[rgba(212,175,55,0.28)] transition-all duration-500 bg-[#111827] rounded-sm">
                   {/* Image area */}
                   <Link href={`/teams/${team.id}`} className="block">
                     <div className="relative aspect-[3/4] overflow-hidden">
@@ -523,7 +623,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* Special Events */}
@@ -540,14 +640,14 @@ export default function HomePage() {
 
             <div className="space-y-3 sr-stagger">
               {specialEvents.map((ev, i) => (
-                <div key={ev.name} className="group relative overflow-hidden border border-[rgba(212,175,55,0.10)] hover:border-[rgba(212,175,55,0.25)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-400">
+                <div key={ev.name} className="group relative overflow-hidden border border-[rgba(212,175,55,0.10)] hover:border-[rgba(212,175,55,0.25)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400">
                   {/* Number */}
                   <div className="absolute top-0 right-0 bottom-0 flex items-center px-5 pointer-events-none">
                     <span className="font-cinzel text-[48px] font-black text-white/[0.025] select-none leading-none">{String(i+1).padStart(2,"0")}</span>
                   </div>
 
                   <div className="flex items-start gap-4 p-5 relative z-10">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-sm flex items-center justify-center mt-0.5" style={{ background: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.18)" }}>
+                    <div className="flex-shrink-0 w-10 h-10 rounded-sm flex items-center justify-center mt-0.5" style={{ background: "rgba(255,194,0,0.12)", border: "1px solid rgba(212,175,55,0.18)" }}>
                       <Star className="w-4 h-4 text-[#D4AF37]/70" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -584,8 +684,8 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sr-stagger">
               {partners.slice(0,6).map((p) => (
-                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
+                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#111827] hover:bg-[#130f03] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
                   <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-white/[0.03] border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors">
                     <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
                   </div>
@@ -607,7 +707,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SCHEDULE PREVIEW
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 relative">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-50" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 60% at 80% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -660,7 +760,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           QUICK ACCESS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
 
           <div className="sr mb-12 text-center">
@@ -694,7 +794,7 @@ export default function HomePage() {
           {/* Website CTA */}
           <div className="sr">
             <Link href="/web-partner" className="group block">
-              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)] bg-[#100D04] hover:bg-[#130f03] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
+              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.35)] bg-[#111827] hover:bg-[#130f03] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
                 {/* Background image hint */}
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ background: "linear-gradient(135deg, #D4AF37 0%, transparent 60%)" }} />
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4) 40%, rgba(212,175,55,0.4) 60%, transparent)" }} />

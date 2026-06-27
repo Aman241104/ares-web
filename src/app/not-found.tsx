@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-[#080600] flex flex-col items-center justify-center relative overflow-hidden py-32">
+    <div className="min-h-[calc(100vh-80px)] bg-[#0B132B] flex flex-col items-center justify-center relative overflow-hidden py-32">
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />

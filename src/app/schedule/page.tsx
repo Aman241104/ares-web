@@ -7,6 +7,7 @@ import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,17 +97,9 @@ export default function SchedulePage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
-      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden min-h-[55vh] flex items-center bg-[#080600]">
-        {/* BG image */}
-        <div className="absolute inset-0 z-0">
-          <Image src="/images/luxury_boardroom.png" alt="" fill sizes="100vw" className="object-cover object-center" style={{ filter: "brightness(0.12) saturate(0.5)" }} priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080600] via-[#080600]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/60 via-transparent to-[#080600]" />
-        </div>
-        <div className="absolute inset-0 bg-grid-fine opacity-50 pointer-events-none z-[1]" />
-
+      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="left" className="py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
@@ -190,10 +183,10 @@ export default function SchedulePage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 relative">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto mb-12 sr relative">
           <div className="section-label mb-4">Live Updates</div>
@@ -207,7 +200,7 @@ export default function SchedulePage() {
           <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.35), transparent)" }} />
 
           {/* ── Left: Week Selector ── */}
-          <div className="flex-shrink-0 lg:w-72 bg-[#0C0900] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
+          <div className="flex-shrink-0 lg:w-72 bg-[#0D1424] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
             {/* Week buttons */}
             <div className="space-y-2 mb-8">
               {weeklyEvents.map((week, i) => (
@@ -371,7 +364,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ── SPECIAL EVENTS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center justify-between mb-12">
             <div>

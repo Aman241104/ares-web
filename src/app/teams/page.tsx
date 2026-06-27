@@ -7,6 +7,7 @@ import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,18 +73,11 @@ export default function TeamsPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
-        {/* Large radial gold bloom */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 80% 80% at 50% 60%, rgba(212,175,55,0.05) 0%, transparent 70%)" }}
-        />
-
-        <div className="max-w-7xl mx-auto relative w-full">
+      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[60vh] py-20 px-6 sm:px-10 lg:px-16">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           {/* Breadcrumb */}
           <div className="flex items-center gap-1.5 font-montserrat text-xs text-white/30 mb-10 h-badge">
             <Link href="/" className="hover:text-[#D4AF37] transition-colors">Home</Link>
@@ -166,10 +160,10 @@ export default function TeamsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* ── QUICK STATS ── */}
-      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-y border-white/5 relative">
+      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { icon: <Users className="w-5 h-5 text-[#D4AF37]" />, value: "30", label: "Business Owners" },
@@ -191,7 +185,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── CINEMATIC TEAM CARDS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#080600]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-4 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">
@@ -350,7 +344,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0C0900] border-t border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0D1424] border-t border-white/5">
         <div className="max-w-2xl mx-auto sr">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-8 h-px bg-white/10" />

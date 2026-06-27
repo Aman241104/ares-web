@@ -37,7 +37,7 @@ const PERKS = [
 
 export default function LegacyCTA() {
   return (
-    <section className="relative overflow-hidden bg-[#060400] border-t border-[rgba(212,175,55,0.12)]">
+    <section className="relative overflow-hidden bg-[#07101F] border-t border-[rgba(212,175,55,0.15)]">
       {/* Background layers */}
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 100% 80% at 50% 100%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
@@ -98,7 +98,7 @@ export default function LegacyCTA() {
             {/* Offerings grid */}
             <div className="grid grid-cols-2 gap-3 mb-9">
               {OFFERINGS.map((o) => (
-                <div key={o.title} className="group relative flex items-start gap-3.5 p-5 border border-white/6 hover:border-[rgba(212,175,55,0.22)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-400 overflow-hidden">
+                <div key={o.title} className="group relative flex items-start gap-3.5 p-5 border border-white/6 hover:border-[rgba(212,175,55,0.28)] bg-[#0D1424] hover:bg-[#111827] transition-all duration-400 overflow-hidden">
                   {o.badge && (
                     <div className="absolute top-2.5 right-2.5 font-montserrat text-[6px] uppercase tracking-[0.2em] text-[#D4AF37] border border-[#D4AF37]/30 px-1.5 py-0.5">
                       {o.badge}

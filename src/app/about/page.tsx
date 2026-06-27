@@ -10,6 +10,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 import { tournamentRules } from "@/lib/data";
 import SplitType from "split-type";
 
@@ -82,30 +83,12 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ═══════════════════════════════════
           HERO
       ═══════════════════════════════════ */}
-      <section className="relative min-h-[90vh] flex items-center px-6 sm:px-10 lg:px-16 overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/luxury_boardroom.png"
-            alt="Luxury Boardroom"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            style={{ filter: "brightness(0.18) saturate(0.6)" }}
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080600] via-[#080600]/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080600] via-transparent to-[#080600]/60" />
-        </div>
-
-        {/* Ambient gold right */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 80% at 80% 50%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
-
+      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="left" className="min-h-[90vh] px-6 sm:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
 
           {/* Left copy */}
@@ -193,12 +176,12 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PageHero>
 
       {/* ═══════════════════════════════════
           MISSION STATEMENT
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0C0900] overflow-hidden">
+      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.3) 30%, rgba(212,175,55,0.3) 70%, transparent)" }} />
 
@@ -235,7 +218,7 @@ export default function AboutPage() {
           {/* Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sr-stagger">
             {PILLARS.map((item) => (
-              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-500 p-8">
+              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#111827] hover:bg-[#130f03] transition-all duration-500 p-8">
                 {/* Ghost number */}
                 <div className="absolute top-4 right-4 font-cinzel text-[72px] font-black text-white/[0.03] leading-none select-none pointer-events-none">{item.num}</div>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4AF37]/0 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:via-[#D4AF37]/40 group-hover:to-transparent transition-all duration-500" />
@@ -254,7 +237,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           VALUES
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#080600] overflow-hidden">
+      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
         <div className="max-w-7xl mx-auto">
@@ -267,7 +250,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
             {VALUES.map((v) => (
-              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#100D04] hover:bg-[#130f03] transition-all duration-500 p-8">
+              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#111827] hover:bg-[#130f03] transition-all duration-500 p-8">
                 {/* Top accent line in value color */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, transparent, ${v.accent}, transparent)` }} />
                 <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-6 transition-all duration-400" style={{ color: v.accent, background: `${v.accent}12`, border: `1px solid ${v.accent}25` }}>
@@ -284,7 +267,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           LEADERSHIP
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0C0900] overflow-hidden">
+      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.25) 30%, rgba(212,175,55,0.25) 70%, transparent)" }} />
 
@@ -330,7 +313,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           POINT SYSTEM
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">How Points Work</div>
@@ -350,7 +333,7 @@ export default function AboutPage() {
                 <span className="font-cinzel text-white text-xs tracking-[0.25em] uppercase">Core Scoring</span>
                 <span className="ml-auto font-montserrat text-white/25 text-[8px] uppercase tracking-widest">Per Week</span>
               </div>
-              <div className="divide-y divide-white/5 bg-[#100D04]">
+              <div className="divide-y divide-white/5 bg-[#111827]">
                 {[
                   { icon: <TrendingUp className="w-4 h-4" />,    label: "Business Growth (TYFCB)",  pts: "Up to 300",  color: "#D4AF37" },
                   { icon: <UserPlus className="w-4 h-4" />,      label: "Referrals Generated",      pts: "Up to 250",  color: "#b0bec5" },
@@ -380,7 +363,7 @@ export default function AboutPage() {
                   <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <span className="font-cinzel text-white text-[10px] tracking-[0.25em] uppercase">Bonus Points</span>
                 </div>
-                <div className="divide-y divide-white/5 bg-[#100D04]">
+                <div className="divide-y divide-white/5 bg-[#111827]">
                   {[
                     { label: "Early Bird",          pts: "+25"  },
                     { label: "Weekly Top Scorer",   pts: "+50"  },
@@ -400,7 +383,7 @@ export default function AboutPage() {
                   <MinusCircle className="w-4 h-4 text-red-400/70" />
                   <span className="font-cinzel text-white text-[10px] tracking-[0.25em] uppercase">Deductions</span>
                 </div>
-                <div className="divide-y divide-white/5 bg-[#100D04]">
+                <div className="divide-y divide-white/5 bg-[#111827]">
                   {[
                     { label: "Absence (unexcused)", pts: "−25" },
                     { label: "Late Submission",     pts: "−15" },
@@ -426,7 +409,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           BOTTOM CTA
       ═══════════════════════════════════ */}
-      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0C0900] text-center border-t border-white/5 overflow-hidden">
+      <section className="relative py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] text-center border-t border-white/5 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 100%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
         <div className="max-w-3xl mx-auto sr relative">
           <div className="section-label mx-auto mb-6">Join The Arena</div>

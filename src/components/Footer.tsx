@@ -17,7 +17,7 @@ const footerTeams = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#060400] overflow-hidden">
+    <footer className="relative bg-[#07101F] overflow-hidden">
       {/* Top decorative border */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 20%, rgba(240,208,96,0.8) 50%, rgba(212,175,55,0.5) 80%, transparent 100%)" }} />
 
@@ -159,7 +159,7 @@ export default function Footer() {
                   placeholder="Your email"
                   className="flex-1 bg-white/[0.03] border border-white/8 rounded-l-sm px-4 py-3 text-[10px] font-montserrat text-white placeholder-white/15 focus:outline-none focus:border-[#D4AF37]/40 focus:bg-white/[0.05] transition-all tracking-wider"
                 />
-                <button className="bg-[#D4AF37] hover:bg-[#E8C840] text-black font-montserrat text-[8px] font-bold uppercase tracking-[0.2em] px-5 rounded-r-sm transition-colors">
+                <button className="bg-[#D4AF37] hover:bg-[#FFC200] text-black font-montserrat text-[8px] font-bold uppercase tracking-[0.2em] px-5 rounded-r-sm transition-colors">
                   Join
                 </button>
               </div>

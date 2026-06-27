@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable}`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col antialiased bg-[#080600] text-[#F0EAD6]">
+      <body className="min-h-full flex flex-col antialiased bg-[#0B132B] text-[#F0EAD6]">
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
         <SmoothScroll>
           <Navbar />

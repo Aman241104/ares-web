@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import LegacyCTA from "@/components/LegacyCTA";
+import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,29 +50,10 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#080600] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[65vh] flex items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden py-28">
-        {/* Full-bleed background */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/luxury_boardroom.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            style={{ filter: "brightness(0.16) saturate(0.7)" }}
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080600]/30 via-transparent to-[#080600]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080600]/50 via-transparent to-[#080600]/50" />
-        </div>
-
-        {/* Ambient gold glow */}
-        <div className="absolute inset-0 pointer-events-none z-[1]"
-          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)" }} />
-
+      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-28">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -107,10 +89,10 @@ export default function BlogPage() {
             From the arena floor to the boardroom — every perspective, every victory, every lesson from ABL 2026.
           </p>
         </div>
-      </section>
+      </PageHero>
 
       {/* ── FEATURED POST ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0C0900] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="section-label mb-10">Featured Article</div>
 
@@ -130,12 +112,12 @@ export default function BlogPage() {
                   style={{ filter: "brightness(0.75) saturate(0.9)" }}
                 />
               ) : (
-                <div className="w-full h-full bg-[#080600] flex items-center justify-center">
+                <div className="w-full h-full bg-[#0B132B] flex items-center justify-center">
                   <BookOpen className="w-20 h-20 text-[#D4AF37]/20" />
                 </div>
               )}
               {/* Gradient overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0C0900 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.1) 100%)" }} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0D1424 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.1) 100%)" }} />
               {/* Gold hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
@@ -187,7 +169,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── ALL POSTS + SIDEBAR ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#080600] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
@@ -285,7 +267,7 @@ export default function BlogPage() {
             <div className="space-y-6 sr">
 
               {/* Categories */}
-              <div className="relative border border-white/8 bg-[#0C0900] p-7 overflow-hidden">
+              <div className="relative border border-white/8 bg-[#0D1424] p-7 overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                 <div className="flex items-center gap-3 mb-6">
                   <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -304,7 +286,7 @@ export default function BlogPage() {
               </div>
 
               {/* Team Blogs */}
-              <div className="relative border border-white/8 bg-[#0C0900] p-7 overflow-hidden">
+              <div className="relative border border-white/8 bg-[#0D1424] p-7 overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
@@ -340,7 +322,7 @@ export default function BlogPage() {
               </div>
 
               {/* Contribute CTA */}
-              <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#100D04] p-8 text-center overflow-hidden">
+              <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#111827] p-8 text-center overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
                 <div className="absolute inset-0 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse 70% 70% at 50% 100%, rgba(212,175,55,0.07) 0%, transparent 70%)" }} />
