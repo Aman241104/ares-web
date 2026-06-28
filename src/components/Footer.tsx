@@ -34,12 +34,12 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center gap-4 mb-7 group">
-              <div className="w-16 h-16 flex-shrink-0 opacity-85 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+              <div className="w-44 h-44 flex-shrink-0 opacity-85 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo_icon.png"
                   alt="ARES Business League 2026"
-                  width={64}
-                  height={64}
+                  width={200}
+                  height={200}
                   priority
                   className="w-full h-full object-contain"
                 />

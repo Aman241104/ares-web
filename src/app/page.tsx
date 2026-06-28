@@ -199,15 +199,16 @@ export default function HomePage() {
                 ARES
               </span>
               <span
-                className="h-title-bl block font-bold"
+                className="h-title-bl block font-bold whitespace-nowrap"
                 style={{
-                  fontSize: "clamp(12px, 2.6vw, 28px)",
-                  letterSpacing: "0.6em",
+                  fontSize: "clamp(18px, 3.4vw, 46px)",
+                  letterSpacing: "0.22em",
                   background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                  marginTop: "0.3em",
+                  marginTop: "0.15em",
+                  lineHeight: 1,
                 }}
               >
                 BUSINESS LEAGUE
@@ -740,36 +741,154 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Website CTA */}
-          <div className="sr">
-            <Link href="/web-partner" className="group block">
-              <div className="relative overflow-hidden border border-[rgba(212,175,55,0.15)] hover:border-[rgba(255,194,0,0.60)] bg-[#111827] hover:bg-[#0D1424] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition-all duration-500">
-                {/* Background image hint */}
-                <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ background: "linear-gradient(135deg, #D4AF37 0%, transparent 60%)" }} />
-                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4) 40%, rgba(212,175,55,0.4) 60%, transparent)" }} />
+        </div>
+      </section>
 
-                <div className="flex items-start gap-6 relative z-10">
-                  <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/40">
-                    <Globe className="w-6 h-6" />
+      {/* ═══════════════════════════════════════════
+          WEBSITE CTA — SPLIT EDITORIAL
+      ═══════════════════════════════════════════ */}
+      <section className="relative overflow-hidden sr bg-[#05080F]">
+        {/* Top gold rule */}
+        <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.6) 20%, rgba(255,210,0,1) 50%, rgba(212,175,55,0.6) 80%, transparent 100%)" }} />
+        {/* Grid */}
+        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
+        {/* Gold bloom — bottom left */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 15% 100%, rgba(212,175,55,0.13) 0%, transparent 60%)" }} />
+        {/* Gold bloom — top right */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 60% at 90% 0%, rgba(212,175,55,0.07) 0%, transparent 55%)" }} />
+        {/* Particles */}
+        {[
+          { x: 55, y: 12, size: 1.5, op: 0.4, dur: 7 },
+          { x: 72, y: 55, size: 2,   op: 0.3, dur: 5.5 },
+          { x: 88, y: 25, size: 1,   op: 0.25, dur: 8 },
+          { x: 62, y: 80, size: 2,   op: 0.2, dur: 6.5 },
+          { x: 95, y: 65, size: 1.5, op: 0.3, dur: 9 },
+        ].map((p, i) => (
+          <div key={i} className="absolute rounded-full particle-float pointer-events-none"
+            style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}px`, height: `${p.size}px`, background: `rgba(255,194,0,${p.op})`, boxShadow: `0 0 ${p.size * 6}px rgba(255,194,0,${p.op * 0.7})`, animationDuration: `${p.dur}s`, animationDelay: `${i * 0.5}s` }} />
+        ))}
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+            {/* ── LEFT: Copy ── */}
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-9 h-9 flex items-center justify-center border border-[#D4AF37]/30 bg-[#D4AF37]/10">
+                  <Globe className="w-4 h-4 text-[#D4AF37]" />
+                </div>
+                <span className="font-montserrat text-[#D4AF37]/65 text-[9px] font-bold tracking-[0.45em] uppercase">Official Web Partner · ABL 2026</span>
+              </div>
+
+              <h2 className="font-cinzel font-bold text-white leading-[0.92] mb-7"
+                style={{ fontSize: "clamp(36px, 5.5vw, 78px)" }}>
+                WANT TO<br />BUILD YOUR<br />
+                <span style={{
+                  background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                }}>WEBSITE?</span>
+              </h2>
+
+              <div className="h-px w-16 bg-[#D4AF37]/40 mb-7" />
+
+              <p className="font-montserrat text-white/55 text-sm leading-[2] mb-10 max-w-lg tracking-wide">
+                Get a professional, high-performance website crafted for your business — built by the same team behind this platform. Fast. Beautiful. Built to grow.
+              </p>
+
+              {/* Perks */}
+              <div className="space-y-3 mb-10">
+                {[
+                  { icon: "⚡", label: "Exclusive ABL member pricing" },
+                  { icon: "🚀", label: "Live in 2–4 weeks, not months" },
+                  { icon: "📞", label: "Free strategy consultation included" },
+                ].map((p) => (
+                  <div key={p.label} className="flex items-center gap-3">
+                    <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/20 bg-[#D4AF37]/8 text-[10px]">{p.icon}</div>
+                    <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-[0.2em]">{p.label}</span>
                   </div>
-                  <div>
-                    <div className="font-montserrat text-[#D4AF37]/60 text-[8px] uppercase tracking-[0.35em] mb-2">Exclusive Offer — ABL Members</div>
-                    <h3 className="font-cinzel text-white text-xl sm:text-2xl tracking-wider mb-2 group-hover:text-[#D4AF37] transition-colors">Want to Build Your Website?</h3>
-                    <p className="font-montserrat text-white/60 text-[10px] sm:text-xs tracking-wider leading-relaxed max-w-lg">
-                      Get a professional, high-performance website crafted for your business — built by the same team behind this platform.
-                    </p>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Link href="/web-partner" className="btn-primary px-8 py-4 text-[10px] tracking-[0.28em]">
+                  Get Started <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/contact" className="btn-secondary px-8 py-4 text-[10px] tracking-[0.28em]">
+                  Learn More
+                </Link>
+              </div>
+            </div>
+
+            {/* ── RIGHT: CSS website mockup ── */}
+            <div className="relative hidden lg:flex items-center justify-center">
+              {/* Glow behind mockup */}
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.10) 0%, transparent 70%)" }} />
+
+              {/* Browser chrome frame */}
+              <div className="relative w-full max-w-[480px] border border-[#D4AF37]/25 shadow-[0_30px_80px_rgba(0,0,0,0.8),0_0_0_1px_rgba(212,175,55,0.08)]"
+                style={{ background: "#0B0E1A" }}>
+                {/* Top gold accent line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.6), rgba(255,210,0,1) 40%, rgba(212,175,55,0.6))" }} />
+
+                {/* Browser bar */}
+                <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/5" style={{ background: "#070A14" }}>
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                  </div>
+                  <div className="flex-1 h-5 rounded-sm bg-white/5 flex items-center px-3">
+                    <span className="font-montserrat text-[8px] text-white/25 tracking-wider">yourbusiness.com</span>
                   </div>
                 </div>
 
-                <div className="relative z-10 flex-shrink-0">
-                  <span className="btn-primary text-[10px] tracking-[0.25em] px-7 py-3.5">
-                    Get Started <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                {/* Mockup hero */}
+                <div className="p-4 space-y-3">
+                  {/* Hero block */}
+                  <div className="relative overflow-hidden p-6" style={{ background: "linear-gradient(135deg, #0D1424 0%, #111827 100%)", border: "1px solid rgba(212,175,55,0.08)" }}>
+                    <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.5), transparent)" }} />
+                    <div className="h-2 w-16 mb-2 rounded-sm" style={{ background: "rgba(212,175,55,0.3)" }} />
+                    <div className="h-4 w-3/4 mb-1.5 rounded-sm bg-white/15" />
+                    <div className="h-4 w-1/2 mb-4 rounded-sm bg-white/10" />
+                    <div className="flex gap-2">
+                      <div className="h-7 w-20 rounded-sm" style={{ background: "rgba(212,175,55,0.7)" }} />
+                      <div className="h-7 w-20 rounded-sm border border-white/15 bg-transparent" />
+                    </div>
+                  </div>
+
+                  {/* Cards row */}
+                  <div className="grid grid-cols-3 gap-2">
+                    {["#E07820", "#1F3A93", "#1E824C"].map((c, i) => (
+                      <div key={i} className="p-3 border border-white/5" style={{ background: "#0D1424" }}>
+                        <div className="w-4 h-4 mb-2 rounded-sm" style={{ background: c + "40", border: `1px solid ${c}50` }} />
+                        <div className="h-1.5 w-full mb-1 rounded-sm" style={{ background: "rgba(255,255,255,0.08)" }} />
+                        <div className="h-1.5 w-2/3 rounded-sm" style={{ background: "rgba(255,255,255,0.05)" }} />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom bar */}
+                  <div className="flex items-center justify-between px-3 py-2.5 border border-white/5" style={{ background: "#070A14" }}>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full" style={{ background: "rgba(212,175,55,0.3)" }} />
+                      <div className="h-1.5 w-16 rounded-sm bg-white/10" />
+                    </div>
+                    <div className="h-5 w-14 rounded-sm" style={{ background: "rgba(212,175,55,0.25)" }} />
+                  </div>
+                </div>
+
+                {/* WebHance badge */}
+                <div className="absolute -bottom-4 -right-4 border border-[#D4AF37]/30 bg-[#05080F] px-4 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
+                  <div className="font-montserrat text-[7px] text-[#D4AF37]/60 uppercase tracking-[0.3em] mb-0.5">Built by</div>
+                  <div className="font-cinzel text-[#D4AF37] text-[10px] font-bold tracking-[0.2em]">WebHance</div>
                 </div>
               </div>
-            </Link>
+            </div>
+
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent)" }} />
       </section>
 
     </div>
