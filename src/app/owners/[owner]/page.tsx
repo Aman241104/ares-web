@@ -58,7 +58,7 @@ export default function OwnerPage({ params }: { params: Promise<{ owner: string 
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-28 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ minHeight: "640px" }}>
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />

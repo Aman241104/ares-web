@@ -79,12 +79,12 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
 
           <div className="flex items-center gap-5">
             <div
-              className="w-16 h-16 flex-shrink-0 flex items-center justify-center font-cinzel text-2xl font-light border"
-              style={{ color, borderColor: `${color}40`, background: `${color}15` }}
+              className="relative w-16 h-16 flex-shrink-0 overflow-hidden border"
+              style={{ borderColor: `${color}40`, background: `${color}15` }}
             >
               {member.image
-                ? <Image src={member.image} alt={member.name} fill className="object-cover" sizes="64px" />
-                : member.name.charAt(0)}
+                ? <Image src={member.image} alt={member.name} fill className="object-cover object-top" sizes="64px" />
+                : <span className="absolute inset-0 flex items-center justify-center font-cinzel text-2xl font-light" style={{ color }}>{member.name.charAt(0)}</span>}
             </div>
             <div>
               <h3 className="font-cinzel text-white text-xl tracking-wider mb-1">{member.name}</h3>
@@ -206,7 +206,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-28 bg-[#0B132B] min-h-screen overflow-x-hidden">
       {activeMember && <MemberModal member={activeMember} color={team.color} onClose={() => setActiveMember(null)} />}
       {/* HERO */}
       <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">

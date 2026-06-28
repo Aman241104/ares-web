@@ -60,11 +60,11 @@ export default function Navbar() {
         />
 
         <div className={`transition-all duration-700 ${scrolled ? "px-5 sm:px-6" : "px-4 sm:px-10 lg:px-16"}`}>
-          <div className={`flex items-center justify-between gap-6 transition-all duration-700 ${scrolled ? "h-[100px]" : "h-[130px]"}`}>
+          <div className={`flex items-center justify-between gap-6 transition-all duration-700 ${scrolled ? "h-[64px]" : "h-[80px]"}`}>
 
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0 group">
-              <div className={`flex-shrink-0 transition-all duration-700 group-hover:scale-105 ${scrolled ? "w-28 h-28" : "w-32 h-32 sm:w-36 sm:h-36"}`}>
+              <div className={`flex-shrink-0 transition-all duration-700 group-hover:scale-105 ${scrolled ? "w-11 h-11" : "w-14 h-14 sm:w-16 sm:h-16"}`}>
                 <Image
                   src="/images/logo_icon.png"
                   alt="ARES Business League 2026"
