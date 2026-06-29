@@ -18,6 +18,7 @@ export const navLinks = [
     ],
   },
   { href: "/schedule",    label: "Events" },
+  { href: "/points",      label: "Points" },
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/wall-of-fame", label: "Hall of Fame" },
   { href: "/blog",        label: "Blog" },

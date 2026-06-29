@@ -42,12 +42,11 @@ export default function HomePage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const title = new SplitType(".h-title-ares", { types: "chars" });
-      const bl = new SplitType(".h-title-bl", { types: "chars" });
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
         .from(title.chars, { opacity: 0, y: 60, rotateX: -90, stagger: 0.05, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
-        .from(bl.chars, { opacity: 0, x: -20, stagger: 0.02, duration: 0.8 }, "-=0.5")
+        .from(".h-title-bl", { opacity: 0, x: -30, duration: 0.8 }, "-=0.5")
         .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
         .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
         .from(".h-dock", { opacity: 0, y: 30, duration: 1, ease: "power3.out" }, "-=0.4")

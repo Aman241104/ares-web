@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   ArrowRight, Target, Users, Zap, Trophy, Globe, Star,
   Medal, ShieldCheck, Flame, Handshake, TrendingUp,
-  CalendarCheck, UserPlus, Sparkles, MinusCircle,
+  CalendarCheck, UserPlus, Crown,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -321,91 +321,157 @@ export default function AboutPage() {
       <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sr">
-            <div className="section-label mx-auto mb-5">How Points Work</div>
+            <div className="section-label mx-auto mb-5">Every Action Counts</div>
             <h2 className="font-cinzel font-bold text-white leading-tight mb-5" style={{ fontSize: "clamp(28px,4vw,52px)" }}>
-              THE POINT <span className="text-[#D4AF37]">SYSTEM</span>
+              POINTS THAT BUILD <span className="text-[#D4AF37]">CHAMPIONS</span>
             </h2>
             <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto tracking-wide">
               Every referral, every meeting, every business generated earns points. Here is exactly how the scoreboard moves.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 sr">
-            {/* Core scoring */}
-            <div className="lg:col-span-2 overflow-hidden border border-[rgba(212,175,55,0.15)] rounded-sm">
-              <div className="px-7 py-5 border-b border-white/5 flex items-center gap-3 bg-[#D4AF37]/5">
-                <Trophy className="w-4 h-4 text-[#D4AF37]" />
-                <span className="font-cinzel text-white text-xs tracking-[0.25em] uppercase">Core Scoring</span>
-                <span className="ml-auto font-montserrat text-white/65 text-[8px] uppercase tracking-widest">Per Week</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 sr">
+
+            {/* ── Activity Points ── */}
+            <div className="overflow-hidden border border-[rgba(212,175,55,0.15)]">
+              <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-[#D4AF37]/5">
+                <TrendingUp className="w-4 h-4 text-[#D4AF37]" />
+                <span className="font-cinzel text-white text-[11px] tracking-[0.25em] uppercase">Activity Points</span>
               </div>
-              <div className="divide-y divide-white/5 bg-[#111827]">
+              {/* Table header */}
+              <div className="grid grid-cols-[1fr_auto_auto] bg-[#D4AF37]/4 border-b border-white/5">
+                <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/60">Activity</div>
+                <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/60 text-right">Pts</div>
+                <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/60 w-28 text-right">Detail</div>
+              </div>
+              <div className="divide-y divide-white/[0.04] bg-[#111827]">
+                {/* 121 */}
+                <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                  <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">121</div>
+                  <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">10</div>
+                  <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40 uppercase tracking-widest">In Chapter</div>
+                </div>
+                <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                  <div className="px-5 py-3 font-montserrat text-[9px] text-white/0 select-none">—</div>
+                  <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">20</div>
+                  <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40 uppercase tracking-widest">Cross Chapter</div>
+                </div>
+                {/* Participation */}
+                <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                  <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">Participation in Activities</div>
+                  <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">200</div>
+                  <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">—</div>
+                </div>
+                {/* Referrals */}
+                <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                  <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">Referrals</div>
+                  <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">50</div>
+                  <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40 uppercase tracking-widest">Inside</div>
+                </div>
+                <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                  <div className="px-5 py-3 font-montserrat text-[9px] text-white/0 select-none">—</div>
+                  <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">50</div>
+                  <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40 uppercase tracking-widest">Outside</div>
+                </div>
+                {/* TYFCB */}
                 {[
-                  { icon: <TrendingUp className="w-4 h-4" />,    label: "Business Growth (TYFCB)",  pts: "Up to 300",  color: "#D4AF37" },
-                  { icon: <UserPlus className="w-4 h-4" />,      label: "Referrals Generated",      pts: "Up to 250",  color: "#b0bec5" },
-                  { icon: <Handshake className="w-4 h-4" />,     label: "1 to 1 Meetings",          pts: "Up to 200",  color: "#CD7F32" },
-                  { icon: <Users className="w-4 h-4" />,         label: "One-to-Ones Conducted",    pts: "Up to 150",  color: "#D4AF37" },
-                  { icon: <CalendarCheck className="w-4 h-4" />, label: "Event Participation",      pts: "Up to 100",  color: "#b0bec5" },
-                ].map((row) => (
-                  <div key={row.label} className="flex items-center gap-5 px-7 py-4 hover:bg-white/[0.05] transition-colors group">
-                    <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-sm border" style={{ color: row.color, borderColor: `${row.color}30`, background: `${row.color}0d` }}>
-                      {row.icon}
-                    </div>
-                    <span className="font-montserrat text-white/60 text-xs tracking-wide flex-1">{row.label}</span>
-                    <span className="font-cinzel text-sm flex-shrink-0" style={{ color: row.color }}>{row.pts}</span>
+                  { pts: 50,   detail: "₹0 – 5K",        first: true },
+                  { pts: 250,  detail: "₹5K – 50K",       first: false },
+                  { pts: 500,  detail: "₹50K – 5L",       first: false },
+                  { pts: 1000, detail: "₹5L+",            first: false },
+                ].map((t, i) => (
+                  <div key={i} className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                    <div className="px-5 py-3 font-montserrat text-[11px] font-semibold" style={{ color: t.first ? "rgba(255,255,255,0.85)" : "transparent", userSelect: t.first ? "auto" : "none" }}>{t.first ? "TYFCB" : "—"}</div>
+                    <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">{t.pts.toLocaleString()}</div>
+                    <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">{t.detail}</div>
                   </div>
                 ))}
-                <div className="flex items-center justify-between px-7 py-5 bg-[#D4AF37]/6 border-t border-[#D4AF37]/15">
-                  <span className="font-montserrat text-white/70 text-[9px] uppercase tracking-[0.22em]">Maximum Core Points</span>
-                  <span className="font-cinzel text-[#D4AF37] text-xl">1,000 <span className="text-xs text-[#D4AF37]/50">/ week</span></span>
-                </div>
+                {/* Single-row activities */}
+                {[
+                  { label: "Coffee Table Visitor", pts: 1000 },
+                  { label: "Visitor",              pts: 1500 },
+                  { label: "Power Visitor",        pts: 2000 },
+                  { label: "Power Date",           pts: 1500 },
+                  { label: "Power Meet",           pts: 2000 },
+                  { label: "Induction w/o Sponsor", pts: 5000 },
+                  { label: "Induction",            pts: 6000 },
+                ].map((r) => (
+                  <div key={r.label} className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                    <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">{r.label}</div>
+                    <div className="px-5 py-3 font-cinzel text-[#D4AF37] text-xs text-right">{r.pts.toLocaleString()}</div>
+                    <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">—</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Bonus + Deductions */}
-            <div className="flex flex-col gap-5">
-              <div className="flex-1 overflow-hidden border border-[rgba(212,175,55,0.12)] rounded-sm">
-                <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-[#D4AF37]/5">
-                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-                  <span className="font-cinzel text-white text-[10px] tracking-[0.25em] uppercase">Bonus Points</span>
+            {/* ── Team Owner Bonus + Coming Soon ── */}
+            <div className="flex flex-col gap-6">
+
+              <div className="overflow-hidden border border-[rgba(245,208,120,0.18)]">
+                <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-[#F5D078]/5">
+                  <Crown className="w-4 h-4 text-[#F5D078]" />
+                  <span className="font-cinzel text-white text-[11px] tracking-[0.25em] uppercase">Team Owner Bonus</span>
                 </div>
-                <div className="divide-y divide-white/5 bg-[#111827]">
+                <div className="grid grid-cols-[1fr_auto_auto] bg-[#F5D078]/4 border-b border-white/5">
+                  <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#F5D078]/60">Activity</div>
+                  <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#F5D078]/60 text-right">Pts</div>
+                  <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#F5D078]/60 w-28 text-right">Detail</div>
+                </div>
+                <div className="divide-y divide-white/[0.04] bg-[#111827]">
+                  <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                    <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">121 With Team Owner</div>
+                    <div className="px-5 py-3 font-cinzel text-[#F5D078] text-xs text-right">25</div>
+                    <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">—</div>
+                  </div>
+                  <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                    <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">Referral to Team Owner</div>
+                    <div className="px-5 py-3 font-cinzel text-[#F5D078] text-xs text-right">100</div>
+                    <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">—</div>
+                  </div>
                   {[
-                    { label: "Early Bird",          pts: "+25"  },
-                    { label: "Weekly Top Scorer",   pts: "+50"  },
-                    { label: "Perfect Attendance",  pts: "+30"  },
-                    { label: "Special Events",      pts: "+100" },
-                  ].map((b) => (
-                    <div key={b.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.05] transition-colors">
-                      <span className="font-montserrat text-white/50 text-[10px] tracking-wide">{b.label}</span>
-                      <span className="font-cinzel text-[#D4AF37] text-sm">{b.pts}</span>
+                    { pts: 100,  detail: "₹0 – 5K",  first: true },
+                    { pts: 350,  detail: "₹5K – 50K", first: false },
+                    { pts: 700,  detail: "₹50K – 5L", first: false },
+                    { pts: 1200, detail: "₹5L+",      first: false },
+                  ].map((t, i) => (
+                    <div key={i} className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
+                      <div className="px-5 py-3 font-montserrat text-[11px] font-semibold" style={{ color: t.first ? "rgba(255,255,255,0.85)" : "transparent", userSelect: t.first ? "auto" : "none" }}>{t.first ? "TYFCB to Team Owner" : "—"}</div>
+                      <div className="px-5 py-3 font-cinzel text-[#F5D078] text-xs text-right">{t.pts.toLocaleString()}</div>
+                      <div className="px-5 py-3 w-28 text-right font-montserrat text-[9px] text-white/40">{t.detail}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="overflow-hidden border border-red-500/15 rounded-sm">
-                <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-red-500/5">
-                  <MinusCircle className="w-4 h-4 text-red-400/70" />
-                  <span className="font-cinzel text-white text-[10px] tracking-[0.25em] uppercase">Deductions</span>
+              {/* Coming Soon teaser */}
+              <div className="border border-white/6 bg-[#111827] p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Star className="w-4 h-4 text-[#D4AF37]" />
+                  <span className="font-cinzel text-white text-[11px] tracking-[0.25em] uppercase">And That's Not All</span>
                 </div>
-                <div className="divide-y divide-white/5 bg-[#111827]">
-                  {[
-                    { label: "Absence (unexcused)", pts: "−25" },
-                    { label: "Late Submission",     pts: "−15" },
-                  ].map((d) => (
-                    <div key={d.label} className="flex items-center justify-between px-6 py-3.5 hover:bg-white/[0.05] transition-colors">
-                      <span className="font-montserrat text-white/50 text-[10px] tracking-wide">{d.label}</span>
-                      <span className="font-cinzel text-red-400/80 text-sm">{d.pts}</span>
+                <p className="font-montserrat text-white/55 text-[10px] leading-[1.9] tracking-wide mb-4">
+                  Special activities, business activities, and fun events & games throughout the league.
+                  Participate. Engage. Earn more.
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {["Special Activities", "Business Activities", "Fun Events & Games", "Win Exciting Points"].map((item) => (
+                    <div key={item} className="flex items-center gap-2 border border-white/5 bg-[#0D1424] px-3 py-2.5">
+                      <div className="w-1 h-1 rounded-full bg-[#D4AF37]/60 flex-shrink-0" />
+                      <span className="font-montserrat text-white/60 text-[9px] tracking-wide">{item}</span>
                     </div>
                   ))}
+                </div>
+                <div className="mt-4 text-center">
+                  <span className="font-montserrat text-[#D4AF37]/70 text-[8px] uppercase tracking-[0.35em]">Details Will Be Disclosed Later</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center sr">
-            <Link href="/rules" className="inline-flex items-center gap-2 font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em]">
-              View Full Rules & Scoring Guide <ArrowRight className="w-3 h-3" />
+            <Link href="/points" className="inline-flex items-center gap-2 font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.25em]">
+              View Full Points Structure <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>

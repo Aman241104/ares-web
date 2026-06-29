@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Globe, Code2, Calculator, Smartphone, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe, Code2, Calculator, Smartphone, CheckCircle, Circle } from "lucide-react";
 
 const OFFERINGS = [
   {
@@ -46,28 +46,105 @@ export default function LegacyCTA() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-24 sm:pt-32 pb-36 sm:pb-32 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* LEFT — Trophy visual */}
+          {/* LEFT — Device mockup visual */}
           <div className="hidden lg:flex lg:col-span-4 items-center justify-center relative">
-            <div className="relative w-full aspect-square max-w-[360px]">
-              {/* Glow behind trophy */}
-              <div className="absolute inset-0 rounded-full blur-[80px] opacity-25" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.6) 0%, transparent 70%)" }} />
-              {/* Ring decoration */}
-              <div className="absolute inset-6 rounded-full border border-[rgba(212,175,55,0.08)]" />
-              <div className="absolute inset-12 rounded-full border border-[rgba(212,175,55,0.05)]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Image
-                  src="/images/hero-trophy.jpg"
-                  alt="Championship Trophy"
-                  width={340}
-                  height={400}
-                  className="relative z-10 object-contain mix-blend-screen float-slow"
-                  style={{
-                    opacity: 0.92,
-                    maskImage: "radial-gradient(ellipse 60% 65% at 50% 50%, black 20%, transparent 80%)",
-                    WebkitMaskImage: "radial-gradient(ellipse 60% 65% at 50% 50%, black 20%, transparent 80%)",
-                    filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
-                  }}
-                />
+            <div className="relative w-full max-w-[340px]">
+              {/* Ambient glow */}
+              <div className="absolute inset-0 blur-[90px] opacity-20 pointer-events-none" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.7) 0%, transparent 70%)" }} />
+
+              {/* ── BROWSER WINDOW ── */}
+              <div className="relative z-10 rounded-lg overflow-hidden border border-[rgba(212,175,55,0.25)] shadow-[0_24px_60px_rgba(0,0,0,0.8),0_0_0_0.5px_rgba(212,175,55,0.12)] float-slow">
+                {/* Title bar */}
+                <div className="flex items-center gap-2 px-4 py-2.5 bg-[#0D1424] border-b border-white/8">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                  </div>
+                  <div className="flex-1 mx-3">
+                    <div className="bg-white/5 border border-white/8 rounded-sm px-3 py-1 flex items-center gap-2">
+                      <Globe className="w-2.5 h-2.5 text-[#D4AF37]/50 flex-shrink-0" />
+                      <span className="font-montserrat text-[7px] text-white/40 tracking-widest truncate">yourbusiness.com</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Website body */}
+                <div className="bg-[#07101F] p-4 space-y-3">
+                  {/* Navbar mock */}
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                    <div className="w-16 h-2 rounded-full bg-[#D4AF37]/40" />
+                    <div className="flex gap-2">
+                      {[1,2,3].map(i => <div key={i} className="w-8 h-1.5 rounded-full bg-white/10" />)}
+                    </div>
+                    <div className="w-14 h-5 rounded-sm" style={{ background: "linear-gradient(90deg,#D4AF37,#C9921A)" }} />
+                  </div>
+
+                  {/* Hero mock */}
+                  <div className="relative rounded-sm overflow-hidden" style={{ aspectRatio: "16/6" }}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B] to-[#1a2a4a]" />
+                    <div className="absolute inset-0 flex flex-col justify-center px-4">
+                      <div className="w-3/4 h-2.5 rounded-full mb-2" style={{ background: "linear-gradient(90deg,#F3E5AB,#D4AF37)" }} />
+                      <div className="w-1/2 h-1.5 rounded-full bg-white/20 mb-3" />
+                      <div className="w-16 h-4 rounded-sm" style={{ background: "linear-gradient(90deg,#D4AF37,#C9921A)" }} />
+                    </div>
+                  </div>
+
+                  {/* Cards mock */}
+                  <div className="grid grid-cols-3 gap-2">
+                    {[...Array(3)].map((_, i) => (
+                      <div key={i} className="rounded-sm bg-[#111827] border border-white/6 p-2 space-y-1.5">
+                        <div className="w-5 h-5 rounded-sm bg-[#D4AF37]/20" />
+                        <div className="w-full h-1 rounded-full bg-white/15" />
+                        <div className="w-3/4 h-1 rounded-full bg-white/8" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stats row mock */}
+                  <div className="flex gap-2">
+                    {[...Array(3)].map((_, i) => (
+                      <div key={i} className="flex-1 rounded-sm bg-[#D4AF37]/6 border border-[#D4AF37]/12 p-2 text-center">
+                        <div className="w-8 h-2.5 rounded-full mx-auto mb-1" style={{ background: "rgba(212,175,55,0.5)" }} />
+                        <div className="w-10 h-1 rounded-full mx-auto bg-white/15" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* ── MOBILE PHONE ── */}
+              <div className="absolute -bottom-6 -right-4 z-20 w-[88px] rounded-xl overflow-hidden border border-[rgba(212,175,55,0.3)] shadow-[0_12px_40px_rgba(0,0,0,0.8)] float-slow" style={{ animationDelay: "1.5s" }}>
+                {/* Phone notch bar */}
+                <div className="bg-[#0D1424] border-b border-white/8 py-1.5 flex justify-center">
+                  <div className="w-8 h-1 rounded-full bg-white/20" />
+                </div>
+                {/* Phone screen */}
+                <div className="bg-[#07101F] p-2 space-y-1.5">
+                  <div className="w-full h-10 rounded-sm bg-gradient-to-br from-[#0B132B] to-[#1a2a4a] border border-white/5 flex items-center justify-center">
+                    <div className="w-10 h-2 rounded-full" style={{ background: "linear-gradient(90deg,#D4AF37,#C9921A)" }} />
+                  </div>
+                  {[1,2,3].map(i => (
+                    <div key={i} className="flex gap-1 items-center">
+                      <div className="w-4 h-4 rounded-sm flex-shrink-0 bg-[#D4AF37]/15" />
+                      <div className="flex-1 space-y-0.5">
+                        <div className="w-full h-1 rounded-full bg-white/15" />
+                        <div className="w-2/3 h-1 rounded-full bg-white/8" />
+                      </div>
+                    </div>
+                  ))}
+                  <div className="w-full h-4 rounded-sm" style={{ background: "linear-gradient(90deg,#D4AF37,#C9921A)", opacity: 0.8 }} />
+                </div>
+                {/* Home bar */}
+                <div className="bg-[#0D1424] border-t border-white/8 py-1.5 flex justify-center">
+                  <div className="w-6 h-1 rounded-full bg-white/25" />
+                </div>
+              </div>
+
+              {/* ── LAPTOP CHIP ── */}
+              <div className="absolute -top-5 -left-4 z-20 bg-[#0D1424] border border-[rgba(212,175,55,0.25)] rounded-sm px-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.7)] flex items-center gap-2">
+                <Code2 className="w-3 h-3 text-[#D4AF37]" />
+                <span className="font-montserrat text-[7px] uppercase tracking-[0.25em] text-white/70">Built for You</span>
               </div>
             </div>
           </div>
