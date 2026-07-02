@@ -447,8 +447,6 @@ export default function HomePage() {
                     <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: i < 3 ? team.color : "transparent", boxShadow: i === 0 ? `0 0 12px ${team.color}` : "none", opacity: i === 0 ? 1 : 0.5 }} />
                     {/* Hover tint */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: `linear-gradient(90deg, ${team.color}06 0%, transparent 60%)` }} />
-                    {/* #1 LEADER badge — desktop only */}
-                    {i === 0 && <div className="hidden sm:block absolute right-4 top-1/2 -translate-y-1/2 font-montserrat text-[6px] font-black uppercase tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-2 py-0.5">LEADER</div>}
 
                     <div className="sm:col-span-1 flex items-center">
                       <div
@@ -472,8 +470,8 @@ export default function HomePage() {
                           {team.fullName.split(" ").at(-1)}
                         </div>
                       </div>
-                      {/* Mobile-only LEADER pill */}
-                      {i === 0 && <div className="sm:hidden flex-shrink-0 font-montserrat text-[6px] font-black uppercase tracking-[0.25em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-1.5 py-0.5">LEADER</div>}
+                      {/* LEADER pill */}
+                      {i === 0 && <div className="flex-shrink-0 font-montserrat text-[6px] font-black uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#FFC200] border border-[#FFC200]/30 bg-[#FFC200]/14 px-1.5 sm:px-2 py-0.5">LEADER</div>}
                     </div>
 
                     <div className="sm:col-span-2 text-right">
@@ -502,9 +500,9 @@ export default function HomePage() {
               </div>
 
               {[
-                { label: "TYFCB Generated", value: "₹3.4M", icon: <Briefcase className="w-4 h-4" />, sub: "Business value created" },
-                { label: "Referrals Passed", value: "610",   icon: <Users className="w-4 h-4" />,    sub: "Connections made" },
-                { label: "1-2-1 Meetings",   value: "1,078", icon: <Calendar className="w-4 h-4" />, sub: "Direct meetings held" },
+                { label: "TYFCB Generated", value: "TBA", icon: <Briefcase className="w-4 h-4" />, sub: "Total business passed" },
+                { label: "Referrals Passed", value: "TBA",   icon: <Users className="w-4 h-4" />,    sub: "Total referrals passed" },
+                { label: "1-2-1 Meetings",   value: "TBA", icon: <Calendar className="w-4 h-4" />, sub: "Total 1-2-1 meetings held" },
               ].map((m) => (
                 <div key={m.label} className="card-glow p-6 group hover:translate-y-[-2px] transition-transform duration-300">
                   <div className="flex items-center justify-between mb-4">
@@ -512,7 +510,7 @@ export default function HomePage() {
                     <div className="text-[#D4AF37]/30 group-hover:text-[#D4AF37]/60 transition-colors">{m.icon}</div>
                   </div>
                   <div className="font-cinzel text-white text-3xl sm:text-4xl mb-1">{m.value}</div>
-                  <div className="font-montserrat text-white/20 text-[8px] uppercase tracking-[0.2em]">{m.sub}</div>
+                  <div className="font-montserrat text-white/50 text-[8px] uppercase tracking-[0.2em]">{m.sub}</div>
                 </div>
               ))}
 

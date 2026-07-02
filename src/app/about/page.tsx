@@ -264,6 +264,46 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════════════════════════
+          COMMISSIONERS
+      ═══════════════════════════════════ */}
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#000000] overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 50% at 50% 0%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 sr">
+            <div className="section-label mx-auto mb-5">The Visionaries</div>
+            <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(28px,4vw,48px)" }}>
+              MEET THE <span className="text-[#D4AF37]">COMMISSIONERS</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 sr-stagger">
+            {[
+              { name: "Commissioner One", role: "Co-Commissioner, ABL", quote: "The Ares Business League is more than a competition; it is a movement to forge legendary enterprises and build a stronger nation.", img: "/images/members/member-1.png" },
+              { name: "Commissioner Two", role: "Co-Commissioner, ABL", quote: "We challenge our leaders to not just perform, but to leave a legacy. True collaboration in this arena changes the entire business landscape.", img: "/images/members/member-2.png" }
+            ].map((comm, idx) => (
+              <div key={idx} className="relative group overflow-hidden border border-[rgba(212,175,55,0.15)] bg-[#0B1120] hover:bg-[#030712] transition-colors p-8 sm:p-10 flex flex-col items-center text-center">
+                <div className="absolute top-0 left-0 right-0 h-0.5 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, transparent, #D4AF37, transparent)` }} />
+                
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mb-6 border border-[#D4AF37]/30 group-hover:border-[#D4AF37]/60 transition-colors relative shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                  <Image src={comm.img} alt={comm.name} fill className="object-cover" />
+                </div>
+                <h3 className="font-cinzel text-xl sm:text-2xl text-white mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">{comm.name}</h3>
+                <div className="font-montserrat text-[#D4AF37]/80 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] mb-8">{comm.role}</div>
+                
+                <div className="relative mt-auto">
+                  <div className="text-[#D4AF37]/20 font-cinzel text-[60px] sm:text-[80px] leading-none absolute -top-6 sm:-top-8 -left-2 sm:-left-4 select-none pointer-events-none">&ldquo;</div>
+                  <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-relaxed tracking-wide relative z-10 italic">
+                    "{comm.quote}"
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════
           LEADERSHIP
       ═══════════════════════════════════ */}
       <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] overflow-hidden">

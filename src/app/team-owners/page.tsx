@@ -67,7 +67,7 @@ export default function TeamOwnersPage() {
     <div ref={containerRef} className="min-h-screen bg-[#02050A] text-white pt-32 pb-20 relative overflow-hidden">
       
       {/* Dynamic Background Noise */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("/images/noise.png")', backgroundRepeat: 'repeat' }} />
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("/images/noise.svg")', backgroundRepeat: 'repeat' }} />
       
       {/* Background Glows */}
       <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#D4AF37]/10 blur-[120px] mix-blend-screen pointer-events-none" />

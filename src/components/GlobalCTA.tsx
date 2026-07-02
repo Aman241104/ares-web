@@ -56,13 +56,13 @@ export default function GlobalCTA() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 bg-[#050B0A] relative overflow-hidden font-montserrat">
+    <section ref={containerRef} className="py-24 bg-[#FDFBF7] relative overflow-hidden font-montserrat">
       
       {/* Top Smooth Blend Transition */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#050B0A] to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FDFBF7] to-transparent z-10 pointer-events-none" />
 
       {/* Super Large Background Arrow (Animated on Scroll) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[130vw] h-[130vw] opacity-10 blur-2xl pointer-events-none g-bg-scroll z-0 flex items-center justify-center mix-blend-screen">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[130vw] h-[130vw] opacity-[0.03] blur-2xl pointer-events-none g-bg-scroll z-0 flex items-center justify-center mix-blend-multiply">
         <Image 
           src="/images/gravity-arrow.png" 
           alt="Gravity Background" 
@@ -72,7 +72,7 @@ export default function GlobalCTA() {
       </div>
 
       {/* Main Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#00A859]/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#00A859]/10 blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
@@ -87,7 +87,7 @@ export default function GlobalCTA() {
           </div>
 
           {/* Heading */}
-          <h2 className="font-cinzel font-bold text-white leading-[1.05] tracking-wide mb-8" style={{ fontSize: "clamp(48px, 6vw, 76px)" }}>
+          <h2 className="font-cinzel font-bold text-[#111827] leading-[1.05] tracking-wide mb-8" style={{ fontSize: "clamp(48px, 6vw, 76px)" }}>
             <div className="g-title">ELEVATE</div>
             <div className="g-title">YOUR</div>
             <div className="g-title">DIGITAL</div>
@@ -95,7 +95,7 @@ export default function GlobalCTA() {
           </h2>
 
           {/* Description */}
-          <p className="g-desc text-white/60 text-sm leading-[1.9] max-w-xl mb-12 font-medium tracking-wide">
+          <p className="g-desc text-gray-600 text-sm leading-[1.9] max-w-xl mb-12 font-medium tracking-wide">
             Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
           </p>
 
@@ -111,7 +111,7 @@ export default function GlobalCTA() {
                 <div className="w-7 h-7 rounded-full bg-[#00A859]/10 group-hover:bg-[#00A859]/20 flex items-center justify-center border border-[#00A859]/20 group-hover:border-[#00A859]/40 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(0,168,89,0.3)]">
                   {f.icon}
                 </div>
-                <span className="text-white/80 group-hover:text-white text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors duration-300">{f.text}</span>
+                <span className="text-gray-600 group-hover:text-[#111827] text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors duration-300">{f.text}</span>
               </div>
             ))}
           </div>
@@ -125,17 +125,17 @@ export default function GlobalCTA() {
               Start Project <ArrowRight className="w-4 h-4" />
             </Link>
             
-            <div className="border-l border-white/10 pl-8">
-              <div className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-1.5">Gravity Media Marketing</div>
-              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
-              <a href="tel:+918104933816" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs">+91 8104933816</a>
+            <div className="border-l border-black/10 pl-8">
+              <div className="text-[#111827] text-[10px] font-bold tracking-[0.2em] uppercase mb-1.5">Gravity Media Marketing</div>
+              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-gray-600 hover:text-[#00A859] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
+              <a href="tel:+918104933816" className="block text-gray-600 hover:text-[#00A859] transition-colors text-xs">+91 8104933816</a>
             </div>
           </div>
         </div>
 
         {/* ── RIGHT COLUMN: CARD ── */}
         <div className="g-card relative lg:ml-10">
-          <div className="relative w-full max-w-md mx-auto aspect-[4/5] rounded-[2.5rem] border border-[#00A859]/20 hover:border-[#00A859]/40 bg-gradient-to-br from-[#050B0A]/90 to-[#00A859]/5 shadow-[0_40px_80px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(0,168,89,0.05)] backdrop-blur-xl flex flex-col items-center p-8 sm:p-12 overflow-hidden transition-colors duration-500 group">
+          <div className="relative w-full max-w-md mx-auto aspect-[4/5] rounded-[2.5rem] border border-[#00A859]/20 hover:border-[#00A859]/40 bg-gradient-to-br from-white/90 to-[#00A859]/5 shadow-[0_40px_80px_rgba(0,0,0,0.08),inset_0_0_40px_rgba(0,168,89,0.05)] backdrop-blur-xl flex flex-col items-center p-8 sm:p-12 overflow-hidden transition-colors duration-500 group">
             
             {/* Corner Decorative Dots */}
             <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
@@ -160,19 +160,19 @@ export default function GlobalCTA() {
                 />
               </div>
               {/* The Logo Text */}
-              <div className="relative w-full h-24 sm:h-32 opacity-100 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] -translate-y-2 scale-125 sm:scale-150 origin-top">
+              <div className="relative w-full h-24 sm:h-32 opacity-100 drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] -translate-y-2 scale-125 sm:scale-150 origin-top">
                 <Image 
                   src="/images/gravity-logo.png" 
                   alt="Gravity Logo Text" 
                   fill 
-                  className="object-contain"
+                  className="object-contain invert brightness-0"
                 />
               </div>
             </div>
 
             {/* Bottom Pill */}
-            <div className="relative z-10 border border-[#00A859]/30 bg-[#00A859]/10 backdrop-blur-md px-6 py-2.5 rounded-full mt-auto shrink-0 shadow-[0_10px_20px_rgba(0,0,0,0.4)] group-hover:bg-[#00A859]/20 transition-colors duration-500">
-              <span className="text-[#00D672] text-[9px] font-bold tracking-[0.25em] uppercase drop-shadow-[0_0_8px_rgba(0,214,114,0.5)]">Official Digital Partner</span>
+            <div className="relative z-10 border border-[#00A859]/30 bg-[#00A859]/10 backdrop-blur-md px-6 py-2.5 rounded-full mt-auto shrink-0 shadow-[0_10px_20px_rgba(0,0,0,0.05)] group-hover:bg-[#00A859]/20 transition-colors duration-500">
+              <span className="text-[#008F4C] text-[9px] font-bold tracking-[0.25em] uppercase">Official Digital Partner</span>
             </div>
           </div>
         </div>

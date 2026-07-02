@@ -561,22 +561,6 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
         </div>
       </section>
 
-      {/* TEAM MOTTO CTA */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#030712] border-t border-white/5">
-        <div className="max-w-2xl mx-auto sr">
-          <div className="w-12 h-px mx-auto mb-8 bg-white/20" />
-          <h2 className="font-cinzel font-light text-white text-4xl sm:text-5xl mb-6 uppercase leading-tight">
-            One Team. <span style={{ color: team.color }}>One Legacy.</span>
-          </h2>
-          <p className="font-montserrat text-white/50 text-sm tracking-wide mb-10 max-w-md mx-auto">
-            {team.motto}
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/leaderboard" className="btn-primary">View Leaderboard</Link>
-            <Link href="/schedule" className="btn-secondary">View Schedule</Link>
-          </div>
-        </div>
-      </section>
 
     </div>
   );
