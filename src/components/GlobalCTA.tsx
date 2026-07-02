@@ -143,9 +143,9 @@ export default function GlobalCTA() {
             </div>
 
             {/* Huge Logo Stack */}
-            <div className="flex flex-col items-center justify-center relative z-10 g-float w-full h-full flex-1 pointer-events-none gap-6 sm:gap-8 mt-2">
+            <div className="flex flex-col items-center justify-center relative z-10 g-float w-full h-full flex-1 pointer-events-none mt-6">
               {/* The Arrow */}
-              <div className="relative w-[75%] sm:w-[80%] aspect-square drop-shadow-[0_0_35px_rgba(0,168,89,0.4)]">
+              <div className="relative w-[65%] sm:w-[70%] aspect-square drop-shadow-[0_0_40px_rgba(0,168,89,0.5)] translate-y-4">
                 <Image 
                   src="/images/gravity-arrow.png" 
                   alt="Gravity Arrow" 
@@ -154,7 +154,7 @@ export default function GlobalCTA() {
                 />
               </div>
               {/* The Logo Text */}
-              <div className="relative w-[90%] sm:w-[95%] h-16 sm:h-24 opacity-95 drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]">
+              <div className="relative w-full h-24 sm:h-32 opacity-100 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] -translate-y-2 scale-125 sm:scale-150 origin-top">
                 <Image 
                   src="/images/gravity-logo.png" 
                   alt="Gravity Logo Text" 
