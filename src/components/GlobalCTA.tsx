@@ -58,8 +58,8 @@ export default function GlobalCTA() {
   return (
     <section ref={containerRef} className="py-24 bg-[#FDFBF7] relative overflow-hidden font-montserrat">
       
-      {/* Top Smooth Blend Transition */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#FDFBF7] to-transparent z-10 pointer-events-none" />
+      {/* Top Smooth Blend Transition (Dark to Light) */}
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-[#030712] to-transparent z-10 pointer-events-none opacity-60" />
 
       {/* Super Large Background Arrow (Animated on Scroll) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[130vw] h-[130vw] opacity-[0.03] blur-2xl pointer-events-none g-bg-scroll z-0 flex items-center justify-center mix-blend-multiply">
