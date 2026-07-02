@@ -3,6 +3,7 @@ import { Cinzel, Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CTARenderer from "@/components/CTARenderer";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 pb-24 xl:pb-0">{children}</main>
+          <CTARenderer />
           <Footer />
         </SmoothScroll>
         <CommandMenu />

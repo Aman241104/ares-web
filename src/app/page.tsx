@@ -534,9 +534,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TEAM SPOTLIGHT — THE FACTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
+        <div className="gold-divider opacity-60" />
 
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
@@ -648,8 +649,11 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.06) 0%, transparent 70%)" }} />
+        <div className="gold-divider opacity-60" />
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
 
           {/* Special Events */}
           <div>
@@ -739,9 +743,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SCHEDULE PREVIEW
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-50" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 60% at 80% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
+        <div className="gold-divider opacity-60" />
 
         <div className="max-w-7xl mx-auto relative">
           <div className="sr flex items-center justify-between mb-12">
@@ -827,150 +832,7 @@ export default function HomePage() {
             </div>
           </section>
 
-      {/* ═══════════════════════════════════════════
-          WEBSITE CTA — GRAVITY MEDIA MARKETING (GLASSMORPHISM)
-      ═══════════════════════════════════════════ */}
-      <section ref={ctaRef} className="relative overflow-hidden sr bg-[#02050A]">
-        <style>{`
-          @keyframes gradient-x {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-          .animate-gradient-x {
-            animation: gradient-x 4s ease infinite;
-          }
-          .btn-laser::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.8), transparent);
-            background-size: 200% 100%;
-            animation: laser-sweep 2s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            border-radius: 4px;
-          }
-          .group:hover .btn-laser::before {
-            opacity: 1;
-          }
-          @keyframes laser-sweep {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-          }
-        `}</style>
 
-        {/* Giant Background Logo Watermark */}
-        <div ref={bgLogoRef} className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none mix-blend-screen">
-          <img src="/images/gravity-logo.png" alt="" className="w-[150vw] max-w-none h-auto object-cover opacity-50" />
-        </div>
-
-        {/* Seamless Blend Mask */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#000000] to-transparent z-10 pointer-events-none" />
-        
-        {/* Animated Background Orbs */}
-        <div className="cta-orb absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#1A472A] opacity-20 blur-[100px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="cta-orb absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#112211] opacity-30 blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '5s' }} />
-        <div className="cta-orb absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[#0F291E] opacity-20 blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '6s' }} />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            
-            {/* ── LEFT: Copy ── */}
-            <div className="relative z-20">
-              <div className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full border border-[#166534]/40 bg-[#166534]/10 backdrop-blur-md">
-                <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
-                <span className="font-montserrat text-green-400/90 text-[9px] font-bold tracking-[0.4em] uppercase">Official Web & Media Partner</span>
-              </div>
-
-              <h2 ref={ctaTitleRef} className="font-cinzel font-bold text-white leading-[1.05] mb-6"
-                style={{ fontSize: "clamp(36px, 5.5vw, 72px)" }}>
-                ELEVATE YOUR<br />DIGITAL<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-200 to-green-500 animate-gradient-x" style={{ backgroundSize: '200% 200%' }}>
-                  PRESENCE
-                </span>
-              </h2>
-
-              <p className="font-montserrat text-white/60 text-sm leading-[2] mb-10 max-w-lg tracking-wide">
-                Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
-              </p>
-
-              {/* Perks */}
-              <div className="space-y-4 mb-12">
-                {[
-                  { icon: "✨", label: "Awwwards-Winning Design Aesthetics" },
-                  { icon: "📱", label: "Mobile & Web App Development" },
-                  { icon: "🚀", label: "High-Performance Architecture" },
-                  { icon: "📈", label: "Data-Driven Marketing & Media" },
-                ].map((p) => (
-                  <div key={p.label} className="flex items-center gap-4 group">
-                    <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full border border-green-500/20 bg-green-500/10 text-[12px] group-hover:bg-green-500/20 transition-all">{p.icon}</div>
-                    <span className="font-montserrat text-white/70 text-[10px] sm:text-xs uppercase tracking-[0.2em] group-hover:text-white transition-colors">{p.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-2">
-                <div ref={ctaBtnRef} onMouseMove={handleBtnMouseMove} onMouseLeave={handleBtnMouseLeave} className="relative group inline-block will-change-transform btn-laser flex-shrink-0">
-                  <a href="https://gravitymediamarketing.com" target="_blank" rel="noopener noreferrer" className="relative block px-8 py-4 bg-green-700/80 hover:bg-green-600 text-white font-montserrat text-[10px] font-bold uppercase tracking-[0.3em] rounded-sm transition-all shadow-[0_0_20px_rgba(22,101,52,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] flex items-center justify-center gap-3">
-                    Start Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-                
-                <div className="flex flex-col gap-1.5 sm:border-l sm:border-white/10 sm:pl-8">
-                  <span className="font-cinzel text-white text-sm tracking-widest uppercase">Gravity Media Marketing</span>
-                  <a href="mailto:gauravmehta.biz@gmail.com" className="font-montserrat text-white/60 hover:text-green-400 text-xs tracking-wider transition-colors">gauravmehta.biz@gmail.com</a>
-                  <a href="tel:8104933816" className="font-montserrat text-white/60 hover:text-green-400 text-xs tracking-wider transition-colors">+91 8104933816</a>
-                </div>
-              </div>
-            </div>
-
-            {/* ── RIGHT: Glassmorphism Visual ── */}
-            <div className="relative w-full h-[500px] flex items-center justify-center">
-              {/* Floating elements behind glass */}
-              <div className="absolute top-[15%] right-[10%] w-32 h-32 bg-gradient-to-tr from-green-600 to-emerald-400 rounded-full blur-[50px] opacity-40 animate-pulse" />
-              <div className="absolute bottom-[20%] left-[10%] w-40 h-40 bg-gradient-to-bl from-green-500 to-teal-400 rounded-full blur-[60px] opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
-              
-              {/* Main Glass Panel */}
-              <div 
-                ref={glassPanelRef}
-                onMouseMove={handleGlassMouseMove}
-                onMouseLeave={handleGlassMouseLeave}
-                className="relative w-full max-w-[400px] aspect-[4/5] rounded-[40px] border border-white/10 bg-white/[0.03] backdrop-blur-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.8),inset_0_0_0_1px_rgba(255,255,255,0.05)] p-10 flex flex-col items-center justify-center overflow-hidden group will-change-transform"
-                style={{ 
-                  transformStyle: "preserve-3d",
-                  backgroundImage: "radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 50%)"
-                }}
-              >
-                
-                {/* Diagonal shine line */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-[1.5s] ease-in-out" />
-
-                {/* Arrow Asset */}
-                <div ref={glassArrowRef} className="w-32 h-32 mb-10 relative drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700 ease-out z-10" style={{ transform: "translateZ(80px)" }}>
-                  <img src="/images/gravity-arrow.png" alt="Gravity Arrow" className="w-full h-full object-contain" />
-                </div>
-
-                {/* Logo Asset */}
-                <div className="w-56 h-20 relative opacity-90 group-hover:opacity-100 transition-opacity z-10 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]" style={{ transform: "translateZ(60px)" }}>
-                  <img src="/images/gravity-logo.png" alt="Gravity Media Marketing" className="w-full h-full object-contain" />
-                </div>
-                
-                {/* Bottom detail */}
-                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-                  <div className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                     <span className="font-montserrat text-white/50 text-[7px] font-bold uppercase tracking-[0.4em]">Official Digital Partner</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent)" }} />
-      </section>
 
     </div>
   );

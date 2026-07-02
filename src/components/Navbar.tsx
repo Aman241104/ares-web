@@ -140,9 +140,7 @@ export default function Navbar() {
             {/* CTA Buttons */}
             <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
               <Link
-                href="https://gravitymediamarketing.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="btn-primary whitespace-nowrap"
                 style={{ padding: "9px 22px", fontSize: "9px", letterSpacing: "0.22em" }}
               >

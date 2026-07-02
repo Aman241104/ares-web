@@ -90,7 +90,7 @@ export default function Footer() {
                 { href: "/wall-of-fame", label: "Hall of Fame" },
                 { href: "/blog",         label: "Blog" },
                 { href: "/partners",     label: "Partners" },
-                { href: "/web-partner",  label: "Build Your Site" },
+                { href: "/contact",  label: "Build Your Site" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="font-montserrat text-white/60 text-[10px] sm:text-xs hover:text-[#D4AF37] transition-colors tracking-wide flex items-center gap-2 group">

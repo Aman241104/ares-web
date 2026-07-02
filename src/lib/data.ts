@@ -381,7 +381,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 27, 2026",
     readTime: "5 min read",
     category: "Leadership",
-    image: "/images/blog-leadership.png",
+    image: "/images/blog_leadership.png",
   },
   {
     id: "building-connections",

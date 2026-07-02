@@ -76,7 +76,7 @@ export default function MobileDock() {
           {/* CTA */}
           <div className="mt-5 pt-5 border-t border-white/8">
             <Link
-              href="/web-partner"
+              href="/contact"
               className="btn-primary w-full justify-center gap-3"
               onClick={() => setMenuOpen(false)}
             >

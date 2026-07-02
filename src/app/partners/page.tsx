@@ -169,7 +169,7 @@ export default function PartnersPage() {
                 Our <span className="text-[#D4AF37]">Partners</span>
               </h2>
             </div>
-            <Link href="/contact" className="hidden sm:inline-flex items-center gap-2 font-montserrat text-[9px] font-bold text-white/60 uppercase tracking-[0.2em] hover:text-[#D4AF37] transition-colors">
+            <Link href="/contact" className="inline-flex items-center gap-2 font-montserrat text-xs font-bold text-white uppercase tracking-wider hover:text-green-400 transition-colors">
               Become a Partner <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
