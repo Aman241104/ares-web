@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { tournamentRules } from "@/lib/data";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import {
@@ -30,7 +29,7 @@ const faqs = [
   { q: "Can I participate if I miss some events?", a: "You must attend a minimum of 75% of events to remain eligible for prizes and recognition. Missing events results in point deductions." },
   { q: "How are teams formed?", a: "Teams are formed by the ARES Business League organizing committee, with each team led by one of the four iconic team owners (Modi, Doval, Amit Shah, Jaishankar)." },
   { q: "What is TYFCB?", a: "TYFCB stands for Thank You For Your Business Check — the business revenue generated through referrals and networking within the BNI chapter." },
-  { q: "When does the tournament begin?", a: "The tournament runs from June 24 to July 22, 2026. The opening ceremony is on June 24, 2026 at 6:00 PM." },
+  { q: "When does the tournament begin?", a: "The tournament runs from July 1st to July 29th, 2026. The opening ceremony is on July 1st, 2026 at 6:00 PM." },
 ];
 
 // Section icons and accent colors
@@ -87,7 +86,7 @@ export default function RulesPage() {
   };
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
@@ -141,7 +140,7 @@ export default function RulesPage() {
       </PageHero>
 
       {/* ── RULES GRID ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="section-label mb-12 sr">Tournament Rules</div>
 
@@ -158,7 +157,7 @@ export default function RulesPage() {
                 <div
                   key={section.section}
                   id={`section-${idLabel}`}
-                  className="group relative border border-white/6 bg-[#111827] hover:bg-[#0D1424] hover:border-[rgba(212,175,55,0.18)] transition-all duration-500 overflow-hidden"
+                  className="group relative border border-white/6 bg-[#0B1120] hover:bg-[#030712] hover:border-[rgba(212,175,55,0.18)] transition-all duration-500 overflow-hidden"
                 >
                   {/* Color left accent */}
                   <div
@@ -217,7 +216,7 @@ export default function RulesPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5 sr">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 sr">
         <div className="max-w-4xl mx-auto">
           <div className="section-label mx-auto mb-10">Common Questions</div>
           <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
@@ -228,7 +227,7 @@ export default function RulesPage() {
             {faqs.map((faq, i) => (
               <details
                 key={i}
-                className="group border border-white/6 bg-[#0D1424] hover:border-[rgba(212,175,55,0.18)] overflow-hidden transition-all duration-300"
+                className="group border border-white/6 bg-[#030712] hover:border-[rgba(212,175,55,0.18)] overflow-hidden transition-all duration-300"
               >
                 <summary className="flex items-center justify-between gap-6 p-6 cursor-pointer list-none">
                   <div className="flex items-center gap-4 min-w-0">
@@ -255,35 +254,8 @@ export default function RulesPage() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ── */}
-      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#0D1424] border-t border-white/5 sr">
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
 
-        <div className="relative max-w-2xl mx-auto text-center border border-[rgba(212,175,55,0.2)] bg-[#111827] p-12 lg:p-16 overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
-          <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-8">
-            <Scale className="w-6 h-6 text-[#D4AF37]" />
-          </div>
-          <h2 className="font-cinzel font-bold text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
-            PLAY FAIR. <span className="text-[#D4AF37]">WIN HARD.</span>
-          </h2>
-          <div className="gold-divider max-w-xs mx-auto mb-6" />
-          <p className="font-montserrat text-white/60 text-xs leading-[2] mb-10 tracking-wide">
-            The arena rewards discipline, strategy, and relentless execution. Still have questions? Our team is here to help.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn-primary">
-              Contact Us <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/leaderboard" className="btn-secondary">
-              View Standings
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      <LegacyCTA />
     </div>
   );
 }

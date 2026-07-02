@@ -2,11 +2,10 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, Users, Trophy, Calendar, TrendingUp, Shield } from "lucide-react";
+import { ArrowRight, ChevronRight, Users, Trophy, Calendar, TrendingUp, Shield, Target, TowerControl, Flower2, Globe2, Zap } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,7 +72,7 @@ export default function TeamsPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[60vh] py-14 sm:py-20 px-6 sm:px-10 lg:px-16">
@@ -163,7 +162,7 @@ export default function TeamsPage() {
       </PageHero>
 
       {/* ── QUICK STATS ── */}
-      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 relative">
+      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { icon: <Users className="w-5 h-5 text-[#D4AF37]" />, value: "30", label: "Business Owners" },
@@ -185,7 +184,7 @@ export default function TeamsPage() {
       </section>
 
       {/* ── CINEMATIC TEAM CARDS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-4 mb-16">
             <h2 className="font-cinzel font-bold text-white text-3xl tracking-widest uppercase">
@@ -258,6 +257,26 @@ export default function TeamsPage() {
                           <div>
                             <div className="font-montserrat text-[8px] text-white/60 uppercase tracking-widest mb-1">Mascot</div>
                             <div className="font-cinzel tracking-wider text-sm text-white">{team.mascot}</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Superpower badge */}
+                      {team.superpower && (
+                        <div className="mt-8 p-4 rounded-xl border flex items-start gap-4 transition-all duration-300 group-hover:bg-white/[0.02]" style={{ borderColor: `${team.color}30`, background: `${team.color}0A` }}>
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${team.color}20` }}>
+                            {team.superpower.iconName === 'Target' && <Target className="w-5 h-5" style={{ color: team.color }} />}
+                            {team.superpower.iconName === 'TowerControl' && <TowerControl className="w-5 h-5" style={{ color: team.color }} />}
+                            {team.superpower.iconName === 'Flower2' && <Flower2 className="w-5 h-5" style={{ color: team.color }} />}
+                            {team.superpower.iconName === 'Globe2' && <Globe2 className="w-5 h-5" style={{ color: team.color }} />}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <Zap className="w-3 h-3 text-[#D4AF37]" />
+                              <span className="font-montserrat text-[8px] uppercase tracking-widest text-[#D4AF37] font-bold">Superpower</span>
+                            </div>
+                            <div className="font-cinzel text-lg text-white mb-1">{team.superpower.name}</div>
+                            <div className="font-montserrat text-[10px] text-white/60 leading-relaxed max-w-xs">{team.superpower.description}</div>
                           </div>
                         </div>
                       )}
@@ -342,33 +361,6 @@ export default function TeamsPage() {
           </div>
         </div>
       </section>
-
-      {/* ── BOTTOM CTA ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0D1424] border-t border-white/5">
-        <div className="max-w-2xl mx-auto sr">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-8 h-px bg-white/10" />
-            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">
-              One League. One Vision.
-            </span>
-            <div className="w-8 h-px bg-white/10" />
-          </div>
-          <h2 className="font-cinzel font-bold text-white text-4xl sm:text-5xl mb-6">
-            ONE LEGACY TO <span className="text-[#D4AF37] italic">BUILD.</span>
-          </h2>
-          <p className="font-montserrat text-white/50 text-sm tracking-wide mb-10 max-w-md mx-auto">
-            Compete. Collaborate. Create Impact.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/leaderboard" className="btn-primary">
-              View Leaderboard <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-            <Link href="/schedule" className="btn-secondary">View Schedule</Link>
-          </div>
-        </div>
-      </section>
-
-      <LegacyCTA />
     </div>
   );
 }

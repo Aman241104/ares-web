@@ -38,6 +38,86 @@ function MiniSparkline({ values, color }: { values: number[]; color: string }) {
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLElement>(null);
+  const ctaTitleRef = useRef<HTMLHeadingElement>(null);
+  const glassPanelRef = useRef<HTMLDivElement>(null);
+  const glassArrowRef = useRef<HTMLDivElement>(null);
+  const ctaBtnRef = useRef<HTMLDivElement>(null);
+  const bgLogoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+       if (ctaTitleRef.current) {
+         const titleSplit = new SplitType(ctaTitleRef.current, { types: "words,chars" });
+         gsap.from(titleSplit.chars, {
+           scrollTrigger: { trigger: ctaRef.current, start: "top 75%", once: true },
+           opacity: 0, y: 50, rotateX: -90, stagger: 0.04, duration: 1, ease: "back.out(1.5)"
+         });
+       }
+
+       if (glassArrowRef.current && glassPanelRef.current) {
+         gsap.fromTo(glassArrowRef.current,
+           { y: 80, opacity: 0 },
+           {
+             scrollTrigger: { trigger: glassPanelRef.current, start: "top 90%", end: "bottom 30%", scrub: 1 },
+             y: -20, opacity: 1, ease: "none"
+           }
+         );
+       }
+
+       if (ctaRef.current) {
+         gsap.fromTo(".cta-orb",
+           { y: 50, scale: 0.8 },
+           {
+             scrollTrigger: { trigger: ctaRef.current, start: "top bottom", end: "bottom top", scrub: 1 },
+             y: -150, scale: 1.2, ease: "none", stagger: 0.1
+           }
+         );
+       }
+
+       if (bgLogoRef.current && ctaRef.current) {
+         gsap.fromTo(bgLogoRef.current,
+           { yPercent: 20, rotation: -10 },
+           {
+             scrollTrigger: { trigger: ctaRef.current, start: "top bottom", end: "bottom top", scrub: 1 },
+             yPercent: -20, rotation: 10, ease: "none"
+           }
+         );
+       }
+    });
+    return () => ctx.revert();
+  }, []);
+
+  const handleGlassMouseMove = (e: React.MouseEvent) => {
+    if (!glassPanelRef.current || typeof window === "undefined" || window.innerWidth < 1024) return;
+    const { left, top, width, height } = glassPanelRef.current.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / 25;
+    const y = (e.clientY - top - height / 2) / 25;
+    gsap.to(glassPanelRef.current, { 
+      rotateY: x, rotateX: -y, 
+      "--mouse-x": `${e.clientX - left}px`,
+      "--mouse-y": `${e.clientY - top}px`,
+      duration: 0.4, ease: "power2.out", transformPerspective: 1000 
+    });
+  };
+
+  const handleGlassMouseLeave = () => {
+    if (!glassPanelRef.current) return;
+    gsap.to(glassPanelRef.current, { rotateY: 0, rotateX: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+  };
+
+  const handleBtnMouseMove = (e: React.MouseEvent) => {
+    if (!ctaBtnRef.current || typeof window === "undefined" || window.innerWidth < 1024) return;
+    const { left, top, width, height } = ctaBtnRef.current.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) * 0.3;
+    const y = (e.clientY - top - height / 2) * 0.3;
+    gsap.to(ctaBtnRef.current, { x, y, duration: 0.3, ease: "power2.out" });
+  };
+
+  const handleBtnMouseLeave = () => {
+    if (!ctaBtnRef.current) return;
+    gsap.to(ctaBtnRef.current, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -95,7 +175,6 @@ export default function HomePage() {
     const xPos = (clientX / window.innerWidth - 0.5) * 20;
     const yPos = (clientY / window.innerHeight - 0.5) * 20;
     gsap.to(".parallax-bg", { x: xPos * 2, y: yPos * 2, duration: 1, ease: "power2.out" });
-    gsap.to(".parallax-fg", { x: -xPos * 3, y: -yPos * 3, duration: 1, ease: "power2.out" });
   };
 
   const mascots: Record<string, string> = {
@@ -112,7 +191,7 @@ export default function HomePage() {
   };
 
   return (
-    <div ref={heroRef} className="overflow-x-hidden bg-[#0B132B]">
+    <div ref={heroRef} className="overflow-x-hidden bg-[#000000]" onMouseMove={handleMouseMove}>
 
       {/* ═══════════════════════════════════════════
           HERO — CINEMATIC (trophy stadium left-split)
@@ -126,7 +205,7 @@ export default function HomePage() {
             alt="ARES Business League 2026 — Championship Trophy"
             fill
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-center parallax-bg scale-110"
             priority
             style={{ filter: "brightness(0.85) saturate(1.1)" }}
           />
@@ -137,11 +216,10 @@ export default function HomePage() {
           {/* Strong dark veil over left half */}
           <div className="absolute inset-0" style={{ background: "linear-gradient(95deg, rgba(7,12,28,0.97) 0%, rgba(7,12,28,0.90) 28%, rgba(7,12,28,0.55) 52%, rgba(7,12,28,0.10) 70%, transparent 85%)" }} />
           {/* Top fade for navbar */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B132B]/70 via-transparent to-transparent" style={{ height: "22%" }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/70 via-transparent to-transparent" style={{ height: "22%" }} />
           {/* Bottom fade into next section */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0B132B] to-transparent" />
-          {/* Diagonal gold accent line (matches the one in the reference image) */}
-          <div className="absolute top-0 bottom-0 left-[48%] w-px pointer-events-none hidden lg:block" style={{ background: "linear-gradient(180deg, transparent 0%, rgba(255,194,0,0.12) 30%, rgba(255,194,0,0.08) 70%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#000000] to-transparent" />
+          {/* Diagonal gold accent line removed as it overlapped with text */}
         </div>
 
         {/* ── FLOATING GOLD PARTICLES ── z-[2] (left half only) */}
@@ -232,34 +310,40 @@ export default function HomePage() {
                 CREATE IMPACT.
               </p>
               <p className="font-montserrat text-white/50 text-[9px] sm:text-[10px] tracking-[0.3em] uppercase">
-                4 Teams · 4 Leaders · 1 Mission · June 24 – July 22
+                4 Teams · 4 Leaders · 1 Mission · July 1st – July 29th
               </p>
             </div>
 
             {/* CTAs */}
-            <div className="h-btns flex flex-wrap gap-4 mb-10">
-              <Link href="/teams" className="btn-primary px-8 py-4 text-[10px] tracking-[0.25em]">
-                Explore Teams <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <Link href="/leaderboard" className="btn-secondary px-8 py-4 text-[10px] tracking-[0.25em]">
-                Live Leaderboard
-              </Link>
+            <div className="h-btns flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-4 sm:gap-6 mb-14">
+              <div className="flex flex-wrap gap-4">
+                <Link href="/teams" className="btn-primary px-10 py-5 text-[11px] tracking-[0.25em]">
+                  Explore Teams <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link href="/leaderboard" className="btn-secondary px-10 py-5 text-[11px] tracking-[0.25em]">
+                  View Leaderboard
+                </Link>
+              </div>
+              <div className="flex items-center sm:h-[52px]">
+                <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.2em] border border-white/10 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                  Scores refreshed every Wednesday
+                </span>
+              </div>
             </div>
 
             {/* ── STATS DOCK — inline below CTAs ── */}
-            <div className="h-dock w-full max-w-lg relative overflow-hidden border border-[rgba(255,194,0,0.22)] bg-black/70 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
-              <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.9), rgba(255,210,0,1) 30%, rgba(255,194,0,0.6) 60%, transparent)" }} />
-              <div className="absolute top-0 bottom-0 w-[1.5px] pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, rgba(255,194,0,0.5), transparent)", animation: "scan-dock 4s ease-in-out infinite" }} />
-              <div className="flex divide-x divide-[rgba(255,194,0,0.10)] py-5 relative z-10">
+            <div className="h-dock w-full max-w-lg relative">
+              <div className="flex gap-6 sm:gap-10 relative z-10">
                 {[
-                  { n: "30+", l: "Business Owners" },
-                  { n: "4",   l: "Teams" },
-                  { n: "1",   l: "Mission" },
-                  { n: "∞",   l: "Possibilities" },
+                  { n: "30",  l: "Business Owners", icon: <Users className="w-5 h-5 text-[#D4AF37]/70" /> },
+                  { n: "4",   l: "Teams", icon: <Building2 className="w-5 h-5 text-[#D4AF37]/70" /> },
+                  { n: "1",   l: "Month", icon: <Calendar className="w-5 h-5 text-[#D4AF37]/70" /> },
+                  { n: "1",   l: "Winner", icon: <Trophy className="w-5 h-5 text-[#D4AF37]/70" /> },
                 ].map((s) => (
-                  <div key={s.l} className="h-stat-item flex flex-col items-center text-center px-4 sm:px-6 flex-1">
-                    <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(20px, 3vw, 32px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
-                    <div className="font-montserrat text-white/55 text-[6px] uppercase tracking-[0.3em] font-bold mt-1.5 leading-tight">{s.l}</div>
+                  <div key={s.l} className="h-stat-item flex flex-col items-center sm:items-start">
+                    <div className="mb-2">{s.icon}</div>
+                    <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
+                    <div className="font-montserrat text-white/55 text-[7px] uppercase tracking-[0.3em] font-bold mt-1.5 leading-tight">{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -277,7 +361,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TOURNAMENT METRICS STRIP
       ═══════════════════════════════════════════ */}
-      <section className="relative z-20 bg-[#0D1424] overflow-hidden">
+      <section className="relative z-20 bg-[#030712] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid-fine opacity-60" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
@@ -289,12 +373,12 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 sr overflow-hidden border border-[rgba(255,194,0,0.12)] rounded-sm">
             {[
-              { n: "30",  label: "Elite Owners",  sub: "Competing across 4 factions", suffix: "+" },
-              { n: "4",   label: "Iconic Teams",   sub: "Led by national leaders",     suffix: "" },
-              { n: "28",  label: "Days of Battle", sub: "June 24 – July 22, 2026",     suffix: "" },
+              { n: "30",  label: "Business Owners",  sub: "Competing across 4 factions", suffix: "+" },
+              { n: "4",   label: "Iconic Teams",   sub: "Led by iconic team owners",     suffix: "" },
+              { n: "4",   label: "Weeks of Battle", sub: "July 1st – July 29th, 2026",     suffix: "" },
               { n: "∞",   label: "Legacy",         sub: "One champion, one legend",    suffix: "" },
             ].map((s, i) => (
-              <div key={s.label} className="relative bg-[#0D1424] flex flex-col items-center justify-center text-center px-6 py-14 group hover:bg-[#0e1830] transition-all duration-500 overflow-hidden border-r border-[rgba(255,194,0,0.08)] last:border-r-0">
+              <div key={s.label} className="relative bg-[#030712] flex flex-col items-center justify-center text-center px-6 py-14 group hover:bg-[#0e1830] transition-all duration-500 overflow-hidden border-r border-[rgba(255,194,0,0.08)] last:border-r-0">
                 {/* Ghost chapter number */}
                 <div className="absolute top-4 right-4 font-cinzel text-[64px] font-black text-white/[0.03] select-none leading-none pointer-events-none">{String(i+1).padStart(2,"0")}</div>
                 {/* Hover gold floor glow */}
@@ -319,7 +403,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           LIVE LEADERBOARD
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] relative z-20">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative z-20">
         {/* Subtle ambient */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -450,7 +534,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TEAM SPOTLIGHT — THE FACTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 relative">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.65) 30%, rgba(255,210,0,0.85) 50%, rgba(255,194,0,0.65) 70%, transparent)" }} />
 
@@ -471,7 +555,7 @@ export default function HomePage() {
                   style={{ background: team.color, boxShadow: `0 0 20px ${team.color}, 0 0 40px ${team.color}60` }}
                 />
 
-                <div className="overflow-hidden border transition-all duration-500 bg-[#111827] rounded-sm relative"
+                <div className="overflow-hidden border transition-all duration-500 bg-[#0B1120] rounded-sm relative"
                   style={{
                     borderColor: "rgba(255,194,0,0.22)",
                   }}
@@ -564,7 +648,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* Special Events */}
@@ -589,7 +673,7 @@ export default function HomePage() {
                   {/* Timeline node */}
                   <div className={`absolute left-[14px] top-5 w-3 h-3 rounded-full border-2 z-10 transition-all duration-300 group-hover:scale-125 ${ev.status === "completed" ? "bg-green-400 border-green-400 shadow-[0_0_10px_rgba(74,222,128,0.6)]" : "bg-[#FFC200] border-[#FFC200] shadow-[0_0_10px_rgba(255,194,0,0.6)]"}`} />
 
-                  <div className="flex-1 border border-[rgba(255,194,0,0.10)] hover:border-[rgba(255,194,0,0.30)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 relative overflow-hidden">
+                  <div className="flex-1 border border-[rgba(255,194,0,0.10)] hover:border-[rgba(255,194,0,0.30)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-400 relative overflow-hidden">
                     {/* Top line on hover */}
                     <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
                     {/* Ghost number */}
@@ -632,7 +716,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sr-stagger">
               {partners.slice(0,6).map((p) => (
-                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
+                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
                   <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-white/[0.03] border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors">
                     <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
@@ -655,7 +739,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SCHEDULE PREVIEW
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 relative">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-50" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 60% at 80% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -708,7 +792,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           QUICK ACCESS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
 
           <div className="sr mb-12 text-center">
@@ -720,168 +804,166 @@ export default function HomePage() {
             {[
               { href: "/gallery",  icon: <ImageIcon className="w-5 h-5" />, title: "Gallery",  desc: "Event photos & media" },
               { href: "/rules",    icon: <BookOpen  className="w-5 h-5" />, title: "Rules",    desc: "Tournament guidelines" },
-              { href: "/schedule", icon: <Calendar  className="w-5 h-5" />, title: "Schedule", desc: "Upcoming dates" },
-              { href: "/contact",  icon: <Phone     className="w-5 h-5" />, title: "Contact",  desc: "Get in touch" },
-            ].map((link) => (
-              <Link key={link.href} href={link.href} className="group block">
-                <div className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-[rgba(212,175,55,0.28)] transition-all duration-400 relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,194,0,0.06) 0%, transparent 60%)" }} />
-                  <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
-                  <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/15 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/30">
-                    {link.icon}
-                  </div>
-                  <div className="relative z-10">
-                    <div className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">{link.title}</div>
-                    <div className="font-montserrat text-white/70 text-[8px] uppercase tracking-widest mt-0.5">{link.desc}</div>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-white/15 group-hover:text-[#D4AF37]/50 ml-auto flex-shrink-0 transition-all duration-300 group-hover:translate-x-0.5 hidden sm:block" />
-                </div>
-              </Link>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          WEBSITE CTA — SPLIT EDITORIAL
-      ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden sr bg-[#05080F]">
-        {/* Top gold rule */}
-        <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.6) 20%, rgba(255,210,0,1) 50%, rgba(212,175,55,0.6) 80%, transparent 100%)" }} />
-        {/* Grid */}
-        <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-        {/* Gold bloom — bottom left */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 80% at 15% 100%, rgba(212,175,55,0.13) 0%, transparent 60%)" }} />
-        {/* Gold bloom — top right */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 60% at 90% 0%, rgba(212,175,55,0.07) 0%, transparent 55%)" }} />
-        {/* Particles */}
-        {[
-          { x: 55, y: 12, size: 1.5, op: 0.4, dur: 7 },
-          { x: 72, y: 55, size: 2,   op: 0.3, dur: 5.5 },
-          { x: 88, y: 25, size: 1,   op: 0.25, dur: 8 },
-          { x: 62, y: 80, size: 2,   op: 0.2, dur: 6.5 },
-          { x: 95, y: 65, size: 1.5, op: 0.3, dur: 9 },
-        ].map((p, i) => (
-          <div key={i} className="absolute rounded-full particle-float pointer-events-none"
-            style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}px`, height: `${p.size}px`, background: `rgba(255,194,0,${p.op})`, boxShadow: `0 0 ${p.size * 6}px rgba(255,194,0,${p.op * 0.7})`, animationDuration: `${p.dur}s`, animationDelay: `${i * 0.5}s` }} />
-        ))}
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-
-            {/* ── LEFT: Copy ── */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-9 h-9 flex items-center justify-center border border-[#D4AF37]/30 bg-[#D4AF37]/10">
-                  <Globe className="w-4 h-4 text-[#D4AF37]" />
-                </div>
-                <span className="font-montserrat text-[#D4AF37]/65 text-[9px] font-bold tracking-[0.45em] uppercase">Official Web Partner · ABL 2026</span>
+                  { href: "/schedule", icon: <Calendar  className="w-5 h-5" />, title: "Schedule", desc: "Upcoming dates" },
+                  { href: "/contact",  icon: <Phone     className="w-5 h-5" />, title: "Contact",  desc: "Get in touch" },
+                ].map((link) => (
+                  <Link key={link.href} href={link.href} className="group block">
+                    <div className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-[rgba(212,175,55,0.28)] transition-all duration-400 relative overflow-hidden">
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,194,0,0.06) 0%, transparent 60%)" }} />
+                      <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, rgba(255,194,0,0.8), transparent)" }} />
+                      <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/15 group-hover:bg-[#D4AF37]/15 group-hover:border-[#D4AF37]/30">
+                        {link.icon}
+                      </div>
+                      <div className="relative z-10">
+                        <div className="font-cinzel text-white text-sm tracking-wider group-hover:text-[#D4AF37] transition-colors">{link.title}</div>
+                        <div className="font-montserrat text-white/70 text-[8px] uppercase tracking-widest mt-0.5">{link.desc}</div>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-white/15 group-hover:text-[#D4AF37]/50 ml-auto flex-shrink-0 transition-all duration-300 group-hover:translate-x-0.5 hidden sm:block" />
+                    </div>
+                  </Link>
+                ))}
               </div>
 
-              <h2 className="font-cinzel font-bold text-white leading-[0.92] mb-7"
-                style={{ fontSize: "clamp(36px, 5.5vw, 78px)" }}>
-                WANT TO<br />BUILD YOUR<br />
-                <span style={{
-                  background: "linear-gradient(90deg, #B88733, #FFC200, #FFD700, #FFC200, #B88733)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>WEBSITE?</span>
+            </div>
+          </section>
+
+      {/* ═══════════════════════════════════════════
+          WEBSITE CTA — GRAVITY MEDIA MARKETING (GLASSMORPHISM)
+      ═══════════════════════════════════════════ */}
+      <section ref={ctaRef} className="relative overflow-hidden sr bg-[#02050A]">
+        <style>{`
+          @keyframes gradient-x {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+          .animate-gradient-x {
+            animation: gradient-x 4s ease infinite;
+          }
+          .btn-laser::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.8), transparent);
+            background-size: 200% 100%;
+            animation: laser-sweep 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: 4px;
+          }
+          .group:hover .btn-laser::before {
+            opacity: 1;
+          }
+          @keyframes laser-sweep {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+          }
+        `}</style>
+
+        {/* Giant Background Logo Watermark */}
+        <div ref={bgLogoRef} className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none mix-blend-screen">
+          <img src="/images/gravity-logo.png" alt="" className="w-[150vw] max-w-none h-auto object-cover opacity-50" />
+        </div>
+
+        {/* Seamless Blend Mask */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#000000] to-transparent z-10 pointer-events-none" />
+        
+        {/* Animated Background Orbs */}
+        <div className="cta-orb absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#1A472A] opacity-20 blur-[100px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="cta-orb absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#112211] opacity-30 blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '5s' }} />
+        <div className="cta-orb absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[#0F291E] opacity-20 blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '6s' }} />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24 sm:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            {/* ── LEFT: Copy ── */}
+            <div className="relative z-20">
+              <div className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full border border-[#166534]/40 bg-[#166534]/10 backdrop-blur-md">
+                <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
+                <span className="font-montserrat text-green-400/90 text-[9px] font-bold tracking-[0.4em] uppercase">Official Web & Media Partner</span>
+              </div>
+
+              <h2 ref={ctaTitleRef} className="font-cinzel font-bold text-white leading-[1.05] mb-6"
+                style={{ fontSize: "clamp(36px, 5.5vw, 72px)" }}>
+                ELEVATE YOUR<br />DIGITAL<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-200 to-green-500 animate-gradient-x" style={{ backgroundSize: '200% 200%' }}>
+                  PRESENCE
+                </span>
               </h2>
 
-              <div className="h-px w-16 bg-[#D4AF37]/40 mb-7" />
-
-              <p className="font-montserrat text-white/55 text-sm leading-[2] mb-10 max-w-lg tracking-wide">
-                Get a professional, high-performance website crafted for your business — built by the same team behind this platform. Fast. Beautiful. Built to grow.
+              <p className="font-montserrat text-white/60 text-sm leading-[2] mb-10 max-w-lg tracking-wide">
+                Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
               </p>
 
               {/* Perks */}
-              <div className="space-y-3 mb-10">
+              <div className="space-y-4 mb-12">
                 {[
-                  { icon: "⚡", label: "Exclusive ABL member pricing" },
-                  { icon: "🚀", label: "Live in 2–4 weeks, not months" },
-                  { icon: "📞", label: "Free strategy consultation included" },
+                  { icon: "✨", label: "Awwwards-Winning Design Aesthetics" },
+                  { icon: "📱", label: "Mobile & Web App Development" },
+                  { icon: "🚀", label: "High-Performance Architecture" },
+                  { icon: "📈", label: "Data-Driven Marketing & Media" },
                 ].map((p) => (
-                  <div key={p.label} className="flex items-center gap-3">
-                    <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center border border-[#D4AF37]/20 bg-[#D4AF37]/8 text-[10px]">{p.icon}</div>
-                    <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-[0.2em]">{p.label}</span>
+                  <div key={p.label} className="flex items-center gap-4 group">
+                    <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full border border-green-500/20 bg-green-500/10 text-[12px] group-hover:bg-green-500/20 transition-all">{p.icon}</div>
+                    <span className="font-montserrat text-white/70 text-[10px] sm:text-xs uppercase tracking-[0.2em] group-hover:text-white transition-colors">{p.label}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <Link href="/web-partner" className="btn-primary px-8 py-4 text-[10px] tracking-[0.28em]">
-                  Get Started <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/contact" className="btn-secondary px-8 py-4 text-[10px] tracking-[0.28em]">
-                  Learn More
-                </Link>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-2">
+                <div ref={ctaBtnRef} onMouseMove={handleBtnMouseMove} onMouseLeave={handleBtnMouseLeave} className="relative group inline-block will-change-transform btn-laser flex-shrink-0">
+                  <a href="https://gravitymediamarketing.com" target="_blank" rel="noopener noreferrer" className="relative block px-8 py-4 bg-green-700/80 hover:bg-green-600 text-white font-montserrat text-[10px] font-bold uppercase tracking-[0.3em] rounded-sm transition-all shadow-[0_0_20px_rgba(22,101,52,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] flex items-center justify-center gap-3">
+                    Start Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+                
+                <div className="flex flex-col gap-1.5 sm:border-l sm:border-white/10 sm:pl-8">
+                  <span className="font-cinzel text-white text-sm tracking-widest uppercase">Gravity Media Marketing</span>
+                  <a href="mailto:gauravmehta.biz@gmail.com" className="font-montserrat text-white/60 hover:text-green-400 text-xs tracking-wider transition-colors">gauravmehta.biz@gmail.com</a>
+                  <a href="tel:8104933816" className="font-montserrat text-white/60 hover:text-green-400 text-xs tracking-wider transition-colors">+91 8104933816</a>
+                </div>
               </div>
             </div>
 
-            {/* ── RIGHT: CSS website mockup ── */}
-            <div className="relative hidden lg:flex items-center justify-center">
-              {/* Glow behind mockup */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.10) 0%, transparent 70%)" }} />
+            {/* ── RIGHT: Glassmorphism Visual ── */}
+            <div className="relative w-full h-[500px] flex items-center justify-center">
+              {/* Floating elements behind glass */}
+              <div className="absolute top-[15%] right-[10%] w-32 h-32 bg-gradient-to-tr from-green-600 to-emerald-400 rounded-full blur-[50px] opacity-40 animate-pulse" />
+              <div className="absolute bottom-[20%] left-[10%] w-40 h-40 bg-gradient-to-bl from-green-500 to-teal-400 rounded-full blur-[60px] opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
+              
+              {/* Main Glass Panel */}
+              <div 
+                ref={glassPanelRef}
+                onMouseMove={handleGlassMouseMove}
+                onMouseLeave={handleGlassMouseLeave}
+                className="relative w-full max-w-[400px] aspect-[4/5] rounded-[40px] border border-white/10 bg-white/[0.03] backdrop-blur-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.8),inset_0_0_0_1px_rgba(255,255,255,0.05)] p-10 flex flex-col items-center justify-center overflow-hidden group will-change-transform"
+                style={{ 
+                  transformStyle: "preserve-3d",
+                  backgroundImage: "radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.15), transparent 50%)"
+                }}
+              >
+                
+                {/* Diagonal shine line */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-[1.5s] ease-in-out" />
 
-              {/* Browser chrome frame */}
-              <div className="relative w-full max-w-[480px] border border-[#D4AF37]/25 shadow-[0_30px_80px_rgba(0,0,0,0.8),0_0_0_1px_rgba(212,175,55,0.08)]"
-                style={{ background: "#0B0E1A" }}>
-                {/* Top gold accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.6), rgba(255,210,0,1) 40%, rgba(212,175,55,0.6))" }} />
-
-                {/* Browser bar */}
-                <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/5" style={{ background: "#070A14" }}>
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                  </div>
-                  <div className="flex-1 h-5 rounded-sm bg-white/5 flex items-center px-3">
-                    <span className="font-montserrat text-[8px] text-white/25 tracking-wider">yourbusiness.com</span>
-                  </div>
+                {/* Arrow Asset */}
+                <div ref={glassArrowRef} className="w-32 h-32 mb-10 relative drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700 ease-out z-10" style={{ transform: "translateZ(80px)" }}>
+                  <img src="/images/gravity-arrow.png" alt="Gravity Arrow" className="w-full h-full object-contain" />
                 </div>
 
-                {/* Mockup hero */}
-                <div className="p-4 space-y-3">
-                  {/* Hero block */}
-                  <div className="relative overflow-hidden p-6" style={{ background: "linear-gradient(135deg, #0D1424 0%, #111827 100%)", border: "1px solid rgba(212,175,55,0.08)" }}>
-                    <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.5), transparent)" }} />
-                    <div className="h-2 w-16 mb-2 rounded-sm" style={{ background: "rgba(212,175,55,0.3)" }} />
-                    <div className="h-4 w-3/4 mb-1.5 rounded-sm bg-white/15" />
-                    <div className="h-4 w-1/2 mb-4 rounded-sm bg-white/10" />
-                    <div className="flex gap-2">
-                      <div className="h-7 w-20 rounded-sm" style={{ background: "rgba(212,175,55,0.7)" }} />
-                      <div className="h-7 w-20 rounded-sm border border-white/15 bg-transparent" />
-                    </div>
-                  </div>
-
-                  {/* Cards row */}
-                  <div className="grid grid-cols-3 gap-2">
-                    {["#E07820", "#1F3A93", "#1E824C"].map((c, i) => (
-                      <div key={i} className="p-3 border border-white/5" style={{ background: "#0D1424" }}>
-                        <div className="w-4 h-4 mb-2 rounded-sm" style={{ background: c + "40", border: `1px solid ${c}50` }} />
-                        <div className="h-1.5 w-full mb-1 rounded-sm" style={{ background: "rgba(255,255,255,0.08)" }} />
-                        <div className="h-1.5 w-2/3 rounded-sm" style={{ background: "rgba(255,255,255,0.05)" }} />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Bottom bar */}
-                  <div className="flex items-center justify-between px-3 py-2.5 border border-white/5" style={{ background: "#070A14" }}>
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full" style={{ background: "rgba(212,175,55,0.3)" }} />
-                      <div className="h-1.5 w-16 rounded-sm bg-white/10" />
-                    </div>
-                    <div className="h-5 w-14 rounded-sm" style={{ background: "rgba(212,175,55,0.25)" }} />
-                  </div>
+                {/* Logo Asset */}
+                <div className="w-56 h-20 relative opacity-90 group-hover:opacity-100 transition-opacity z-10 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]" style={{ transform: "translateZ(60px)" }}>
+                  <img src="/images/gravity-logo.png" alt="Gravity Media Marketing" className="w-full h-full object-contain" />
                 </div>
-
-                {/* WebHance badge */}
-                <div className="absolute -bottom-4 -right-4 border border-[#D4AF37]/30 bg-[#05080F] px-4 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
-                  <div className="font-montserrat text-[7px] text-[#D4AF37]/60 uppercase tracking-[0.3em] mb-0.5">Built by</div>
-                  <div className="font-cinzel text-[#D4AF37] text-[10px] font-bold tracking-[0.2em]">WebHance</div>
+                
+                {/* Bottom detail */}
+                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+                  <div className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                     <span className="font-montserrat text-white/50 text-[7px] font-bold uppercase tracking-[0.4em]">Official Digital Partner</span>
+                  </div>
                 </div>
               </div>
+
             </div>
 
           </div>

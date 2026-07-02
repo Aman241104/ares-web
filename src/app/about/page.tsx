@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 import { tournamentRules } from "@/lib/data";
 import SplitType from "split-type";
@@ -83,7 +82,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ═══════════════════════════════════
           HERO
@@ -162,7 +161,7 @@ export default function AboutPage() {
 
               <div className="space-y-0 divide-y divide-white/5">
                 {[
-                  { label: "Duration",  value: "June 24 – July 22, 2026" },
+                  { label: "Duration",  value: "July 1st – July 29th, 2026" },
                   { label: "Format",    value: "4 Teams · 30 Players" },
                   { label: "Stakes",    value: "1.5× Pool + MVP Awards" },
                   { label: "Organized", value: "ARES League Committee" },
@@ -181,7 +180,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           MISSION STATEMENT
       ═══════════════════════════════════ */}
-      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.3) 30%, rgba(212,175,55,0.3) 70%, transparent)" }} />
 
@@ -218,7 +217,7 @@ export default function AboutPage() {
           {/* Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sr-stagger">
             {PILLARS.map((item) => (
-              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-500 p-8">
+              <div key={item.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.28)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-500 p-8">
                 {/* Ghost number */}
                 <div className="absolute top-4 right-4 font-cinzel text-[72px] font-black text-white/[0.03] leading-none select-none pointer-events-none">{item.num}</div>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4AF37]/0 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:via-[#D4AF37]/40 group-hover:to-transparent transition-all duration-500" />
@@ -237,7 +236,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           VALUES
       ═══════════════════════════════════ */}
-      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#000000] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
         <div className="max-w-7xl mx-auto">
@@ -250,7 +249,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
             {VALUES.map((v) => (
-              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#111827] hover:bg-[#0D1424] transition-all duration-500 p-8">
+              <div key={v.title} className="group relative overflow-hidden border border-[rgba(212,175,55,0.1)] hover:border-[rgba(212,175,55,0.3)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-500 p-8">
                 {/* Top accent line in value color */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, transparent, ${v.accent}, transparent)` }} />
                 <div className="w-11 h-11 rounded-sm flex items-center justify-center mb-6 transition-all duration-400" style={{ color: v.accent, background: `${v.accent}12`, border: `1px solid ${v.accent}25` }}>
@@ -267,7 +266,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           LEADERSHIP
       ═══════════════════════════════════ */}
-      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] overflow-hidden">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.25) 30%, rgba(212,175,55,0.25) 70%, transparent)" }} />
 
@@ -318,7 +317,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           POINT SYSTEM
       ═══════════════════════════════════ */}
-      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="relative py-16 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">Every Action Counts</div>
@@ -344,7 +343,7 @@ export default function AboutPage() {
                 <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/60 text-right">Pts</div>
                 <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/60 w-28 text-right">Detail</div>
               </div>
-              <div className="divide-y divide-white/[0.04] bg-[#111827]">
+              <div className="divide-y divide-white/[0.04] bg-[#0B1120]">
                 {/* 121 */}
                 <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
                   <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">121</div>
@@ -418,7 +417,7 @@ export default function AboutPage() {
                   <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#F5D078]/60 text-right">Pts</div>
                   <div className="px-5 py-2.5 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#F5D078]/60 w-28 text-right">Detail</div>
                 </div>
-                <div className="divide-y divide-white/[0.04] bg-[#111827]">
+                <div className="divide-y divide-white/[0.04] bg-[#0B1120]">
                   <div className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors">
                     <div className="px-5 py-3 font-montserrat text-[11px] text-white/85 font-semibold">121 With Team Owner</div>
                     <div className="px-5 py-3 font-cinzel text-[#F5D078] text-xs text-right">25</div>
@@ -445,7 +444,7 @@ export default function AboutPage() {
               </div>
 
               {/* Coming Soon teaser */}
-              <div className="border border-white/6 bg-[#111827] p-6">
+              <div className="border border-white/6 bg-[#0B1120] p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Star className="w-4 h-4 text-[#D4AF37]" />
                   <span className="font-cinzel text-white text-[11px] tracking-[0.25em] uppercase">And That's Not All</span>
@@ -456,7 +455,7 @@ export default function AboutPage() {
                 </p>
                 <div className="grid grid-cols-2 gap-2">
                   {["Special Activities", "Business Activities", "Fun Events & Games", "Win Exciting Points"].map((item) => (
-                    <div key={item} className="flex items-center gap-2 border border-white/5 bg-[#0D1424] px-3 py-2.5">
+                    <div key={item} className="flex items-center gap-2 border border-white/5 bg-[#030712] px-3 py-2.5">
                       <div className="w-1 h-1 rounded-full bg-[#D4AF37]/60 flex-shrink-0" />
                       <span className="font-montserrat text-white/60 text-[9px] tracking-wide">{item}</span>
                     </div>
@@ -477,133 +476,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SPLIT CTA — COMPETE  ·  BUILD
-      ═══════════════════════════════════ */}
-      <section className="relative border-t border-white/5 sr overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
 
-          {/* ── LEFT: Tournament CTA ── */}
-          <div className="relative flex flex-col justify-center px-10 sm:px-16 lg:px-20 py-20 sm:py-28 bg-[#0D1424] overflow-hidden">
-            {/* Ghost large number background */}
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 font-cinzel font-black text-white/[0.025] select-none pointer-events-none leading-none" style={{ fontSize: "clamp(180px,22vw,320px)" }}>01</div>
-            {/* Bottom gold bloom */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 30% 100%, rgba(212,175,55,0.08) 0%, transparent 65%)" }} />
-            {/* Top border rule */}
-            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.7) 0%, rgba(255,210,0,0.9) 30%, rgba(212,175,55,0.5) 70%, transparent 100%)" }} />
-            {/* Vertical gold accent left edge */}
-            <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: "linear-gradient(180deg, rgba(212,175,55,0.8), rgba(255,194,0,0.5) 50%, transparent)" }} />
-            {/* Grid */}
-            <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-            {/* Right gold divider line */}
-            <div className="absolute right-0 top-0 bottom-0 w-px hidden lg:block" style={{ background: "linear-gradient(180deg, transparent 5%, rgba(212,175,55,0.25) 30%, rgba(255,194,0,0.45) 50%, rgba(212,175,55,0.25) 70%, transparent 95%)" }} />
 
-            <div className="relative z-10 max-w-md">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 flex items-center justify-center border border-[#D4AF37]/30 bg-[#D4AF37]/10">
-                  <Trophy className="w-4 h-4 text-[#D4AF37]" />
-                </div>
-                <span className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold tracking-[0.45em] uppercase">Join The Arena</span>
-              </div>
-
-              <h2 className="font-cinzel font-bold text-white leading-[0.95] mb-7" style={{ fontSize: "clamp(40px, 5.5vw, 76px)" }}>
-                READY<br />TO{" "}
-                <span style={{
-                  background: "linear-gradient(90deg, #FFC200, #FFD700, #FFC200)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>COMPETE?</span>
-              </h2>
-
-              <div className="h-px w-12 bg-[#D4AF37]/40 mb-7" />
-
-              <p className="font-montserrat text-white/55 text-sm tracking-wide mb-10 leading-[2]">
-                Be part of the most exciting business tournament of 2026. Connect with elite owners, compete for glory, and build your legacy.
-              </p>
-
-              {/* Stats row */}
-              <div className="flex gap-8 mb-10 pb-8 border-b border-white/5">
-                {[{ n: "30+", l: "Owners" }, { n: "4", l: "Teams" }, { n: "28", l: "Days" }].map(s => (
-                  <div key={s.l}>
-                    <div className="font-cinzel font-bold text-[#FFC200]" style={{ fontSize: "clamp(20px,2.5vw,28px)" }}>{s.n}</div>
-                    <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.25em] mt-0.5">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn-primary">Contact <ArrowRight className="w-4 h-4" /></Link>
-                <Link href="/schedule" className="btn-secondary">View Schedule</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* ── RIGHT: WebHance CTA ── */}
-          <div className="relative flex flex-col justify-center px-10 sm:px-16 lg:px-20 py-20 sm:py-28 bg-[#05080F] overflow-hidden">
-            {/* Ghost "02" background */}
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 font-cinzel font-black text-white/[0.025] select-none pointer-events-none leading-none" style={{ fontSize: "clamp(180px,22vw,320px)" }}>02</div>
-            {/* Gold bloom lower-left */}
-            <div className="absolute bottom-0 left-0 w-full h-2/3 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 100% at 20% 120%, rgba(212,175,55,0.12) 0%, transparent 65%)" }} />
-            {/* Top gold rule */}
-            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 30%, rgba(255,210,0,0.9) 70%, rgba(212,175,55,0.7) 100%)" }} />
-            {/* Right vertical accent */}
-            <div className="absolute right-0 top-0 bottom-0 w-[3px]" style={{ background: "linear-gradient(180deg, rgba(212,175,55,0.8), rgba(255,194,0,0.5) 50%, transparent)" }} />
-            {/* Subtle grid */}
-            <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-            {/* Gold particles */}
-            {[
-              { x: 80, y: 15, s: 2,   o: 0.4, d: 7 },
-              { x: 90, y: 55, s: 1.5, o: 0.3, d: 5.5 },
-              { x: 75, y: 80, s: 2.5, o: 0.25, d: 8 },
-              { x: 20, y: 20, s: 1,   o: 0.2, d: 6 },
-              { x: 10, y: 70, s: 1.5, o: 0.3, d: 9 },
-            ].map((p, i) => (
-              <div key={i} className="absolute rounded-full particle-float pointer-events-none"
-                style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.s}px`, height: `${p.s}px`, background: `rgba(255,194,0,${p.o})`, boxShadow: `0 0 ${p.s * 6}px rgba(255,194,0,${p.o * 0.7})`, animationDuration: `${p.d}s`, animationDelay: `${i * 0.5}s` }} />
-            ))}
-
-            <div className="relative z-10 max-w-md">
-              {/* Icon row */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 flex items-center justify-center border border-[#D4AF37]/30 bg-[#D4AF37]/10">
-                  <Globe className="w-4 h-4 text-[#D4AF37]" />
-                </div>
-                <span className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold tracking-[0.45em] uppercase">Official Web Partner · ABL 2026</span>
-              </div>
-
-              <h2 className="font-cinzel font-bold text-white leading-[0.95] mb-7" style={{ fontSize: "clamp(40px, 5.5vw, 76px)" }}>
-                BUILD<br />YOUR{" "}
-                <span style={{
-                  background: "linear-gradient(90deg, #FFC200, #FFD700, #FFC200)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>WEBSITE.</span>
-              </h2>
-
-              <div className="h-px w-12 bg-[#D4AF37]/40 mb-7" />
-
-              <p className="font-montserrat text-white/50 text-sm tracking-wide mb-10 leading-[2]">
-                Exclusive ABL member pricing. Professional, high-performance websites built by the same team behind this platform — launched in weeks.
-              </p>
-
-              {/* Feature pills */}
-              <div className="flex flex-wrap gap-2 mb-10 pb-8 border-b border-white/5">
-                {["Fast & SEO-Ready", "Mobile-First", "Launched in Weeks", "ABL Pricing"].map(f => (
-                  <span key={f} className="font-montserrat text-[8px] uppercase tracking-[0.2em] text-[#D4AF37]/60 border border-[#D4AF37]/20 bg-[#D4AF37]/5 px-3 py-1">
-                    {f}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <Link href="/web-partner" className="btn-primary px-8">Get Started <ArrowRight className="w-4 h-4" /></Link>
-                <Link href="/contact" className="btn-secondary px-8">Learn More</Link>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <LegacyCTA />
     </div>
   );
 }

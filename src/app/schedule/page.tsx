@@ -6,7 +6,6 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -97,7 +96,7 @@ export default function SchedulePage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       {/* ── HERO ── */}
       <PageHero layout="left" className="py-14 sm:py-24 px-6 sm:px-10 lg:px-16 min-h-[55vh]">
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -170,7 +169,7 @@ export default function SchedulePage() {
       </PageHero>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 relative">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 relative">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto mb-12 sr relative">
           <div className="section-label mb-4">Live Updates</div>
@@ -184,7 +183,7 @@ export default function SchedulePage() {
           <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.60), transparent)" }} />
 
           {/* ── Left: Week Selector ── */}
-          <div className="flex-shrink-0 lg:w-72 bg-[#0D1424] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
+          <div className="flex-shrink-0 lg:w-72 bg-[#030712] border-r border-white/6 p-7" style={{ minWidth: 250 }}>
             {/* Week buttons */}
             <div className="space-y-2 mb-8">
               {weeklyEvents.map((week, i) => (
@@ -331,10 +330,10 @@ export default function SchedulePage() {
               <h3 className="font-cinzel tracking-widest text-white/60 text-xs mb-4 uppercase">At a Glance</h3>
               <div className="space-y-3">
                 {[
-                  { l: "Total Events", v: "42" },
-                  { l: "Completed", v: "6" },
-                  { l: "In-Progress", v: "2" },
-                  { l: "Upcoming", v: "34" },
+                  { l: "Total Events", v: "0" },
+                  { l: "Completed", v: "0" },
+                  { l: "In-Progress", v: "0" },
+                  { l: "Upcoming", v: "0" },
                 ].map((s) => (
                   <div key={s.l} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                     <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest">{s.l}</span>
@@ -348,7 +347,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ── SPECIAL EVENTS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center justify-between mb-12">
             <div>
@@ -424,7 +423,6 @@ export default function SchedulePage() {
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

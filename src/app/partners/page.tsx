@@ -6,7 +6,6 @@ import { partners } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -47,7 +46,7 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <PageHero backgroundImage="/images/blog-networking.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
@@ -89,7 +88,7 @@ export default function PartnersPage() {
       </PageHero>
 
       {/* ─── STATS ─── */}
-      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
+      <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 sr-stagger">
           {[
             { icon: <Users className="w-5 h-5" />,    num: "18+", label: "Trusted Partners" },
@@ -97,7 +96,7 @@ export default function PartnersPage() {
             { icon: <BarChart2 className="w-5 h-5" />, num: "6",  label: "Commissioners" },
             { icon: <Globe className="w-5 h-5" />,    num: "∞",   label: "Endless Impact" },
           ].map((s) => (
-            <div key={s.label} className="text-center p-8 bg-[#0D1424] hover:bg-[#111827] transition-colors duration-300 group">
+            <div key={s.label} className="text-center p-8 bg-[#030712] hover:bg-[#0B1120] transition-colors duration-300 group">
               <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
                 {s.icon}
               </div>
@@ -109,14 +108,14 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── FEATURED WEB PARTNER ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5 sr">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <div className="section-label mx-auto mb-3">Featured Partner</div>
           <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 3.5vw, 44px)" }}>
             Official <span className="text-[#D4AF37]">Web Partner</span>
           </h2>
 
-          <div className="max-w-3xl mx-auto relative border border-[rgba(212,175,55,0.25)] bg-[#111827] p-10 lg:p-14 text-center overflow-hidden">
+          <div className="max-w-3xl mx-auto relative border border-[rgba(212,175,55,0.25)] bg-[#0B1120] p-10 lg:p-14 text-center overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.7), transparent)" }} />
             <div className="absolute inset-0 pointer-events-none"
               style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 80%)" }} />
@@ -159,7 +158,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── PARTNERS GRID ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-5">
             <div>
@@ -197,7 +196,7 @@ export default function PartnersPage() {
               return (
                 <div
                   key={p.name}
-                  className="group relative border bg-[#0D1424] hover:bg-[#111827] transition-all duration-400 p-7 flex flex-col items-center justify-center text-center min-h-[140px] overflow-hidden"
+                  className="group relative border bg-[#030712] hover:bg-[#0B1120] transition-all duration-400 p-7 flex flex-col items-center justify-center text-center min-h-[140px] overflow-hidden"
                   style={{ borderColor: isPremium ? "rgba(212,175,55,0.15)" : "rgba(255,255,255,0.06)" }}
                 >
                   {isPremium && (
@@ -242,9 +241,9 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── BECOME A PARTNER CTA ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-5xl mx-auto">
-          <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#111827] p-10 lg:p-14 text-center overflow-hidden">
+          <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#0B1120] p-10 lg:p-14 text-center overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
             <div className="absolute inset-0 pointer-events-none"
               style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 80%)" }} />
@@ -271,7 +270,7 @@ export default function PartnersPage() {
                   { icon: <Target className="w-5 h-5" />,    title: "Leadership Access",      desc: "Associate with top business leaders", num: "02" },
                   { icon: <Globe className="w-5 h-5" />,     title: "Nation Building",        desc: "Be part of something truly impactful", num: "03" },
                 ].map((b) => (
-                  <div key={b.title} className="relative p-6 border border-white/6 bg-[#0D1424] hover:border-[rgba(212,175,55,0.15)] transition-colors group overflow-hidden">
+                  <div key={b.title} className="relative p-6 border border-white/6 bg-[#030712] hover:border-[rgba(212,175,55,0.15)] transition-colors group overflow-hidden">
                     <div className="absolute top-2 right-3 font-cinzel text-white/4 text-3xl font-light leading-none select-none">{b.num}</div>
                     <div className="w-9 h-9 border border-[#D4AF37]/18 bg-[#D4AF37]/14 text-[#D4AF37]/60 group-hover:text-[#D4AF37] flex items-center justify-center mb-4 transition-colors">
                       {b.icon}
@@ -290,7 +289,6 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

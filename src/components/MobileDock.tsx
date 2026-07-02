@@ -33,7 +33,7 @@ export default function MobileDock() {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-[#0D1424] border-t border-[rgba(212,175,55,0.15)] rounded-t-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.9)] pb-28 pt-5 px-5">
+        <div className="bg-[#030712] border-t border-[rgba(212,175,55,0.15)] rounded-t-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.9)] pb-28 pt-5 px-5">
           {/* Handle bar */}
           <div className="w-10 h-1 bg-white/15 rounded-full mx-auto mb-6" />
 
@@ -88,7 +88,7 @@ export default function MobileDock() {
 
       {/* Floating Dock */}
       <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[100] xl:hidden w-[calc(100%-2.5rem)] max-w-[340px]">
-        <div className="relative bg-[#0B132B]/92 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] rounded-2xl shadow-[0_12px_50px_rgba(0,0,0,0.9),0_0_0_0.5px_rgba(212,175,55,0.06)] px-3 py-2.5 flex items-center gap-1">
+        <div className="relative bg-[#000000]/92 backdrop-blur-2xl border border-[rgba(212,175,55,0.15)] rounded-2xl shadow-[0_12px_50px_rgba(0,0,0,0.9),0_0_0_0.5px_rgba(212,175,55,0.06)] px-3 py-2.5 flex items-center gap-1">
           {/* Top gold line */}
           <div className="absolute top-0 left-6 right-6 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
 

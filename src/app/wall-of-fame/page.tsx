@@ -6,7 +6,6 @@ import { ArrowRight, Star, Award, Trophy, Building2, Shield, Heart, Users, Spark
 import { teams, partners, commissioners } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -72,7 +71,7 @@ export default function WallOfFamePage() {
   );
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
       <PageHero layout="left" className="min-h-[70vh]">
@@ -112,7 +111,7 @@ export default function WallOfFamePage() {
       </PageHero>
 
       {/* ══════════════ STATS BAR ══════════════ */}
-      <section className="py-14 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">
+      <section className="py-14 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
           {[
             { num: "30",  label: "Warriors",        icon: <Users    className="w-5 h-5 text-[#D4AF37]" /> },
@@ -132,7 +131,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ PARTNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Backbone"
@@ -180,7 +179,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ TEAM OWNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Visionaries"
@@ -228,7 +227,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ALL WARRIORS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Competitors"
@@ -264,7 +263,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ COMMISSIONERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Guardians"
@@ -292,7 +291,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ABL 2026 COMING SOON ══════════════ */}
-      <section className="relative py-20 sm:py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#0B132B] overflow-hidden border-t border-white/5 sr">
+      <section className="relative py-20 sm:py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#000000] overflow-hidden border-t border-white/5 sr">
         <div className="absolute inset-0 bg-grid opacity-5 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
 
@@ -359,7 +358,6 @@ export default function WallOfFamePage() {
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

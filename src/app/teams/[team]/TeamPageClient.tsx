@@ -4,12 +4,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowRight, ChevronRight, Users, Trophy, Star, TrendingUp, X, Building2, Package, Tag, Handshake } from "lucide-react";
+import { ArrowRight, ChevronRight, Users, Trophy, Star, TrendingUp, X, Building2, Package, Tag, Handshake, Target, TowerControl, Flower2, Globe2, Zap } from "lucide-react";
 import { teams } from "@/lib/data";
 import type { WeeklyMember } from "@/types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -206,7 +205,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-28 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-28 bg-[#000000] min-h-screen overflow-x-hidden">
       {activeMember && <MemberModal member={activeMember} color={team.color} onClose={() => setActiveMember(null)} />}
       {/* HERO */}
       <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
@@ -285,7 +284,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* TEAM INFO BAR */}
-      <section className="py-8 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-y border-white/5 sr">
+      <section className="py-8 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
           {[
             { l: "Team Color", v: team.colorName, dot: true },
@@ -306,123 +305,212 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
         </div>
       </section>
 
-      {/* CAPTAIN + OVERVIEW */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 sr">
-          
-          {/* Owner card */}
-          <div className="glass-card p-10 border-white/10 text-center relative overflow-hidden group hover:border-white/20 transition-colors">
-            <div className="font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/40 mb-8 uppercase">Team Owner</div>
-            <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border border-white/20 p-1">
-              <div className="w-full h-full rounded-full overflow-hidden relative">
-                <Image fill src={team.id === 'modi' ? '/images/owner_modi.png' : team.id === 'doval' ? '/images/owner_doval.png' : team.id === 'amit-shah' ? '/images/owner_shah.png' : '/images/owner_jaishankar.png'} alt={team.owner.name} className="object-cover transition-all duration-700" sizes="120px" />
+      {/* SUPERPOWER SECTION */}
+      {team.superpower && (
+        <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+          <div className="max-w-7xl mx-auto sr">
+            <div className="relative glass-card p-1 border-white/20 overflow-hidden group">
+              {/* Glowing Background */}
+              <div 
+                className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500" 
+                style={{ background: `linear-gradient(45deg, ${team.color}, transparent)` }} 
+              />
+              
+              <div className="relative bg-[#0B1120]/80 backdrop-blur-sm p-8 sm:p-12 border border-white/5 flex flex-col md:flex-row items-center gap-8">
+                {/* Icon Container */}
+                <div 
+                  className="w-24 h-24 rounded-full flex items-center justify-center border border-white/10 flex-shrink-0 relative"
+                  style={{ background: `${team.color}15`, boxShadow: `0 0 30px ${team.color}30` }}
+                >
+                  {team.superpower.iconName === 'Target' && <Target className="w-10 h-10" style={{ color: team.color }} />}
+                  {team.superpower.iconName === 'TowerControl' && <TowerControl className="w-10 h-10" style={{ color: team.color }} />}
+                  {team.superpower.iconName === 'Flower2' && <Flower2 className="w-10 h-10" style={{ color: team.color }} />}
+                  {team.superpower.iconName === 'Globe2' && <Globe2 className="w-10 h-10" style={{ color: team.color }} />}
+                </div>
+
+                <div className="text-center md:text-left flex-1">
+                  <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                    <Zap className="w-4 h-4 text-[#D4AF37]" />
+                    <span className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] font-bold">
+                      Team Superpower
+                    </span>
+                  </div>
+                  <h3 
+                    className="font-cinzel text-3xl sm:text-4xl font-bold tracking-wider mb-4 uppercase"
+                    style={{ color: team.color }}
+                  >
+                    {team.superpower.name}
+                  </h3>
+                  <p className="font-montserrat text-white/70 text-sm leading-relaxed max-w-3xl">
+                    {team.superpower.description}
+                  </p>
+                  
+                  {/* Rule notice */}
+                  <div className="mt-6 inline-block border border-white/10 bg-white/5 px-4 py-2 rounded-sm">
+                    <p className="font-montserrat text-[9px] text-white/50 uppercase tracking-widest leading-relaxed">
+                      <span className="text-[#D4AF37]">Rule:</span> You have to inform regarding the superpower a week prior (latest by Tuesday evening) to activate it.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="font-cinzel font-light text-white text-3xl mb-2">{team.owner.name}</div>
-            <div className="font-montserrat text-[10px] uppercase tracking-widest mb-6" style={{ color: team.color }}>{team.tagline}</div>
-            <blockquote className="font-montserrat text-white/50 text-xs italic leading-relaxed mb-8 px-4">
-              "{team.owner.quote}"
-            </blockquote>
-            <Link href={`/owners/${team.owner.id}`} className="btn-secondary w-full justify-center">
-              Owner Profile
-            </Link>
           </div>
+        </section>
+      )}
 
-          {/* Overview stats */}
-          <div className="lg:col-span-2 glass-card p-10 border-white/10 flex flex-col justify-center">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="font-cinzel text-white text-xl tracking-widest uppercase">Team Overview</h3>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {[
-                { l: "Total Points", v: team.points.toLocaleString() },
-                { l: "This Week",    v: team.weekPoints.toLocaleString() },
-                { l: "Members",      v: String(team.members) },
-              ].map((s) => (
-                <div key={s.l} className="p-5 bg-white/[0.05] border border-white/5 text-center">
-                  <div className="font-cinzel font-light text-3xl text-white mb-2">{s.v}</div>
-                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.l}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="p-5 bg-white/[0.05] border border-white/5 mb-8">
-              <PointsTrendChart teamId={team.id} color={team.color} />
-            </div>
-
-            <p className="font-montserrat text-white/60 text-sm leading-relaxed mb-8 max-w-2xl">{team.description}</p>
-
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
-              {[
-                { l: "Business",  v: team.business },
-                { l: "Referrals", v: String(team.referrals) },
-                { l: "1 to 1",    v: String(team.meetings) },
-                { l: "Visitors",  v: String(team.visitors) },
-                { l: "Induction", v: String(team.induction) },
-              ].map(s => (
-                <div key={s.l} className="border-l-2 pl-4" style={{ borderColor: team.color }}>
-                  <div className="font-cinzel text-2xl text-white mb-1">{s.v}</div>
-                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MEMBERS */}
-      <section id="members" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0D1424]">
-        <div className="max-w-7xl mx-auto sr">
-          <div className="flex items-center gap-6 mb-16">
-            <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Roster <span className="text-white/40 text-sm tracking-widest">({team.members})</span></h2>
+      {/* OVERVIEW STATS (Full Width Now) */}
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+        <div className="max-w-7xl mx-auto glass-card p-10 border-white/10 sr">
+          <div className="flex items-center gap-4 mb-8">
+            <h3 className="font-cinzel text-white text-xl tracking-widest uppercase">Team Overview</h3>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sr-stagger">
-            {team.weeklyMembers.map((m, idx) => (
-              <button
-                key={m.name}
-                onClick={() => setActiveMember(m)}
-                className="glass-card border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-300 group text-left overflow-hidden cursor-pointer focus:outline-none"
-              >
-                {/* Avatar / Photo */}
-                <div className="relative w-full aspect-square overflow-hidden" style={{ background: `${team.color}0d` }}>
-                  {m.image ? (
-                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-cinzel font-light text-6xl opacity-20" style={{ color: team.color }}>{m.name.charAt(0)}</span>
-                    </div>
-                  )}
-                  {/* Rank badge */}
-                  <div className="absolute top-3 left-3 w-6 h-6 flex items-center justify-center font-cinzel text-[10px]" style={{ background: `${team.color}22`, color: team.color, border: `1px solid ${team.color}40` }}>
-                    {idx + 1}
-                  </div>
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
-                    <span className="font-montserrat text-white text-[9px] uppercase tracking-[0.2em] border border-white/30 px-3 py-1.5">View Profile</span>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {[
+              { l: "Total Points", v: team.points.toLocaleString() },
+              { l: "This Week",    v: team.weekPoints.toLocaleString() },
+              { l: "Win Rate",     v: team.winRate },
+            ].map((s) => (
+              <div key={s.l} className="p-5 bg-white/[0.05] border border-white/5 text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="font-cinzel font-light text-3xl text-white mb-2 relative z-10">{s.v}</div>
+                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest relative z-10">{s.l}</div>
+              </div>
+            ))}
+          </div>
 
-                {/* Info */}
-                <div className="p-4">
-                  <div className="font-cinzel tracking-wider text-white text-sm leading-tight mb-1 truncate">{m.name}</div>
-                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest truncate mb-3">{m.industry}</div>
-                  <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    <span className="font-montserrat text-white/45 text-[9px] uppercase tracking-widest truncate pr-2">{m.company.split(" ").slice(0, 2).join(" ")}</span>
-                    <span className="font-cinzel text-xs flex-shrink-0" style={{ color: team.color }}>{m.points} pts</span>
-                  </div>
-                </div>
-              </button>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 pt-8 border-t border-white/5">
+            {[
+              { l: "Business",  v: team.business },
+              { l: "Referrals", v: String(team.referrals) },
+              { l: "1 to 1",    v: String(team.meetings) },
+              { l: "Visitors",  v: String(team.visitors) },
+              { l: "Induction", v: String(team.induction) },
+            ].map(s => (
+              <div key={s.l} className="border-l-2 pl-4 group" style={{ borderColor: team.color }}>
+                <div className="font-cinzel text-2xl text-white mb-1 group-hover:scale-110 transition-transform origin-left">{s.v}</div>
+                <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.l}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ROSTER: OWNER + 6 MEMBERS GRID */}
+      <section id="members" className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
+        {/* Dynamic Background */}
+        <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: `radial-gradient(circle at 30% 50%, ${team.color}15, transparent 60%)` }} />
+        
+        <div className="max-w-[1400px] mx-auto sr relative z-10">
+          <div className="flex items-center gap-6 mb-16">
+            <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Team Roster <span className="text-white/40 text-sm tracking-widest">({team.members} Active)</span></h2>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+
+          {/* 4 Column Layout: 1 (Owner spanning 2 rows) + 3 (Members) */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sr-stagger">
+            
+            {/* The Large Caption Card (Owner) */}
+            <div className="lg:col-span-1 lg:row-span-2 glass-card border border-white/10 bg-white/[0.02] relative overflow-hidden group hover:border-white/20 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col">
+              {/* Dynamic top gradient bar */}
+              <div className="absolute top-0 left-0 w-full h-1" style={{ background: team.color, boxShadow: `0 0 20px ${team.color}` }} />
+              
+              {/* Ambient Glow */}
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" style={{ background: `radial-gradient(circle at 50% 30%, ${team.color}, transparent 70%)` }} />
+              
+              <div className="p-8 flex-1 flex flex-col items-center text-center relative z-10">
+                {/* Small Owner Tag at the very top */}
+                <div className="font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/40 mb-12 uppercase flex items-center gap-3">
+                  <div className="w-8 h-px bg-white/20" />
+                  Team Owner
+                  <div className="w-8 h-px bg-white/20" />
+                </div>
+                
+                {/* Avatar */}
+                <div className="w-48 h-48 rounded-full mx-auto mb-10 border border-white/20 p-1.5 relative group-hover:scale-105 transition-transform duration-500">
+                  <div className="w-full h-full rounded-full overflow-hidden relative shadow-inner" style={{ background: `${team.color}15`, boxShadow: `inset 0 0 30px ${team.color}40` }}>
+                    <div className="absolute inset-0 flex items-center justify-center font-cinzel text-6xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                      {team.owner.name.split(" ").map(n => n[0]).join("")}
+                    </div>
+                  </div>
+                  {/* Owner Pill on Avatar */}
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#050B0A] border px-4 py-1.5 rounded-full z-20 shadow-[0_5px_15px_rgba(0,0,0,0.8)]" style={{ borderColor: team.color }}>
+                    <span className="font-montserrat text-[9px] font-bold tracking-[0.25em] uppercase whitespace-nowrap" style={{ color: team.color }}>Owner</span>
+                  </div>
+                </div>
+                
+                {/* Info */}
+                <h3 className="font-cinzel text-white text-3xl mb-3 group-hover:text-white transition-colors drop-shadow-md">{team.owner.name}</h3>
+                <div className="font-montserrat text-[10px] uppercase tracking-[0.2em] mb-8" style={{ color: team.color }}>{team.owner.company.name}</div>
+                
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent mb-8" />
+                
+                <p className="font-montserrat text-white/50 text-xs italic leading-[1.8] mb-auto px-4">
+                  "{team.owner.quote}"
+                </p>
+                
+                <Link href={`/owners/${team.owner.id}`} className="mt-10 inline-flex items-center gap-3 font-montserrat text-[10px] uppercase tracking-[0.2em] text-white hover:text-white/70 transition-colors bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full border border-white/10 group-hover:border-white/30">
+                  View Full Profile <ChevronRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+
+            {/* The 6 Members (3 columns x 2 rows) */}
+            {team.weeklyMembers.map((m, idx) => (
+              <button
+                key={m.name}
+                onClick={() => setActiveMember(m)}
+                className="glass-card border border-white/5 bg-white/[0.01] hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300 group text-left overflow-hidden cursor-pointer focus:outline-none flex flex-col"
+              >
+                {/* Photo / Avatar Section */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ background: `${team.color}08` }}>
+                  {m.image ? (
+                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-cinzel font-light text-5xl opacity-20" style={{ color: team.color }}>{m.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  {/* Rank badge */}
+                  <div className="absolute top-4 left-4 w-7 h-7 flex items-center justify-center font-cinzel text-[10px] backdrop-blur-md z-20" style={{ background: `${team.color}30`, color: "#fff", border: `1px solid ${team.color}60` }}>
+                    {idx + 1}
+                  </div>
+
+                  {/* CAPTAIN TAG */}
+                  {idx === 0 && (
+                    <div className="absolute top-4 right-4 bg-[#050B0A]/80 backdrop-blur-md px-3 py-1.5 border rounded-sm shadow-[0_5px_15px_rgba(0,0,0,0.5)] z-20" style={{ borderColor: team.color }}>
+                      <span className="font-montserrat text-[9px] font-bold tracking-[0.2em] uppercase" style={{ color: team.color }}>Captain</span>
+                    </div>
+                  )}
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-[2px] z-10">
+                    <span className="font-montserrat text-white text-[9px] uppercase tracking-[0.2em] border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition-colors">View Profile</span>
+                  </div>
+                </div>
+
+                {/* Info Section */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="font-cinzel tracking-wider text-white text-base leading-tight mb-1 truncate">{m.name}</div>
+                    <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest truncate mb-4">{m.industry}</div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-4">
+                    <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-widest truncate pr-3">{m.company.split(" ").slice(0, 2).join(" ")}</span>
+                    <span className="font-cinzel text-sm flex-shrink-0 font-bold" style={{ color: team.color }}>{m.points} <span className="text-[9px] font-normal opacity-70 tracking-widest">PTS</span></span>
+                  </div>
+                </div>
+              </button>
+            ))}
+            
+          </div>
+        </div>
+      </section>
+
       {/* PERFORMANCE */}
-      <section id="performance" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section id="performance" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-6 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Performance</h2>
@@ -474,7 +562,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* TEAM MOTTO CTA */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#0D1424] border-t border-white/5">
+      <section className="py-32 px-6 sm:px-10 lg:px-16 text-center bg-[#030712] border-t border-white/5">
         <div className="max-w-2xl mx-auto sr">
           <div className="w-12 h-px mx-auto mb-8 bg-white/20" />
           <h2 className="font-cinzel font-light text-white text-4xl sm:text-5xl mb-6 uppercase leading-tight">
@@ -490,7 +578,6 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

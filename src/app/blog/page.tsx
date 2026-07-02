@@ -7,7 +7,6 @@ import { blogPosts, blogCategories, teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,7 +49,7 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <PageHero backgroundImage="/images/luxury_boardroom.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
@@ -92,7 +91,7 @@ export default function BlogPage() {
       </PageHero>
 
       {/* ── FEATURED POST ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="section-label mb-10">Featured Article</div>
 
@@ -112,12 +111,12 @@ export default function BlogPage() {
                   style={{ filter: "brightness(0.90) saturate(1.0)" }}
                 />
               ) : (
-                <div className="w-full h-full bg-[#0B132B] flex items-center justify-center">
+                <div className="w-full h-full bg-[#000000] flex items-center justify-center">
                   <BookOpen className="w-20 h-20 text-[#D4AF37]/20" />
                 </div>
               )}
               {/* Gradient overlay — stronger on mobile so bottom fades cleanly */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0D1424 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.05) 100%)" }} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #030712 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.05) 100%)" }} />
               {/* Gold hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                 style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
@@ -162,7 +161,7 @@ export default function BlogPage() {
             </div>
 
             {/* Mobile-only: content stacked below image */}
-            <div className="sm:hidden p-6 bg-[#0D1424]">
+            <div className="sm:hidden p-6 bg-[#030712]">
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span
                   className="font-montserrat text-[8px] font-bold px-2.5 py-1 border uppercase tracking-widest"
@@ -194,7 +193,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── ALL POSTS + SIDEBAR ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
@@ -210,7 +209,7 @@ export default function BlogPage() {
                   return (
                     <article
                       key={post.id}
-                      className="group relative overflow-hidden border border-white/6 hover:border-[rgba(212,175,55,0.2)] bg-[#0B132B] hover:bg-[#111827] transition-all duration-500"
+                      className="group relative overflow-hidden border border-white/6 hover:border-[rgba(212,175,55,0.2)] bg-[#000000] hover:bg-[#0B1120] transition-all duration-500"
                       style={{ borderLeft: `2px solid ${tc}30` }}
                     >
                       {/* Team color left accent on hover */}
@@ -234,8 +233,8 @@ export default function BlogPage() {
                               <BookOpen className="w-12 h-12 text-white/20" />
                             </div>
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0B132B] opacity-80 sm:block hidden" />
-                          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0B132B] opacity-80 sm:hidden block" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#000000] opacity-80 sm:block hidden" />
+                          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#000000] opacity-80 sm:hidden block" />
                           {/* Category badge */}
                           <div className="absolute top-4 left-4">
                             <span className="font-montserrat text-[7px] font-bold px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] border border-[#D4AF37]/30 uppercase tracking-[0.2em]">
@@ -292,7 +291,7 @@ export default function BlogPage() {
             <div className="space-y-6 sr">
 
               {/* Categories */}
-              <div className="relative border border-white/8 bg-[#0D1424] p-7 overflow-hidden">
+              <div className="relative border border-white/8 bg-[#030712] p-7 overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                 <div className="flex items-center gap-3 mb-6">
                   <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -311,7 +310,7 @@ export default function BlogPage() {
               </div>
 
               {/* Team Blogs */}
-              <div className="relative border border-white/8 bg-[#0D1424] p-7 overflow-hidden">
+              <div className="relative border border-white/8 bg-[#030712] p-7 overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
@@ -347,7 +346,7 @@ export default function BlogPage() {
               </div>
 
               {/* Contribute CTA */}
-              <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#111827] p-8 text-center overflow-hidden">
+              <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#0B1120] p-8 text-center overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
                 <div className="absolute inset-0 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse 70% 70% at 50% 100%, rgba(212,175,55,0.07) 0%, transparent 70%)" }} />
@@ -370,7 +369,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

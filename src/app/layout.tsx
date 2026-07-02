@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   keywords: "ARES Business League, ABL 2026, Nation Builders, BNI, business tournament, India",
   openGraph: {
     title: "ARES Business League 2026 — Nation Builders Edition",
-    description: "4 Teams. 4 Leaders. 1 Mission. June 24 – July 22, 2026",
+    description: "4 Teams. 4 Leaders. 1 Mission. July 1st – July 29th, 2026",
     type: "website",
     url: "https://aresbusinessleague.com",
     siteName: "ARES Business League",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ARES Business League 2026 — Nation Builders Edition",
-    description: "4 Teams. 4 Leaders. 1 Mission. June 24 – July 22, 2026",
+    description: "4 Teams. 4 Leaders. 1 Mission. July 1st – July 29th, 2026",
   },
 };
 
@@ -63,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable} ${cormorant.variable}`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col antialiased bg-[#0B132B] text-white">
+      <body className="min-h-full flex flex-col antialiased bg-[#000000] text-white">
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
         <SmoothScroll>
           <Navbar />

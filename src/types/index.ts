@@ -48,6 +48,12 @@ export interface PerformanceStats {
   attendance: number;
 }
 
+export interface Superpower {
+  name: string;
+  description: string;
+  iconName: string;
+}
+
 export interface Team {
   id: string;
   name: string;
@@ -73,6 +79,7 @@ export interface Team {
   achievements: Achievement[];
   weeklyMembers: WeeklyMember[];
   performance: PerformanceStats;
+  superpower: Superpower;
 }
 
 export interface WeeklyEvent {

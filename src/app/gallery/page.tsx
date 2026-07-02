@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Camera, Clock } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 import SplitType from "split-type";
 
@@ -56,7 +55,7 @@ export default function GalleryPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ─── HERO ─── */}
       <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="py-16 sm:py-28 px-6 sm:px-10 lg:px-16 min-h-[60vh] justify-center">
@@ -85,7 +84,7 @@ export default function GalleryPage() {
           <div className="flex items-center justify-center gap-4 mb-7 h-sub">
             <div className="h-px w-12 bg-[#D4AF37]/30" />
             <p className="font-montserrat text-white/70 text-[10px] sm:text-xs tracking-[0.35em] uppercase">
-              June 24 – July 22, 2026
+              July 1st – July 29th, 2026
             </p>
             <div className="h-px w-12 bg-[#D4AF37]/30" />
           </div>
@@ -97,10 +96,10 @@ export default function GalleryPage() {
       </PageHero>
 
       {/* ─── COMING SOON ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-5xl mx-auto sr">
           {/* Coming soon card */}
-          <div className="relative overflow-hidden border border-[rgba(212,175,55,0.2)] bg-[#111827]">
+          <div className="relative overflow-hidden border border-[rgba(212,175,55,0.2)] bg-[#0B1120]">
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
 
@@ -143,7 +142,7 @@ export default function GalleryPage() {
       </section>
 
       {/* ─── PREVIEW GRID ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr mb-10 flex items-center justify-between">
             <div>
@@ -185,7 +184,7 @@ export default function GalleryPage() {
       </section>
 
       {/* ─── TEAM COVERAGE ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr text-center mb-10">
             <div className="section-label mx-auto mb-3">Photo Schedule</div>
@@ -198,7 +197,7 @@ export default function GalleryPage() {
               { week: "Week 3", dates: "Jul 8–14",  status: "upcoming", events: "Power Hours, Special Showcases" },
               { week: "Week 4", dates: "Jul 15–22", status: "upcoming", events: "Finals, Grand Ceremony" },
             ].map((w) => (
-              <div key={w.week} className={`relative p-6 border transition-all duration-300 ${w.status === "in-progress" ? "border-[rgba(212,175,55,0.25)] bg-[#D4AF37]/5" : w.status === "completed" ? "border-green-500/20 bg-green-500/4" : "border-white/6 bg-[#111827]"}`}>
+              <div key={w.week} className={`relative p-6 border transition-all duration-300 ${w.status === "in-progress" ? "border-[rgba(212,175,55,0.25)] bg-[#D4AF37]/5" : w.status === "completed" ? "border-green-500/20 bg-green-500/4" : "border-white/6 bg-[#0B1120]"}`}>
                 {w.status === "in-progress" && <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />}
                 <div className={`font-montserrat text-[7px] uppercase tracking-[0.3em] mb-2 font-semibold ${w.status === "in-progress" ? "text-[#D4AF37]" : w.status === "completed" ? "text-green-400/70" : "text-white/65"}`}>
                   {w.status === "in-progress" ? "● Live" : w.status === "completed" ? "✓ Captured" : "○ Upcoming"}
@@ -212,7 +211,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

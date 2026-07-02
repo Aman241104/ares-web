@@ -7,7 +7,6 @@ import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 import LiveTicker from "@/components/LiveTicker";
 
@@ -68,14 +67,14 @@ export default function LeaderboardPage() {
 
   const sorted = [...teams].sort((a, b) => a.rank - b.rank);
   const weekData: Record<string, number[]> = {
-    modi: [520, 765, 920, 1285],
-    doval: [480, 660, 820, 1160],
-    "amit-shah": [430, 600, 760, 1076],
-    jaishankar: [380, 540, 700, 945],
+    modi: [0, 0, 0, 0],
+    doval: [0, 0, 0, 0],
+    "amit-shah": [0, 0, 0, 0],
+    jaishankar: [0, 0, 0, 0],
   };
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
       <PageHero layout="left" className="min-h-[380px]">
@@ -117,7 +116,7 @@ export default function LeaderboardPage() {
       </PageHero>
 
       {/* ─── MAIN CONTENT ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B]">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           {/* TABLE + FILTERS */}
@@ -258,10 +257,10 @@ export default function LeaderboardPage() {
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers — Week 2</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
                 {[
-                  {label:"Top Points Earner",name:"Rahul Sharma",team:"Team Modi",teamColor:"#E67E22",value:"256 PTS",img:"/images/owner_modi.png"},
-                  {label:"Top Referrer",name:"Priya Mehta",team:"Team Doval",teamColor:"#1E3A8A",value:"18 Referrals",img:"/images/owner_doval.png"},
-                  {label:"Top Meetings",name:"Vikas Agarwal",team:"Team Modi",teamColor:"#E67E22",value:"21 Meetings",img:"/images/owner_shah.png"},
-                  {label:"Top Growth",name:"Anil Desai",team:"Team Amit Shah",teamColor:"#C0392B",value:"₹24.8L",img:"/images/owner-portrait-4.jpg"},
+                  {label:"Top Points Earner",name:"Rahul Sharma",team:"Team Modi",teamColor:"#E67E22",value:"0 PTS",img:"/images/owner_modi.png"},
+                  {label:"Top Referrer",name:"Priya Mehta",team:"Team Doval",teamColor:"#1E3A8A",value:"0 Referrals",img:"/images/owner_doval.png"},
+                  {label:"Top Meetings",name:"Vikas Agarwal",team:"Team Modi",teamColor:"#E67E22",value:"0 Meetings",img:"/images/owner_shah.png"},
+                  {label:"Top Growth",name:"Anil Desai",team:"Team Amit Shah",teamColor:"#C0392B",value:"₹0",img:"/images/owner-portrait-4.jpg"},
                 ].map((p)=>(
                   <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
                     <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
@@ -281,7 +280,7 @@ export default function LeaderboardPage() {
 
           {/* SIDEBAR */}
           <div className="space-y-6">
-            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#0D1424]">
+            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#030712]">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
               <p className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
 
@@ -331,7 +330,6 @@ export default function LeaderboardPage() {
         </div>
       </section>
 
-      <LegacyCTA />
       <LiveTicker />
     </div>
   );

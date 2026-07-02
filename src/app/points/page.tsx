@@ -14,7 +14,6 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import LegacyCTA from "@/components/LegacyCTA";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,40 +22,63 @@ type PointRow =
   | { label: string; points: number; detail?: string }
   | { label: string; tiers: { points: number; detail: string }[] };
 
-const standardActivities: PointRow[] = [
-  { label: "121", tiers: [{ points: 10, detail: "In Chapter" }, { points: 20, detail: "Cross Chapter" }] },
-  { label: "Participation in Activities", points: 200 },
-  { label: "Referrals", tiers: [{ points: 50, detail: "Inside" }, { points: 50, detail: "Outside" }] },
+const scoringActivities: PointRow[] = [
+  {
+    label: "121",
+    tiers: [
+      { points: 10, detail: "In Chapter" },
+      { points: 20, detail: "Cross Chapter" },
+      { points: 25, detail: "With Any Team Owner" },
+    ],
+  },
+  { label: "Participation in Activities", points: 200, detail: "(special points if applicable would mentioned seperately)" },
+  {
+    label: "Referrals",
+    tiers: [
+      { points: 50, detail: "Inside" },
+      { points: 50, detail: "Outside" },
+      { points: 100, detail: "To Any Team Owner" },
+    ],
+  },
   {
     label: "TYFCB",
     tiers: [
-      { points: 50,   detail: "₹0 – 5,000" },
-      { points: 250,  detail: "₹5,000 – 50,000" },
-      { points: 500,  detail: "₹50,000 – 5L" },
-      { points: 1000, detail: "₹5L+" },
+      { points: 50, detail: "0 - 5,000" },
+      { points: 250, detail: "5,000 - 50,000" },
+      { points: 500, detail: "50,000 - 5,00,000" },
+      { points: 1000, detail: ">5,00,000" },
     ],
   },
-  { label: "Coffee Table Visitor", points: 1000 },
-  { label: "Visitor",              points: 1500 },
-  { label: "Power Visitor",        points: 2000 },
-  { label: "Power Date",           points: 1500 },
-  { label: "Power Meet",           points: 2000 },
-  { label: "Induction w/o Sponsor", points: 5000 },
-  { label: "Induction",            points: 6000 },
-];
-
-const teamOwnerActivities: PointRow[] = [
-  { label: "121 With Team Owner",    points: 25 },
-  { label: "Referral to Team Owner", points: 100 },
   {
-    label: "TYFCB to Team Owner",
+    label: "TYFCB To Team Owner",
     tiers: [
-      { points: 100,  detail: "₹0 – 5,000" },
-      { points: 350,  detail: "₹5,000 – 50,000" },
-      { points: 700,  detail: "₹50,000 – 5L" },
-      { points: 1200, detail: "₹5L+" },
+      { points: 100, detail: "0 - 5,000" },
+      { points: 350, detail: "5,000 - 50,000" },
+      { points: 700, detail: "50,000 - 5,00,000" },
+      { points: 1200, detail: ">5,00,000" },
     ],
   },
+  {
+    label: "Visitor",
+    tiers: [
+      { points: 1000, detail: "Coffee Table" },
+      { points: 1500, detail: "In Meeting" },
+      { points: 2000, detail: "In Meeting - Power Visitor (mentioned categories)" },
+    ],
+  },
+  { label: "Power Date", points: 1500, detail: "(arrange a power date)" },
+  { label: "Power Meet", points: 2000, detail: "(arrange a power meet)" },
+  {
+    label: "Induction",
+    tiers: [
+      { points: 5000, detail: "W/O You Being The Sponsor" },
+      { points: 6000, detail: "You Being The Sponsor" },
+    ],
+  },
+  { label: "Absent", points: -250, detail: "being absent in chapter meeting" },
+  { label: "Present", points: 100, detail: "being present in chapter meeting before 8am" },
+  { label: "Being Present Early", points: 250, detail: "reaching meeting room before 7:30 - selfie in group" },
+  { label: "Late Arrival", points: -100, detail: "entering meeting after 8am" },
 ];
 
 const comingSoon = [
@@ -73,7 +95,7 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
       <div className="grid grid-cols-[1fr_auto_auto] bg-[#D4AF37]/8 border-b border-white/8">
         <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold">Activity</div>
         <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold text-right">Points</div>
-        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-36 text-right">Details</div>
+        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-48 sm:w-[280px] text-right">Details</div>
       </div>
 
       {rows.map((row, i) => {
@@ -97,7 +119,9 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
                     <span
                       className="font-cinzel font-bold text-sm"
                       style={{
-                        background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
+                        background: tier.points < 0 
+                          ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)" 
+                          : "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
@@ -106,8 +130,8 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
                       {tier.points.toLocaleString()}
                     </span>
                   </div>
-                  <div className="px-6 py-3.5 w-36 text-right">
-                    <span className="font-montserrat text-[9px] text-white/40 uppercase tracking-[0.2em]">{tier.detail}</span>
+                  <div className="px-6 py-3.5 w-48 sm:w-[280px] text-right">
+                    <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed block">{tier.detail}</span>
                   </div>
                 </div>
               ))}
@@ -125,7 +149,9 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
               <span
                 className="font-cinzel font-bold text-sm"
                 style={{
-                  background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
+                  background: row.points < 0 
+                    ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)" 
+                    : "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -134,8 +160,8 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
                 {row.points.toLocaleString()}
               </span>
             </div>
-            <div className="px-6 py-3.5 w-36 text-right">
-              <span className="font-montserrat text-[9px] text-white/40 uppercase tracking-[0.2em]">
+            <div className="px-6 py-3.5 w-48 sm:w-[280px] text-right">
+              <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed block">
                 {"detail" in row && row.detail ? row.detail : "—"}
               </span>
             </div>
@@ -175,7 +201,7 @@ export default function PointsPage() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
       <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="min-h-[60vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-24">
@@ -216,11 +242,11 @@ export default function PointsPage() {
         </div>
       </PageHero>
 
-      {/* ── STANDARD ACTIVITIES ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5">
+      {/* ── LEAGUE SCORING SYSTEM ── */}
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="sr mb-12">
-            <div className="section-label mb-4">Points Structure</div>
+            <div className="section-label mb-4">League Scoring System</div>
             <div className="flex items-center gap-4">
               <div
                 className="w-10 h-10 flex items-center justify-center border border-[#D4AF37]/25 bg-[#D4AF37]/8"
@@ -229,50 +255,21 @@ export default function PointsPage() {
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
-                <div className="font-montserrat text-[8px] font-bold tracking-[0.35em] uppercase text-[#D4AF37]/70 mb-0.5">Standard</div>
+                <div className="font-montserrat text-[8px] font-bold tracking-[0.35em] uppercase text-[#D4AF37]/70 mb-0.5">Comprehensive</div>
                 <h2 className="font-cinzel text-white text-xl tracking-wider">Activity Points</h2>
               </div>
             </div>
             <div className="mt-6 h-px w-full" style={{ background: "linear-gradient(90deg, rgba(212,175,55,0.35), transparent)" }} />
           </div>
 
-          <div className="sr bg-[#111827]">
-            <PointsTable rows={standardActivities} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── TEAM OWNER BONUS ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0B132B] border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="sr mb-12">
-            <div className="section-label mb-4">Bonus Multipliers</div>
-            <div className="flex items-center gap-4">
-              <div
-                className="w-10 h-10 flex items-center justify-center border border-[#F5D078]/25 bg-[#F5D078]/8"
-                style={{ color: "#F5D078" }}
-              >
-                <Crown className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="font-montserrat text-[8px] font-bold tracking-[0.35em] uppercase text-[#F5D078]/70 mb-0.5">Team Owner</div>
-                <h2 className="font-cinzel text-white text-xl tracking-wider">Bonus Points</h2>
-              </div>
-            </div>
-            <div className="mt-3 font-montserrat text-white/50 text-[11px] leading-[1.9] tracking-wide max-w-2xl">
-              Interactions with Team Owners earn elevated points — rewarding the connections that matter most.
-            </div>
-            <div className="mt-6 h-px w-full" style={{ background: "linear-gradient(90deg, rgba(245,208,120,0.35), transparent)" }} />
-          </div>
-
-          <div className="sr bg-[#111827]">
-            <PointsTable rows={teamOwnerActivities} />
+          <div className="sr bg-[#0B1120]">
+            <PointsTable rows={scoringActivities} />
           </div>
         </div>
       </section>
 
       {/* ── AND THAT'S NOT ALL ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-4 mb-5">
@@ -295,7 +292,7 @@ export default function PointsPage() {
             {comingSoon.map((item) => (
               <div
                 key={item.label}
-                className="group flex flex-col items-center text-center border border-white/6 bg-[#111827] hover:border-[rgba(212,175,55,0.2)] hover:bg-[#0D1424] p-8 transition-all duration-400 relative overflow-hidden"
+                className="group flex flex-col items-center text-center border border-white/6 bg-[#0B1120] hover:border-[rgba(212,175,55,0.2)] hover:bg-[#030712] p-8 transition-all duration-400 relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
@@ -318,35 +315,8 @@ export default function PointsPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="relative py-24 px-6 sm:px-10 lg:px-16 overflow-hidden bg-[#0B132B] border-t border-white/5 sr">
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
 
-        <div className="relative max-w-2xl mx-auto text-center border border-[rgba(212,175,55,0.2)] bg-[#111827] p-12 lg:p-16 overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
-          <div className="w-14 h-14 border border-[#D4AF37]/25 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-8">
-            <Star className="w-6 h-6 text-[#D4AF37]" />
-          </div>
-          <h2 className="font-cinzel font-bold text-white mb-5 leading-tight" style={{ fontSize: "clamp(24px, 4vw, 42px)" }}>
-            EVERY ACTION <span className="text-[#D4AF37]">COUNTS.</span>
-          </h2>
-          <div className="gold-divider max-w-xs mx-auto mb-6" />
-          <p className="font-montserrat text-white/60 text-xs leading-[2] mb-10 tracking-wide">
-            Know the rules, master the points system, and lead your team to glory on the ARES Business League leaderboard.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/leaderboard" className="btn-primary">
-              View Leaderboard <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/rules" className="btn-secondary">
-              Tournament Rules
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      <LegacyCTA />
     </div>
   );
 }

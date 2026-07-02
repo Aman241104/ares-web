@@ -7,7 +7,6 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { blogPosts } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LegacyCTA from "@/components/LegacyCTA";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,7 +46,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-24 bg-[#0B132B] min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       <section className="py-20 px-6 sm:px-10 lg:px-16 sr">
         <div className="max-w-4xl mx-auto">
           <div className="font-montserrat text-[9px] uppercase tracking-widest text-white/40 mb-8">
@@ -100,7 +99,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       </section>
 
       {/* More Posts */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#0D1424] border-t border-white/5 sr">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-cinzel font-light text-white text-3xl mb-12">More from the <span className="text-[#D4AF37]">Arena</span></h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sr-stagger">
@@ -118,7 +117,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         </div>
       </section>
 
-      <LegacyCTA />
     </div>
   );
 }

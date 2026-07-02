@@ -60,8 +60,6 @@ export default function Footer() {
               {[
                 { href: "https://linkedin.com",  icon: <LinkedInIcon />,  label: "LinkedIn" },
                 { href: "https://instagram.com", icon: <InstagramIcon />, label: "Instagram" },
-                { href: "https://facebook.com",  icon: <FacebookIcon />,  label: "Facebook" },
-                { href: "https://youtube.com",   icon: <YouTubeIcon />,   label: "YouTube" },
               ].map(({ href, icon, label }) => (
                 <a
                   key={label}
@@ -125,7 +123,7 @@ export default function Footer() {
             {/* Tournament dates */}
             <div className="mt-8 p-4 border border-[rgba(212,175,55,0.12)] bg-[#D4AF37]/4 rounded-sm">
               <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] text-[#D4AF37]/60 mb-2">Tournament Window</div>
-              <div className="font-cinzel text-white text-sm tracking-wider">June 24 – July 22</div>
+              <div className="font-cinzel text-white text-sm tracking-wider">July 1st – July 29th</div>
               <div className="font-montserrat text-white/55 text-[8px] tracking-wider mt-0.5">2026</div>
             </div>
           </div>

@@ -65,7 +65,7 @@ export default function PageHero({
           background: "linear-gradient(180deg, rgba(7,12,28,0.80) 0%, transparent 100%)"
         }} />
         {/* Bottom fade into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B132B] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000000] to-transparent" />
         {/* Subtle right vignette — doesn't kill the image, just softens the hard edge */}
         <div className="absolute inset-0" style={{
           background: "linear-gradient(270deg, rgba(7,12,28,0.45) 0%, transparent 30%)"
