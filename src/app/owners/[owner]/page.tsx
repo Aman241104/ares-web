@@ -10,10 +10,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const OWNER_PORTRAITS: Record<string, string> = {
-  "narendra-modi": "/images/owner_modi.png",
-  "ajit-doval": "/images/owner_doval.png",
-  "amit-shah": "/images/owner_shah.png",
-  "s-jaishankar": "/images/owner_jaishankar.png",
+  "jay-patel": "/images/owner_modi.png",
+  "vishnu-soni": "/images/owner_doval.png",
+  "harsh-brambhatt": "/images/owner_shah.png",
+  "mayursinh-chavda": "/images/owner_jaishankar.png",
 };
 
 export default function OwnerPage({ params }: { params: Promise<{ owner: string }> }) {
