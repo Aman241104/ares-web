@@ -91,7 +91,7 @@ export default function GlobalCTA() {
             <div className="g-title">ELEVATE</div>
             <div className="g-title">YOUR</div>
             <div className="g-title">DIGITAL</div>
-            <div className="g-title text-[#00A859] drop-shadow-[0_0_15px_rgba(0,168,89,0.3)]">PRESENCE</div>
+            <div className="g-title text-transparent bg-clip-text bg-gradient-to-r from-[#00A859] via-[#00D672] to-[#00A859] drop-shadow-[0_0_20px_rgba(0,168,89,0.4)] bg-[length:200%_auto] animate-[gradient_8s_ease_infinite]">PRESENCE</div>
           </h2>
 
           {/* Description */}
@@ -102,16 +102,16 @@ export default function GlobalCTA() {
           {/* Feature List */}
           <div className="space-y-4 mb-14">
             {[
-              { icon: <Sparkles className="w-4 h-4 text-[#00A859]" />, text: "AWWWARDS-WINNING DESIGN AESTHETICS" },
-              { icon: <Smartphone className="w-4 h-4 text-[#00A859]" />, text: "MOBILE & WEB APP DEVELOPMENT" },
-              { icon: <Rocket className="w-4 h-4 text-[#00A859]" />, text: "HIGH-PERFORMANCE ARCHITECTURE" },
-              { icon: <LineChart className="w-4 h-4 text-[#00A859]" />, text: "DATA-DRIVEN MARKETING & MEDIA" },
+              { icon: <Sparkles className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "AWWWARDS-WINNING DESIGN AESTHETICS" },
+              { icon: <Smartphone className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "MOBILE & WEB APP DEVELOPMENT" },
+              { icon: <Rocket className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "HIGH-PERFORMANCE ARCHITECTURE" },
+              { icon: <LineChart className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "DATA-DRIVEN MARKETING & MEDIA" },
             ].map((f, i) => (
-              <div key={i} className="g-feature flex items-center gap-4">
-                <div className="w-7 h-7 rounded-full bg-[#00A859]/10 flex items-center justify-center border border-[#00A859]/20 flex-shrink-0">
+              <div key={i} className="g-feature flex items-center gap-4 group cursor-default">
+                <div className="w-7 h-7 rounded-full bg-[#00A859]/10 group-hover:bg-[#00A859]/20 flex items-center justify-center border border-[#00A859]/20 group-hover:border-[#00A859]/40 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(0,168,89,0.3)]">
                   {f.icon}
                 </div>
-                <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase">{f.text}</span>
+                <span className="text-white/80 group-hover:text-white text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors duration-300">{f.text}</span>
               </div>
             ))}
           </div>
@@ -120,26 +120,32 @@ export default function GlobalCTA() {
           <div className="g-action flex flex-col sm:flex-row items-start sm:items-center gap-8">
             <Link 
               href="/contact"
-              className="bg-[#00A859] hover:bg-[#008F4C] text-[#050B0A] font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-sm flex items-center gap-3 transition-colors duration-300 shadow-[0_0_20px_rgba(0,168,89,0.3)] whitespace-nowrap"
+              className="bg-gradient-to-r from-[#00A859] to-[#008F4C] hover:from-[#00C266] hover:to-[#00A859] text-[#050B0A] font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-sm flex items-center gap-3 transition-all duration-300 shadow-[0_0_20px_rgba(0,168,89,0.4)] hover:shadow-[0_0_30px_rgba(0,168,89,0.6)] hover:-translate-y-1 whitespace-nowrap"
             >
               Start Project <ArrowRight className="w-4 h-4" />
             </Link>
             
             <div className="border-l border-white/10 pl-8">
               <div className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-1.5">Gravity Media Marketing</div>
-              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-white/50 hover:text-[#00A859] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
-              <a href="tel:+918104933816" className="block text-white/50 hover:text-[#00A859] transition-colors text-xs">+91 8104933816</a>
+              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
+              <a href="tel:+918104933816" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs">+91 8104933816</a>
             </div>
           </div>
         </div>
 
         {/* ── RIGHT COLUMN: CARD ── */}
         <div className="g-card relative lg:ml-10">
-          <div className="relative w-full max-w-md mx-auto aspect-[4/5] rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent shadow-[0_40px_80px_rgba(0,0,0,0.5)] backdrop-blur-md flex flex-col items-center p-8 sm:p-12 overflow-hidden">
+          <div className="relative w-full max-w-md mx-auto aspect-[4/5] rounded-[2.5rem] border border-[#00A859]/20 hover:border-[#00A859]/40 bg-gradient-to-br from-[#050B0A]/90 to-[#00A859]/5 shadow-[0_40px_80px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(0,168,89,0.05)] backdrop-blur-xl flex flex-col items-center p-8 sm:p-12 overflow-hidden transition-colors duration-500 group">
             
+            {/* Corner Decorative Dots */}
+            <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
+            <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
+            <div className="absolute bottom-8 left-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
+            <div className="absolute bottom-8 right-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
+
             {/* Inner Glow in Card */}
             <div className="absolute inset-0 pointer-events-none z-0">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#00A859]/10 blur-[80px] rounded-full pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#00A859]/15 blur-[80px] rounded-full pointer-events-none" />
             </div>
 
             {/* Huge Logo Stack */}
@@ -165,8 +171,8 @@ export default function GlobalCTA() {
             </div>
 
             {/* Bottom Pill */}
-            <div className="relative z-10 border border-white/20 bg-black/60 backdrop-blur-md px-6 py-2.5 rounded-full mt-auto shrink-0 shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
-              <span className="text-white/60 text-[9px] font-bold tracking-[0.25em] uppercase">Official Digital Partner</span>
+            <div className="relative z-10 border border-[#00A859]/30 bg-[#00A859]/10 backdrop-blur-md px-6 py-2.5 rounded-full mt-auto shrink-0 shadow-[0_10px_20px_rgba(0,0,0,0.4)] group-hover:bg-[#00A859]/20 transition-colors duration-500">
+              <span className="text-[#00D672] text-[9px] font-bold tracking-[0.25em] uppercase drop-shadow-[0_0_8px_rgba(0,214,114,0.5)]">Official Digital Partner</span>
             </div>
           </div>
         </div>
