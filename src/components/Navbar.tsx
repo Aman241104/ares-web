@@ -17,7 +17,16 @@ export const navLinks = [
       { href: "/teams/jaishankar", label: "Team Jaishankar", sub: "Diplomats",    color: "var(--team-jaishankar)" },
     ],
   },
-  { href: "/team-owners", label: "Team Owners" },
+  {
+    label: "Team Owners",
+    href: "/team-owners",
+    dropdown: [
+      { href: "/teams/modi",       label: "Advocate Jay Patel",       sub: "Team Modi",  color: "var(--team-modi)" },
+      { href: "/teams/doval",      label: "Vishnu Soni",              sub: "Team Doval", color: "var(--team-doval)" },
+      { href: "/teams/amit-shah",  label: "Harsh Brambhatt",          sub: "Team Amit Shah", color: "var(--team-shah)" },
+      { href: "/teams/jaishankar", label: "Mayursinh Chavda",         sub: "Team Jaishankar", color: "var(--team-jaishankar)" },
+    ],
+  },
   { href: "/schedule",    label: "Events" },
   { href: "/points",      label: "Points" },
   { href: "/leaderboard", label: "Leaderboard" },

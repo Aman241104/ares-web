@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowRight, ChevronRight, Users, Trophy, Star, TrendingUp, X, Building2, Package, Tag, Handshake, Target, TowerControl, Flower2, Globe2, Zap } from "lucide-react";
+import { ArrowRight, ChevronRight, Users, Trophy, Star, TrendingUp, X, Building2, Package, Tag, Handshake, Target, TowerControl, Flower2, Globe2, Zap, Coins } from "lucide-react";
 import { teams } from "@/lib/data";
 import type { WeeklyMember } from "@/types";
 import gsap from "gsap";
@@ -244,6 +244,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 {[
                   { icon: <Users className="w-4 h-4" />, n: String(team.members), l: "Members" },
                   { icon: <Trophy className="w-4 h-4" />, n: "1", l: "Championship" },
+                  { icon: <Coins className="w-4 h-4" />, n: team.totalPointsSpent?.toLocaleString() || "0", l: "Coins Spent" },
                   { icon: <Star className="w-4 h-4" />, n: team.points.toLocaleString(), l: "Points" },
                   { icon: <TrendingUp className="w-4 h-4" />, n: `Rank #${team.rank}`, l: "" },
                 ].map((s, idx) => (

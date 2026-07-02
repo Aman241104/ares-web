@@ -80,6 +80,7 @@ export interface Team {
   weeklyMembers: WeeklyMember[];
   performance: PerformanceStats;
   superpower: Superpower;
+  totalPointsSpent?: number;
 }
 
 export interface WeeklyEvent {
