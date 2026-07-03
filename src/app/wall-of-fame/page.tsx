@@ -217,12 +217,15 @@ export default function WallOfFamePage() {
     href: `/owners/${t.owner.id}`,
   }));
 
-  const wallPartners: WallHonoree[] = partners.map((p) => ({
+  const wallPartners: WallHonoree[] = PARTNERS_2026.map((p) => ({
     name: p.name,
-    role: p.tier,
-    companyName: p.name,
-    category: p.tier,
-    idealConnect: p.tagline,
+    role: p.role,
+    img: p.img,
+    companyName: p.company.name,
+    category: p.company.category,
+    phone: p.company.phone,
+    email: p.company.email,
+    idealConnect: p.company.idealConnect,
   }));
 
   return (
