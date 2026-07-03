@@ -64,7 +64,7 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
       <div
-        className="relative w-full max-w-lg glass-card border-white/15 overflow-hidden"
+        className="relative w-full max-w-lg glass-card border-white/15 overflow-y-auto max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -431,9 +431,13 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 {/* Avatar */}
                 <div className="w-48 h-48 rounded-full mx-auto mb-10 border border-white/20 p-1.5 relative group-hover:scale-105 transition-transform duration-500">
                   <div className="w-full h-full rounded-full overflow-hidden relative shadow-inner" style={{ background: `${team.color}15`, boxShadow: `inset 0 0 30px ${team.color}40` }}>
-                    <div className="absolute inset-0 flex items-center justify-center font-cinzel text-6xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                      {team.owner.name.split(" ").map(n => n[0]).join("")}
-                    </div>
+                    {team.owner.image ? (
+                      <Image src={team.owner.image} alt={team.owner.name} fill sizes="192px" className="object-cover object-top" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center font-cinzel text-6xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        {team.owner.name.split(" ").map(n => n[0]).join("")}
+                      </div>
+                    )}
                   </div>
                   {/* Owner Pill on Avatar */}
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#050B0A] border px-4 py-1.5 rounded-full z-20 shadow-[0_5px_15px_rgba(0,0,0,0.8)]" style={{ borderColor: team.color }}>

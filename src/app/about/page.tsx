@@ -320,7 +320,7 @@ export default function AboutPage() {
           onClick={() => setActiveCommissioner(null)}
         >
           <div
-            className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
+            className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8 overflow-y-auto max-h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />

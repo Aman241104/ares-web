@@ -24,6 +24,7 @@ export const teams: Team[] = [
     owner: {
       id: "jay-patel",
       name: "Advocate Jay Patel",
+      image: "/images/owner_modi.png",
       title: "Team Owner & Leader",
       from: "Gujarat, India",
       experience: "15+ Years",
@@ -95,6 +96,7 @@ export const teams: Team[] = [
     owner: {
       id: "vishnu-soni",
       name: "Vishnu Soni",
+      image: "/images/owner_doval.png",
       title: "Team Owner & Leader",
       from: "Gujarat, India",
       experience: "20+ Years",
@@ -164,6 +166,7 @@ export const teams: Team[] = [
     owner: {
       id: "harsh-brambhatt",
       name: "Harsh Brambhatt",
+      image: "/images/owner_shah.png",
       title: "Team Owner & Leader",
       from: "Gujarat, India",
       experience: "12+ Years",
@@ -232,6 +235,7 @@ export const teams: Team[] = [
     owner: {
       id: "mayursinh-chavda",
       name: "Mayursinh Chavda",
+      image: "/images/owner_jaishankar.png",
       title: "Team Owner & Leader",
       from: "Gujarat, India",
       experience: "18+ Years",

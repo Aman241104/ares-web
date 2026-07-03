@@ -11,13 +11,6 @@ import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const OWNER_IMAGES: Record<string, string> = {
-  modi:        "/images/owner_modi.png",
-  doval:       "/images/owner_doval.png",
-  "amit-shah": "/images/owner_shah.png",
-  jaishankar:  "/images/owner_jaishankar.png",
-};
-
 const MASCOT_IMAGES: Record<string, string> = {
   modi:        "/images/mascot_lion.png",
   doval:       "/images/mascot_eagle.png",
@@ -97,7 +90,7 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
+        className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8 overflow-y-auto max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
@@ -208,7 +201,7 @@ export default function WallOfFamePage() {
   const wallOwners: WallHonoree[] = teams.map((t) => ({
     name: t.owner.name,
     role: `Team Owner — ${t.name}`,
-    img: OWNER_IMAGES[t.id],
+    img: t.owner.image,
     companyName: t.owner.company.name,
     category: t.owner.company.industry,
     phone: t.owner.phone,

@@ -12,6 +12,7 @@ export interface Company {
 export interface Owner {
   id: string;
   name: string;
+  image: string;
   title: string;
   from: string;
   experience: string;
