@@ -86,11 +86,13 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
 function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
+      <div className="relative h-full overflow-y-auto">
+        <div className="min-h-full flex items-center justify-center p-6">
       <div
-        className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8 overflow-y-auto max-h-[85vh]"
+        className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
@@ -147,6 +149,8 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
             View Full Profile <ExternalLink className="w-3 h-3" />
           </Link>
         )}
+      </div>
+        </div>
       </div>
     </div>
   );

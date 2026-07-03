@@ -316,11 +316,13 @@ export default function AboutPage() {
       ═══════════════════════════════════ */}
       {activeCommissioner !== null && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           onClick={() => setActiveCommissioner(null)}
         >
+          <div className="relative h-full overflow-y-auto">
+            <div className="min-h-full flex items-center justify-center p-6">
           <div
-            className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8 overflow-y-auto max-h-[85vh]"
+            className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
@@ -364,6 +366,8 @@ export default function AboutPage() {
             <div className="mt-5 pt-5 border-t border-white/5">
               <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.3em] mb-2">Ideal Connects</div>
               <p className="font-montserrat text-white/60 text-[11px] leading-relaxed">{COMMISSIONERS_2026[activeCommissioner].company.idealConnect}</p>
+            </div>
+          </div>
             </div>
           </div>
         </div>

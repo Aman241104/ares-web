@@ -61,10 +61,12 @@ function PointsTrendChart({ teamId, color }: { teamId: string; color: string }) 
 
 function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: string; onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[200]" onClick={onClose}>
       <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+      <div className="relative h-full overflow-y-auto">
+        <div className="min-h-full flex items-center justify-center p-4">
       <div
-        className="relative w-full max-w-lg glass-card border-white/15 overflow-y-auto max-h-[85vh]"
+        className="relative w-full max-w-lg glass-card border-white/15"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -150,6 +152,8 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
             <span className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">League Points</span>
             <span className="font-cinzel text-xl" style={{ color }}>{member.points} pts</span>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
