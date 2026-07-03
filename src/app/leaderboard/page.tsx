@@ -77,7 +77,7 @@ export default function LeaderboardPage() {
     <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
       
       {/* ─── HERO ─── */}
-      <PageHero layout="left" className="min-h-[380px]">
+      <PageHero backgroundImage="/images/hero_trophy_leaderboard.png" layout="left" className="min-h-[380px]">
 
         <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-24 z-10">
           <div className="max-w-2xl">

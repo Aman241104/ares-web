@@ -1,16 +1,17 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight, Target, Users, Zap, Trophy, Globe, Star,
   Medal, ShieldCheck, Flame, Handshake, TrendingUp,
-  CalendarCheck, UserPlus, Crown,
+  CalendarCheck, UserPlus, Crown, X, Phone, Mail, Briefcase,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageHero from "@/components/PageHero";
 import { tournamentRules } from "@/lib/data";
+import { COMMISSIONERS_2026 } from "@/lib/honorees";
 import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,19 +20,19 @@ const PILLARS = [
   {
     icon: <Target className="w-6 h-6" />,
     title: "Compete",
-    desc: "High-stakes business competition that drives performance, accountability, and measurable growth across all 4 teams.",
+    desc: "Friendly team rivalry gives every member a reason to show up energised, stay active, and bring their best to every single meeting.",
     num: "01",
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Collaborate",
-    desc: "Build powerful business relationships that generate referrals, partnerships, and TYFCB revenue for all members.",
+    desc: "That energy turns into action — more 1-2-1s, deeper bonding, and stronger trust between members across all 4 teams.",
     num: "02",
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "Create Impact",
-    desc: "Build nation-leading businesses through consistent action, strategic thinking, and legendary leadership.",
+    desc: "A more engaged, more connected chapter — translating directly into higher referrals and more business passed for every Arean.",
     num: "03",
   },
 ];
@@ -52,6 +53,7 @@ const LEADERSHIP = [
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeCommissioner, setActiveCommissioner] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -192,8 +194,8 @@ export default function AboutPage() {
               <div className="relative pl-8 border-l-2 border-[#D4AF37]/50">
                 <div className="text-[#D4AF37]/20 font-cinzel text-[120px] leading-none absolute -top-6 -left-2 select-none pointer-events-none">&ldquo;</div>
                 <p className="font-cinzel text-white text-2xl sm:text-3xl leading-relaxed font-light relative z-10">
-                  Leaders Compete.<br />
-                  <span className="text-[#D4AF37]">Nation Progresses.</span>
+                  Members Compete.<br />
+                  <span className="text-[#D4AF37]">Chapter Wins.</span>
                 </p>
                 <div className="mt-6 font-montserrat text-white/65 text-[9px] tracking-[0.35em] uppercase">The ABL 2026 Creed</div>
               </div>
@@ -206,10 +208,10 @@ export default function AboutPage() {
                 THE <span className="text-[#D4AF37]">MISSION</span>
               </h2>
               <p className="font-montserrat text-white/55 text-sm leading-[2] tracking-wide mb-6">
-                It is NOT just a competition. ARES Business League exists to build a nation through business growth, member collaboration, and forging legendary enterprises that generate massive TYFCB revenue together.
+                It is NOT just a competition. ARES Business League exists to make the chapter stronger. Friendly competition between teams energises every member — pushing active participation, more meetings, and better preparation week after week.
               </p>
               <p className="font-montserrat text-white/60 text-xs leading-relaxed tracking-wide">
-                Over 4 weeks, 30 elite business owners will compete, collaborate, and create impact — shaping the future of business in India.
+                The result: deeper bonding and trust between members, and the highest volume of quality referrals and business passed the chapter has ever seen. The trophy is just the scoreboard — the real win is a stronger BNI Ares.
               </p>
             </div>
           </div>
@@ -278,30 +280,94 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 sr-stagger">
-            {[
-              { name: "Commissioner One", role: "Co-Commissioner, ABL", quote: "The Ares Business League is more than a competition; it is a movement to forge legendary enterprises and build a stronger nation.", img: "/images/members/member-1.png" },
-              { name: "Commissioner Two", role: "Co-Commissioner, ABL", quote: "We challenge our leaders to not just perform, but to leave a legacy. True collaboration in this arena changes the entire business landscape.", img: "/images/members/member-2.png" }
-            ].map((comm, idx) => (
-              <div key={idx} className="relative group overflow-hidden border border-[rgba(212,175,55,0.15)] bg-[#0B1120] hover:bg-[#030712] transition-colors p-8 sm:p-10 flex flex-col items-center text-center">
+            {COMMISSIONERS_2026.map((comm, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveCommissioner(idx)}
+                className="relative group overflow-hidden border border-[rgba(212,175,55,0.15)] bg-[#0B1120] hover:bg-[#030712] transition-colors p-8 sm:p-10 flex flex-col items-center text-center cursor-pointer text-left"
+              >
                 <div className="absolute top-0 left-0 right-0 h-0.5 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, transparent, #D4AF37, transparent)` }} />
-                
+
                 <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden mb-6 border border-[#D4AF37]/30 group-hover:border-[#D4AF37]/60 transition-colors relative shadow-[0_0_20px_rgba(212,175,55,0.15)]">
                   <Image src={comm.img} alt={comm.name} fill className="object-cover" />
                 </div>
-                <h3 className="font-cinzel text-xl sm:text-2xl text-white mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide">{comm.name}</h3>
-                <div className="font-montserrat text-[#D4AF37]/80 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] mb-8">{comm.role}</div>
-                
+                <h3 className="font-cinzel text-xl sm:text-2xl text-white mb-2 group-hover:text-[#D4AF37] transition-colors tracking-wide text-center w-full">{comm.name}</h3>
+                <div className="font-montserrat text-[#D4AF37]/80 text-[9px] sm:text-[10px] uppercase tracking-[0.25em] mb-2 text-center w-full">{comm.role}</div>
+                <div className="font-montserrat text-white/40 text-[9px] tracking-[0.2em] mb-8 text-center w-full flex items-center justify-center gap-1.5">
+                  <Briefcase className="w-3 h-3" /> {comm.company.name} · {comm.company.category}
+                </div>
+
                 <div className="relative mt-auto">
                   <div className="text-[#D4AF37]/20 font-cinzel text-[60px] sm:text-[80px] leading-none absolute -top-6 sm:-top-8 -left-2 sm:-left-4 select-none pointer-events-none">&ldquo;</div>
                   <p className="font-montserrat text-white/60 text-xs sm:text-sm leading-relaxed tracking-wide relative z-10 italic">
                     "{comm.quote}"
                   </p>
                 </div>
-              </div>
+
+                <span className="mt-6 font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors">Tap to view company →</span>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════
+          COMMISSIONER COMPANY POPUP
+      ═══════════════════════════════════ */}
+      {activeCommissioner !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+          onClick={() => setActiveCommissioner(null)}
+        >
+          <div
+            className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
+            <button
+              onClick={() => setActiveCommissioner(null)}
+              className="absolute top-4 right-4 text-white/40 hover:text-[#D4AF37] transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0">
+                <Image src={COMMISSIONERS_2026[activeCommissioner].img} alt={COMMISSIONERS_2026[activeCommissioner].name} fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="font-cinzel text-white text-lg tracking-wide">{COMMISSIONERS_2026[activeCommissioner].name}</h4>
+                <div className="font-montserrat text-[#D4AF37]/80 text-[9px] uppercase tracking-[0.2em]">{COMMISSIONERS_2026[activeCommissioner].role}</div>
+              </div>
+            </div>
+
+            <div className="space-y-0 divide-y divide-white/5 border-t border-white/5">
+              <div className="flex justify-between items-center py-3.5">
+                <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Company</span>
+                <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.name}</span>
+              </div>
+              <div className="flex justify-between items-center py-3.5">
+                <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Category</span>
+                <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.category}</span>
+              </div>
+              <div className="flex justify-between items-center py-3.5">
+                <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Phone className="w-3 h-3" /> Phone</span>
+                <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.phone}</span>
+              </div>
+              <div className="flex justify-between items-center py-3.5">
+                <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Mail className="w-3 h-3" /> Email</span>
+                <span className="font-cinzel text-white/90 text-[11px] tracking-wide break-all text-right">{COMMISSIONERS_2026[activeCommissioner].company.email}</span>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-5 border-t border-white/5">
+              <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.3em] mb-2">Ideal Connects</div>
+              <p className="font-montserrat text-white/60 text-[11px] leading-relaxed">{COMMISSIONERS_2026[activeCommissioner].company.idealConnect}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ═══════════════════════════════════
           LEADERSHIP

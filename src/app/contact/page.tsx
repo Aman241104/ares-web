@@ -14,8 +14,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const CONTACT_ITEMS = [
-  { icon: <MessageCircle className="w-4 h-4" />, label: "WhatsApp", value: "+91 97680 10720",             href: "https://wa.me/919768010720" },
-  { icon: <Mail className="w-4 h-4" />,          label: "Email",    value: "info@aresbusinessleague.com", href: "mailto:info@aresbusinessleague.com" },
+  { icon: <MessageCircle className="w-4 h-4" />, label: "WhatsApp", value: "+91 81049 33816",             href: "https://wa.me/918104933816" },
+  { icon: <Mail className="w-4 h-4" />,          label: "Email",    value: "gauravmehta.biz@gmail.com", href: "mailto:gauravmehta.biz@gmail.com" },
 ];
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
     const text = encodeURIComponent(
       `*New Software Inquiry*\n\n*Name:* ${form.name}\n*Email:* ${form.email}${form.phone ? `\n*Phone:* ${form.phone}` : ""}${form.business ? `\n*Business:* ${form.business}` : ""}\n*Service Needed:* ${form.service}${form.budget ? `\n*Budget:* ${form.budget}` : ""}\n\n*Project Details:*\n${form.message}`
     );
-    window.open(`https://wa.me/919768010720?text=${text}`, "_blank");
+    window.open(`https://wa.me/918104933816?text=${text}`, "_blank");
     setSent(true);
   };
 

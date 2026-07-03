@@ -135,8 +135,8 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 mb-8">
               {[
-                { icon: <Phone className="w-3.5 h-3.5" />, text: "+91 97680 10720" },
-                { icon: <Mail  className="w-3.5 h-3.5" />, text: "info@aresbusinessleague.com" },
+                { icon: <Phone className="w-3.5 h-3.5" />, text: "+91 81049 33816" },
+                { icon: <Mail  className="w-3.5 h-3.5" />, text: "gauravmehta.biz@gmail.com" },
                 { icon: <MapPin className="w-3.5 h-3.5" />, text: "India" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">

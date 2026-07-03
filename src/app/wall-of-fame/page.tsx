@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Star, Award, Trophy, Building2, Shield, Heart, Users, Sparkles } from "lucide-react";
-import { teams, partners, commissioners } from "@/lib/data";
+import { ArrowRight, Star, Award, Trophy, Building2, Shield, Heart, Users, Sparkles, X, Phone, Mail, Briefcase, ExternalLink } from "lucide-react";
+import { teams } from "@/lib/data";
+import { COMMISSIONERS_2026, PARTNERS_2026 } from "@/lib/honorees";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageHero from "@/components/PageHero";
@@ -24,6 +25,18 @@ const MASCOT_IMAGES: Record<string, string> = {
   jaishankar:  "/images/mascot_lotus.png",
 };
 
+interface WallHonoree {
+  name: string;
+  role: string;
+  img?: string;
+  companyName: string;
+  category: string;
+  phone?: string;
+  email?: string;
+  idealConnect?: string;
+  href?: string;
+}
+
 function SectionHeader({ eyebrow, title, accent, desc }: { eyebrow: string; title: string; accent: string; desc: string }) {
   return (
     <div className="mb-14 sr">
@@ -36,8 +49,119 @@ function SectionHeader({ eyebrow, title, accent, desc }: { eyebrow: string; titl
   );
 }
 
+function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => void }) {
+  return (
+    <button
+      onClick={onOpen}
+      className="group relative block w-full text-left glass-card overflow-hidden hover:border-[#D4AF37]/25 transition-all duration-500 cursor-pointer"
+    >
+      <div className="relative h-56 overflow-hidden bg-black">
+        {honoree.img ? (
+          <Image
+            src={honoree.img}
+            alt={honoree.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
+            <Building2 className="w-10 h-10 text-[#D4AF37]/30" />
+          </div>
+        )}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 55%, transparent 75%)" }} />
+
+        {/* Company reveal on hover */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
+          <div className="flex items-center gap-1.5 font-montserrat text-[9px] text-[#D4AF37] uppercase tracking-widest mb-1">
+            <Briefcase className="w-3 h-3" /> {honoree.companyName}
+          </div>
+          <div className="font-montserrat text-white/50 text-[8px] uppercase tracking-[0.2em]">{honoree.category}</div>
+        </div>
+      </div>
+      <div className="p-5">
+        <div className="font-montserrat text-[9px] uppercase tracking-widest mb-1 text-[#D4AF37]/80">{honoree.role}</div>
+        <div className="font-cinzel text-white text-base tracking-wider mb-1">{honoree.name}</div>
+        <div className="flex items-center gap-1.5 mt-3 font-montserrat text-[9px] uppercase tracking-widest text-white/40 group-hover:text-[#D4AF37] transition-colors">
+          Tap to View <ArrowRight className="w-3 h-3" />
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
+        <button onClick={onClose} className="absolute top-4 right-4 text-white/40 hover:text-[#D4AF37] transition-colors" aria-label="Close">
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0 bg-[#030712] flex items-center justify-center">
+            {honoree.img ? (
+              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" />
+            ) : (
+              <Building2 className="w-6 h-6 text-[#D4AF37]/40" />
+            )}
+          </div>
+          <div>
+            <h4 className="font-cinzel text-white text-lg tracking-wide">{honoree.name}</h4>
+            <div className="font-montserrat text-[#D4AF37]/80 text-[9px] uppercase tracking-[0.2em]">{honoree.role}</div>
+          </div>
+        </div>
+
+        <div className="space-y-0 divide-y divide-white/5 border-t border-white/5">
+          <div className="flex justify-between items-center py-3.5">
+            <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Company</span>
+            <span className="font-cinzel text-white/90 text-xs tracking-wider text-right">{honoree.companyName}</span>
+          </div>
+          <div className="flex justify-between items-center py-3.5">
+            <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Category</span>
+            <span className="font-cinzel text-white/90 text-xs tracking-wider text-right">{honoree.category}</span>
+          </div>
+          {honoree.phone && (
+            <div className="flex justify-between items-center py-3.5">
+              <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Phone className="w-3 h-3" /> Phone</span>
+              <span className="font-cinzel text-white/90 text-xs tracking-wider">{honoree.phone}</span>
+            </div>
+          )}
+          {honoree.email && (
+            <div className="flex justify-between items-center py-3.5">
+              <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Mail className="w-3 h-3" /> Email</span>
+              <span className="font-cinzel text-white/90 text-[11px] tracking-wide break-all text-right">{honoree.email}</span>
+            </div>
+          )}
+        </div>
+
+        {honoree.idealConnect && (
+          <div className="mt-5 pt-5 border-t border-white/5">
+            <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.3em] mb-2">Ideal Connects</div>
+            <p className="font-montserrat text-white/60 text-[11px] leading-relaxed">{honoree.idealConnect}</p>
+          </div>
+        )}
+
+        {honoree.href && (
+          <Link href={honoree.href} className="mt-6 flex items-center justify-center gap-2 font-montserrat text-[9px] uppercase tracking-[0.25em] text-[#D4AF37] hover:text-[#F0D060] transition-colors border-t border-white/5 pt-5">
+            View Full Profile <ExternalLink className="w-3 h-3" />
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function WallOfFamePage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeHonoree, setActiveHonoree] = useState<WallHonoree | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,6 +194,37 @@ export default function WallOfFamePage() {
     t.weeklyMembers.map((m) => ({ ...m, teamName: t.name, teamColor: t.color, teamId: t.id }))
   );
 
+  const wallCommissioners: WallHonoree[] = COMMISSIONERS_2026.map((c) => ({
+    name: c.name,
+    role: c.role,
+    img: c.img,
+    companyName: c.company.name,
+    category: c.company.category,
+    phone: c.company.phone,
+    email: c.company.email,
+    idealConnect: c.company.idealConnect,
+  }));
+
+  const wallOwners: WallHonoree[] = teams.map((t) => ({
+    name: t.owner.name,
+    role: `Team Owner — ${t.name}`,
+    img: OWNER_IMAGES[t.id],
+    companyName: t.owner.company.name,
+    category: t.owner.company.industry,
+    phone: t.owner.phone,
+    email: t.owner.email,
+    idealConnect: t.owner.company.about,
+    href: `/owners/${t.owner.id}`,
+  }));
+
+  const wallPartners: WallHonoree[] = partners.map((p) => ({
+    name: p.name,
+    role: p.tier,
+    companyName: p.name,
+    category: p.tier,
+    idealConnect: p.tagline,
+  }));
+
   return (
     <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
@@ -80,7 +235,7 @@ export default function WallOfFamePage() {
             <div className="h-badge inline-flex items-center gap-3 mb-8 relative">
               <div className="absolute inset-0 rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/6 backdrop-blur-xl" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] pulse-live block relative z-10" />
-              <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · ABL 2026</span>
+              <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.5em] uppercase relative z-10">A Legacy That Never Resets</span>
             </div>
 
             <h1 className="h-title font-cinzel font-bold text-white leading-none mb-7">
@@ -99,7 +254,7 @@ export default function WallOfFamePage() {
             <div className="gold-divider max-w-[120px] mb-8" />
 
             <p className="h-sub font-montserrat text-white/50 text-sm sm:text-base tracking-wide leading-[2] max-w-lg mb-10">
-              This page is dedicated to every person who believed in this vision — our partners who powered the league, the warriors who competed with honour, and the guardians who kept it fair. You are the legacy.
+              Every year the ARES Business League is played, this page grows by one edition. New commissioners, new team owners, new partners — each one permanently etched here. Tap any face to see who they are and what they build.
             </p>
 
             <div className="h-cta flex flex-wrap gap-4">
@@ -115,9 +270,9 @@ export default function WallOfFamePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
           {[
             { num: "30",  label: "Warriors",        icon: <Users    className="w-5 h-5 text-[#D4AF37]" /> },
-            { num: "4",   label: "Visionary Owners", icon: <Star     className="w-5 h-5 text-[#D4AF37]" /> },
-            { num: "8+",  label: "Proud Partners",   icon: <Heart    className="w-5 h-5 text-[#D4AF37]" /> },
-            { num: "6",   label: "League Guardians", icon: <Shield   className="w-5 h-5 text-[#D4AF37]" /> },
+            { num: "4",   label: "Team Owners",      icon: <Star     className="w-5 h-5 text-[#D4AF37]" /> },
+            { num: "4",   label: "Founding Partners", icon: <Heart    className="w-5 h-5 text-[#D4AF37]" /> },
+            { num: "2",   label: "Commissioners",     icon: <Shield   className="w-5 h-5 text-[#D4AF37]" /> },
           ].map((s) => (
             <div key={s.label} className="glass-card p-6 text-center hover:border-[#D4AF37]/20 transition-colors">
               <div className="w-10 h-10 rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-4">
@@ -130,110 +285,82 @@ export default function WallOfFamePage() {
         </div>
       </section>
 
-      {/* ══════════════ PARTNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#000000]">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            eyebrow="The Backbone"
-            title="Our Founding"
-            accent="Partners"
-            desc="These organisations stood beside us from day one — investing their trust, resources, and reputation into making ABL 2026 a reality. Their belief made this possible."
-          />
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sr-stagger">
-            {partners.map((p) => {
-              const isPlatinum = p.tier.toLowerCase().includes("platinum");
-              const isStrategic = p.tier.toLowerCase().includes("strategic");
-              const isGold = p.tier.toLowerCase().includes("gold");
-              const isPremium = isPlatinum || isStrategic;
-              const accentColor = isPremium ? "#D4AF37" : isGold ? "#C49428" : "rgba(255,255,255,0.45)";
-
-              return (
-                <div
-                  key={p.name}
-                  className="relative glass-card p-7 flex flex-col items-center justify-center text-center hover:bg-white/[0.04] transition-all duration-300 group overflow-hidden"
-                  style={isPremium ? { borderColor: "rgba(212,175,55,0.2)" } : {}}
-                >
-                  {isPremium && (
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
-                  )}
-                  <div
-                    className="w-12 h-12 flex items-center justify-center mb-5 border transition-colors"
-                    style={{ borderColor: `${accentColor}30`, background: `${accentColor}08` }}
-                  >
-                    <Building2 className="w-5 h-5" style={{ color: accentColor }} />
-                  </div>
-                  <div className="font-cinzel text-white text-sm tracking-wider leading-snug mb-2 group-hover:text-[#D4AF37] transition-colors">{p.name}</div>
-                  <div className="font-montserrat text-[9px] italic text-white/60 mb-3">{p.tagline}</div>
-                  <span
-                    className="font-montserrat text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 border"
-                    style={{ color: accentColor, borderColor: `${accentColor}35`, background: `${accentColor}08` }}
-                  >
-                    {p.tier}
-                  </span>
-                </div>
-              );
-            })}
+      {/* ══════════════ 2026 EDITION HEADER ══════════════ */}
+      <section className="pt-28 px-6 sm:px-10 lg:px-16 bg-[#000000] sr">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-5 py-2.5 mb-6">
+            <Trophy className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase">Edition One</span>
           </div>
+          <h2 className="font-cinzel font-bold text-white" style={{ fontSize: "clamp(32px,5vw,60px)" }}>
+            ARES BUSINESS LEAGUE <span className="text-[#D4AF37]">2026</span>
+          </h2>
         </div>
       </section>
 
-      {/* ══════════════ TEAM OWNERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
+      {/* ══════════════ COMMISSIONERS ══════════════ */}
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            eyebrow="The Visionaries"
-            title="Team"
-            accent="Owners"
-            desc="Four extraordinary leaders who assembled their squads, defined their strategies, and led from the front. Their drive and character shaped everything this league stands for."
+            eyebrow="The Guardians"
+            title="League"
+            accent="Commissioners"
+            desc="The two who kept the league fair, ran the arena, and made sure every point on the board was earned."
           />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
-            {teams.map((team) => (
-              <Link
-                key={team.id}
-                href={`/owners/${team.owner.id}`}
-                className="group block glass-card overflow-hidden hover:border-white/15 transition-all duration-500"
-                style={{ borderTop: `2px solid ${team.color}` }}
-              >
-                <div className="relative h-56 overflow-hidden bg-black">
-                  <Image
-                    src={OWNER_IMAGES[team.id]}
-                    alt={team.owner.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%)" }} />
-                  <div
-                    className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center border"
-                    style={{ borderColor: `${team.color}50`, background: `${team.color}18` }}
-                  >
-                    <Award className="w-4 h-4" style={{ color: team.color }} />
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="font-montserrat text-[9px] uppercase tracking-widest mb-1" style={{ color: team.color }}>{team.name}</div>
-                  <div className="font-cinzel text-white text-base tracking-wider mb-1">{team.owner.name}</div>
-                  <div className="font-montserrat text-white/40 text-[10px] leading-relaxed line-clamp-2">{team.owner.leadershipStyle}</div>
-                  <div className="flex items-center gap-1.5 mt-4 font-montserrat text-[9px] uppercase tracking-widest text-white/55 group-hover:text-white/60 transition-colors">
-                    View Profile <ArrowRight className="w-3 h-3" />
-                  </div>
-                </div>
-              </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger max-w-3xl">
+            {wallCommissioners.map((c) => (
+              <HonoreeCard key={c.name} honoree={c} onOpen={() => setActiveHonoree(c)} />
             ))}
           </div>
         </div>
       </section>
 
+      {/* ══════════════ TEAM OWNERS ══════════════ */}
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            eyebrow="The Visionaries"
+            title="Team"
+            accent="Owners"
+            desc="Four extraordinary leaders who assembled their squads, defined their strategies, and led from the front."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
+            {teams.map((team, i) => (
+              <div key={team.id} style={{ borderTop: `2px solid ${team.color}` }}>
+                <HonoreeCard honoree={wallOwners[i]} onOpen={() => setActiveHonoree(wallOwners[i])} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ PARTNERS ══════════════ */}
+      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            eyebrow="The Backbone"
+            title="Founding"
+            accent="Partners"
+            desc="These businesses stood beside us from day one — investing their trust, resources, and reputation into making ABL 2026 a reality."
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
+            {wallPartners.map((p) => (
+              <HonoreeCard key={p.name} honoree={p} onOpen={() => setActiveHonoree(p)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {activeHonoree && <HonoreeModal honoree={activeHonoree} onClose={() => setActiveHonoree(null)} />}
+
       {/* ══════════════ ALL WARRIORS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Competitors"
             title="Our"
             accent="Warriors"
-            desc="Thirty business owners who stepped into the arena, gave it everything they had, and represented their teams with pride. Every referral, every meeting, every point — counted."
+            desc="Thirty business owners who stepped into the arena, gave it everything they had, and represented their teams with pride."
           />
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sr-stagger">
@@ -249,41 +376,13 @@ export default function WallOfFamePage() {
                   {m.name.charAt(0)}
                 </div>
                 <div className="font-cinzel text-white text-sm tracking-wider leading-tight mb-1 group-hover:text-[#D4AF37] transition-colors">{m.name}</div>
-                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-3">{m.industry}</div>
+                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-3">{m.company}</div>
                 <div className="flex items-center justify-between pt-3 border-t border-white/5">
                   <span className="font-montserrat text-[8px] uppercase tracking-widest" style={{ color: m.teamColor }}>
                     {m.teamName.replace("Team ", "")}
                   </span>
                   <span className="font-cinzel text-xs text-white/40">{m.points} pts</span>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════ COMMISSIONERS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            eyebrow="The Guardians"
-            title="League"
-            accent="Officials"
-            desc="Behind every great league is a team of committed officials who ensure fairness, smooth operations, and the highest standards of integrity. This one is no different."
-          />
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 sr-stagger">
-            {commissioners.map((c) => (
-              <div
-                key={c.name}
-                className="glass-card p-6 text-center hover:border-[#D4AF37]/20 hover:bg-white/[0.03] transition-all duration-300 group"
-              >
-                <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4 border border-[#D4AF37]/25 bg-[#D4AF37]/14 group-hover:bg-[#D4AF37]/15 transition-colors">
-                  <Shield className="w-6 h-6 text-[#D4AF37]" />
-                </div>
-                <div className="font-cinzel text-white text-sm mb-1 tracking-wider">{c.name}</div>
-                <div className="font-montserrat text-[8px] uppercase tracking-widest font-bold mb-3" style={{ color: "#D4AF37" }}>{c.role}</div>
-                <div className="font-montserrat text-white/60 text-[9px] leading-relaxed">{c.desc}</div>
               </div>
             ))}
           </div>
@@ -320,8 +419,8 @@ export default function WallOfFamePage() {
           </div>
 
           <h2 className="font-cinzel font-bold text-white leading-[1.05] mb-6" style={{ fontSize: "clamp(40px,9vw,110px)" }}>
-            ABL<br />
-            <span className="text-[#D4AF37]">2026</span>
+            EDITION<br />
+            <span className="text-[#D4AF37]">TWO</span>
           </h2>
 
           <div className="flex items-center justify-center gap-6 mb-8">
@@ -331,28 +430,15 @@ export default function WallOfFamePage() {
           </div>
 
           <p className="font-montserrat text-white/70 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-12 tracking-wide">
-            The next edition of ARES Business League is being forged. New teams, new battles, new legends. The arena will be bigger, the stakes will be higher, and the legacy will be greater.
+            This wall grows every year. New commissioners, new team owners, new partners — the next edition will be added right here, alongside 2026, forever.
           </p>
-
-          <div className="grid grid-cols-3 gap-6 max-w-md mx-auto mb-14">
-            {[
-              { n: "4",    l: "Teams" },
-              { n: "30+",  l: "Warriors" },
-              { n: "1",    l: "Champion" },
-            ].map((s) => (
-              <div key={s.l} className="text-center">
-                <div className="font-cinzel font-bold text-3xl sm:text-4xl text-white mb-1">{s.n}</div>
-                <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.2em]">{s.l}</div>
-              </div>
-            ))}
-          </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn-primary">
               Register Your Interest <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
             <Link href="/" className="btn-secondary">
-              Explore ABL 2025
+              Explore ABL 2026
             </Link>
           </div>
         </div>
