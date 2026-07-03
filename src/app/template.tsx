@@ -11,12 +11,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
     gsap.fromTo(
       containerRef.current,
       { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", clearProps: "transform,willChange" }
     );
   }, []);
 
   return (
-    <div ref={containerRef} className="will-change-transform">
+    <div ref={containerRef}>
       {children}
     </div>
   );

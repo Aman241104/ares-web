@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -314,7 +315,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           COMMISSIONER COMPANY POPUP
       ═══════════════════════════════════ */}
-      {activeCommissioner !== null && (
+      {activeCommissioner !== null && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           onClick={() => setActiveCommissioner(null)}
@@ -370,7 +371,8 @@ export default function AboutPage() {
           </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ═══════════════════════════════════

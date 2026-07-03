@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star, Award, Trophy, Building2, Shield, Heart, Users, Sparkles, X, Phone, Mail, Briefcase, ExternalLink } from "lucide-react";
@@ -84,7 +85,7 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
 }
 
 function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () => void }) {
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
       onClick={onClose}
@@ -152,7 +153,8 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
       </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

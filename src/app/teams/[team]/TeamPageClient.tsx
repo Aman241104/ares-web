@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -60,7 +61,7 @@ function PointsTrendChart({ teamId, color }: { teamId: string; color: string }) 
 }
 
 function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: string; onClose: () => void }) {
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[200]" onClick={onClose}>
       <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
       <div className="relative h-full overflow-y-auto">
@@ -156,7 +157,8 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
       </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
