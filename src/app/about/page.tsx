@@ -90,7 +90,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           HERO
       ═══════════════════════════════════ */}
-      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="left" className="min-h-[90vh] px-6 sm:px-10 lg:px-16">
+      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[90vh] px-6 sm:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
 
           {/* Left copy */}
@@ -151,7 +151,7 @@ export default function AboutPage() {
 
               {/* Image inside card */}
               <div className="relative w-full h-44 mb-8 overflow-hidden rounded-sm">
-                <Image fill src="/images/hero_arena.png" alt="Championship Arena" className="object-cover" sizes="400px" style={{ filter: "brightness(0.7) contrast(1.1)" }} />
+                <Image fill src="/images/hero_trophy_stadium.png" alt="Championship Arena" className="object-cover" sizes="400px" style={{ filter: "brightness(0.7) contrast(1.1)" }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] text-[#D4AF37]/70 mb-1">The Stage</div>

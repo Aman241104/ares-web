@@ -421,46 +421,50 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
             {/* The Large Caption Card (Owner) */}
             <div className="lg:col-span-1 lg:row-span-2 glass-card border border-white/10 bg-white/[0.02] relative overflow-hidden group hover:border-white/20 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col">
               {/* Dynamic top gradient bar */}
-              <div className="absolute top-0 left-0 w-full h-1" style={{ background: team.color, boxShadow: `0 0 20px ${team.color}` }} />
-              
+              <div className="absolute top-0 left-0 w-full h-1 z-20" style={{ background: team.color, boxShadow: `0 0 20px ${team.color}` }} />
+
+              {/* Full-size portrait image (matches source aspect ratio so nothing gets cropped) */}
+              <div className="relative w-full aspect-[4/5] overflow-hidden flex-shrink-0">
+                {team.owner.image ? (
+                  <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: `${team.color}15` }}>
+                    <span className="font-cinzel text-7xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                      {team.owner.name.split(" ").map(n => n[0]).join("")}
+                    </span>
+                  </div>
+                )}
+
+                {/* Small Owner Tag overlaid at the top of the image */}
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/70 uppercase flex items-center gap-3 z-10">
+                  <div className="w-8 h-px bg-white/40" />
+                  Team Owner
+                  <div className="w-8 h-px bg-white/40" />
+                </div>
+
+                {/* Fade into card body so the pill + text below sit on a clean surface */}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B1120] via-[#0B1120]/40 to-transparent pointer-events-none" />
+
+                {/* Owner Pill straddling the image / body boundary */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#050B0A] border px-4 py-1.5 rounded-full z-20 shadow-[0_5px_15px_rgba(0,0,0,0.8)]" style={{ borderColor: team.color }}>
+                  <span className="font-montserrat text-[9px] font-bold tracking-[0.25em] uppercase whitespace-nowrap" style={{ color: team.color }}>Owner</span>
+                </div>
+              </div>
+
               {/* Ambient Glow */}
               <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" style={{ background: `radial-gradient(circle at 50% 30%, ${team.color}, transparent 70%)` }} />
-              
-              <div className="p-8 flex-1 flex flex-col items-center text-center relative z-10">
-                {/* Small Owner Tag at the very top */}
-                <div className="font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/40 mb-12 uppercase flex items-center gap-3">
-                  <div className="w-8 h-px bg-white/20" />
-                  Team Owner
-                  <div className="w-8 h-px bg-white/20" />
-                </div>
-                
-                {/* Avatar */}
-                <div className="w-48 h-48 rounded-full mx-auto mb-10 border border-white/20 p-1.5 relative group-hover:scale-105 transition-transform duration-500">
-                  <div className="w-full h-full rounded-full overflow-hidden relative shadow-inner" style={{ background: `${team.color}15`, boxShadow: `inset 0 0 30px ${team.color}40` }}>
-                    {team.owner.image ? (
-                      <Image src={team.owner.image} alt={team.owner.name} fill sizes="192px" className="object-cover object-top" />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center font-cinzel text-6xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                        {team.owner.name.split(" ").map(n => n[0]).join("")}
-                      </div>
-                    )}
-                  </div>
-                  {/* Owner Pill on Avatar */}
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#050B0A] border px-4 py-1.5 rounded-full z-20 shadow-[0_5px_15px_rgba(0,0,0,0.8)]" style={{ borderColor: team.color }}>
-                    <span className="font-montserrat text-[9px] font-bold tracking-[0.25em] uppercase whitespace-nowrap" style={{ color: team.color }}>Owner</span>
-                  </div>
-                </div>
-                
+
+              <div className="px-8 pb-8 pt-8 flex-1 flex flex-col items-center text-center relative z-10">
                 {/* Info */}
                 <h3 className="font-cinzel text-white text-3xl mb-3 group-hover:text-white transition-colors drop-shadow-md">{team.owner.name}</h3>
                 <div className="font-montserrat text-[10px] uppercase tracking-[0.2em] mb-8" style={{ color: team.color }}>{team.owner.company.name}</div>
-                
+
                 <div className="w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent mb-8" />
-                
+
                 <p className="font-montserrat text-white/50 text-xs italic leading-[1.8] mb-auto px-4">
                   "{team.owner.quote}"
                 </p>
-                
+
                 <Link href={`/owners/${team.owner.id}`} className="mt-10 inline-flex items-center gap-3 font-montserrat text-[10px] uppercase tracking-[0.2em] text-white hover:text-white/70 transition-colors bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full border border-white/10 group-hover:border-white/30">
                   View Full Profile <ChevronRight className="w-3 h-3" />
                 </Link>

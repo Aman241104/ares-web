@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,12 +46,11 @@ export default function RulesPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = new SplitType(".h-title-split", { types: "chars" });
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".h-badge",   { opacity: 0, y: -20, duration: 0.8 })
-        .from(title.chars,  { opacity: 0, y: 50, stagger: 0.04, duration: 0.7, ease: "back.out(1.4)" }, "-=0.4")
-        .from(".h-sub",     { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
-        .from(".h-links",   { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+      tl.from(".h-badge",          { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title-gradient", { opacity: 0, y: 40, duration: 0.9, ease: "back.out(1.4)" }, "-=0.4")
+        .from(".h-sub",            { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+        .from(".h-links",          { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
 
       // Scroll reveals
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
@@ -100,7 +98,7 @@ export default function RulesPage() {
           <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block text-white/55 font-montserrat text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">Tournament</span>
             <span
-              className="h-title-split block"
+              className="h-title-gradient block"
               style={{
                 fontSize: "clamp(52px, 13vw, 130px)",
                 background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",

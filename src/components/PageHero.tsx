@@ -70,6 +70,14 @@ export default function PageHero({
         <div className="absolute inset-0" style={{
           background: "linear-gradient(270deg, rgba(7,12,28,0.45) 0%, transparent 30%)"
         }} />
+        {/* Centered layout: title sits in the middle, not the left — needs its own dark
+            pocket so it stays legible over bright/busy backgrounds instead of relying
+            on the left-biased gradient above */}
+        {layout === "centered" && (
+          <div className="absolute inset-0" style={{
+            background: "radial-gradient(ellipse 70% 80% at 50% 45%, rgba(5,8,20,0.78) 0%, rgba(5,8,20,0.55) 40%, rgba(5,8,20,0.2) 65%, transparent 80%)"
+          }} />
+        )}
       </div>
 
       {/* ── SUBTLE GOLD RAYS from top-right ── z-[2] */}

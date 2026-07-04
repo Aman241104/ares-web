@@ -6,7 +6,6 @@ import { ArrowRight, BookOpen, PenLine, Tag } from "lucide-react";
 import { blogPosts, blogCategories, teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
 import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,12 +23,10 @@ export default function BlogPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = new SplitType(".h-title-split", { types: "chars" });
-
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".h-badge",   { opacity: 0, y: -20, duration: 0.8 })
-        .from(title.chars,  { opacity: 0, y: 50, stagger: 0.05, duration: 0.8, ease: "back.out(1.4)" }, "-=0.4")
-        .from(".h-sub",     { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+      tl.from(".h-badge",         { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title-gradient", { opacity: 0, y: 40, duration: 0.9, ease: "back.out(1.4)" }, "-=0.4")
+        .from(".h-sub",           { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
 
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
         gsap.fromTo(el,
@@ -52,7 +49,7 @@ export default function BlogPage() {
     <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <PageHero backgroundImage="/images/luxury_boardroom.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
+      <PageHero backgroundImage="/images/hero_arena.png" layout="centered" className="min-h-[65vh] justify-center px-6 sm:px-10 lg:px-16 py-16 sm:py-28">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="h-badge inline-flex items-center gap-3 mb-8 relative px-5 py-2.5">
             <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -63,7 +60,7 @@ export default function BlogPage() {
           <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span className="block font-montserrat text-white/55 text-xs sm:text-sm tracking-[0.5em] uppercase mb-2">The Arena</span>
             <span
-              className="h-title-split block"
+              className="h-title-gradient block"
               style={{
                 fontSize: "clamp(64px, 16vw, 160px)",
                 background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",

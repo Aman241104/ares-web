@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { teams } from "@/lib/data";
-import { Quote, Briefcase, Building2, MapPin, Users, Target } from "lucide-react";
+import { Quote, Briefcase, Building2, MapPin, Target } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,8 @@ export default function TeamOwnersPage() {
           opacity: 0, y: 50, rotateX: -90, stagger: 0.05, duration: 1.2, ease: "back.out(1.5)"
         });
       }
+
+      gsap.from(".h-title-owners", { opacity: 0, y: 30, duration: 0.9, ease: "back.out(1.4)", delay: 0.3 });
 
       gsap.from(".owner-card", {
         scrollTrigger: { trigger: ".owners-grid", start: "top 80%" },
@@ -79,9 +82,9 @@ export default function TeamOwnersPage() {
              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
              <span className="font-montserrat text-[#D4AF37]/90 text-[9px] font-bold tracking-[0.4em] uppercase">League Visionaries</span>
           </div>
-          <h1 ref={titleRef} className="font-cinzel font-bold text-white text-5xl md:text-7xl mb-6 tracking-wider uppercase leading-tight" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' }}>
-            The Team<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFF3B0] to-[#AA7C11]">
+          <h1 className="font-cinzel font-bold text-white text-5xl md:text-7xl mb-6 tracking-wider uppercase leading-tight" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' }}>
+            <span ref={titleRef}>The Team</span><br/>
+            <span className="h-title-owners text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFF3B0] to-[#AA7C11]">
               Owners
             </span>
           </h1>
@@ -106,11 +109,15 @@ export default function TeamOwnersPage() {
                   {/* Color Accent Line */}
                   <div className="absolute left-0 top-0 bottom-0 w-1.5" style={{ backgroundColor: team.color }} />
                   {/* Background Glow */}
-                  <div className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-40" style={{ background: `radial-gradient(circle at 50% 50%, ${team.color}, transparent 60%)` }} />
-                  {/* User Placeholder Icon */}
-                  <div className="w-32 h-32 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-sm relative z-10">
-                    <Users className="w-12 h-12 text-white/20" />
-                  </div>
+                  <div className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-40 pointer-events-none" style={{ background: `radial-gradient(circle at 50% 50%, ${team.color}, transparent 60%)` }} />
+                  {/* Owner Photo */}
+                  {team.owner.image ? (
+                    <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover object-top relative z-10 group-hover:scale-105 transition-transform duration-700" />
+                  ) : (
+                    <div className="w-32 h-32 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-sm relative z-10">
+                      <span className="font-cinzel text-4xl font-light text-white/30">{team.owner.name.split(" ").map(n => n[0]).join("")}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right Side: Content */}
@@ -133,7 +140,7 @@ export default function TeamOwnersPage() {
                       {team.owner.name.toUpperCase()}
                     </h2>
                     <div className="font-montserrat text-sm tracking-widest uppercase" style={{ color: team.color }}>
-                      {team.fullName} - {team.name}
+                      {team.fullName}
                     </div>
                   </div>
 

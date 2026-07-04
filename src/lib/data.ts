@@ -1,4 +1,4 @@
-import { Team, WeeklyEvent, SpecialEvent, Partner, BlogPost, Commissioner, RuleSection, ScheduleEvent } from "@/types";
+import { Team, WeeklyEvent, SpecialEvent, Partner, BlogPost, RuleSection, ScheduleEvent } from "@/types";
 
 export const teams: Team[] = [
   {
@@ -411,15 +411,6 @@ export const blogPosts: BlogPost[] = [
     category: "Execution",
     image: "/images/blog-growth.png",
   },
-];
-
-export const commissioners: Commissioner[] = [
-  { name: "R. K. Sharma", role: "Chief Commissioner", desc: "Upholding integrity and excellence." },
-  { name: "Neha Verma", role: "Operations Commissioner", desc: "Ensuring smooth operations and seamless execution." },
-  { name: "Vikram Singh", role: "Compliance Commissioner", desc: "Ensuring fair play and rule adherence." },
-  { name: "Arjun Mehta", role: "Engagement Commissioner", desc: "Building connections and growing the league community." },
-  { name: "Pooja Iyer", role: "Growth Commissioner", desc: "Driving growth, partnerships and opportunities." },
-  { name: "Karan Malhotra", role: "Technology Commissioner", desc: "Leveraging technology for transparency and innovation." },
 ];
 
 export const tournamentRules: RuleSection[] = [

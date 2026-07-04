@@ -330,10 +330,10 @@ export default function SchedulePage() {
               <h3 className="font-cinzel tracking-widest text-white/60 text-xs mb-4 uppercase">At a Glance</h3>
               <div className="space-y-3">
                 {[
-                  { l: "Total Events", v: "0" },
-                  { l: "Completed", v: "0" },
-                  { l: "In-Progress", v: "0" },
-                  { l: "Upcoming", v: "0" },
+                  { l: "Total Events", v: String(scheduleEvents.length) },
+                  { l: "Completed", v: String(scheduleEvents.filter(e => e.status === "completed").length) },
+                  { l: "In-Progress", v: String(scheduleEvents.filter(e => e.status === "in-progress").length) },
+                  { l: "Upcoming", v: String(scheduleEvents.filter(e => e.status === "upcoming").length) },
                 ].map((s) => (
                   <div key={s.l} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                     <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest">{s.l}</span>

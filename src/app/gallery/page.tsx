@@ -6,7 +6,6 @@ import { ArrowRight, Camera, Clock } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageHero from "@/components/PageHero";
-import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,12 +29,10 @@ export default function GalleryPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = new SplitType(".h-title-split", { types: "chars" });
-
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
-        .from(title.chars, { opacity: 0, y: 40, stagger: 0.04, duration: 0.8, ease: "back.out(1.4)" }, "-=0.4")
-        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+      tl.from(".h-badge",          { opacity: 0, y: -20, duration: 0.8 })
+        .from(".h-title-gradient", { opacity: 0, y: 40, duration: 0.9, ease: "back.out(1.4)" }, "-=0.4")
+        .from(".h-sub",            { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
 
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
         gsap.fromTo(el,
@@ -68,7 +65,7 @@ export default function GalleryPage() {
 
           <h1 className="font-cinzel font-bold text-white mb-8 leading-none">
             <span
-              className="h-title-split block"
+              className="h-title-gradient block"
               style={{
                 fontSize: "clamp(56px, 14vw, 140px)",
                 background: "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 40%, #C9921A 70%, #F0D060 100%)",
