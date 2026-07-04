@@ -20,8 +20,8 @@ const PREVIEW_IMAGES = [
   { src: "/images/mascot_eagle.png",      alt: "Eagles",         label: "Team Doval Eagles" },
   { src: "/images/mascot_tiger.png",      alt: "Tigers",         label: "Team Shah Tigers" },
   { src: "/images/mascot_lotus.png",      alt: "Lotus",          label: "Team Jaishankar" },
-  { src: "/images/owner_modi.png",        alt: "Owner Modi",     label: "Narendra Modi" },
-  { src: "/images/owner_doval.png",       alt: "Owner Doval",    label: "Ajit Doval" },
+  { src: "/images/owner_modi.png",        alt: "Owner Modi",     label: "Advocate Jay Patel" },
+  { src: "/images/owner_doval.png",       alt: "Owner Doval",    label: "Vishnu Soni" },
 ];
 
 export default function GalleryPage() {

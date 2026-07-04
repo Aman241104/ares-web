@@ -143,11 +143,8 @@ export default function PartnersPage() {
                 Building digital legacies for India's top business owners. WebHance is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/web-partner" className="btn-primary">
-                  Build Your Website <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/contact" className="btn-secondary">
-                  Get in Touch
+                <Link href="/contact" className="btn-primary">
+                  Get in Touch <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>

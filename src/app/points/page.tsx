@@ -30,7 +30,7 @@ const scoringActivities: PointRow[] = [
       { points: 25, detail: "With Any Team Owner" },
     ],
   },
-  { label: "Participation in Activities", points: 200, detail: "(special points if applicable would mentioned seperately)" },
+  { label: "Participation in Activities", points: 200, detail: "(special points, if applicable, will be mentioned separately)" },
   {
     label: "Referrals",
     tiers: [

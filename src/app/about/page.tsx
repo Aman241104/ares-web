@@ -46,10 +46,10 @@ const VALUES = [
 ];
 
 const LEADERSHIP = [
-  { name: "Narendra Modi",     role: "Team Leader", faction: "Lions Visionaries",  color: "#E07820", img: "/images/owner_modi.png",        href: "/teams/modi" },
-  { name: "Ajit Doval",        role: "Team Leader", faction: "Eagles Strategists", color: "#1F3A93", img: "/images/owner_doval.png",       href: "/teams/doval" },
-  { name: "Amit Shah",         role: "Team Leader", faction: "Tigers Warriors",    color: "#C0392B", img: "/images/owner_shah.png",        href: "/teams/amit-shah" },
-  { name: "Dr. S. Jaishankar", role: "Team Leader", faction: "Lotus Diplomats",   color: "#1E824C", img: "/images/owner_jaishankar.png",  href: "/teams/jaishankar" },
+  { name: "Advocate Jay Patel", role: "Team Owner", faction: "Lions Visionaries",  color: "#E07820", img: "/images/owner_modi.png",        href: "/teams/modi" },
+  { name: "Vishnu Soni",        role: "Team Owner", faction: "Eagles Strategists", color: "#1F3A93", img: "/images/owner_doval.png",       href: "/teams/doval" },
+  { name: "Harsh Brambhatt",    role: "Team Owner", faction: "Tigers Warriors",    color: "#C0392B", img: "/images/owner_shah.png",        href: "/teams/amit-shah" },
+  { name: "Mayursinh Chavda",   role: "Team Owner", faction: "Lotus Diplomats",   color: "#1E824C", img: "/images/owner_jaishankar.png",  href: "/teams/jaishankar" },
 ];
 
 export default function AboutPage() {
