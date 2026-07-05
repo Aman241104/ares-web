@@ -41,11 +41,13 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://aresbusinessleague.com",
     siteName: "ARES Business League",
+    images: [{ url: "/images/hero_trophy_stadium.png", width: 1600, height: 854, alt: "ARES Business League 2026 Trophy" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ARES Business League 2026 — Nation Builders Edition",
     description: "4 Teams. 4 Leaders. 1 Mission. July 1st – July 29th, 2026",
+    images: ["/images/hero_trophy_stadium.png"],
   },
 };
 

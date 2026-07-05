@@ -37,9 +37,29 @@ export default function ContactPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(".c-title", { opacity: 0, y: 30, duration: 0.8 })
-        .from(".c-desc", { opacity: 0, y: 15, duration: 0.6 }, "-=0.6")
-        .from(".c-contact-item", { opacity: 0, x: -15, duration: 0.5, stagger: 0.1 }, "-=0.4")
-        .from(".c-form", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6");
+        .from(".c-desc", { opacity: 0, y: 15, duration: 0.6 }, "-=0.6");
+
+      gsap.utils.toArray<Element>(".sr-stagger").forEach((parent) => {
+        gsap.fromTo(Array.from((parent as HTMLElement).children),
+          { opacity: 0, x: -15 },
+          {
+            opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: parent, start: "top 90%", once: true },
+          }
+        );
+      });
+
+      gsap.utils.toArray<Element>(".sr").forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+            immediateRender: false,
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          }
+        );
+      });
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -64,14 +84,14 @@ export default function ContactPage() {
             Whether you need a cutting-edge website, custom business software, or an enterprise mobile app — describe what you want to build and we'll engineer it.
           </p>
 
-          <div className="space-y-3 mb-8">
+          <div className="space-y-3 mb-8 sr-stagger">
             {CONTACT_ITEMS.map((c, i) => (
-              <a 
+              <a
                 key={i}
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="c-contact-item group flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#00A859]/30 transition-all duration-300 backdrop-blur-sm"
+                className="group flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#00A859]/30 transition-all duration-300 backdrop-blur-sm"
               >
                 <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-white/70 group-hover:bg-[#00A859] group-hover:border-[#00A859] group-hover:text-[#050B0A] transition-all duration-300 shadow-md">
                   {c.icon}
@@ -84,7 +104,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="c-contact-item p-6 rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent backdrop-blur-sm relative overflow-hidden">
+          <div className="sr p-6 rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent backdrop-blur-sm relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#00A859] to-transparent" />
             <h3 className="text-white font-cinzel text-sm font-bold tracking-wide mb-3">Our Process</h3>
             <ul className="space-y-2">
@@ -103,7 +123,7 @@ export default function ContactPage() {
         </div>
 
         {/* ── RIGHT COLUMN: FORM ── */}
-        <div className="lg:col-span-7 c-form">
+        <div className="lg:col-span-7 sr">
           <div className="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-[1.5rem] p-6 sm:p-8 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-md">
             
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00A859] to-transparent opacity-50" />
