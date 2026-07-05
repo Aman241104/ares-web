@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -33,6 +32,7 @@ export default function LeaderboardPage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- client-only mount flag so Recharts' ResponsiveContainer never measures during SSR
     setMounted(true);
   }, []);
 
@@ -261,24 +261,22 @@ export default function LeaderboardPage() {
 
             {/* Top Performers */}
             <div className="glass-card p-8 sr border-white/10">
-              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers — Week 2</h3>
+              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
                 {[
-                  {label:"Top Points Earner",name:"Rahul Sharma",team:"Team Modi",teamColor:"#E67E22",value:"0 PTS",img:"/images/owner_modi.png"},
-                  {label:"Top Referrer",name:"Priya Mehta",team:"Team Doval",teamColor:"#1E3A8A",value:"0 Referrals",img:"/images/owner_doval.png"},
-                  {label:"Top Meetings",name:"Vikas Agarwal",team:"Team Modi",teamColor:"#E67E22",value:"0 Meetings",img:"/images/owner_shah.png"},
-                  {label:"Top Growth",name:"Anil Desai",team:"Team Amit Shah",teamColor:"#C0392B",value:"₹0",img:"/images/owner-portrait-4.jpg"},
-                ].map((p)=>(
+                  { label: "Top Points Earner" },
+                  { label: "Top Referrer" },
+                  { label: "Top Meetings" },
+                  { label: "Top Growth" },
+                ].map((p) => (
                   <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
                     <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
-                    <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/20 p-1">
-                      <div className="w-full h-full rounded-full overflow-hidden relative">
-                        <Image fill src={p.img} alt={p.name} className="object-cover object-top" sizes="64px" />
-                      </div>
+                    <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/10 bg-white/[0.03] flex items-center justify-center">
+                      <Users className="w-6 h-6 text-white/20" />
                     </div>
-                    <div className="font-cinzel tracking-wider text-white text-[11px] mb-1">{p.name}</div>
-                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/60">{p.team}</div>
-                    <div className="font-cinzel font-bold text-lg" style={{color:p.teamColor}}>{p.value}</div>
+                    <div className="font-cinzel tracking-wider text-white/40 text-[11px] mb-1">TBA</div>
+                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/30">Awaiting Results</div>
+                    <div className="font-cinzel font-bold text-lg text-white/25">—</div>
                   </div>
                 ))}
               </div>

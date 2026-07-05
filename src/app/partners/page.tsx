@@ -136,11 +136,11 @@ export default function PartnersPage() {
                   backgroundClip: "text",
                 }}
               >
-                WebHance
+                Gravity Media Marketing
               </h3>
               <div className="gold-divider max-w-xs mx-auto mb-7" />
               <p className="font-montserrat text-white/60 text-[11px] leading-[2] max-w-lg mx-auto mb-9 tracking-wide">
-                Building digital legacies for India's top business owners. WebHance is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
+                Building digital legacies for India's top business owners. Gravity Media Marketing is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/contact" className="btn-primary">

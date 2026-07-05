@@ -19,7 +19,7 @@ export const PARTNERS_2026: Honoree[] = [
     name: "Vishnu Soni",
     role: "Founding Partner",
     quote: "Corporate gifting that leaves a lasting impression — proud to power ABL 2026.",
-    img: "/images/roster/vishnu-soni.png",
+    img: "/images/roster/vishnu-soni_card.jpg",
     company: {
       name: "Silver Spoon",
       category: "Corporate Gifting",
@@ -32,7 +32,7 @@ export const PARTNERS_2026: Honoree[] = [
     name: "Shruti Agarwal",
     role: "Founding Partner",
     quote: "Backing the league that backs its members — that's what real partnership looks like.",
-    img: "/images/roster/shruti-agarwal.png",
+    img: "/images/roster/shruti-agarwal_card.jpg",
     company: {
       name: "Arcedior International Pvt. Ltd.",
       category: "Furniture Manufacturer",

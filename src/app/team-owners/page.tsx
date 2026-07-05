@@ -136,7 +136,7 @@ export default function TeamOwnersPage() {
                     <div className="font-montserrat text-white/50 text-[10px] tracking-[0.3em] uppercase mb-4">
                       Team Owner & Leader
                     </div>
-                    <h2 className="font-cinzel text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+                    <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight break-words">
                       {team.owner.name.toUpperCase()}
                     </h2>
                     <div className="font-montserrat text-sm tracking-widest uppercase" style={{ color: team.color }}>

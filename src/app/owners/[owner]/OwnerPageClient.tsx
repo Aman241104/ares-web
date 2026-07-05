@@ -176,7 +176,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
                 { icon: <MapPin className="w-4 h-4"/>, l: "Headquarters", v: owner.company.headquarters },
                 { icon: <Globe className="w-4 h-4"/>, l: "Website", v: owner.company.website },
                 { icon: <Building2 className="w-4 h-4"/>, l: "Company Size", v: owner.company.size },
-              ].map((i)=>(
+              ].filter((i) => i.v).map((i)=>(
                 <div key={i.l} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-0">
                   <div className="text-[#D4AF37] flex-shrink-0">{i.icon}</div>
                   <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest w-32 flex-shrink-0">{i.l}</span>
@@ -281,7 +281,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
               { icon: <Mail className="w-5 h-5"/>, v: owner.email },
               { icon: <Globe className="w-5 h-5"/>, v: owner.company.website },
               { icon: <MapPin className="w-5 h-5"/>, v: owner.company.headquarters },
-            ].map((c)=>(
+            ].filter((c) => c.v).map((c)=>(
               <div key={c.v} className="flex items-center gap-4 font-cinzel tracking-wider text-white text-lg">
                 <div className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 text-[#D4AF37]">{c.icon}</div>
                 {c.v}

@@ -4,12 +4,12 @@ import { Bell } from "lucide-react";
 import gsap from "gsap";
 
 const activities = [
-  "🏆 Team Modi leads with 1,285 points — Week 1 Champions",
-  "🤝 610 referrals passed across all teams this week",
-  "📈 ₹3.4M in TYFCB generated — and the season has just begun",
-  "🔥 1,078 one-to-one meetings completed across 4 teams",
-  "⚡ Week 1: STRONG START. STRONGER IMPACT. — underway",
-  "👑 Team Doval closing in — only 125 points behind the lead",
+  "🏆 ARES Business League 2026 is LIVE — Week 1 underway",
+  "🤝 4 teams. 30 business owners. 1 championship.",
+  "📈 Scores refresh every Wednesday — check the leaderboard",
+  "🔥 STRONG START. STRONGER IMPACT. — this week's theme",
+  "⚡ Every referral, every meeting, every point counts",
+  "👑 The race for the trophy has begun",
 ];
 
 export default function LiveTicker() {
