@@ -374,10 +374,12 @@ export default function SchedulePage() {
               >
                 {/* Card image */}
                 <div className="relative h-56 overflow-hidden">
-                  <img
+                  <Image
                     src={specialEventImages[i % specialEventImages.length]}
                     alt={event.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   {/* Strong dark overlay for drama */}
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, #000000 100%)" }} />

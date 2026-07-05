@@ -554,6 +554,15 @@ input::placeholder, textarea::placeholder { color: rgba(240,234,214,0.2) !import
 }
 .rays-breathe { animation: ray-breathe 5.5s ease-in-out infinite; }
 
+/* Laptop screen scan sweep (GlobalCTA) */
+@keyframes screen-scan {
+  0%   { transform: translateY(-10%); opacity: 0; }
+  15%  { opacity: 0.5; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(220%); opacity: 0; }
+}
+.screen-scan { animation: screen-scan 3.5s ease-in-out infinite; }
+
 /* ══════════════════════════════════════
    REDUCED MOTION
 ══════════════════════════════════════ */

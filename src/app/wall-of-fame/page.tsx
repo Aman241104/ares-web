@@ -19,6 +19,15 @@ const MASCOT_IMAGES: Record<string, string> = {
   jaishankar:  "/images/mascot_lotus.png",
 };
 
+// Re-cropped so every owner's head sits at the same size/level in the card —
+// the source portraits were shot at different zoom levels.
+const OWNER_CARD_IMAGES: Record<string, string> = {
+  modi:        "/images/owner_modi_card.jpg",
+  doval:       "/images/owner_doval_card.jpg",
+  "amit-shah": "/images/owner_shah_card.jpg",
+  jaishankar:  "/images/owner_jaishankar_card.jpg",
+};
+
 interface WallHonoree {
   name: string;
   role: string;
@@ -56,14 +65,14 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
             alt={honoree.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
             <Building2 className="w-10 h-10 text-[#D4AF37]/30" />
           </div>
         )}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 55%, transparent 75%)" }} />
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 45%, transparent 65%)" }} />
 
         {/* Company reveal on hover */}
         <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
@@ -207,7 +216,7 @@ export default function WallOfFamePage() {
   const wallOwners: WallHonoree[] = teams.map((t) => ({
     name: t.owner.name,
     role: `Team Owner — ${t.name}`,
-    img: t.owner.image,
+    img: OWNER_CARD_IMAGES[t.id] ?? t.owner.image,
     companyName: t.owner.company.name,
     category: t.owner.company.industry,
     phone: t.owner.phone,

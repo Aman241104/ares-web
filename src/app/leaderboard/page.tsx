@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -30,6 +30,11 @@ function MiniSparkline({ values, color }: { values: number[]; color: string }) {
 
 export default function LeaderboardPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -216,29 +221,31 @@ export default function LeaderboardPage() {
                 ];
                 return (
                   <div className="h-[250px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                        <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
-                        <YAxis stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
-                        <Tooltip 
-                          contentStyle={{ backgroundColor: "#050505", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px" }}
-                          itemStyle={{ fontSize: "12px", fontFamily: "var(--font-montserrat)" }}
-                          labelStyle={{ color: "#D4AF37", fontSize: "10px", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "8px", fontFamily: "var(--font-montserrat)" }}
-                        />
-                        {sorted.map(team => (
-                          <Line 
-                            key={team.id} 
-                            type="monotone" 
-                            dataKey={team.id === "amit-shah" ? "shah" : team.id} 
-                            name={team.name}
-                            stroke={team.color} 
-                            strokeWidth={3}
-                            dot={{ r: 4, fill: team.color, strokeWidth: 0 }}
-                            activeDot={{ r: 6, fill: "#fff", stroke: team.color, strokeWidth: 2 }}
+                    {mounted ? (
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                          <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
+                          <YAxis stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} />
+                          <Tooltip
+                            contentStyle={{ backgroundColor: "#050505", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px" }}
+                            itemStyle={{ fontSize: "12px", fontFamily: "var(--font-montserrat)" }}
+                            labelStyle={{ color: "#D4AF37", fontSize: "10px", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "8px", fontFamily: "var(--font-montserrat)" }}
                           />
-                        ))}
-                      </LineChart>
-                    </ResponsiveContainer>
+                          {sorted.map(team => (
+                            <Line
+                              key={team.id}
+                              type="monotone"
+                              dataKey={team.id === "amit-shah" ? "shah" : team.id}
+                              name={team.name}
+                              stroke={team.color}
+                              strokeWidth={3}
+                              dot={{ r: 4, fill: team.color, strokeWidth: 0 }}
+                              activeDot={{ r: 6, fill: "#fff", stroke: team.color, strokeWidth: 2 }}
+                            />
+                          ))}
+                        </LineChart>
+                      </ResponsiveContainer>
+                    ) : null}
                   </div>
                 );
               })()}

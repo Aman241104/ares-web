@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // One-off maintenance/dev-tool scripts, not part of the app build.
+    "fix_clamp.js",
+    "mcp_client.js",
+    "mcp_screenshot.js",
+    "reset_data.js",
+    "update_dates.js",
   ]),
   {
     rules: {
