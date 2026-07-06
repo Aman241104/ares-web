@@ -453,29 +453,6 @@
 }
 .number-glow { animation: number-glow 3s ease-in-out infinite; }
 
-/* Trophy shine — a soft diagonal glint sweeping over a trophy image, looping */
-@keyframes trophy-shine-sweep {
-  0%, 92%, 100% { transform: translateX(-160%) skewX(-20deg); opacity: 0; }
-  4%   { opacity: 0.9; }
-  20%  { transform: translateX(160%) skewX(-20deg); opacity: 0; }
-}
-.trophy-shine {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.trophy-shine::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  left: 0;
-  width: 22%;
-  height: 160%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), rgba(255,215,110,0.15), transparent);
-  animation: trophy-shine-sweep 7s ease-in-out infinite;
-}
-
 /* ══════════════════════════════════════
    RANK INDICATORS
 ══════════════════════════════════════ */

@@ -223,12 +223,7 @@ export default function HomePage() {
           {/* Diagonal gold accent line removed as it overlapped with text */}
         </div>
 
-        {/* ── TROPHY SHINE — glint sweeping over the trophy on the right ── */}
-        <div className="absolute inset-y-0 right-0 w-[55%] z-[2] pointer-events-none hidden sm:block">
-          <div className="trophy-shine" />
-        </div>
-
-        {/* ── FLOATING GOLD PARTICLES ── z-[2] (left half only) */}
+{/* ── FLOATING GOLD PARTICLES ── z-[2] (left half only) */}
         <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
           {[
             { x: 6,  delay: 0,   dur: 7.0, size: 1.5, op: 0.45 },
@@ -582,32 +577,33 @@ export default function HomePage() {
                   <Link href={`/teams/${team.id}`} className="block">
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
-                        src={mascots[team.id]}
-                        alt={team.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover object-center transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
-                      />
-                      <Image
                         src={ownerImgs[team.id]}
                         alt={team.owner.name}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover object-top transition-all duration-700 opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100"
+                        className="object-cover object-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
+                        style={{ filter: "brightness(1.15) saturate(1.05)" }}
+                      />
+                      <Image
+                        src={mascots[team.id]}
+                        alt={team.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        className="object-cover object-center transition-all duration-700 opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100"
                       />
 
-                      {/* Team color gradient overlay — lighter on default (poster has own design) */}
+                      {/* Team color gradient overlay — fades out on hover as the poster (own design) takes over */}
                       <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500"
+                        className="absolute inset-0 opacity-40 group-hover:opacity-0 transition-opacity duration-500"
                         style={{ background: `linear-gradient(180deg, ${team.color}00 0%, ${team.color}90 100%)` }}
                       />
-                      {/* Team color ambient flood on hover */}
+                      {/* Team color ambient flood on hover, as the poster reveals */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                         style={{ background: `radial-gradient(ellipse 120% 80% at 50% 110%, ${team.color}30 0%, transparent 60%)` }}
                       />
-                      {/* Scrim — invisible on default (poster has its own), appears on hover for owner card */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* Scrim — visible by default for the owner caption's legibility, fades out as the poster (own contrast) reveals */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
 
                       {/* Rank badge */}
                       <div className="absolute top-4 right-4 z-10">
@@ -617,8 +613,8 @@ export default function HomePage() {
                         </div>
                       </div>
 
-                      {/* Hover state overlay — owner reveal */}
-                      <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10">
+                      {/* Default caption — owner info, fades out on hover as the poster (own baked-in labels) takes over */}
+                      <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-3 transition-all duration-300 z-10">
                         <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Captain</div>
                         <div className="font-cinzel text-white text-base tracking-wider leading-tight">{team.owner.name}</div>
                         <div className="font-montserrat text-white/70 text-[9px] mt-1.5 tracking-wider leading-relaxed">{team.owner.leadershipStyle}</div>

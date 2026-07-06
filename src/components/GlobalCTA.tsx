@@ -186,7 +186,7 @@ export default function GlobalCTA() {
             <p className="text-white/50 text-xs mb-4 max-w-md">
               This is our AI Assistant product, running live right now. Ask it about our services or about ABL 2026.
             </p>
-            <div id="gravity-ai-widget" className="rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] ring-1 ring-white/[0.08] max-w-md" />
+            <div id="gravity-ai-widget" className="h-[460px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] ring-1 ring-white/[0.08] max-w-md" style={{ isolation: "isolate" }} />
             <Script src={AI_WIDGET_SCRIPT_SRC} data-site-id={AI_WIDGET_SITE_ID} data-target="#gravity-ai-widget" strategy="lazyOnload" />
           </div>
         </div>

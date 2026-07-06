@@ -484,7 +484,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 {/* Photo / Avatar Section */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ background: `${team.color}08` }}>
                   {m.image ? (
-                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
+                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top" style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }} />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-cinzel font-light text-5xl opacity-20" style={{ color: team.color }}>{m.name.charAt(0)}</span>

@@ -19,7 +19,7 @@ export const PARTNERS_2026: Honoree[] = [
     name: "Vishnu Soni",
     role: "Founding Partner",
     quote: "Corporate gifting that leaves a lasting impression — proud to power ABL 2026.",
-    img: "/images/roster/vishnu-soni_card.jpg",
+    img: "/images/owner_doval.png",
     company: {
       name: "Silver Spoon",
       category: "Corporate Gifting",

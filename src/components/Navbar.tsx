@@ -45,8 +45,25 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Redundant rAF poll — Lenis-driven scrolling and client-side route changes
+    // don't always dispatch a native "scroll" event, which can leave this stuck.
+    let raf = requestAnimationFrame(function poll() {
+      handleScroll();
+      raf = requestAnimationFrame(poll);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
+
+  // Re-check immediately on route change — new pages can land already scrolled
+  // (or reset to top) without a scroll event firing in between.
+  useEffect(() => {
+    setScrolled(window.scrollY > 60);
+  }, [pathname]);
 
   return (
     <div
@@ -93,20 +110,20 @@ export default function Navbar() {
               )}
             </Link>
 
-            {/* Presenting sponsor lockup — small, non-competing */}
+            {/* Presenting sponsor lockup */}
             <a
               href="https://jukeboxmedia.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 pl-4 ml-1 border-l border-white/10 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="hidden lg:flex items-center gap-2.5 pl-5 ml-1 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-opacity duration-300"
             >
-              <span className="font-montserrat text-white/35 text-[7px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
+              <span className="font-montserrat text-white/40 text-[7px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
               <Image
                 src="/images/jukebox-media-logo.png"
                 alt="Jukebox Media"
                 width={872}
                 height={342}
-                className="h-4 w-auto object-contain"
+                className={`w-auto object-contain transition-all duration-700 ${scrolled ? "h-7" : "h-9"}`}
               />
             </a>
 

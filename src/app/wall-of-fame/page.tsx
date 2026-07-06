@@ -66,7 +66,7 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-top"
-            style={{ filter: "brightness(1.25) saturate(1.05)" }}
+            style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
@@ -109,7 +109,7 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0 bg-[#030712] flex items-center justify-center">
             {honoree.img ? (
-              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
+              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }} />
             ) : (
               <Building2 className="w-6 h-6 text-[#D4AF37]/40" />
             )}
