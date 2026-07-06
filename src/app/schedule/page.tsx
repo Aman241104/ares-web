@@ -293,6 +293,7 @@ export default function SchedulePage() {
                 { name: "Perfect Week Bonus", pts: "+100", desc: "Complete all weekly events" },
                 { name: "Consistency Bonus", pts: "+75", desc: "Attend 3 consecutive weeks" },
                 { name: "Mega Impact Bonus", pts: "+150", desc: "Achieve high business impact" },
+                { name: "Full Team Bonus", pts: "+750", desc: "Whole team present at the offline team meeting" },
               ].map((b) => (
                 <div key={b.name} className="p-4 rounded-xl border border-white/5 bg-white/[0.01]">
                   <div className="flex items-start justify-between gap-3">
@@ -318,7 +319,7 @@ export default function SchedulePage() {
                 MAX BONUS POINTS<br />PER WEEK
               </div>
               <div className="font-cinzel font-bold text-4xl text-[#D4AF37] mb-1">
-                350
+                1,100
               </div>
               <div className="font-montserrat text-white/55 text-[9px] tracking-widest uppercase">
                 PTS

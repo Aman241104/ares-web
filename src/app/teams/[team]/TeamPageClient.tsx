@@ -7,6 +7,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight, ChevronRight, Users, Trophy, Star, TrendingUp, X, Building2, Package, Tag, Handshake, Target, TowerControl, Flower2, Globe2, Zap, Coins } from "lucide-react";
 import { teams } from "@/lib/data";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import type { WeeklyMember } from "@/types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -381,7 +382,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
             ].map((s) => (
               <div key={s.l} className="p-5 bg-white/[0.05] border border-white/5 text-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="font-cinzel font-light text-3xl text-white mb-2 relative z-10">{s.v}</div>
+                <div className="font-cinzel font-light text-3xl text-white mb-2 relative z-10"><AnimatedCounter value={s.v} /></div>
                 <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest relative z-10">{s.l}</div>
               </div>
             ))}
@@ -396,7 +397,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
               { l: "Induction", v: String(team.induction) },
             ].map(s => (
               <div key={s.l} className="border-l-2 pl-4 group" style={{ borderColor: team.color }}>
-                <div className="font-cinzel text-2xl text-white mb-1 group-hover:scale-110 transition-transform origin-left">{s.v}</div>
+                <div className="font-cinzel text-2xl text-white mb-1 group-hover:scale-110 transition-transform origin-left"><AnimatedCounter value={s.v} /></div>
                 <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">{s.l}</div>
               </div>
             ))}

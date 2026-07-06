@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Users } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
@@ -8,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import PageHero from "@/components/PageHero";
 import LiveTicker from "@/components/LiveTicker";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,6 +118,11 @@ export default function LeaderboardPage() {
                 <p className="font-montserrat text-white/65 text-[9px] uppercase tracking-[0.25em]">Updated every Wednesday @ 8:00 PM</p>
               </div>
             </div>
+
+            <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 opacity-60 hover:opacity-100 transition-opacity duration-300">
+              <span className="font-montserrat text-white/40 text-[7px] tracking-[0.25em] uppercase">Presented by</span>
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3 w-auto object-contain" />
+            </a>
           </div>
         </div>
       </PageHero>
@@ -164,10 +171,10 @@ export default function LeaderboardPage() {
                           </div>
                         </div>
                         <div className="col-span-3 text-right">
-                          <span className="font-cinzel font-bold text-2xl" style={{ color: team.color }}>{team.points.toLocaleString()}</span>
+                          <span className="font-cinzel font-bold text-2xl" style={{ color: team.color }}><AnimatedCounter value={team.points.toLocaleString()} /></span>
                         </div>
                         <div className="col-span-2 text-right">
-                          <span className="font-cinzel text-base text-white/50">{team.weekPoints}</span>
+                          <span className="font-cinzel text-base text-white/50"><AnimatedCounter value={String(team.weekPoints)} /></span>
                         </div>
                         <div className="col-span-1 text-center">
                           {i === 1 ? <span className="font-montserrat text-green-400 text-[10px] font-bold">▲1</span> : i === 2 ? <span className="font-montserrat text-red-400 text-[10px] font-bold">▼1</span> : <span className="font-montserrat text-white/20 text-xs">—</span>}

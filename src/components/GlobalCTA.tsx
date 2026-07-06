@@ -2,9 +2,17 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { ArrowRight, Sparkles, Smartphone, Rocket, LineChart, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Live demo of Gravity Media Marketing's own AI chat product - the "Website Widget" feature of
+// the WhatsApp AI Agent platform (whatsapp-ai-agent-inky.vercel.app), embedded inline (not as a
+// floating bubble) via widget.js's data-target mode, scoped to Gravity Media Marketing's own
+// workspace/knowledge base so it can answer questions about services offered and about ABL itself.
+const AI_WIDGET_SITE_ID = "f5cd9777-83a2-44f5-a880-088b0d6de332";
+const AI_WIDGET_SCRIPT_SRC = "https://whatsapp-ai-agent-inky.vercel.app/widget.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,23 +100,23 @@ export default function GlobalCTA() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 bg-[#FDFBF7] relative overflow-hidden font-montserrat">
-      
-      {/* Top Smooth Blend Transition (Dark to Light) */}
-      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-[#030712] to-transparent z-10 pointer-events-none opacity-60" />
+    <section ref={containerRef} className="py-24 bg-[#030712] relative overflow-hidden font-montserrat">
+
+      {/* Top Smooth Blend Transition (into the dark hero above) */}
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none opacity-60" />
 
       {/* Super Large Background Arrow (Animated on Scroll) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[130vw] h-[130vw] opacity-[0.03] blur-2xl pointer-events-none g-bg-scroll z-0 flex items-center justify-center mix-blend-multiply">
-        <Image 
-          src="/images/gravity-arrow.png" 
-          alt="Gravity Background" 
-          fill 
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[130vw] h-[130vw] opacity-[0.05] blur-2xl pointer-events-none g-bg-scroll z-0 flex items-center justify-center">
+        <Image
+          src="/images/gravity-arrow.png"
+          alt="Gravity Background"
+          fill
           className="object-contain"
         />
       </div>
 
       {/* Main Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#00A859]/10 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#00A859]/10 blur-[140px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
@@ -123,7 +131,7 @@ export default function GlobalCTA() {
           </div>
 
           {/* Heading */}
-          <h2 className="font-cinzel font-bold text-[#111827] leading-[1.05] tracking-wide mb-8" style={{ fontSize: "clamp(48px, 6vw, 76px)" }}>
+          <h2 className="font-cinzel font-bold text-white leading-[1.05] tracking-wide mb-8" style={{ fontSize: "clamp(48px, 6vw, 76px)" }}>
             <div className="g-title">ELEVATE</div>
             <div className="g-title">YOUR</div>
             <div className="g-title">DIGITAL</div>
@@ -131,7 +139,7 @@ export default function GlobalCTA() {
           </h2>
 
           {/* Description */}
-          <p className="g-desc text-gray-600 text-sm leading-[1.9] max-w-xl mb-12 font-medium tracking-wide">
+          <p className="g-desc text-white/50 text-sm leading-[1.9] max-w-xl mb-12 font-medium tracking-wide">
             Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
           </p>
 
@@ -147,35 +155,49 @@ export default function GlobalCTA() {
                 <div className="w-7 h-7 rounded-full bg-[#00A859]/10 group-hover:bg-[#00A859]/20 flex items-center justify-center border border-[#00A859]/20 group-hover:border-[#00A859]/40 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(0,168,89,0.3)]">
                   {f.icon}
                 </div>
-                <span className="text-gray-600 group-hover:text-[#111827] text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors duration-300">{f.text}</span>
+                <span className="text-white/50 group-hover:text-white text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors duration-300">{f.text}</span>
               </div>
             ))}
           </div>
 
           {/* Action Row */}
           <div className="g-action flex flex-col sm:flex-row items-start sm:items-center gap-8">
-            <Link 
+            <Link
               href="/contact"
               className="bg-gradient-to-r from-[#00A859] to-[#008F4C] hover:from-[#00C266] hover:to-[#00A859] text-[#050B0A] font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-sm flex items-center gap-3 transition-all duration-300 shadow-[0_0_20px_rgba(0,168,89,0.4)] hover:shadow-[0_0_30px_rgba(0,168,89,0.6)] hover:-translate-y-1 whitespace-nowrap"
             >
               Start Project <ArrowRight className="w-4 h-4" />
             </Link>
-            
-            <div className="border-l border-black/10 pl-8">
-              <div className="text-[#111827] text-[10px] font-bold tracking-[0.2em] uppercase mb-1.5">Gravity Media Marketing</div>
-              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-gray-600 hover:text-[#00A859] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
-              <a href="tel:+918104933816" className="block text-gray-600 hover:text-[#00A859] transition-colors text-xs">+91 8104933816</a>
+
+            <div className="border-l border-white/10 pl-8">
+              <div className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-1.5">Gravity Media Marketing</div>
+              <a href="mailto:gauravmehta.biz@gmail.com" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs mb-0.5">gauravmehta.biz@gmail.com</a>
+              <a href="tel:+918104933816" className="block text-white/50 hover:text-[#00D672] transition-colors text-xs">+91 8104933816</a>
             </div>
+          </div>
+
+          {/* Live AI Assistant demo - built and hosted by Gravity Media Marketing, answers
+              questions about our services and about ABL itself using a real knowledge base. */}
+          <div className="g-action mt-10 pt-8 border-t border-white/10">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00A859] animate-pulse" />
+              <span className="text-[#00D672] text-[9px] font-bold tracking-[0.25em] uppercase">Try It Live</span>
+            </div>
+            <p className="text-white/50 text-xs mb-4 max-w-md">
+              This is our AI Assistant product, running live right now. Ask it about our services or about ABL 2026.
+            </p>
+            <div id="gravity-ai-widget" className="rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] ring-1 ring-white/[0.08] max-w-md" />
+            <Script src={AI_WIDGET_SCRIPT_SRC} data-site-id={AI_WIDGET_SITE_ID} data-target="#gravity-ai-widget" strategy="lazyOnload" />
           </div>
         </div>
 
         {/* ── RIGHT COLUMN: CARD ── */}
         <div className="g-card relative lg:ml-10">
           {/* Outer Shell — machined tray */}
-          <div className="relative w-full max-w-md mx-auto p-2 rounded-[2.75rem] bg-gradient-to-b from-black/[0.04] to-transparent ring-1 ring-black/[0.06] shadow-[0_50px_100px_rgba(0,0,0,0.1)]">
+          <div className="relative w-full max-w-md mx-auto p-2 rounded-[2.75rem] bg-gradient-to-b from-white/[0.05] to-transparent ring-1 ring-white/[0.08] shadow-[0_50px_100px_rgba(0,0,0,0.4)]">
 
             {/* Inner Core — glass card */}
-            <div className="relative aspect-[4/5] rounded-[2.5rem] border border-[#00A859]/20 hover:border-[#00A859]/40 bg-gradient-to-br from-white to-[#F3FBF6] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),inset_0_0_50px_rgba(0,168,89,0.06)] backdrop-blur-xl flex flex-col items-center p-8 sm:p-12 overflow-hidden transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group">
+            <div className="relative aspect-[4/5] rounded-[2.5rem] border border-[#00A859]/20 hover:border-[#00A859]/40 bg-gradient-to-br from-[#0B1120] to-[#050B0A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),inset_0_0_50px_rgba(0,168,89,0.08)] backdrop-blur-xl flex flex-col items-center p-8 sm:p-12 overflow-hidden transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group">
 
               {/* Corner Decorative Dots */}
               <div className="absolute top-8 left-8 w-1.5 h-1.5 rounded-full bg-[#00A859]/40 shadow-[0_0_10px_rgba(0,168,89,1)]" />
@@ -261,24 +283,24 @@ export default function GlobalCTA() {
                 </div>
 
                 {/* Floating info chips — nested double-bezel */}
-                <div className="g-chip-1 absolute top-2 left-2 sm:-left-6 hidden sm:flex items-center gap-1.5 bg-white p-1 pr-3 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.1)] ring-1 ring-black/[0.04]">
-                  <span className="w-5 h-5 rounded-full bg-[#00A859]/10 flex items-center justify-center flex-shrink-0">
+                <div className="g-chip-1 absolute top-2 left-2 sm:-left-6 hidden sm:flex items-center gap-1.5 bg-[#0B1120] p-1 pr-3 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-white/[0.08]">
+                  <span className="w-5 h-5 rounded-full bg-[#00A859]/15 flex items-center justify-center flex-shrink-0">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00A859] animate-pulse" />
                   </span>
-                  <span className="text-[8px] font-bold text-gray-700 tracking-[0.15em] uppercase">Site Live</span>
+                  <span className="text-[8px] font-bold text-white/70 tracking-[0.15em] uppercase">Site Live</span>
                 </div>
-                <div className="g-chip-2 absolute bottom-10 right-2 sm:-right-8 hidden sm:flex items-center gap-1.5 bg-white p-1 pr-2.5 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.1)] ring-1 ring-black/[0.04]">
-                  <span className="w-5 h-5 rounded-full bg-[#00A859]/10 flex items-center justify-center flex-shrink-0">
+                <div className="g-chip-2 absolute bottom-10 right-2 sm:-right-8 hidden sm:flex items-center gap-1.5 bg-[#0B1120] p-1 pr-2.5 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-white/[0.08]">
+                  <span className="w-5 h-5 rounded-full bg-[#00A859]/15 flex items-center justify-center flex-shrink-0">
                     <CheckCircle2 className="w-3 h-3 text-[#00A859]" strokeWidth={1.75} />
                   </span>
-                  <span className="text-[8px] font-bold text-gray-700 tracking-wide">Built &amp; Deployed</span>
+                  <span className="text-[8px] font-bold text-white/70 tracking-wide">Built &amp; Deployed</span>
                 </div>
               </div>
 
               {/* Bottom Pill — nested double-bezel */}
-              <div className="relative z-10 p-1 rounded-full bg-[#00A859]/[0.07] mt-8 shrink-0">
-                <div className="border border-[#00A859]/30 bg-white px-6 py-2.5 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.04)] group-hover:border-[#00A859]/50 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <span className="text-[#008F4C] text-[9px] font-bold tracking-[0.25em] uppercase">Official Digital Partner</span>
+              <div className="relative z-10 p-1 rounded-full bg-[#00A859]/[0.1] mt-8 shrink-0">
+                <div className="border border-[#00A859]/30 bg-[#0B1120] px-6 py-2.5 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.3)] group-hover:border-[#00A859]/50 transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                  <span className="text-[#00D672] text-[9px] font-bold tracking-[0.25em] uppercase">Official Digital Partner</span>
                 </div>
               </div>
             </div>

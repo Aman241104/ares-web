@@ -80,6 +80,11 @@ export default function PageHero({
         )}
       </div>
 
+      {/* ── TROPHY SHINE — glint sweeping over the right side of the image ── z-[2] */}
+      <div className="absolute inset-y-0 right-0 w-[45%] z-[2] pointer-events-none hidden sm:block">
+        <div className="trophy-shine" />
+      </div>
+
       {/* ── SUBTLE GOLD RAYS from top-right ── z-[2] */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
         <div className="absolute inset-[-10%]" style={{

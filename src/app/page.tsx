@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import Image from "next/image";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -222,6 +223,11 @@ export default function HomePage() {
           {/* Diagonal gold accent line removed as it overlapped with text */}
         </div>
 
+        {/* ── TROPHY SHINE — glint sweeping over the trophy on the right ── */}
+        <div className="absolute inset-y-0 right-0 w-[55%] z-[2] pointer-events-none hidden sm:block">
+          <div className="trophy-shine" />
+        </div>
+
         {/* ── FLOATING GOLD PARTICLES ── z-[2] (left half only) */}
         <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
           {[
@@ -292,6 +298,17 @@ export default function HomePage() {
               </span>
             </h1>
 
+            {/* Presenting sponsor lockup */}
+            <a
+              href="https://jukeboxmedia.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 mt-3 opacity-70 hover:opacity-100 transition-opacity duration-300"
+            >
+              <span className="font-montserrat text-white/40 text-[8px] tracking-[0.3em] uppercase">Presented by</span>
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3.5 w-auto object-contain" />
+            </a>
+
             {/* Gold divider */}
             <div className="flex items-center gap-4 my-7">
               <div className="h-[1.5px] w-16 bg-gradient-to-r from-[#FFC200] to-transparent" />
@@ -342,7 +359,7 @@ export default function HomePage() {
                 ].map((s) => (
                   <div key={s.l} className="h-stat-item flex flex-col items-center sm:items-start">
                     <div className="mb-2">{s.icon}</div>
-                    <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}>{s.n}</div>
+                    <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", lineHeight: 1, textShadow: "0 0 25px rgba(255,194,0,0.55)" }}><AnimatedCounter value={s.n} /></div>
                     <div className="font-montserrat text-white/55 text-[7px] uppercase tracking-[0.3em] font-bold mt-1.5 leading-tight">{s.l}</div>
                   </div>
                 ))}
@@ -389,7 +406,7 @@ export default function HomePage() {
                   className="font-cinzel font-bold text-[#FFC200] mb-3 number-glow relative z-10"
                   style={{ fontSize: "clamp(56px, 8vw, 100px)", lineHeight: 1, textShadow: "0 0 40px rgba(255,194,0,0.4), 0 4px 20px rgba(0,0,0,0.8)" }}
                 >
-                  {s.n}{s.suffix && <span className="text-[0.4em] align-top mt-2 inline-block text-[#D4AF37]">{s.suffix}</span>}
+                  <AnimatedCounter value={s.n} />{s.suffix && <span className="text-[0.4em] align-top mt-2 inline-block text-[#D4AF37]">{s.suffix}</span>}
                 </div>
                 <div className="font-cinzel text-white text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-2 relative z-10">{s.label}</div>
                 <div className="font-montserrat text-white/55 text-[7px] sm:text-[8px] uppercase tracking-[0.2em] relative z-10">{s.sub}</div>

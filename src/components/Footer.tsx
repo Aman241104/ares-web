@@ -165,8 +165,25 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Presenting sponsor acknowledgment */}
+        <div className="pt-8 border-t border-white/6 flex flex-col items-center gap-4 text-center">
+          <span className="font-montserrat text-white/30 text-[8px] tracking-[0.3em] uppercase">Powered by</span>
+          <a
+            href="https://jukeboxmedia.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity duration-300"
+          >
+            <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-6 w-auto object-contain" />
+            <span className="hidden sm:block h-8 w-px bg-white/10" />
+            <span className="hidden sm:block font-montserrat text-white/40 text-[9px] tracking-[0.2em] uppercase leading-relaxed text-left">
+              Presenting Sponsor &<br />Digital Experience Partner
+            </span>
+          </a>
+        </div>
+
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-5">
+        <div className="mt-8 pt-8 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-5">
           <div className="flex items-center gap-3">
             <p className="font-montserrat text-white/45 text-[9px] tracking-[0.25em] uppercase">
               © 2026 ARES Business League

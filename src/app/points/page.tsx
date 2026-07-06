@@ -27,7 +27,7 @@ const scoringActivities: PointRow[] = [
     tiers: [
       { points: 10, detail: "In Chapter" },
       { points: 20, detail: "Cross Chapter" },
-      { points: 25, detail: "With Any Team Owner" },
+      { points: 25, detail: "With Any Team Owner or Commissioner" },
     ],
   },
   { label: "Participation in Activities", points: 200, detail: "(special points, if applicable, will be mentioned separately)" },
@@ -36,7 +36,7 @@ const scoringActivities: PointRow[] = [
     tiers: [
       { points: 50, detail: "Inside" },
       { points: 50, detail: "Outside" },
-      { points: 100, detail: "To Any Team Owner" },
+      { points: 100, detail: "To Any Team Owner or Commissioner" },
     ],
   },
   {
@@ -49,7 +49,7 @@ const scoringActivities: PointRow[] = [
     ],
   },
   {
-    label: "TYFCB To Team Owner",
+    label: "TYFCB To Team Owner or Commissioner",
     tiers: [
       { points: 100, detail: "0 - 5,000" },
       { points: 350, detail: "5,000 - 50,000" },
@@ -88,12 +88,13 @@ const comingSoon = [
 
 function PointsTable({ rows }: { rows: PointRow[] }) {
   return (
-    <div className="border border-white/6 overflow-hidden">
+    <div className="border border-white/6 overflow-x-auto custom-scrollbar">
+      <div className="min-w-[560px] sm:min-w-0">
       {/* Header */}
       <div className="grid grid-cols-[1fr_auto_auto] bg-[#D4AF37]/8 border-b border-white/8">
-        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold">Activity</div>
-        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold text-right">Points</div>
-        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-48 sm:w-[280px] text-right">Details</div>
+        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold">Activity</div>
+        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold text-right">Points</div>
+        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-48 sm:w-[280px] text-right">Details</div>
       </div>
 
       {rows.map((row, i) => {
@@ -166,6 +167,7 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
           </div>
         );
       })}
+      </div>
     </div>
   );
 }

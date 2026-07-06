@@ -296,6 +296,8 @@ export const weeklyEvents: WeeklyEvent[] = [
       { name: "TYFCB Challenge", category: "TYFCB", points: 0, status: "in-progress" },
       { name: "One-to-One Blitz", category: "Meetings", points: 0, status: "upcoming" },
       { name: "Attendance Booster", category: "Attendance", points: 0, status: "upcoming" },
+      { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "upcoming" },
+      { name: "Cross Chapter 121 Conclave", category: "121", points: 250, status: "upcoming" },
     ],
   },
   {
@@ -368,6 +370,8 @@ export const scheduleEvents: ScheduleEvent[] = [
   { name: "TYFCB Challenge", category: "TYFCB", points: 0, status: "in-progress" },
   { name: "One-on-One BNI", category: "Meetings", points: 0, status: "upcoming" },
   { name: "Attendance Booster", category: "Attendance", points: 0, status: "upcoming" },
+  { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "upcoming" },
+  { name: "Cross Chapter 121 Conclave", category: "121", points: 250, status: "upcoming" },
 ];
 
 export const blogPosts: BlogPost[] = [

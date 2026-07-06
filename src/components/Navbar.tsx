@@ -93,6 +93,23 @@ export default function Navbar() {
               )}
             </Link>
 
+            {/* Presenting sponsor lockup — small, non-competing */}
+            <a
+              href="https://jukeboxmedia.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:flex items-center gap-2 pl-4 ml-1 border-l border-white/10 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity duration-300"
+            >
+              <span className="font-montserrat text-white/35 text-[7px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
+              <Image
+                src="/images/jukebox-media-logo.png"
+                alt="Jukebox Media"
+                width={872}
+                height={342}
+                className="h-4 w-auto object-contain"
+              />
+            </a>
+
             {/* Desktop Nav */}
             <nav className="hidden xl:flex items-center gap-0.5">
               {navLinks.map((link) =>
@@ -148,6 +165,15 @@ export default function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
+              <a
+                href="https://jukeboxmedia.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary whitespace-nowrap"
+                style={{ padding: "9px 20px", fontSize: "9px", letterSpacing: "0.22em" }}
+              >
+                Jukebox Media
+              </a>
               <Link
                 href="/contact"
                 className="btn-primary whitespace-nowrap"

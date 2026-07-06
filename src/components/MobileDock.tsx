@@ -45,7 +45,7 @@ export default function MobileDock() {
             </div>
             <button
               onClick={() => setMenuOpen(false)}
-              className="w-9 h-9 flex items-center justify-center bg-white/5 border border-white/8 rounded-full text-white/50 hover:text-white transition-colors"
+              className="w-11 h-11 flex items-center justify-center bg-white/5 border border-white/8 rounded-full text-white/50 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -74,7 +74,7 @@ export default function MobileDock() {
           </div>
 
           {/* CTA */}
-          <div className="mt-5 pt-5 border-t border-white/8">
+          <div className="mt-5 pt-5 border-t border-white/8 space-y-2.5">
             <Link
               href="/contact"
               className="btn-primary w-full justify-center gap-3"
@@ -82,6 +82,15 @@ export default function MobileDock() {
             >
               Build Your Website <ArrowRight className="w-4 h-4" />
             </Link>
+            <a
+              href="https://jukeboxmedia.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary w-full justify-center gap-3"
+              onClick={() => setMenuOpen(false)}
+            >
+              Jukebox Media
+            </a>
           </div>
         </div>
       </div>

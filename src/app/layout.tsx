@@ -58,6 +58,7 @@ export const viewport = {
 import SmoothScroll from "@/components/SmoothScroll";
 import CommandMenu from "@/components/CommandMenu";
 import MobileDock from "@/components/MobileDock";
+import SplashLoader from "@/components/SplashLoader";
 
 export default function RootLayout({
   children,
@@ -68,6 +69,7 @@ export default function RootLayout({
     <html lang="en" className={`h-full ${cinzel.variable} ${montserrat.variable} ${cormorant.variable}`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col antialiased bg-[#000000] text-white">
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.02]" style={{ backgroundImage: "url('/images/noise.svg')" }} />
+        <SplashLoader />
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 pb-24 xl:pb-0">{children}</main>

@@ -264,10 +264,15 @@ export default function WallOfFamePage() {
               Every year the ARES Business League is played, this page grows by one edition. New commissioners, new team owners, new partners — each one permanently etched here. Tap any face to see who they are and what they build.
             </p>
 
-            <div className="h-cta flex flex-wrap gap-4">
+            <div className="h-cta flex flex-wrap gap-4 mb-6">
               <Link href="/teams" className="btn-primary">Meet the Teams <ArrowRight className="w-4 h-4" /></Link>
               <Link href="/partners" className="btn-secondary">Our Partners</Link>
             </div>
+
+            <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300">
+              <span className="font-montserrat text-white/40 text-[7px] tracking-[0.25em] uppercase">Presented by</span>
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3 w-auto object-contain" />
+            </a>
           </div>
         </div>
       </PageHero>
