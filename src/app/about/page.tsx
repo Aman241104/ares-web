@@ -401,13 +401,12 @@ export default function AboutPage() {
                     fill
                     src={leader.img}
                     alt={leader.name}
-                    className="object-cover object-top opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    className="object-cover object-top"
+                    style={{ filter: "brightness(1.25) saturate(1.05)" }}
                     sizes="(max-width:640px) 50vw, 25vw"
                   />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                  {/* Team color tint at bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60" style={{ mixBlendMode: "multiply" }} />
+                  {/* Gradient overlay for text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] mb-1.5" style={{ color: leader.color }}>{leader.role}</div>

@@ -65,27 +65,23 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
             alt={honoree.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            className="object-cover object-top"
+            style={{ filter: "brightness(1.25) saturate(1.05)" }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
             <Building2 className="w-10 h-10 text-[#D4AF37]/30" />
           </div>
         )}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 45%, transparent 65%)" }} />
-
-        {/* Company reveal on hover */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-400">
-          <div className="flex items-center gap-1.5 font-montserrat text-[9px] text-[#D4AF37] uppercase tracking-widest mb-1">
-            <Briefcase className="w-3 h-3" /> {honoree.companyName}
-          </div>
-          <div className="font-montserrat text-white/50 text-[8px] uppercase tracking-[0.2em]">{honoree.category}</div>
-        </div>
       </div>
       <div className="p-5">
         <div className="font-montserrat text-[9px] uppercase tracking-widest mb-1 text-[#D4AF37]/80">{honoree.role}</div>
         <div className="font-cinzel text-white text-base tracking-wider mb-1">{honoree.name}</div>
-        <div className="flex items-center gap-1.5 mt-3 font-montserrat text-[9px] uppercase tracking-widest text-white/40 group-hover:text-[#D4AF37] transition-colors">
+        <div className="flex items-center gap-1.5 font-montserrat text-[9px] text-[#D4AF37] uppercase tracking-widest mt-3">
+          <Briefcase className="w-3 h-3" /> {honoree.companyName}
+        </div>
+        <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.2em] mt-1">{honoree.category}</div>
+        <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-white/5 font-montserrat text-[9px] uppercase tracking-widest text-white/40 group-hover:text-[#D4AF37] transition-colors">
           Tap to View <ArrowRight className="w-3 h-3" />
         </div>
       </div>
@@ -113,7 +109,7 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0 bg-[#030712] flex items-center justify-center">
             {honoree.img ? (
-              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" />
+              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
             ) : (
               <Building2 className="w-6 h-6 text-[#D4AF37]/40" />
             )}

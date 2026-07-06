@@ -424,26 +424,28 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
               <div className="absolute top-0 left-0 w-full h-1 z-20" style={{ background: team.color, boxShadow: `0 0 20px ${team.color}` }} />
 
               {/* Full-size portrait image (matches source aspect ratio so nothing gets cropped) */}
-              <div className="relative w-full aspect-[4/5] overflow-hidden flex-shrink-0">
-                {team.owner.image ? (
-                  <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: `${team.color}15` }}>
-                    <span className="font-cinzel text-7xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                      {team.owner.name.split(" ").map(n => n[0]).join("")}
-                    </span>
+              <div className="relative w-full aspect-[4/5] flex-shrink-0">
+                <div className="absolute inset-0 overflow-hidden">
+                  {team.owner.image ? (
+                    <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center" style={{ background: `${team.color}15` }}>
+                      <span className="font-cinzel text-7xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        {team.owner.name.split(" ").map(n => n[0]).join("")}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Small Owner Tag overlaid at the top of the image */}
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/70 uppercase flex items-center gap-3 z-10">
+                    <div className="w-8 h-px bg-white/40" />
+                    Team Owner
+                    <div className="w-8 h-px bg-white/40" />
                   </div>
-                )}
 
-                {/* Small Owner Tag overlaid at the top of the image */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 font-montserrat text-[9px] font-bold tracking-[0.3em] text-white/70 uppercase flex items-center gap-3 z-10">
-                  <div className="w-8 h-px bg-white/40" />
-                  Team Owner
-                  <div className="w-8 h-px bg-white/40" />
+                  {/* Fade into card body so the pill + text below sit on a clean surface */}
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B1120] via-[#0B1120]/40 to-transparent pointer-events-none" />
                 </div>
-
-                {/* Fade into card body so the pill + text below sit on a clean surface */}
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B1120] via-[#0B1120]/40 to-transparent pointer-events-none" />
 
                 {/* Owner Pill straddling the image / body boundary */}
                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#050B0A] border px-4 py-1.5 rounded-full z-20 shadow-[0_5px_15px_rgba(0,0,0,0.8)]" style={{ borderColor: team.color }}>
@@ -481,7 +483,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 {/* Photo / Avatar Section */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ background: `${team.color}08` }}>
                   {m.image ? (
-                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-cinzel font-light text-5xl opacity-20" style={{ color: team.color }}>{m.name.charAt(0)}</span>
@@ -498,11 +500,6 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                       <span className="font-montserrat text-[9px] font-bold tracking-[0.2em] uppercase" style={{ color: team.color }}>Captain</span>
                     </div>
                   )}
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-[2px] z-10">
-                    <span className="font-montserrat text-white text-[9px] uppercase tracking-[0.2em] border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition-colors">View Profile</span>
-                  </div>
                 </div>
 
                 {/* Info Section */}
