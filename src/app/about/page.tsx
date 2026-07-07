@@ -402,7 +402,6 @@ export default function AboutPage() {
                     src={leader.img}
                     alt={leader.name}
                     className="object-cover object-top"
-                    style={{ filter: "brightness(1.25) saturate(1.05)" }}
                     sizes="(max-width:640px) 50vw, 25vw"
                   />
                   {/* Gradient overlay for text legibility */}

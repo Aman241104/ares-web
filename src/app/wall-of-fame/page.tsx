@@ -66,7 +66,6 @@ function HonoreeCard({ honoree, onOpen }: { honoree: WallHonoree; onOpen: () => 
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-top"
-            style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
@@ -109,7 +108,7 @@ function HonoreeModal({ honoree, onClose }: { honoree: WallHonoree; onClose: () 
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0 bg-[#030712] flex items-center justify-center">
             {honoree.img ? (
-              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }} />
+              <Image src={honoree.img} alt={honoree.name} fill className="object-cover" />
             ) : (
               <Building2 className="w-6 h-6 text-[#D4AF37]/40" />
             )}
@@ -271,7 +270,7 @@ export default function WallOfFamePage() {
 
             <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300">
               <span className="font-montserrat text-white/40 text-[7px] tracking-[0.25em] uppercase">Presented by</span>
-              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3 w-auto object-contain" />
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-5 w-auto object-contain" />
             </a>
           </div>
         </div>

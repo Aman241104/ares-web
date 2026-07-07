@@ -121,7 +121,7 @@ export default function LeaderboardPage() {
 
             <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 opacity-60 hover:opacity-100 transition-opacity duration-300">
               <span className="font-montserrat text-white/40 text-[7px] tracking-[0.25em] uppercase">Presented by</span>
-              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3 w-auto object-contain" />
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-5 w-auto object-contain" />
             </a>
           </div>
         </div>

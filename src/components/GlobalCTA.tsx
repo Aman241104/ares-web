@@ -2,17 +2,9 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
-import { ArrowRight, Sparkles, Smartphone, Rocket, LineChart, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Smartphone, Rocket, LineChart, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Live demo of Gravity Media Marketing's own AI chat product - the "Website Widget" feature of
-// the WhatsApp AI Agent platform (whatsapp-ai-agent-inky.vercel.app), embedded inline (not as a
-// floating bubble) via widget.js's data-target mode, scoped to Gravity Media Marketing's own
-// workspace/knowledge base so it can answer questions about services offered and about ABL itself.
-const AI_WIDGET_SITE_ID = "f5cd9777-83a2-44f5-a880-088b0d6de332";
-const AI_WIDGET_SCRIPT_SRC = "https://whatsapp-ai-agent-inky.vercel.app/widget.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -146,7 +138,6 @@ export default function GlobalCTA() {
           {/* Feature List */}
           <div className="space-y-4 mb-14">
             {[
-              { icon: <Sparkles className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "AWWWARDS-WINNING DESIGN AESTHETICS" },
               { icon: <Smartphone className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "MOBILE & WEB APP DEVELOPMENT" },
               { icon: <Rocket className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "HIGH-PERFORMANCE ARCHITECTURE" },
               { icon: <LineChart className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "DATA-DRIVEN MARKETING & MEDIA" },
@@ -176,18 +167,13 @@ export default function GlobalCTA() {
             </div>
           </div>
 
-          {/* Live AI Assistant demo - built and hosted by Gravity Media Marketing, answers
-              questions about our services and about ABL itself using a real knowledge base. */}
-          <div className="g-action mt-10 pt-8 border-t border-white/10">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00A859] animate-pulse" />
-              <span className="text-[#00D672] text-[9px] font-bold tracking-[0.25em] uppercase">Try It Live</span>
-            </div>
-            <p className="text-white/50 text-xs mb-4 max-w-md">
-              This is our AI Assistant product, running live right now. Ask it about our services or about ABL 2026.
-            </p>
-            <div id="gravity-ai-widget" className="h-[460px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] ring-1 ring-white/[0.08] max-w-md" style={{ isolation: "isolate" }} />
-            <Script src={AI_WIDGET_SCRIPT_SRC} data-site-id={AI_WIDGET_SITE_ID} data-target="#gravity-ai-widget" strategy="lazyOnload" />
+          {/* Live AI Assistant teaser - the actual widget is rendered as a launcher bubble +
+              panel at the end of this component, docked to the corner of the viewport. */}
+          <div className="g-action mt-10 pt-8 border-t border-white/10 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00A859] animate-pulse" />
+            <span className="text-white/50 text-xs">
+              Try our live <span className="text-[#00D672] font-semibold">AI Assistant</span> — the chat bubble in the corner runs our own product, right now.
+            </span>
           </div>
         </div>
 

@@ -174,7 +174,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity duration-300"
           >
-            <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-6 w-auto object-contain" />
+            <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-16 w-auto object-contain" />
             <span className="hidden sm:block h-8 w-px bg-white/10" />
             <span className="hidden sm:block font-montserrat text-white/40 text-[9px] tracking-[0.2em] uppercase leading-relaxed text-left">
               Presenting Sponsor &<br />Digital Experience Partner

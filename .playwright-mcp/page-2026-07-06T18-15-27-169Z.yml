@@ -1,0 +1,421 @@
+- generic [active] [ref=f12e1]:
+  - banner [ref=f12e2]:
+    - generic [ref=f12e5]:
+      - link "ARES Business League 2026 ARES Business League" [ref=f12e6] [cursor=pointer]:
+        - /url: /
+        - img "ARES Business League 2026" [ref=f12e8]
+        - generic [ref=f12e9]:
+          - generic [ref=f12e10]: ARES
+          - generic [ref=f12e11]: Business League
+      - link "Presented by Jukebox Media" [ref=f12e12] [cursor=pointer]:
+        - /url: https://jukeboxmedia.in
+        - generic [ref=f12e13]: Presented by
+        - img "Jukebox Media" [ref=f12e14]
+      - navigation [ref=f12e15]:
+        - link "About" [ref=f12e16] [cursor=pointer]:
+          - /url: /about
+        - button "Teams" [ref=f12e18]:
+          - text: Teams
+          - img [ref=f12e19]
+        - button "Team Owners" [ref=f12e22]:
+          - text: Team Owners
+          - img [ref=f12e23]
+        - link "Events" [ref=f12e25] [cursor=pointer]:
+          - /url: /schedule
+        - link "Points" [ref=f12e26] [cursor=pointer]:
+          - /url: /points
+        - link "Leaderboard" [ref=f12e27] [cursor=pointer]:
+          - /url: /leaderboard
+        - link "Hall of Fame" [ref=f12e28] [cursor=pointer]:
+          - /url: /wall-of-fame
+        - link "Blog" [ref=f12e29] [cursor=pointer]:
+          - /url: /blog
+        - link "Partners" [ref=f12e30] [cursor=pointer]:
+          - /url: /partners
+      - generic [ref=f12e31]:
+        - link "Jukebox Media" [ref=f12e32] [cursor=pointer]:
+          - /url: https://jukeboxmedia.in
+        - link "Build Your Web Site" [ref=f12e33] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=f12e34]:
+    - generic [ref=f12e36]:
+      - generic [ref=f12e38]:
+        - generic [ref=f12e39]:
+          - link "Home" [ref=f12e40] [cursor=pointer]:
+            - /url: /
+          - img [ref=f12e41]
+          - link "Teams" [ref=f12e43] [cursor=pointer]:
+            - /url: /teams
+          - img [ref=f12e44]
+          - generic [ref=f12e46]: Vaer Strategists - Team Amit Shah
+        - generic [ref=f12e47]:
+          - generic [ref=f12e48]:
+            - heading "VAER STRATEGISTS SHAH" [level=1] [ref=f12e49]:
+              - generic [ref=f12e51]: VAER STRATEGISTS
+              - generic [ref=f12e53]: SHAH
+            - generic [ref=f12e54]: Execution is Everything
+            - paragraph [ref=f12e57]: Team Amit Shah Warriors thrive under pressure. With unmatched execution power and warrior spirit, we turn every challenge into a victory.
+            - generic [ref=f12e58]:
+              - generic [ref=f12e59]:
+                - img [ref=f12e61]
+                - generic [ref=f12e66]: "7"
+                - generic [ref=f12e67]: Members
+              - generic [ref=f12e68]:
+                - img [ref=f12e70]
+                - generic [ref=f12e76]: "1"
+                - generic [ref=f12e77]: Championship
+              - generic [ref=f12e78]:
+                - img [ref=f12e80]
+                - generic [ref=f12e85]: 131,000
+                - generic [ref=f12e86]: Coins Spent
+              - generic [ref=f12e87]:
+                - img [ref=f12e89]
+                - generic [ref=f12e91]: "0"
+                - generic [ref=f12e92]: Points
+              - generic [ref=f12e93]:
+                - img [ref=f12e95]
+                - generic [ref=f12e98]: "Rank #3"
+            - generic [ref=f12e99]:
+              - link "View Members" [ref=f12e100] [cursor=pointer]:
+                - /url: "#members"
+                - text: View Members
+                - img [ref=f12e101]
+              - link "View Stats" [ref=f12e103] [cursor=pointer]:
+                - /url: "#performance"
+          - img "Vaer Strategists" [ref=f12e106]
+      - generic [ref=f12e108]:
+        - generic [ref=f12e111]:
+          - generic [ref=f12e112]: Team Color
+          - generic [ref=f12e113]: Red
+        - generic [ref=f12e115]:
+          - generic [ref=f12e116]: Team Icon
+          - generic [ref=f12e117]: Tiger
+        - generic [ref=f12e119]:
+          - generic [ref=f12e120]: Team Motto
+          - generic [ref=f12e121]: "\"Execution is Everything\""
+        - generic [ref=f12e123]:
+          - generic [ref=f12e124]: Leadership Style
+          - generic [ref=f12e125]: Action-Oriented • Decisive
+      - generic [ref=f12e130]:
+        - img [ref=f12e132]
+        - generic [ref=f12e137]:
+          - generic [ref=f12e138]:
+            - img [ref=f12e139]
+            - generic [ref=f12e141]: Team Superpower
+          - heading "OPERATION LOTUS" [level=3] [ref=f12e142]
+          - paragraph [ref=f12e143]: Choose any player from any competing team - and you get bonus of 2X the points that player scores in that week.
+          - paragraph [ref=f12e145]: "Rule: You have to inform regarding the superpower a week prior (latest by Tuesday evening) to activate it."
+      - generic [ref=f12e147]:
+        - heading "Team Overview" [level=3] [ref=f12e149]
+        - generic [ref=f12e151]:
+          - generic [ref=f12e152]:
+            - generic [ref=f12e154]: "0"
+            - generic [ref=f12e155]: Total Points
+          - generic [ref=f12e156]:
+            - generic [ref=f12e158]: "0"
+            - generic [ref=f12e159]: This Week
+          - generic [ref=f12e160]:
+            - generic [ref=f12e162]: 0%
+            - generic [ref=f12e163]: Win Rate
+        - generic [ref=f12e164]:
+          - generic [ref=f12e165]:
+            - generic [ref=f12e166]: "--"
+            - generic [ref=f12e167]: Business
+          - generic [ref=f12e168]:
+            - generic [ref=f12e169]: "0"
+            - generic [ref=f12e170]: Referrals
+          - generic [ref=f12e171]:
+            - generic [ref=f12e172]: "0"
+            - generic [ref=f12e173]: 1 to 1
+          - generic [ref=f12e174]:
+            - generic [ref=f12e175]: "0"
+            - generic [ref=f12e176]: Visitors
+          - generic [ref=f12e177]:
+            - generic [ref=f12e178]: "0"
+            - generic [ref=f12e179]: Induction
+      - generic [ref=f12e181]:
+        - heading "Team Roster (7 Active)" [level=2] [ref=f12e183]:
+          - text: Team Roster
+          - generic [ref=f12e184]: (7 Active)
+        - generic [ref=f12e186]:
+          - generic [ref=f12e187]:
+            - generic [ref=f12e189]:
+              - generic [ref=f12e190]:
+                - img "Harsh Brambhatt" [ref=f12e191]
+                - generic [ref=f12e192]: Team Owner
+              - generic [ref=f12e195]: Owner
+            - generic [ref=f12e196]:
+              - heading "Harsh Brambhatt" [level=3] [ref=f12e197]
+              - generic [ref=f12e198]: Vaer HVAC Solutions
+              - paragraph [ref=f12e200]: "\"Execution is the key to maintaining the perfect environment.\""
+              - link "View Full Profile" [ref=f12e201] [cursor=pointer]:
+                - /url: /owners/harsh-brambhatt
+                - text: View Full Profile
+                - img [ref=f12e202]
+          - button "Ankit Jani 1 Captain Ankit Jani Digital Marketing Jukebox Media 10000 PTS" [ref=f12e204] [cursor=pointer]:
+            - generic [ref=f12e205]:
+              - img "Ankit Jani" [ref=f12e206]
+              - generic [ref=f12e207]: "1"
+              - generic [ref=f12e208]: Captain
+            - generic [ref=f12e209]:
+              - generic [ref=f12e210]:
+                - generic [ref=f12e211]: Ankit Jani
+                - generic [ref=f12e212]: Digital Marketing
+              - generic [ref=f12e213]:
+                - generic [ref=f12e214]: Jukebox Media
+                - generic [ref=f12e215]: 10000 PTS
+          - button "Dr. Chahana Shah 2 Dr. Chahana Shah Dentistry Chahana Dental 16000 PTS" [ref=f12e216] [cursor=pointer]:
+            - generic [ref=f12e217]:
+              - img "Dr. Chahana Shah" [ref=f12e218]
+              - generic [ref=f12e219]: "2"
+            - generic [ref=f12e220]:
+              - generic [ref=f12e221]:
+                - generic [ref=f12e222]: Dr. Chahana Shah
+                - generic [ref=f12e223]: Dentistry
+              - generic [ref=f12e224]:
+                - generic [ref=f12e225]: Chahana Dental
+                - generic [ref=f12e226]: 16000 PTS
+          - button "Shruti Agrawal 3 Shruti Agrawal Furniture Manufacturing Arcedior International 26000 PTS" [ref=f12e227] [cursor=pointer]:
+            - generic [ref=f12e228]:
+              - img "Shruti Agrawal" [ref=f12e229]
+              - generic [ref=f12e230]: "3"
+            - generic [ref=f12e231]:
+              - generic [ref=f12e232]:
+                - generic [ref=f12e233]: Shruti Agrawal
+                - generic [ref=f12e234]: Furniture Manufacturing
+              - generic [ref=f12e235]:
+                - generic [ref=f12e236]: Arcedior International
+                - generic [ref=f12e237]: 26000 PTS
+          - button "Het Patel 4 Het Patel Construction Chemicals Konek Construction 31000 PTS" [ref=f12e238] [cursor=pointer]:
+            - generic [ref=f12e239]:
+              - img "Het Patel" [ref=f12e240]
+              - generic [ref=f12e241]: "4"
+            - generic [ref=f12e242]:
+              - generic [ref=f12e243]:
+                - generic [ref=f12e244]: Het Patel
+                - generic [ref=f12e245]: Construction Chemicals
+              - generic [ref=f12e246]:
+                - generic [ref=f12e247]: Konek Construction
+                - generic [ref=f12e248]: 31000 PTS
+          - button "Varun Bagaria 5 Varun Bagaria Men's Clothing Prestine 33000 PTS" [ref=f12e249] [cursor=pointer]:
+            - generic [ref=f12e250]:
+              - img "Varun Bagaria" [ref=f12e251]
+              - generic [ref=f12e252]: "5"
+            - generic [ref=f12e253]:
+              - generic [ref=f12e254]:
+                - generic [ref=f12e255]: Varun Bagaria
+                - generic [ref=f12e256]: Men's Clothing
+              - generic [ref=f12e257]:
+                - generic [ref=f12e258]: Prestine
+                - generic [ref=f12e259]: 33000 PTS
+          - button "Nitin Upadhyay 6 Nitin Upadhyay Real Estate Shree Krishna 15000 PTS" [ref=f12e260] [cursor=pointer]:
+            - generic [ref=f12e261]:
+              - img "Nitin Upadhyay" [ref=f12e262]
+              - generic [ref=f12e263]: "6"
+            - generic [ref=f12e264]:
+              - generic [ref=f12e265]:
+                - generic [ref=f12e266]: Nitin Upadhyay
+                - generic [ref=f12e267]: Real Estate
+              - generic [ref=f12e268]:
+                - generic [ref=f12e269]: Shree Krishna
+                - generic [ref=f12e270]: 15000 PTS
+      - generic [ref=f12e272]:
+        - heading "Performance" [level=2] [ref=f12e274]
+        - generic [ref=f12e276]:
+          - generic [ref=f12e277]:
+            - heading "Key Metrics" [level=3] [ref=f12e278]
+            - generic [ref=f12e279]:
+              - generic [ref=f12e281]:
+                - generic [ref=f12e282]: Visitors
+                - generic [ref=f12e283]: 0%
+              - generic [ref=f12e286]:
+                - generic [ref=f12e287]: Referrals
+                - generic [ref=f12e288]: 0%
+              - generic [ref=f12e291]:
+                - generic [ref=f12e292]: TYFCB
+                - generic [ref=f12e293]: 0%
+              - generic [ref=f12e296]:
+                - generic [ref=f12e297]: One-to-Ones
+                - generic [ref=f12e298]: 0%
+              - generic [ref=f12e301]:
+                - generic [ref=f12e302]: Attendance
+                - generic [ref=f12e303]: 0%
+          - generic [ref=f12e305]:
+            - heading "Recent Achievements" [level=3] [ref=f12e306]
+            - generic [ref=f12e308]:
+              - img [ref=f12e310]
+              - generic [ref=f12e316]:
+                - generic [ref=f12e317]: Execution Excellence
+                - generic [ref=f12e318]: Best execution rate in Week 2.
+  - generic [ref=f12e319]:
+    - generic:
+      - img "Gravity Background"
+    - generic [ref=f12e320]:
+      - generic [ref=f12e321]:
+        - generic [ref=f12e324]: Official Web & Media Partner
+        - heading "ELEVATE YOUR DIGITAL PRESENCE" [level=2] [ref=f12e325]:
+          - generic [ref=f12e326]: ELEVATE
+          - generic [ref=f12e327]: YOUR
+          - generic [ref=f12e328]: DIGITAL
+          - generic [ref=f12e329]: PRESENCE
+        - paragraph [ref=f12e330]: Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
+        - generic [ref=f12e331]:
+          - generic [ref=f12e332]:
+            - img [ref=f12e334]
+            - generic [ref=f12e337]: AWWWARDS-WINNING DESIGN AESTHETICS
+          - generic [ref=f12e338]:
+            - img [ref=f12e340]
+            - generic [ref=f12e342]: MOBILE & WEB APP DEVELOPMENT
+          - generic [ref=f12e343]:
+            - img [ref=f12e345]
+            - generic [ref=f12e350]: HIGH-PERFORMANCE ARCHITECTURE
+          - generic [ref=f12e351]:
+            - img [ref=f12e353]
+            - generic [ref=f12e356]: DATA-DRIVEN MARKETING & MEDIA
+        - generic [ref=f12e357]:
+          - link "Start Project" [ref=f12e358] [cursor=pointer]:
+            - /url: /contact
+            - text: Start Project
+            - img [ref=f12e359]
+          - generic [ref=f12e361]:
+            - generic [ref=f12e362]: Gravity Media Marketing
+            - link "gauravmehta.biz@gmail.com" [ref=f12e363] [cursor=pointer]:
+              - /url: mailto:gauravmehta.biz@gmail.com
+            - link "+91 8104933816" [ref=f12e364] [cursor=pointer]:
+              - /url: tel:+918104933816
+        - generic [ref=f12e367]: Try our live AI Assistant — the chat bubble in the corner runs our own product, right now.
+      - generic [ref=f12e370]:
+        - generic [ref=f12e377]: Case Study
+        - generic [ref=f12e378]:
+          - generic [ref=f12e386]: aresbusinessleague.com
+          - generic [ref=f12e414]: Site Live
+          - generic [ref=f12e415]:
+            - img [ref=f12e417]
+            - generic [ref=f12e420]: Built & Deployed
+        - generic [ref=f12e422]: Official Digital Partner
+  - contentinfo [ref=f12e423]:
+    - generic [ref=f12e425]:
+      - generic [ref=f12e426]:
+        - generic [ref=f12e427]:
+          - link "ARES Business League 2026 ARES Business League 2026 Edition" [ref=f12e428] [cursor=pointer]:
+            - /url: /
+            - img "ARES Business League 2026" [ref=f12e430]
+            - generic [ref=f12e431]:
+              - generic [ref=f12e432]: ARES
+              - generic [ref=f12e433]: Business League
+              - generic [ref=f12e434]: 2026 Edition
+          - paragraph [ref=f12e435]: "A high-stakes, one-month business tournament featuring 30 elite BNI business owners competing in 4 iconic teams for one ultimate goal: Nation Building."
+          - generic [ref=f12e436]:
+            - link "LinkedIn" [ref=f12e437] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=f12e438]
+            - link "Instagram" [ref=f12e440] [cursor=pointer]:
+              - /url: https://instagram.com
+              - img [ref=f12e441]
+        - generic [ref=f12e443]:
+          - heading "Explore" [level=4] [ref=f12e444]
+          - list [ref=f12e445]:
+            - listitem [ref=f12e446]:
+              - link "Home" [ref=f12e447] [cursor=pointer]:
+                - /url: /
+                - text: Home
+            - listitem [ref=f12e448]:
+              - link "About" [ref=f12e449] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=f12e450]:
+              - link "Teams" [ref=f12e451] [cursor=pointer]:
+                - /url: /teams
+                - text: Teams
+            - listitem [ref=f12e452]:
+              - link "Schedule" [ref=f12e453] [cursor=pointer]:
+                - /url: /schedule
+                - text: Schedule
+            - listitem [ref=f12e454]:
+              - link "Leaderboard" [ref=f12e455] [cursor=pointer]:
+                - /url: /leaderboard
+                - text: Leaderboard
+            - listitem [ref=f12e456]:
+              - link "Hall of Fame" [ref=f12e457] [cursor=pointer]:
+                - /url: /wall-of-fame
+                - text: Hall of Fame
+            - listitem [ref=f12e458]:
+              - link "Blog" [ref=f12e459] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=f12e460]:
+              - link "Partners" [ref=f12e461] [cursor=pointer]:
+                - /url: /partners
+                - text: Partners
+            - listitem [ref=f12e462]:
+              - link "Build Your Site" [ref=f12e463] [cursor=pointer]:
+                - /url: /contact
+                - text: Build Your Site
+        - generic [ref=f12e464]:
+          - heading "The Factions" [level=4] [ref=f12e465]
+          - list [ref=f12e466]:
+            - listitem [ref=f12e467]:
+              - link "Team Modi Visionaries" [ref=f12e468] [cursor=pointer]:
+                - /url: /teams/modi
+                - generic [ref=f12e470]: Team Modi Visionaries
+            - listitem [ref=f12e471]:
+              - link "Team Doval Strategists" [ref=f12e472] [cursor=pointer]:
+                - /url: /teams/doval
+                - generic [ref=f12e474]: Team Doval Strategists
+            - listitem [ref=f12e475]:
+              - link "Team Shah Warriors" [ref=f12e476] [cursor=pointer]:
+                - /url: /teams/amit-shah
+                - generic [ref=f12e478]: Team Shah Warriors
+            - listitem [ref=f12e479]:
+              - link "Team Jaishankar Diplomats" [ref=f12e480] [cursor=pointer]:
+                - /url: /teams/jaishankar
+                - generic [ref=f12e482]: Team Jaishankar Diplomats
+          - generic [ref=f12e483]:
+            - generic [ref=f12e484]: Tournament Window
+            - generic [ref=f12e485]: July 1st – July 29th
+            - generic [ref=f12e486]: "2026"
+        - generic [ref=f12e487]:
+          - heading "Connect" [level=4] [ref=f12e488]
+          - list [ref=f12e489]:
+            - listitem [ref=f12e490]:
+              - img [ref=f12e492]
+              - generic [ref=f12e494]: +91 81049 33816
+            - listitem [ref=f12e495]:
+              - img [ref=f12e497]
+              - generic [ref=f12e500]: gauravmehta.biz@gmail.com
+            - listitem [ref=f12e501]:
+              - img [ref=f12e503]
+              - generic [ref=f12e506]: India
+          - generic [ref=f12e507]:
+            - generic [ref=f12e508]: Stay Updated
+            - generic [ref=f12e509]:
+              - textbox "Your email" [ref=f12e510]
+              - button "Join" [ref=f12e511]
+      - generic [ref=f12e512]:
+        - generic [ref=f12e513]: Powered by
+        - link "Jukebox Media Presenting Sponsor & Digital Experience Partner" [ref=f12e514] [cursor=pointer]:
+          - /url: https://jukeboxmedia.in
+          - img "Jukebox Media" [ref=f12e515]
+          - generic [ref=f12e517]:
+            - text: Presenting Sponsor &
+            - text: Digital Experience Partner
+      - generic [ref=f12e518]:
+        - generic [ref=f12e519]:
+          - paragraph [ref=f12e520]: © 2026 ARES Business League
+          - paragraph [ref=f12e522]: All rights reserved
+        - generic [ref=f12e523]:
+          - link "Rules & FAQ" [ref=f12e524] [cursor=pointer]:
+            - /url: /rules
+          - link "Contact" [ref=f12e526] [cursor=pointer]:
+            - /url: /contact
+          - link "About" [ref=f12e528] [cursor=pointer]:
+            - /url: /about
+  - generic:
+    - generic [ref=f12e531]: Ask our AI Assistant about Gravity or ABL 2026
+    - generic:
+      - button "Close chat":
+        - img
+    - button "Open AI Assistant chat" [ref=f12e532]:
+      - img [ref=f12e533]
+  - button "Open Next.js Dev Tools" [ref=f12e541] [cursor=pointer]:
+    - img [ref=f12e542]

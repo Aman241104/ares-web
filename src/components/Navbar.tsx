@@ -74,7 +74,7 @@ export default function Navbar() {
       <header
         className={`pointer-events-auto w-full transition-[background,border-color,box-shadow,border-radius,max-width,backdrop-filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] border ${
           scrolled
-            ? "bg-[#000000]/94 backdrop-blur-2xl border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1280px]"
+            ? "bg-[#000000]/94 backdrop-blur-2xl border-[rgba(212,175,55,0.14)] shadow-[0_8px_50px_rgba(0,0,0,0.95),0_0_0_0.5px_rgba(212,175,55,0.08)] rounded-2xl max-w-[1560px]"
             : "bg-gradient-to-b from-[#000000]/75 via-[#000000]/35 to-transparent border-transparent max-w-full rounded-none"
         }`}
       >
@@ -123,7 +123,7 @@ export default function Navbar() {
                 alt="Jukebox Media"
                 width={872}
                 height={342}
-                className={`w-auto object-contain transition-all duration-700 ${scrolled ? "h-7" : "h-9"}`}
+                className={`w-auto object-contain transition-all duration-700 ${scrolled ? "h-9" : "h-11"}`}
               />
             </a>
 

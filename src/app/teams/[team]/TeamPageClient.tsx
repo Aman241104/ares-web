@@ -428,7 +428,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
               <div className="relative w-full aspect-[4/5] flex-shrink-0">
                 <div className="absolute inset-0 overflow-hidden">
                   {team.owner.image ? (
-                    <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" style={{ filter: "brightness(1.25) saturate(1.05)" }} />
+                    <Image src={team.owner.image} alt={team.owner.name} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center" style={{ background: `${team.color}15` }}>
                       <span className="font-cinzel text-7xl font-light text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -484,7 +484,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                 {/* Photo / Avatar Section */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ background: `${team.color}08` }}>
                   {m.image ? (
-                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top" style={{ filter: "brightness(1.35) contrast(1.15) saturate(1.15)" }} />
+                    <Image src={m.image} alt={m.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover object-top" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-cinzel font-light text-5xl opacity-20" style={{ color: team.color }}>{m.name.charAt(0)}</span>

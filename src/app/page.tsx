@@ -301,7 +301,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2.5 mt-3 opacity-70 hover:opacity-100 transition-opacity duration-300"
             >
               <span className="font-montserrat text-white/40 text-[8px] tracking-[0.3em] uppercase">Presented by</span>
-              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-3.5 w-auto object-contain" />
+              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-10 w-auto object-contain" />
             </a>
 
             {/* Gold divider */}
@@ -582,7 +582,6 @@ export default function HomePage() {
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         className="object-cover object-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
-                        style={{ filter: "brightness(1.15) saturate(1.05)" }}
                       />
                       <Image
                         src={mascots[team.id]}

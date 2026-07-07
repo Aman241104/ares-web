@@ -59,6 +59,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CommandMenu from "@/components/CommandMenu";
 import MobileDock from "@/components/MobileDock";
 import SplashLoader from "@/components/SplashLoader";
+import AIChatWidget from "@/components/AIChatWidget";
 
 export default function RootLayout({
   children,
@@ -78,6 +79,7 @@ export default function RootLayout({
         </SmoothScroll>
         <CommandMenu />
         <MobileDock />
+        <AIChatWidget />
       </body>
     </html>
   );
