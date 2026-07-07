@@ -88,13 +88,12 @@ const comingSoon = [
 
 function PointsTable({ rows }: { rows: PointRow[] }) {
   return (
-    <div className="border border-white/6 overflow-x-auto custom-scrollbar">
-      <div className="min-w-[560px] sm:min-w-0">
-      {/* Header */}
-      <div className="grid grid-cols-[1fr_auto_auto] bg-[#D4AF37]/8 border-b border-white/8">
-        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold">Activity</div>
-        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold text-right">Points</div>
-        <div className="px-4 sm:px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-48 sm:w-[280px] text-right">Details</div>
+    <div className="border border-white/6">
+      {/* Header — desktop only, mobile rows are self-labeled */}
+      <div className="hidden sm:grid grid-cols-[1fr_auto_auto] bg-[#D4AF37]/8 border-b border-white/8">
+        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold">Activity</div>
+        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold text-right">Points</div>
+        <div className="px-6 py-3 font-montserrat text-[9px] uppercase tracking-[0.35em] text-[#D4AF37]/70 font-bold w-[280px] text-right">Details</div>
       </div>
 
       {rows.map((row, i) => {
@@ -105,21 +104,17 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
               {row.tiers.map((tier, ti) => (
                 <div
                   key={ti}
-                  className="grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors duration-200"
+                  className={`grid grid-cols-1 gap-1.5 px-4 py-3 sm:grid-cols-[1fr_auto_auto] sm:gap-0 sm:px-0 sm:py-0 hover:bg-white/[0.025] transition-colors duration-200 ${ti > 0 ? "border-t border-white/5 sm:border-t-0" : ""}`}
                 >
-                  <div className="px-6 py-3.5 font-montserrat text-[11px] text-white/70 tracking-wide">
-                    {ti === 0 ? (
-                      <span className="text-white/90 font-semibold">{row.label}</span>
-                    ) : (
-                      <span className="text-white/0 select-none text-[9px]">—</span>
-                    )}
+                  <div className="sm:px-6 sm:py-3.5 font-montserrat text-[11px] text-white/70 tracking-wide">
+                    {ti === 0 && <span className="text-white/90 font-semibold">{row.label}</span>}
                   </div>
-                  <div className="px-6 py-3.5 text-right">
+                  <div className="flex items-center justify-between gap-3 sm:contents">
                     <span
-                      className="font-cinzel font-bold text-sm"
+                      className="font-cinzel font-bold text-sm sm:px-6 sm:py-3.5 sm:text-right"
                       style={{
-                        background: tier.points < 0 
-                          ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)" 
+                        background: tier.points < 0
+                          ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)"
                           : "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
@@ -128,9 +123,7 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
                     >
                       {tier.points.toLocaleString()}
                     </span>
-                  </div>
-                  <div className="px-6 py-3.5 w-48 sm:w-[280px] text-right">
-                    <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed block">{tier.detail}</span>
+                    <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed text-right sm:w-[280px] sm:px-6 sm:py-3.5">{tier.detail}</span>
                   </div>
                 </div>
               ))}
@@ -141,15 +134,15 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
         return (
           <div
             key={row.label}
-            className={`grid grid-cols-[1fr_auto_auto] hover:bg-white/[0.025] transition-colors duration-200 ${!isLast ? "border-b border-white/5" : ""}`}
+            className={`grid grid-cols-1 gap-1.5 px-4 py-3 sm:grid-cols-[1fr_auto_auto] sm:gap-0 sm:px-0 sm:py-0 hover:bg-white/[0.025] transition-colors duration-200 ${!isLast ? "border-b border-white/5" : ""}`}
           >
-            <div className="px-6 py-3.5 font-montserrat text-[11px] text-white/90 tracking-wide font-semibold">{row.label}</div>
-            <div className="px-6 py-3.5 text-right">
+            <div className="sm:px-6 sm:py-3.5 font-montserrat text-[11px] text-white/90 tracking-wide font-semibold">{row.label}</div>
+            <div className="flex items-center justify-between gap-3 sm:contents">
               <span
-                className="font-cinzel font-bold text-sm"
+                className="font-cinzel font-bold text-sm sm:px-6 sm:py-3.5 sm:text-right"
                 style={{
-                  background: row.points < 0 
-                    ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)" 
+                  background: row.points < 0
+                    ? "linear-gradient(135deg, #FF6B6B 0%, #DC2626 100%)"
                     : "linear-gradient(135deg, #F3E5AB 0%, #D4AF37 60%, #C9921A 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -158,16 +151,13 @@ function PointsTable({ rows }: { rows: PointRow[] }) {
               >
                 {row.points.toLocaleString()}
               </span>
-            </div>
-            <div className="px-6 py-3.5 w-48 sm:w-[280px] text-right">
-              <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed block">
+              <span className="font-montserrat text-[8px] sm:text-[9px] text-white/40 uppercase tracking-[0.1em] leading-relaxed text-right sm:w-[280px] sm:px-6 sm:py-3.5">
                 {"detail" in row && row.detail ? row.detail : "—"}
               </span>
             </div>
           </div>
         );
       })}
-      </div>
     </div>
   );
 }

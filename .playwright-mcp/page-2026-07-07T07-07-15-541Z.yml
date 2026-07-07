@@ -1,0 +1,237 @@
+- generic [active] [ref=f61e1]:
+  - banner [ref=f61e2]:
+    - link "ARES Business League 2026" [ref=f61e6] [cursor=pointer]:
+      - /url: /
+      - img "ARES Business League 2026" [ref=f61e8]
+  - main [ref=f61e9]:
+    - generic [ref=f61e15]: Initializing
+  - generic [ref=f61e16]:
+    - generic:
+      - img "Gravity Background"
+    - generic [ref=f61e17]:
+      - generic [ref=f61e18]:
+        - generic [ref=f61e21]: Official Web & Media Partner
+        - heading "ELEVATE YOUR DIGITAL PRESENCE" [level=2] [ref=f61e22]:
+          - generic [ref=f61e23]: ELEVATE
+          - generic [ref=f61e24]: YOUR
+          - generic [ref=f61e25]: DIGITAL
+          - generic [ref=f61e26]: PRESENCE
+        - paragraph [ref=f61e27]: Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
+        - generic [ref=f61e28]:
+          - generic [ref=f61e29]:
+            - img [ref=f61e31]
+            - generic [ref=f61e33]: MOBILE & WEB APP DEVELOPMENT
+          - generic [ref=f61e34]:
+            - img [ref=f61e36]
+            - generic [ref=f61e41]: HIGH-PERFORMANCE ARCHITECTURE
+          - generic [ref=f61e42]:
+            - img [ref=f61e44]
+            - generic [ref=f61e47]: DATA-DRIVEN MARKETING & MEDIA
+        - generic [ref=f61e48]:
+          - link "Start Project" [ref=f61e49] [cursor=pointer]:
+            - /url: /contact
+            - text: Start Project
+            - img [ref=f61e50]
+          - generic [ref=f61e52]:
+            - generic [ref=f61e53]: Gravity Media Marketing
+            - link "gauravmehta.biz@gmail.com" [ref=f61e54] [cursor=pointer]:
+              - /url: mailto:gauravmehta.biz@gmail.com
+            - link "+91 8104933816" [ref=f61e55] [cursor=pointer]:
+              - /url: tel:+918104933816
+        - generic [ref=f61e58]: Try our live AI Assistant — the chat bubble in the corner runs our own product, right now.
+      - generic [ref=f61e61]:
+        - generic [ref=f61e68]: Case Study
+        - generic [ref=f61e77]: aresbusinessleague.com
+        - generic [ref=f61e103]: Official Digital Partner
+  - contentinfo [ref=f61e104]:
+    - generic [ref=f61e106]:
+      - generic [ref=f61e107]:
+        - generic [ref=f61e108]:
+          - link "ARES Business League 2026 ARES Business League 2026 Edition" [ref=f61e109] [cursor=pointer]:
+            - /url: /
+            - img "ARES Business League 2026" [ref=f61e111]
+            - generic [ref=f61e112]:
+              - generic [ref=f61e113]: ARES
+              - generic [ref=f61e114]: Business League
+              - generic [ref=f61e115]: 2026 Edition
+          - paragraph [ref=f61e116]: "A high-stakes, one-month business tournament featuring 30 elite BNI business owners competing in 4 iconic teams for one ultimate goal: Nation Building."
+          - generic [ref=f61e117]:
+            - link "LinkedIn" [ref=f61e118] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=f61e119]
+            - link "Instagram" [ref=f61e121] [cursor=pointer]:
+              - /url: https://instagram.com
+              - img [ref=f61e122]
+        - generic [ref=f61e124]:
+          - heading "Explore" [level=4] [ref=f61e125]
+          - list [ref=f61e126]:
+            - listitem [ref=f61e127]:
+              - link "Home" [ref=f61e128] [cursor=pointer]:
+                - /url: /
+                - text: Home
+            - listitem [ref=f61e129]:
+              - link "About" [ref=f61e130] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=f61e131]:
+              - link "Teams" [ref=f61e132] [cursor=pointer]:
+                - /url: /teams
+                - text: Teams
+            - listitem [ref=f61e133]:
+              - link "Schedule" [ref=f61e134] [cursor=pointer]:
+                - /url: /schedule
+                - text: Schedule
+            - listitem [ref=f61e135]:
+              - link "Leaderboard" [ref=f61e136] [cursor=pointer]:
+                - /url: /leaderboard
+                - text: Leaderboard
+            - listitem [ref=f61e137]:
+              - link "Hall of Fame" [ref=f61e138] [cursor=pointer]:
+                - /url: /wall-of-fame
+                - text: Hall of Fame
+            - listitem [ref=f61e139]:
+              - link "Blog" [ref=f61e140] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=f61e141]:
+              - link "Partners" [ref=f61e142] [cursor=pointer]:
+                - /url: /partners
+                - text: Partners
+            - listitem [ref=f61e143]:
+              - link "Build Your Site" [ref=f61e144] [cursor=pointer]:
+                - /url: /contact
+                - text: Build Your Site
+        - generic [ref=f61e145]:
+          - heading "The Factions" [level=4] [ref=f61e146]
+          - list [ref=f61e147]:
+            - listitem [ref=f61e148]:
+              - link "Team Modi Visionaries" [ref=f61e149] [cursor=pointer]:
+                - /url: /teams/modi
+                - generic [ref=f61e151]: Team Modi Visionaries
+            - listitem [ref=f61e152]:
+              - link "Team Doval Strategists" [ref=f61e153] [cursor=pointer]:
+                - /url: /teams/doval
+                - generic [ref=f61e155]: Team Doval Strategists
+            - listitem [ref=f61e156]:
+              - link "Team Shah Warriors" [ref=f61e157] [cursor=pointer]:
+                - /url: /teams/amit-shah
+                - generic [ref=f61e159]: Team Shah Warriors
+            - listitem [ref=f61e160]:
+              - link "Team Jaishankar Diplomats" [ref=f61e161] [cursor=pointer]:
+                - /url: /teams/jaishankar
+                - generic [ref=f61e163]: Team Jaishankar Diplomats
+          - generic [ref=f61e164]:
+            - generic [ref=f61e165]: Tournament Window
+            - generic [ref=f61e166]: July 1st – July 29th
+            - generic [ref=f61e167]: "2026"
+        - generic [ref=f61e168]:
+          - heading "Connect" [level=4] [ref=f61e169]
+          - list [ref=f61e170]:
+            - listitem [ref=f61e171]:
+              - img [ref=f61e173]
+              - generic [ref=f61e175]: +91 81049 33816
+            - listitem [ref=f61e176]:
+              - img [ref=f61e178]
+              - generic [ref=f61e181]: gauravmehta.biz@gmail.com
+            - listitem [ref=f61e182]:
+              - img [ref=f61e184]
+              - generic [ref=f61e187]: India
+          - generic [ref=f61e188]:
+            - generic [ref=f61e189]: Stay Updated
+            - generic [ref=f61e190]:
+              - textbox "Your email" [ref=f61e191]
+              - button "Join" [ref=f61e192]
+      - generic [ref=f61e193]:
+        - generic [ref=f61e194]: Powered by
+        - link "Jukebox Media" [ref=f61e195] [cursor=pointer]:
+          - /url: https://jukeboxmedia.in
+          - img "Jukebox Media" [ref=f61e197]
+      - generic [ref=f61e198]:
+        - generic [ref=f61e199]:
+          - paragraph [ref=f61e200]: © 2026 ARES Business League
+          - paragraph [ref=f61e202]: All rights reserved
+        - generic [ref=f61e203]:
+          - link "Rules & FAQ" [ref=f61e204] [cursor=pointer]:
+            - /url: /rules
+          - link "Contact" [ref=f61e206] [cursor=pointer]:
+            - /url: /contact
+          - link "About" [ref=f61e208] [cursor=pointer]:
+            - /url: /about
+  - generic [ref=f61e210]:
+    - generic [ref=f61e212]:
+      - generic [ref=f61e213]:
+        - generic [ref=f61e214]: Navigation
+        - generic [ref=f61e215]: ARES Business League
+      - button [ref=f61e216]:
+        - img [ref=f61e217]
+    - generic [ref=f61e220]:
+      - link "About" [ref=f61e221] [cursor=pointer]:
+        - /url: /about
+        - generic [ref=f61e222]: About
+        - img [ref=f61e223]
+      - link "Teams" [ref=f61e225] [cursor=pointer]:
+        - /url: /teams
+        - generic [ref=f61e226]: Teams
+        - img [ref=f61e227]
+      - link "Team Owners" [ref=f61e229] [cursor=pointer]:
+        - /url: /team-owners
+        - generic [ref=f61e230]: Team Owners
+        - img [ref=f61e231]
+      - link "Events" [ref=f61e233] [cursor=pointer]:
+        - /url: /schedule
+        - generic [ref=f61e234]: Events
+        - img [ref=f61e235]
+      - link "Points" [ref=f61e237] [cursor=pointer]:
+        - /url: /points
+        - generic [ref=f61e238]: Points
+        - img [ref=f61e239]
+      - link "Leaderboard" [ref=f61e241] [cursor=pointer]:
+        - /url: /leaderboard
+        - generic [ref=f61e242]: Leaderboard
+        - img [ref=f61e243]
+      - link "Hall of Fame" [ref=f61e245] [cursor=pointer]:
+        - /url: /wall-of-fame
+        - generic [ref=f61e246]: Hall of Fame
+        - img [ref=f61e247]
+      - link "Blog" [ref=f61e249] [cursor=pointer]:
+        - /url: /blog
+        - generic [ref=f61e250]: Blog
+        - img [ref=f61e251]
+      - link "Partners" [ref=f61e253] [cursor=pointer]:
+        - /url: /partners
+        - generic [ref=f61e254]: Partners
+        - img [ref=f61e255]
+    - generic [ref=f61e257]:
+      - link "Build Your Website" [ref=f61e258] [cursor=pointer]:
+        - /url: /contact
+        - text: Build Your Website
+        - img [ref=f61e259]
+      - link "Jukebox Media" [ref=f61e261] [cursor=pointer]:
+        - /url: https://jukeboxmedia.in
+  - generic [ref=f61e263]:
+    - link "Home" [ref=f61e265] [cursor=pointer]:
+      - /url: /
+      - img [ref=f61e267]
+      - generic [ref=f61e270]: Home
+    - link "Teams" [ref=f61e271] [cursor=pointer]:
+      - /url: /teams
+      - img [ref=f61e273]
+      - generic [ref=f61e278]: Teams
+    - link "Rank" [ref=f61e279] [cursor=pointer]:
+      - /url: /leaderboard
+      - img [ref=f61e282]
+      - generic [ref=f61e288]: Rank
+    - link "Events" [ref=f61e289] [cursor=pointer]:
+      - /url: /schedule
+      - img [ref=f61e291]
+      - generic [ref=f61e293]: Events
+    - button "More" [ref=f61e294]:
+      - img [ref=f61e296]
+      - generic [ref=f61e297]: More
+  - generic:
+    - button "Close chat":
+      - img
+  - button "Open AI Assistant chat" [ref=f61e298]:
+    - img [ref=f61e299]
+  - button "Open Next.js Dev Tools" [ref=f61e307] [cursor=pointer]:
+    - img [ref=f61e308]

@@ -298,10 +298,12 @@ export default function HomePage() {
               href="https://jukeboxmedia.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 mt-3 opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="inline-flex items-center gap-3 mt-3 opacity-85 hover:opacity-100 transition-opacity duration-300"
             >
               <span className="font-montserrat text-white/40 text-[8px] tracking-[0.3em] uppercase">Presented by</span>
-              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-10 w-auto object-contain" />
+              <span className="inline-flex items-center bg-white rounded-full pl-3 pr-4 py-2 shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
+                <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-6 sm:h-7 w-auto object-contain" />
+              </span>
             </a>
 
             {/* Gold divider */}

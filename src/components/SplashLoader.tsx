@@ -32,16 +32,16 @@ export default function SplashLoader() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" }, onComplete: finish });
 
       tl.to(".sp-particle", { opacity: 1, duration: 0.6, stagger: 0.02 })
-        .fromTo(".sp-jukebox", { opacity: 0, y: 16, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, "-=0.3")
-        .to({}, { duration: 0.5 })
-        .to(".sp-jukebox", { opacity: 0, y: -12, duration: 0.5, ease: "power2.in" })
-        .fromTo(".sp-presents", { opacity: 0, letterSpacing: "0.1em" }, { opacity: 1, letterSpacing: "0.5em", duration: 0.7 }, "-=0.1")
-        .to({}, { duration: 0.4 })
-        .to(".sp-presents", { opacity: 0, duration: 0.4, ease: "power2.in" })
-        .fromTo(".sp-helmet", { opacity: 0, scale: 0.7, rotateY: -25 }, { opacity: 1, scale: 1, rotateY: 0, duration: 0.9, ease: "back.out(1.4)" }, "-=0.1")
-        .fromTo(".sp-helmet-glow", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1.3, duration: 1 }, "-=0.9")
-        .to({}, { duration: 0.5 })
-        .to(rootRef.current, { opacity: 0, duration: 0.7, ease: "power2.inOut" }, "+=0.1");
+        .fromTo(".sp-jukebox", { opacity: 0, y: 16, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.6 }, "-=0.3")
+        .to({}, { duration: 0.35 })
+        .to(".sp-jukebox", { opacity: 0, y: -12, duration: 0.45, ease: "power2.in" })
+        .fromTo(".sp-presents", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.1")
+        .to({}, { duration: 0.3 })
+        .to(".sp-presents", { opacity: 0, duration: 0.35, ease: "power2.in" })
+        .fromTo(".sp-helmet", { opacity: 0, scale: 0.7, rotateY: -25 }, { opacity: 1, scale: 1, rotateY: 0, duration: 0.8, ease: "back.out(1.4)" }, "-=0.1")
+        .fromTo(".sp-helmet-glow", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1.3, duration: 0.9 }, "-=0.8")
+        .to({}, { duration: 0.35 })
+        .to(rootRef.current, { opacity: 0, duration: 0.6, ease: "power2.inOut" }, "+=0.1");
     }, rootRef);
 
     return () => ctx.revert();
@@ -59,7 +59,7 @@ export default function SplashLoader() {
     <div
       ref={rootRef}
       onClick={handleSkip}
-      className="fixed inset-0 z-[300] bg-black flex items-center justify-center cursor-pointer overflow-hidden"
+      className="fixed inset-0 z-[9999] bg-black flex items-center justify-center cursor-pointer overflow-hidden"
     >
       {/* Gold particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -88,9 +88,10 @@ export default function SplashLoader() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#D4AF37]/10 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Jukebox Media */}
-      <div className="sp-jukebox absolute opacity-0 flex flex-col items-center gap-3">
-        <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-14 w-auto object-contain" priority />
-        <span className="font-montserrat text-white/40 text-[9px] tracking-[0.4em] uppercase">Media</span>
+      <div className="sp-jukebox absolute opacity-0 flex flex-col items-center gap-4">
+        <span className="inline-flex items-center bg-white rounded-full px-6 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+          <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-12 sm:h-16 w-auto object-contain" priority />
+        </span>
       </div>
 
       {/* Presents */}

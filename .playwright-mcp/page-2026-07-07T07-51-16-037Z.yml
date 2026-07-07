@@ -1,0 +1,387 @@
+- generic [active] [ref=f65e1]:
+  - banner [ref=f65e2]:
+    - link "ARES Business League 2026" [ref=f65e6] [cursor=pointer]:
+      - /url: /
+      - img "ARES Business League 2026" [ref=f65e8]
+  - main [ref=f65e9]:
+    - generic [ref=f65e11]:
+      - generic [ref=f65e15]:
+        - generic [ref=f65e16]:
+          - generic [ref=f65e17]: 42 Challenges · 4 Weeks · 1 Champion
+          - heading "SCHEDULE EVENTS" [level=1] [ref=f65e18]:
+            - generic [ref=f65e19]: SCHEDULE
+            - generic [ref=f65e20]: EVENTS
+        - generic [ref=f65e21]:
+          - paragraph [ref=f65e22]: Dynamic schedule. Real-time updates. Maximum Impact. Keep track of all upcoming events, challenges and milestones.
+          - generic [ref=f65e23]:
+            - link "Live Standings" [ref=f65e24] [cursor=pointer]:
+              - /url: /leaderboard
+              - img [ref=f65e25]
+              - text: Live Standings
+            - link "Scoring Rules" [ref=f65e27] [cursor=pointer]:
+              - /url: /rules
+              - img [ref=f65e28]
+              - text: Scoring Rules
+      - generic [ref=f65e31]:
+        - generic [ref=f65e32]:
+          - generic [ref=f65e33]: Live Updates
+          - heading "THIS WEEK’S SCHEDULE" [level=2] [ref=f65e34]
+        - generic [ref=f65e35]:
+          - generic [ref=f65e37]:
+            - generic [ref=f65e38]:
+              - button "WEEK 1 Jun 24 – Jun 30" [ref=f65e39]:
+                - generic [ref=f65e41]: WEEK 1
+                - generic [ref=f65e42]: Jun 24 – Jun 30
+              - button "WEEK 2 Jul 1 – Jul 7" [ref=f65e43]:
+                - generic [ref=f65e44]: WEEK 2
+                - generic [ref=f65e45]: Jul 1 – Jul 7
+              - button "WEEK 3 Jul 8 – Jul 14" [ref=f65e46]:
+                - generic [ref=f65e47]: WEEK 3
+                - generic [ref=f65e48]: Jul 8 – Jul 14
+              - button "WEEK 4 Jul 15 – Jul 22" [ref=f65e49]:
+                - generic [ref=f65e50]: WEEK 4
+                - generic [ref=f65e51]: Jul 15 – Jul 22
+            - generic [ref=f65e52]:
+              - generic [ref=f65e53]: Week 1 Theme
+              - heading "STRONG START. STRONGER IMPACT." [level=3] [ref=f65e54]
+              - paragraph [ref=f65e55]: Kickstarting the league with focus, energy and meaningful connections.
+              - generic [ref=f65e56]:
+                - generic [ref=f65e60]: Live · Ends in
+                - generic [ref=f65e61]: 00:00:00
+          - generic [ref=f65e63]:
+            - generic [ref=f65e64]:
+              - generic [ref=f65e65]: Opening Ceremony
+              - generic [ref=f65e69]: Networking
+              - generic [ref=f65e70]: "0"
+            - generic [ref=f65e71]:
+              - generic [ref=f65e72]: Business Growth Sprint
+              - generic [ref=f65e76]: Networking
+              - generic [ref=f65e77]: "0"
+            - generic [ref=f65e78]:
+              - generic [ref=f65e79]: Refer & Earn Challenge
+              - generic [ref=f65e83]: Referrals
+              - generic [ref=f65e84]: "0"
+            - generic [ref=f65e85]:
+              - generic [ref=f65e86]: TYFCB Challenge
+              - generic [ref=f65e90]: TYFCB
+              - generic [ref=f65e91]: "0"
+            - generic [ref=f65e92]:
+              - generic [ref=f65e93]: One-on-One BNI
+              - generic [ref=f65e97]: Meetings
+              - generic [ref=f65e98]: "0"
+            - generic [ref=f65e99]:
+              - generic [ref=f65e100]: Attendance Booster
+              - generic [ref=f65e104]: Attendance
+              - generic [ref=f65e105]: "0"
+            - generic [ref=f65e106]:
+              - generic [ref=f65e107]: Offline Team Meeting
+              - generic [ref=f65e111]: Attendance
+              - generic [ref=f65e112]: "250"
+            - generic [ref=f65e113]:
+              - generic [ref=f65e114]: Cross Chapter 121 Conclave
+              - generic [ref=f65e118]: "121"
+              - generic [ref=f65e119]: "250"
+          - generic [ref=f65e120]:
+            - heading "BONUS POINTS" [level=3] [ref=f65e121]
+            - generic [ref=f65e122]:
+              - generic [ref=f65e124]:
+                - generic [ref=f65e125]:
+                  - generic [ref=f65e126]: Early Bird Bonus
+                  - generic [ref=f65e127]: Complete before the deadline
+                - generic [ref=f65e128]: "+25"
+              - generic [ref=f65e130]:
+                - generic [ref=f65e131]:
+                  - generic [ref=f65e132]: Perfect Week Bonus
+                  - generic [ref=f65e133]: Complete all weekly events
+                - generic [ref=f65e134]: "+100"
+              - generic [ref=f65e136]:
+                - generic [ref=f65e137]:
+                  - generic [ref=f65e138]: Consistency Bonus
+                  - generic [ref=f65e139]: Attend 3 consecutive weeks
+                - generic [ref=f65e140]: "+75"
+              - generic [ref=f65e142]:
+                - generic [ref=f65e143]:
+                  - generic [ref=f65e144]: Mega Impact Bonus
+                  - generic [ref=f65e145]: Achieve high business impact
+                - generic [ref=f65e146]: "+150"
+              - generic [ref=f65e148]:
+                - generic [ref=f65e149]:
+                  - generic [ref=f65e150]: Full Team Bonus
+                  - generic [ref=f65e151]: Whole team present at the offline team meeting
+                - generic [ref=f65e152]: "+750"
+            - generic [ref=f65e153]:
+              - generic [ref=f65e154]:
+                - text: MAX BONUS POINTS
+                - text: PER WEEK
+              - generic [ref=f65e155]: 1,100
+              - generic [ref=f65e156]: PTS
+            - generic [ref=f65e157]:
+              - heading "At a Glance" [level=3] [ref=f65e158]
+              - generic [ref=f65e159]:
+                - generic [ref=f65e160]:
+                  - generic [ref=f65e161]: Total Events
+                  - generic [ref=f65e162]: "8"
+                - generic [ref=f65e163]:
+                  - generic [ref=f65e164]: Completed
+                  - generic [ref=f65e165]: "3"
+                - generic [ref=f65e166]:
+                  - generic [ref=f65e167]: In-Progress
+                  - generic [ref=f65e168]: "1"
+                - generic [ref=f65e169]:
+                  - generic [ref=f65e170]: Upcoming
+                  - generic [ref=f65e171]: "4"
+      - generic [ref=f65e173]:
+        - generic [ref=f65e175]:
+          - generic [ref=f65e176]: Behind The Scenes
+          - heading "GALLERY" [level=2] [ref=f65e177]
+        - generic [ref=f65e178]:
+          - generic [ref=f65e179]:
+            - img "Arena" [ref=f65e180]
+            - generic [ref=f65e183]: The Arena
+          - generic [ref=f65e184]:
+            - img "Boardroom" [ref=f65e185]
+            - generic [ref=f65e188]: Opening Night
+          - generic [ref=f65e189]:
+            - img "Strategy" [ref=f65e190]
+            - generic [ref=f65e193]: Strategy Session
+          - generic [ref=f65e194]:
+            - img "Leadership" [ref=f65e195]
+            - generic [ref=f65e198]: Leadership Summit
+          - generic [ref=f65e199]:
+            - img "Networking" [ref=f65e200]
+            - generic [ref=f65e203]: Networking Gala
+          - generic [ref=f65e204]:
+            - img "Growth" [ref=f65e205]
+            - generic [ref=f65e208]: Growth Showcase
+        - link "VIEW FULL GALLERY" [ref=f65e210] [cursor=pointer]:
+          - /url: /gallery
+  - generic [ref=f65e211]:
+    - generic:
+      - img "Gravity Background"
+    - generic [ref=f65e212]:
+      - generic [ref=f65e213]:
+        - generic [ref=f65e216]: Official Web & Media Partner
+        - heading "ELEVATE YOUR DIGITAL PRESENCE" [level=2] [ref=f65e217]:
+          - generic [ref=f65e218]: ELEVATE
+          - generic [ref=f65e219]: YOUR
+          - generic [ref=f65e220]: DIGITAL
+          - generic [ref=f65e221]: PRESENCE
+        - paragraph [ref=f65e222]: Partner with Gravity Media Marketing to build high-performance, award-winning digital experiences. From mobile and web app development to digital dominance, we engineer growth.
+        - generic [ref=f65e223]:
+          - generic [ref=f65e224]:
+            - img [ref=f65e226]
+            - generic [ref=f65e228]: MOBILE & WEB APP DEVELOPMENT
+          - generic [ref=f65e229]:
+            - img [ref=f65e231]
+            - generic [ref=f65e236]: HIGH-PERFORMANCE ARCHITECTURE
+          - generic [ref=f65e237]:
+            - img [ref=f65e239]
+            - generic [ref=f65e242]: DATA-DRIVEN MARKETING & MEDIA
+        - generic [ref=f65e243]:
+          - link "Start Project" [ref=f65e244] [cursor=pointer]:
+            - /url: /contact
+            - text: Start Project
+            - img [ref=f65e245]
+          - generic [ref=f65e247]:
+            - generic [ref=f65e248]: Gravity Media Marketing
+            - link "gauravmehta.biz@gmail.com" [ref=f65e249] [cursor=pointer]:
+              - /url: mailto:gauravmehta.biz@gmail.com
+            - link "+91 8104933816" [ref=f65e250] [cursor=pointer]:
+              - /url: tel:+918104933816
+        - generic [ref=f65e253]: Try our live AI Assistant — the chat bubble in the corner runs our own product, right now.
+      - generic [ref=f65e256]:
+        - generic [ref=f65e263]: Case Study
+        - generic [ref=f65e272]: aresbusinessleague.com
+        - generic [ref=f65e298]: Official Digital Partner
+  - contentinfo [ref=f65e299]:
+    - generic [ref=f65e301]:
+      - generic [ref=f65e302]:
+        - generic [ref=f65e303]:
+          - link "ARES Business League 2026 ARES Business League 2026 Edition" [ref=f65e304] [cursor=pointer]:
+            - /url: /
+            - img "ARES Business League 2026" [ref=f65e306]
+            - generic [ref=f65e307]:
+              - generic [ref=f65e308]: ARES
+              - generic [ref=f65e309]: Business League
+              - generic [ref=f65e310]: 2026 Edition
+          - paragraph [ref=f65e311]: "A high-stakes, one-month business tournament featuring 30 elite BNI business owners competing in 4 iconic teams for one ultimate goal: Nation Building."
+          - generic [ref=f65e312]:
+            - link "LinkedIn" [ref=f65e313] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=f65e314]
+            - link "Instagram" [ref=f65e316] [cursor=pointer]:
+              - /url: https://instagram.com
+              - img [ref=f65e317]
+        - generic [ref=f65e319]:
+          - heading "Explore" [level=4] [ref=f65e320]
+          - list [ref=f65e321]:
+            - listitem [ref=f65e322]:
+              - link "Home" [ref=f65e323] [cursor=pointer]:
+                - /url: /
+                - text: Home
+            - listitem [ref=f65e324]:
+              - link "About" [ref=f65e325] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=f65e326]:
+              - link "Teams" [ref=f65e327] [cursor=pointer]:
+                - /url: /teams
+                - text: Teams
+            - listitem [ref=f65e328]:
+              - link "Schedule" [ref=f65e329] [cursor=pointer]:
+                - /url: /schedule
+                - text: Schedule
+            - listitem [ref=f65e330]:
+              - link "Leaderboard" [ref=f65e331] [cursor=pointer]:
+                - /url: /leaderboard
+                - text: Leaderboard
+            - listitem [ref=f65e332]:
+              - link "Hall of Fame" [ref=f65e333] [cursor=pointer]:
+                - /url: /wall-of-fame
+                - text: Hall of Fame
+            - listitem [ref=f65e334]:
+              - link "Blog" [ref=f65e335] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=f65e336]:
+              - link "Partners" [ref=f65e337] [cursor=pointer]:
+                - /url: /partners
+                - text: Partners
+            - listitem [ref=f65e338]:
+              - link "Build Your Site" [ref=f65e339] [cursor=pointer]:
+                - /url: /contact
+                - text: Build Your Site
+        - generic [ref=f65e340]:
+          - heading "The Factions" [level=4] [ref=f65e341]
+          - list [ref=f65e342]:
+            - listitem [ref=f65e343]:
+              - link "Team Modi Visionaries" [ref=f65e344] [cursor=pointer]:
+                - /url: /teams/modi
+                - generic [ref=f65e346]: Team Modi Visionaries
+            - listitem [ref=f65e347]:
+              - link "Team Doval Strategists" [ref=f65e348] [cursor=pointer]:
+                - /url: /teams/doval
+                - generic [ref=f65e350]: Team Doval Strategists
+            - listitem [ref=f65e351]:
+              - link "Team Shah Warriors" [ref=f65e352] [cursor=pointer]:
+                - /url: /teams/amit-shah
+                - generic [ref=f65e354]: Team Shah Warriors
+            - listitem [ref=f65e355]:
+              - link "Team Jaishankar Diplomats" [ref=f65e356] [cursor=pointer]:
+                - /url: /teams/jaishankar
+                - generic [ref=f65e358]: Team Jaishankar Diplomats
+          - generic [ref=f65e359]:
+            - generic [ref=f65e360]: Tournament Window
+            - generic [ref=f65e361]: July 1st – July 29th
+            - generic [ref=f65e362]: "2026"
+        - generic [ref=f65e363]:
+          - heading "Connect" [level=4] [ref=f65e364]
+          - list [ref=f65e365]:
+            - listitem [ref=f65e366]:
+              - img [ref=f65e368]
+              - generic [ref=f65e370]: +91 81049 33816
+            - listitem [ref=f65e371]:
+              - img [ref=f65e373]
+              - generic [ref=f65e376]: gauravmehta.biz@gmail.com
+            - listitem [ref=f65e377]:
+              - img [ref=f65e379]
+              - generic [ref=f65e382]: India
+          - generic [ref=f65e383]:
+            - generic [ref=f65e384]: Stay Updated
+            - generic [ref=f65e385]:
+              - textbox "Your email" [ref=f65e386]
+              - button "Join" [ref=f65e387]
+      - generic [ref=f65e388]:
+        - generic [ref=f65e389]: Powered by
+        - link "Jukebox Media" [ref=f65e390] [cursor=pointer]:
+          - /url: https://jukeboxmedia.in
+          - img "Jukebox Media" [ref=f65e392]
+      - generic [ref=f65e393]:
+        - generic [ref=f65e394]:
+          - paragraph [ref=f65e395]: © 2026 ARES Business League
+          - paragraph [ref=f65e397]: All rights reserved
+        - generic [ref=f65e398]:
+          - link "Rules & FAQ" [ref=f65e399] [cursor=pointer]:
+            - /url: /rules
+          - link "Contact" [ref=f65e401] [cursor=pointer]:
+            - /url: /contact
+          - link "About" [ref=f65e403] [cursor=pointer]:
+            - /url: /about
+  - generic [ref=f65e405]:
+    - generic [ref=f65e407]:
+      - generic [ref=f65e408]:
+        - generic [ref=f65e409]: Navigation
+        - generic [ref=f65e410]: ARES Business League
+      - button [ref=f65e411]:
+        - img [ref=f65e412]
+    - generic [ref=f65e415]:
+      - link "About" [ref=f65e416] [cursor=pointer]:
+        - /url: /about
+        - generic [ref=f65e417]: About
+        - img [ref=f65e418]
+      - link "Teams" [ref=f65e420] [cursor=pointer]:
+        - /url: /teams
+        - generic [ref=f65e421]: Teams
+        - img [ref=f65e422]
+      - link "Team Owners" [ref=f65e424] [cursor=pointer]:
+        - /url: /team-owners
+        - generic [ref=f65e425]: Team Owners
+        - img [ref=f65e426]
+      - link "Events" [ref=f65e428] [cursor=pointer]:
+        - /url: /schedule
+        - generic [ref=f65e429]: Events
+        - img [ref=f65e430]
+      - link "Points" [ref=f65e432] [cursor=pointer]:
+        - /url: /points
+        - generic [ref=f65e433]: Points
+        - img [ref=f65e434]
+      - link "Leaderboard" [ref=f65e436] [cursor=pointer]:
+        - /url: /leaderboard
+        - generic [ref=f65e437]: Leaderboard
+        - img [ref=f65e438]
+      - link "Hall of Fame" [ref=f65e440] [cursor=pointer]:
+        - /url: /wall-of-fame
+        - generic [ref=f65e441]: Hall of Fame
+        - img [ref=f65e442]
+      - link "Blog" [ref=f65e444] [cursor=pointer]:
+        - /url: /blog
+        - generic [ref=f65e445]: Blog
+        - img [ref=f65e446]
+      - link "Partners" [ref=f65e448] [cursor=pointer]:
+        - /url: /partners
+        - generic [ref=f65e449]: Partners
+        - img [ref=f65e450]
+    - generic [ref=f65e452]:
+      - link "Build Your Website" [ref=f65e453] [cursor=pointer]:
+        - /url: /contact
+        - text: Build Your Website
+        - img [ref=f65e454]
+      - link "Jukebox Media" [ref=f65e456] [cursor=pointer]:
+        - /url: https://jukeboxmedia.in
+  - generic [ref=f65e458]:
+    - link "Home" [ref=f65e460] [cursor=pointer]:
+      - /url: /
+      - img [ref=f65e462]
+      - generic [ref=f65e465]: Home
+    - link "Teams" [ref=f65e466] [cursor=pointer]:
+      - /url: /teams
+      - img [ref=f65e468]
+      - generic [ref=f65e473]: Teams
+    - link "Rank" [ref=f65e474] [cursor=pointer]:
+      - /url: /leaderboard
+      - img [ref=f65e476]
+      - generic [ref=f65e482]: Rank
+    - link "Events" [ref=f65e483] [cursor=pointer]:
+      - /url: /schedule
+      - img [ref=f65e486]
+      - generic [ref=f65e488]: Events
+    - button "More" [ref=f65e489]:
+      - img [ref=f65e491]
+      - generic [ref=f65e492]: More
+  - generic:
+    - button "Close chat":
+      - img
+  - button "Open AI Assistant chat" [ref=f65e493]:
+    - img [ref=f65e494]
+  - button "Open Next.js Dev Tools" [ref=f65e502] [cursor=pointer]:
+    - img [ref=f65e503]

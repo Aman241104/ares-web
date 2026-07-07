@@ -119,9 +119,11 @@ export default function LeaderboardPage() {
               </div>
             </div>
 
-            <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            <a href="https://jukeboxmedia.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 mt-6 opacity-85 hover:opacity-100 transition-opacity duration-300">
               <span className="font-montserrat text-white/40 text-[7px] tracking-[0.25em] uppercase">Presented by</span>
-              <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-5 w-auto object-contain" />
+              <span className="inline-flex items-center bg-white rounded-full pl-2.5 pr-3.5 py-1.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
+                <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-5 sm:h-6 w-auto object-contain" />
+              </span>
             </a>
           </div>
         </div>

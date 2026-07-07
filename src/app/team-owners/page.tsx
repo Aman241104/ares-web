@@ -194,24 +194,24 @@ export default function TeamOwnersPage() {
                   </div>
 
                   {/* Stats Bottom Row */}
-                  <div className="grid grid-cols-3 gap-4 mt-auto">
-                    <div className="p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20">
-                      <div className="font-cinzel text-2xl font-bold mb-2" style={{ color: team.color }}>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-auto">
+                    <div className="p-3 sm:p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20 min-w-0">
+                      <div className="font-cinzel text-base sm:text-2xl font-bold mb-2 truncate" style={{ color: team.color }}>
                         {team.members}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.2em] uppercase">Members</div>
+                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.15em] sm:tracking-[0.2em] uppercase">Members</div>
                     </div>
-                    <div className="p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20">
-                      <div className="font-cinzel text-2xl font-bold mb-2" style={{ color: team.color }}>
+                    <div className="p-3 sm:p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20 min-w-0">
+                      <div className="font-cinzel text-base sm:text-2xl font-bold mb-2 truncate" style={{ color: team.color }}>
                         {team.totalPointsSpent?.toLocaleString() || "0"}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.2em] uppercase">Coins Spent</div>
+                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.15em] sm:tracking-[0.2em] uppercase">Coins Spent</div>
                     </div>
-                    <div className="p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20">
-                      <div className="font-cinzel text-2xl font-bold mb-2" style={{ color: team.color }}>
+                    <div className="p-3 sm:p-5 rounded-xl bg-transparent border border-white/5 text-center transition-colors hover:border-white/20 min-w-0">
+                      <div className="font-cinzel text-base sm:text-2xl font-bold mb-2 truncate" style={{ color: team.color }}>
                         #{team.rank}
                       </div>
-                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.2em] uppercase">Current Rank</div>
+                      <div className="font-montserrat text-white/40 text-[8px] tracking-[0.15em] sm:tracking-[0.2em] uppercase">Current Rank</div>
                     </div>
                   </div>
 

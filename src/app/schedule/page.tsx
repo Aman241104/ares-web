@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { weeklyEvents, specialEvents, scheduleEvents, teams } from "@/lib/data";
+import { weeklyEvents, scheduleEvents, teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageHero from "@/components/PageHero";
@@ -22,11 +22,13 @@ const statusDot: Record<string, string> = {
   upcoming: "bg-blue-400",
 };
 
-const specialEventImages = [
-  "/images/blog_strategy.png",
-  "/images/luxury_boardroom.png",
-  "/images/blog_leadership.png",
-  "/images/blog-networking.png",
+const galleryPreviewImages = [
+  { src: "/images/hero_arena.png",       alt: "Arena",      label: "The Arena" },
+  { src: "/images/luxury_boardroom.png", alt: "Boardroom",  label: "Opening Night" },
+  { src: "/images/blog_strategy.png",    alt: "Strategy",   label: "Strategy Session" },
+  { src: "/images/blog_leadership.png",  alt: "Leadership", label: "Leadership Summit" },
+  { src: "/images/blog-networking.png",  alt: "Networking", label: "Networking Gala" },
+  { src: "/images/blog-growth.png",      alt: "Growth",     label: "Growth Showcase" },
 ];
 
 function useCountdown(targetDate: Date) {
@@ -235,50 +237,45 @@ export default function SchedulePage() {
 
           {/* ── Center: Events Table ── */}
           <div className="flex-1 p-8 min-w-0">
-            <div className="w-full overflow-x-auto custom-scrollbar">
-              <div className="min-w-[600px]">
-                {/* Table header */}
-                <div className="grid grid-cols-12 gap-4 px-4 py-3 mb-4 border-b border-white/5">
-                  <div className="col-span-5 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">EVENT NAME</div>
-                  <div className="col-span-3 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">CATEGORY</div>
-                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">PTS</div>
-                  <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">STATUS</div>
-                </div>
-
-                {/* Event rows */}
-                <div className="space-y-3">
-                  {scheduleEvents.map((event, i) => (
-                    <div
-                      key={event.name}
-                      className="grid grid-cols-12 gap-4 px-4 py-5 rounded-xl transition-all hover:bg-white/[0.05] items-center border border-white/5"
-                    >
-                      <div className="col-span-5 font-cinzel text-white text-sm tracking-wide truncate">
-                        {event.name}
-                      </div>
-                      <div className="col-span-3 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
-                        {event.category}
-                      </div>
-                      <div className="col-span-2 text-right font-cinzel text-[#D4AF37] text-base">
-                        {event.points}
-                      </div>
-                      <div className="col-span-2 text-right">
-                        <span
-                          className={`inline-flex items-center gap-2 font-montserrat text-[9px] px-3 py-1 rounded-full border uppercase tracking-widest ${
-                            statusColors[event.status]
-                          }`}
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${statusDot[event.status]}`} />
-                          <span className="hidden sm:inline">
-                            {event.status.replace("-", " ")}
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Table header — lg+ only, mobile rows are self-labeled cards */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 px-4 py-3 mb-4 border-b border-white/5">
+              <div className="col-span-5 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">EVENT NAME</div>
+              <div className="col-span-3 font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">CATEGORY</div>
+              <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">PTS</div>
+              <div className="col-span-2 text-right font-montserrat text-[9px] text-white/55 uppercase tracking-[0.2em]">STATUS</div>
             </div>
 
+            {/* Event rows */}
+            <div className="space-y-3">
+              {scheduleEvents.map((event, i) => (
+                <div
+                  key={event.name}
+                  className="grid grid-cols-12 gap-x-4 gap-y-2 px-4 py-4 lg:py-5 rounded-xl transition-all hover:bg-white/[0.05] items-center border border-white/5"
+                >
+                  <div className="col-span-8 lg:col-span-5 lg:col-start-1 font-cinzel text-white text-sm tracking-wide">
+                    {event.name}
+                  </div>
+                  <div className="col-span-4 lg:col-span-2 lg:col-start-11 text-right">
+                    <span
+                      className={`inline-flex items-center gap-2 font-montserrat text-[9px] px-3 py-1 rounded-full border uppercase tracking-widest ${
+                        statusColors[event.status]
+                      }`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${statusDot[event.status]}`} />
+                      <span className="hidden sm:inline">
+                        {event.status.replace("-", " ")}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="col-span-8 lg:col-span-3 lg:col-start-6 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
+                    {event.category}
+                  </div>
+                  <div className="col-span-4 lg:col-span-2 lg:col-start-9 text-right font-cinzel text-[#D4AF37] text-base">
+                    {event.points}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* ── Right: Bonus Points Sidebar ── */}
@@ -347,81 +344,49 @@ export default function SchedulePage() {
         </div>
       </section>
 
-      {/* ── SPECIAL EVENTS ── */}
+      {/* ── GALLERY ── */}
       <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center justify-between mb-12">
             <div>
               <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-2">
-                Premium Competitions
+                Behind The Scenes
               </div>
               <h2 className="font-cinzel font-bold text-white text-3xl sm:text-4xl">
-                SPECIAL <span className="text-[#D4AF37]">EVENTS</span>
+                GALLERY
               </h2>
             </div>
             <Link
-              href="/schedule"
+              href="/gallery"
               className="hidden sm:inline-flex items-center gap-2 font-montserrat text-[10px] font-bold text-white uppercase tracking-widest hover:text-[#D4AF37] transition-colors"
             >
-              View All <ArrowRight className="w-4 h-4" />
+              View Full Gallery <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sr-stagger">
-            {specialEvents.map((event, i) => (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sr-stagger">
+            {galleryPreviewImages.map((img) => (
               <div
-                key={event.name}
-                className="glass-card group relative overflow-hidden border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
+                key={img.src}
+                className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.25)] transition-all duration-500 aspect-square lg:aspect-[4/3]"
               >
-                {/* Card image */}
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src={specialEventImages[i % specialEventImages.length]}
-                    alt={event.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  {/* Strong dark overlay for drama */}
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, #000000 100%)" }} />
-                  
-                  {/* Special Event label */}
-                  <div className="absolute top-4 left-4">
-                    <span className="font-montserrat text-[8px] font-bold text-white bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full uppercase tracking-widest">Special</span>
-                  </div>
-                  
-                  {/* Status badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`font-montserrat text-[8px] font-bold px-3 py-1 rounded-full border uppercase tracking-widest ${statusColors[event.status]}`}>
-                      {event.status}
-                    </span>
-                  </div>
-                  
-                  {/* Event name overlaid at bottom of image */}
-                  <div className="absolute bottom-4 left-6 right-6">
-                    <h4 className="font-cinzel tracking-wider text-white text-lg leading-tight">{event.name}</h4>
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div className="p-6">
-                  <p className="font-montserrat text-white/50 text-[11px] mb-6 leading-relaxed min-h-[40px]">{event.desc}</p>
-                  <div className="flex items-center gap-6 border-t border-white/5 pt-4">
-                    <span className="flex items-center gap-2 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {event.date}
-                    </span>
-                    <span className="flex items-center gap-2 font-montserrat text-white/60 text-[10px] uppercase tracking-widest">
-                      <Clock className="w-3.5 h-3.5" />
-                      {event.time}
-                    </span>
-                  </div>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  style={{ filter: "brightness(0.9) saturate(1.0)" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
+                  <div className="font-cinzel text-white text-xs tracking-wider">{img.label}</div>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center mt-12 sm:hidden">
-            <Link href="/schedule" className="btn-secondary text-[10px]">VIEW ALL EVENTS</Link>
+            <Link href="/gallery" className="btn-secondary text-[10px]">VIEW FULL GALLERY</Link>
           </div>
         </div>
       </section>
