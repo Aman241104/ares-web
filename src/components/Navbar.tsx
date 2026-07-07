@@ -104,8 +104,8 @@ export default function Navbar() {
               </div>
               {!scrolled && (
                 <div className="ml-3 hidden sm:block">
-                  <div className="font-cinzel text-white text-[11px] tracking-[0.25em] leading-none">ARES</div>
-                  <div className="font-montserrat text-[#D4AF37]/60 text-[7px] tracking-[0.35em] uppercase mt-0.5">Business League</div>
+                  <div className="font-cinzel text-white text-base tracking-[0.25em] leading-none">ARES</div>
+                  <div className="font-montserrat text-white text-[9px] tracking-[0.35em] uppercase mt-1">Business League</div>
                 </div>
               )}
             </Link>

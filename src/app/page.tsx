@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Users, Trophy, Calendar, Briefcase, Building2, Star, CheckCircle2, CircleDot, Circle, Image as ImageIcon, BookOpen, Phone, Globe, TrendingUp } from "lucide-react";
+import { ArrowRight, Users, Trophy, Calendar, Briefcase, Building2, Star, CheckCircle2, CircleDot, Circle, Image as ImageIcon, BookOpen, Phone, Globe, TrendingUp, Mail, X } from "lucide-react";
+import { createPortal } from "react-dom";
 import { teams, partners, specialEvents, scheduleEvents } from "@/lib/data";
 import { COMMISSIONERS_2026 } from "@/lib/honorees";
 import gsap from "gsap";
@@ -47,6 +48,7 @@ export default function HomePage() {
   const ctaBtnRef = useRef<HTMLDivElement>(null);
   const bgLogoRef = useRef<HTMLDivElement>(null);
   const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
+  const [activeCommissioner, setActiveCommissioner] = useState<number | null>(null);
 
   const handleFactionCardClick = (e: React.MouseEvent, teamId: string) => {
     // Touch devices have no :hover to reveal the poster — first tap flips the
@@ -279,8 +281,8 @@ export default function HomePage() {
           style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
         {/* ── HERO CONTENT — LEFT SIDE ── */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-20 sm:pt-24 pb-0 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto w-full">
-          <div className="max-w-[600px] lg:max-w-[52%]">
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-20 sm:pt-24 pb-0 px-6 sm:px-10 lg:px-16 w-full">
+          <div className="max-w-[600px] lg:max-w-[min(52%,680px)]">
 
             {/* Live badge */}
             <div className="h-badge inline-flex items-center gap-3 mb-5 sm:mb-8 px-4 sm:px-5 py-2 sm:py-2.5 relative">
@@ -695,18 +697,29 @@ export default function HomePage() {
             <h2 className="font-cinzel text-white text-2xl sm:text-3xl tracking-[0.2em] text-shadow-gold">Meet the Commissioners</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-8 sr-stagger">
-            {COMMISSIONERS_2026.map((comm) => (
-              <div key={comm.name} className="glass-card border-white/10 p-8 sm:p-10 flex flex-col items-center text-center">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-6 border border-[#D4AF37]/30 relative shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-                  <Image src={comm.img} alt={comm.name} fill className="object-cover" sizes="128px" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-6 sr-stagger">
+            {COMMISSIONERS_2026.map((comm, idx) => (
+              <button
+                key={comm.name}
+                onClick={() => setActiveCommissioner(idx)}
+                className="group relative overflow-hidden border border-white/10 hover:border-[#D4AF37]/40 bg-[#0B1120] rounded-2xl transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] text-left cursor-pointer"
+              >
+                <div className="relative w-full aspect-[4/5] overflow-hidden">
+                  <Image src={comm.img} alt={comm.name} fill sizes="(max-width: 640px) 100vw, 340px" className="object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#D4AF37]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <div className="font-montserrat text-[#D4AF37] text-[9px] uppercase tracking-[0.3em] mb-1.5">{comm.role}</div>
+                    <h3 className="font-cinzel text-white text-xl tracking-wide">{comm.name}</h3>
+                    <div className="font-montserrat text-white/60 text-[10px] tracking-[0.2em] uppercase mt-1.5 flex items-center gap-1.5">
+                      <Briefcase className="w-3 h-3" /> {comm.company.name}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-cinzel text-xl text-white mb-2 tracking-wide">{comm.name}</h3>
-                <div className="font-montserrat text-[#D4AF37]/80 text-[10px] uppercase tracking-[0.25em] mb-2">{comm.role}</div>
-                <div className="font-montserrat text-white/40 text-[9px] tracking-[0.2em] flex items-center justify-center gap-1.5">
-                  <Briefcase className="w-3 h-3" /> {comm.company.name}
+                <div className="px-5 py-3.5">
+                  <span className="font-montserrat text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors">Tap to view company →</span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -717,6 +730,67 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* COMMISSIONER COMPANY POPUP */}
+      {activeCommissioner !== null && createPortal(
+        <div
+          className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm"
+          onClick={() => setActiveCommissioner(null)}
+        >
+          <div className="relative h-full overflow-y-auto">
+            <div className="min-h-full flex items-center justify-center p-6">
+              <div
+                className="relative w-full max-w-md bg-[#0B1120] border border-[#D4AF37]/25 shadow-[0_40px_80px_rgba(0,0,0,0.7)] p-8"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)" }} />
+                <button
+                  onClick={() => setActiveCommissioner(null)}
+                  className="absolute top-4 right-4 text-white/40 hover:text-[#D4AF37] transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4AF37]/30 relative flex-shrink-0">
+                    <Image src={COMMISSIONERS_2026[activeCommissioner].img} alt={COMMISSIONERS_2026[activeCommissioner].name} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <h4 className="font-cinzel text-white text-lg tracking-wide">{COMMISSIONERS_2026[activeCommissioner].name}</h4>
+                    <div className="font-montserrat text-[#D4AF37]/80 text-[9px] uppercase tracking-[0.2em]">{COMMISSIONERS_2026[activeCommissioner].role}</div>
+                  </div>
+                </div>
+
+                <div className="space-y-0 divide-y divide-white/5 border-t border-white/5">
+                  <div className="flex justify-between items-center py-3.5">
+                    <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Company</span>
+                    <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.name}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3.5">
+                    <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em]">Category</span>
+                    <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.category}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3.5">
+                    <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Phone className="w-3 h-3" /> Phone</span>
+                    <span className="font-cinzel text-white/90 text-xs tracking-wider">{COMMISSIONERS_2026[activeCommissioner].company.phone}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3.5">
+                    <span className="font-montserrat text-white/50 text-[9px] uppercase tracking-[0.22em] flex items-center gap-1.5"><Mail className="w-3 h-3" /> Email</span>
+                    <span className="font-cinzel text-white/90 text-[11px] tracking-wide break-all text-right">{COMMISSIONERS_2026[activeCommissioner].company.email}</span>
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-5 border-t border-white/5">
+                  <div className="font-montserrat text-white/40 text-[8px] uppercase tracking-[0.3em] mb-2">Ideal Connects</div>
+                  <p className="font-montserrat text-white/60 text-[11px] leading-relaxed">{COMMISSIONERS_2026[activeCommissioner].company.idealConnect}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
 
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS

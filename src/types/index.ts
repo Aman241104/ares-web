@@ -100,6 +100,9 @@ export interface ScheduleEvent {
   category: string;
   points: number;
   status: 'completed' | 'in-progress' | 'upcoming';
+  date?: string;
+  time?: string;
+  organizer?: string;
 }
 
 export interface SpecialEvent {

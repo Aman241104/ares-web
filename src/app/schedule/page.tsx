@@ -31,39 +31,9 @@ const galleryPreviewImages = [
   { src: "/images/blog-growth.png",      alt: "Growth",     label: "Growth Showcase" },
 ];
 
-function useCountdown(targetDate: Date) {
-  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
-  const targetTime = targetDate.getTime();
-  useEffect(() => {
-    const tick = () => {
-      const diff = targetTime - Date.now();
-      if (diff <= 0) { setTimeLeft({ d: 0, h: 0, m: 0, s: 0 }); return; }
-      setTimeLeft({
-        d: Math.floor(diff / 86400000),
-        h: Math.floor((diff % 86400000) / 3600000),
-        m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [targetTime]);
-  return timeLeft;
-}
-
 export default function SchedulePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeWeek, setActiveWeek] = useState(0);
-
-  const weekEndDates = [
-    new Date("2026-06-30T23:59:59"),
-    new Date("2026-07-07T23:59:59"),
-    new Date("2026-07-14T23:59:59"),
-    new Date("2026-07-22T23:59:59"),
-  ];
-  const countdown = useCountdown(weekEndDates[activeWeek]);
-  const pad = (n: number) => String(n).padStart(2, "0");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -217,21 +187,9 @@ export default function SchedulePage() {
               <h3 className="font-cinzel text-white text-sm leading-tight mb-3 tracking-wider">
                 {weeklyEvents[activeWeek].theme}
               </h3>
-              <p className="font-montserrat text-white/60 text-[10px] leading-relaxed mb-7 tracking-wide">
+              <p className="font-montserrat text-white/60 text-[10px] leading-relaxed tracking-wide">
                 {weeklyEvents[activeWeek].description}
               </p>
-
-              {/* Live countdown */}
-              <div className="border border-[rgba(212,175,55,0.15)] bg-[#D4AF37]/5 p-5">
-                <div className="absolute top-0 left-0 right-0 h-px bg-[#D4AF37]/30" />
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full pulse-live flex-shrink-0" />
-                  <span className="font-montserrat text-green-400/80 text-[8px] font-bold tracking-[0.3em] uppercase">Live · Ends in</span>
-                </div>
-                <div className="font-cinzel font-bold text-white text-2xl tracking-[0.15em]">
-                  {countdown.d > 0 ? `${countdown.d}d ` : ""}{pad(countdown.h)}:{pad(countdown.m)}:{pad(countdown.s)}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -247,13 +205,18 @@ export default function SchedulePage() {
 
             {/* Event rows */}
             <div className="space-y-3">
-              {scheduleEvents.map((event, i) => (
+              {weeklyEvents[activeWeek].events.map((event) => (
                 <div
                   key={event.name}
                   className="grid grid-cols-12 gap-x-4 gap-y-2 px-4 py-4 lg:py-5 rounded-xl transition-all hover:bg-white/[0.05] items-center border border-white/5"
                 >
-                  <div className="col-span-8 lg:col-span-5 lg:col-start-1 font-cinzel text-white text-sm tracking-wide">
-                    {event.name}
+                  <div className="col-span-8 lg:col-span-5 lg:col-start-1">
+                    <div className="font-cinzel text-white text-sm tracking-wide">{event.name}</div>
+                    {(event.date || event.time || event.organizer) && (
+                      <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mt-1">
+                        {[event.date, event.time, event.organizer && `by ${event.organizer}`].filter(Boolean).join(" · ")}
+                      </div>
+                    )}
                   </div>
                   <div className="col-span-4 lg:col-span-2 lg:col-start-11 text-right">
                     <span
@@ -281,7 +244,7 @@ export default function SchedulePage() {
           {/* ── Right: Bonus Points Sidebar ── */}
           <div className="flex-shrink-0 lg:w-72 bg-white/[0.05] border-l border-white/10 p-8" style={{ minWidth: 260 }}>
             <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">
-              BONUS POINTS
+              Bonus Points — Week {weeklyEvents[activeWeek].week}
             </h3>
 
             <div className="space-y-4 mb-8">

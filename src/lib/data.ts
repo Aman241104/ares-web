@@ -309,42 +309,53 @@ export const teams: Team[] = [
 export const weeklyEvents: WeeklyEvent[] = [
   {
     week: 1,
-    dates: "Jun 24 – Jun 30",
+    dates: "Jul 1 – Jul 7",
     theme: "STRONG START. STRONGER IMPACT.",
     description: "Kickstarting the league with focus, energy and meaningful connections.",
     events: [
-      { name: "Opening Ceremony", category: "Ceremony", points: 0, status: "completed" },
-      { name: "Business Growth Sprint", category: "Networking", points: 0, status: "completed" },
-      { name: "Refer & Earn Challenge", category: "Referrals", points: 0, status: "in-progress" },
-      { name: "TYFCB Challenge", category: "TYFCB", points: 0, status: "in-progress" },
-      { name: "One-to-One Blitz", category: "Meetings", points: 0, status: "upcoming" },
-      { name: "Attendance Booster", category: "Attendance", points: 0, status: "upcoming" },
+      { name: "121 Conclave – Cross Chapter", category: "121", points: 250, status: "completed", date: "Jul 4, 2026" },
       { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "upcoming" },
-      { name: "Cross Chapter 121 Conclave", category: "121", points: 250, status: "upcoming" },
     ],
   },
   {
     week: 2,
-    dates: "Jul 1 – Jul 7",
+    dates: "Jul 8 – Jul 14",
     theme: "THE CONNECT CHALLENGE",
     description: "Building connections. Creating opportunities. Driving the nation forward.",
-    events: [],
+    events: [
+      { name: "Cross Chapter Meet", category: "Networking", points: 0, status: "upcoming", date: "Jul 9, 2026", time: "5:00 PM – 6:00 PM" },
+      { name: "Sports Event", category: "Fun & Games", points: 0, status: "upcoming", date: "Jul 10, 2026", time: "8:30 PM onwards" },
+      { name: "Know Your Members – Adv. Jay Patel & Vishnu Soni", category: "Networking", points: 0, status: "upcoming", date: "Jul 11, 2026", time: "4:00 PM – 6:30 PM" },
+      { name: "Coffee With Business", category: "Networking", points: 0, status: "upcoming", date: "Jul 13, 2026", time: "6:00 PM" },
+    ],
   },
   {
     week: 3,
-    dates: "Jul 8 – Jul 14",
+    dates: "Jul 15 – Jul 21",
     theme: "RISE TO THE TOP",
     description: "Intensify the competition and push beyond limits.",
-    events: [],
+    events: [
+      { name: "In-Chapter 121 Conclave", category: "121", points: 0, status: "upcoming", date: "Jul 15, 2026", time: "After Meeting" },
+      { name: "Cross Chapter Meeting", category: "Networking", points: 0, status: "upcoming", date: "Jul 17, 2026", organizer: "Ashutosh Mehta" },
+      { name: "Know Your Members – Mayursinh Chavda", category: "Networking", points: 0, status: "upcoming", date: "Jul 18, 2026" },
+      { name: "Sports Event", category: "Fun & Games", points: 0, status: "upcoming", date: "Jul 20, 2026", time: "8:30 PM onwards" },
+      { name: "Cross Chapter Meet", category: "Networking", points: 0, status: "upcoming", organizer: "Rushil Pandya" },
+    ],
   },
   {
     week: 4,
-    dates: "Jul 15 – Jul 22",
+    dates: "Jul 22 – Jul 29",
     theme: "THE FINAL BATTLE",
     description: "Everything is on the line. Champions are made in the final stretch.",
-    events: [],
+    events: [
+      { name: "Sports Event", category: "Fun & Games", points: 0, status: "upcoming", date: "Jul 24, 2026", time: "8:30 PM onwards" },
+      { name: "Know Your Members – Harsh Brambhatt", category: "Networking", points: 0, status: "upcoming", date: "Jul 25, 2026", time: "4:00 PM – 6:00 PM" },
+      { name: "Coffee With Business", category: "Networking", points: 0, status: "upcoming", date: "Jul 27, 2026", time: "6:00 PM" },
+    ],
   },
 ];
+
+export const scheduleEvents: ScheduleEvent[] = weeklyEvents.flatMap((w) => w.events);
 
 export const specialEvents: SpecialEvent[] = [
   {
@@ -385,17 +396,6 @@ export const partners: Partner[] = [
 ];
 
 export const blogCategories: string[] = ["Strategy", "Leadership", "Networking", "Execution", "Business Growth", "Nation Building"];
-
-export const scheduleEvents: ScheduleEvent[] = [
-  { name: "Opening Ceremony", category: "Networking", points: 0, status: "completed" },
-  { name: "Business Growth Sprint", category: "Networking", points: 0, status: "completed" },
-  { name: "Refer & Earn Challenge", category: "Referrals", points: 0, status: "completed" },
-  { name: "TYFCB Challenge", category: "TYFCB", points: 0, status: "in-progress" },
-  { name: "One-on-One BNI", category: "Meetings", points: 0, status: "upcoming" },
-  { name: "Attendance Booster", category: "Attendance", points: 0, status: "upcoming" },
-  { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "upcoming" },
-  { name: "Cross Chapter 121 Conclave", category: "121", points: 250, status: "upcoming" },
-];
 
 export const blogPosts: BlogPost[] = [
   {
