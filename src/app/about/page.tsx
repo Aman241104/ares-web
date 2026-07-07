@@ -159,6 +159,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
+              <div className="font-montserrat text-white/40 text-[7px] tracking-[0.35em] uppercase text-center mb-2">Jukebox Media Presents</div>
               <h3 className="font-cinzel font-bold tracking-widest text-[#D4AF37] text-lg text-center mb-1 uppercase">Ares Business League</h3>
               <div className="font-montserrat text-white/55 text-[8px] tracking-[0.3em] uppercase text-center mb-7">2026 — Nation Builders Edition</div>
 
@@ -167,7 +168,7 @@ export default function AboutPage() {
                   { label: "Duration",  value: "July 1st – July 29th, 2026" },
                   { label: "Format",    value: "4 Teams · 30 Players" },
                   { label: "Stakes",    value: "1.5× Pool + MVP Awards" },
-                  { label: "Organized", value: "ARES League Committee" },
+                  { label: "Organized", value: "Gaurav Mehta & Manush Patel" },
                 ].map((item) => (
                   <div key={item.label} className="flex justify-between items-center py-3.5">
                     <span className="font-montserrat text-white/55 text-[9px] uppercase tracking-[0.22em]">{item.label}</span>
@@ -401,7 +402,7 @@ export default function AboutPage() {
                     fill
                     src={leader.img}
                     alt={leader.name}
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width:640px) 50vw, 25vw"
                   />
                   {/* Gradient overlay for text legibility */}

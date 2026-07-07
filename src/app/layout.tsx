@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Cinzel, Montserrat, Cormorant_Garamond } from "next/font/google";
+import { Anton, Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTARenderer from "@/components/CTARenderer";
 
-const cinzel = Cinzel({
+const cinzel = Anton({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400"],
   variable: "--font-cinzel",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const montserrat = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",

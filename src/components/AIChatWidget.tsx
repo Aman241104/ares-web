@@ -38,7 +38,7 @@ export default function AIChatWidget() {
         >
           <X className="w-4 h-4" />
         </button>
-        <div id="gravity-ai-widget" className="h-[65vh] max-h-[440px] xl:h-[480px] xl:max-h-none" style={{ isolation: "isolate" }} />
+        <div id="gravity-ai-widget" className="h-[480px]" style={{ isolation: "isolate" }} />
       </div>
       <Script src={AI_WIDGET_SCRIPT_SRC} data-site-id={AI_WIDGET_SITE_ID} data-target="#gravity-ai-widget" strategy="lazyOnload" />
 

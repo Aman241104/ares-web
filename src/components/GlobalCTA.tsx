@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Smartphone, Rocket, LineChart, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Smartphone, Rocket, LineChart, CheckCircle2, Code2, Globe } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -139,6 +139,8 @@ export default function GlobalCTA() {
           <div className="space-y-4 mb-14">
             {[
               { icon: <Smartphone className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "MOBILE & WEB APP DEVELOPMENT" },
+              { icon: <Code2 className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "CUSTOM SOFTWARE DEVELOPMENT" },
+              { icon: <Globe className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "WEBSITE DESIGN & DEVELOPMENT" },
               { icon: <Rocket className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "HIGH-PERFORMANCE ARCHITECTURE" },
               { icon: <LineChart className="w-4 h-4 text-[#00A859] group-hover:text-[#00D672] transition-colors" />, text: "DATA-DRIVEN MARKETING & MEDIA" },
             ].map((f, i) => (

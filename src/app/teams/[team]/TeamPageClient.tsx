@@ -163,13 +163,6 @@ function MemberModal({ member, color, onClose }: { member: WeeklyMember; color: 
   );
 }
 
-const TEAM_IMAGES: Record<string, string> = {
-  modi: "/images/mascot_lion.png",
-  doval: "/images/mascot_eagle.png",
-  "amit-shah": "/images/mascot_tiger.png",
-  jaishankar: "/images/mascot_lotus.png",
-};
-
 // Next.js uses async component for params when using app router but since this is client component, we use React.use()
 // However, to keep it simple and match the provided structure, we will use normal props and wrap page with a server component in a real app.
 // Since we are replacing the existing file, we'll keep the params prop but resolve it synchronously as an approximation for the client.
@@ -269,17 +262,23 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
               </div>
             </div>
 
-            {/* Right Hero Mascot image */}
+            {/* Right Hero — Team Owner portrait */}
             <div className="hidden lg:flex justify-end">
-               {TEAM_IMAGES[team.id] ? (
-                 <div className="relative w-[400px] h-[400px]">
+               {team.owner.image ? (
+                 <div className="relative w-[340px] h-[420px] rounded-sm overflow-hidden border border-white/10" style={{ boxShadow: `0 0 0 1px ${team.color}25, 0 40px 80px rgba(0,0,0,0.5)` }}>
                     <Image
-                       src={TEAM_IMAGES[team.id]}
-                       alt={team.name}
+                       src={team.owner.image}
+                       alt={team.owner.name}
                        fill
-                       sizes="(max-width: 768px) 100vw, 400px"
-                       className="object-contain opacity-70"
+                       sizes="340px"
+                       className="object-cover object-top"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: team.color }} />
+                    <div className="absolute bottom-5 left-5 right-5">
+                      <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1" style={{ color: team.color }}>Team Owner</div>
+                      <div className="font-cinzel text-white text-lg tracking-wide">{team.owner.name}</div>
+                    </div>
                  </div>
                ) : (
                  <div className="w-[300px] h-[300px] rounded-full flex items-center justify-center border border-white/5 bg-white/[0.05]">
