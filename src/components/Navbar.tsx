@@ -87,7 +87,7 @@ export default function Navbar() {
           }}
         />
 
-        <div className={`transition-all duration-700 ${scrolled ? "px-5 sm:px-6" : "px-4 sm:px-10 lg:px-16"}`}>
+        <div className={`transition-all duration-700 ${scrolled ? "px-6 sm:px-7" : "px-6 sm:px-10 lg:px-16"}`}>
           <div className={`flex items-center justify-between gap-6 transition-all duration-700 ${scrolled ? "h-[64px]" : "h-[80px]"}`}>
 
             {/* Logo */}
