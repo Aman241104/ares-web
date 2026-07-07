@@ -3,7 +3,7 @@ import { useEffect, useRef, use } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, Clock, Building2, Globe, Phone, Mail, ChevronRight, Code, Megaphone, BarChart2, Cpu, DollarSign, Factory, Zap, Newspaper, BookOpen, Users, Briefcase } from "lucide-react";
+import { MapPin, Clock, Building2, Globe, Phone, Mail, ChevronRight, Code, Megaphone, BarChart2, Cpu, DollarSign, Factory, Zap, Newspaper, BookOpen, Users, Briefcase, Gavel, Key, HeartCrack, Map, Landmark, Banknote, Receipt, FileText, ShieldCheck, FileCheck } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,6 +16,49 @@ const OWNER_PORTRAITS: Record<string, string> = {
   "harsh-brambhatt": "/images/owner_shah.png",
   "mayursinh-chavda": "/images/owner_jaishankar.png",
 };
+
+const SERVICE_ICONS: Record<string, React.ReactNode> = {
+  gavel: <Gavel className="w-6 h-6" />,
+  key: <Key className="w-6 h-6" />,
+  users: <Users className="w-6 h-6" />,
+  "heart-crack": <HeartCrack className="w-6 h-6" />,
+  map: <Map className="w-6 h-6" />,
+  landmark: <Landmark className="w-6 h-6" />,
+  banknote: <Banknote className="w-6 h-6" />,
+  receipt: <Receipt className="w-6 h-6" />,
+  "book-open": <BookOpen className="w-6 h-6" />,
+  "file-text": <FileText className="w-6 h-6" />,
+  "shield-check": <ShieldCheck className="w-6 h-6" />,
+  building: <Building2 className="w-6 h-6" />,
+  briefcase: <Briefcase className="w-6 h-6" />,
+  globe: <Globe className="w-6 h-6" />,
+  "file-check": <FileCheck className="w-6 h-6" />,
+  code: <Code className="w-6 h-6" />,
+  megaphone: <Megaphone className="w-6 h-6" />,
+  zap: <Zap className="w-6 h-6" />,
+  "bar-chart": <BarChart2 className="w-6 h-6" />,
+};
+
+const DEFAULT_SERVICES = [
+  { icon: "code", name: "Custom Software Dev", desc: "Tailored solutions to power your business." },
+  { icon: "globe", name: "Web & Mobile Apps", desc: "Scalable, secure and high performance." },
+  { icon: "megaphone", name: "Digital Marketing", desc: "Drive visibility and generate leads." },
+  { icon: "zap", name: "Cloud & DevOps", desc: "Build, deploy and scale with confidence." },
+  { icon: "briefcase", name: "Business Consulting", desc: "Strategic guidance for sustainable growth." },
+  { icon: "bar-chart", name: "Data Analytics", desc: "Turn data into actionable insights." },
+];
+
+const DEFAULT_CONNECT_WITH = [
+  "Business Owners & Entrepreneurs",
+  "IT & Technology Leaders",
+  "Marketing & Growth Strategists",
+  "Investors & Funding Partners",
+  "Manufacturers & Industrial Leaders",
+  "Startups & Scaleups",
+  "HR & Talent Partners",
+  "Sales & Business Development",
+];
+const CONNECT_ICON_CYCLE = [Users, Cpu, Megaphone, DollarSign, Factory, Zap, Newspaper, BookOpen];
 
 export default function OwnerPageClient({ params }: { params: Promise<{ owner: string }> }) {
   const resolvedParams = use(params);
@@ -160,8 +203,12 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
             </div>
             
             <div className="flex items-center gap-6 mb-8 pb-8 border-b border-white/10">
-              <div className="w-20 h-20 bg-white/[0.05] border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Building2 className="w-8 h-8 text-[#D4AF37]"/>
+              <div className={`w-20 h-20 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden ${owner.company.logo ? "bg-white p-2" : "bg-white/[0.05] border border-white/10"}`}>
+                {owner.company.logo ? (
+                  <Image src={owner.company.logo} alt={`${owner.company.name} logo`} width={80} height={80} className="w-full h-full object-contain" />
+                ) : (
+                  <Building2 className="w-8 h-8 text-[#D4AF37]"/>
+                )}
               </div>
               <div>
                 <div className="font-cinzel text-white text-2xl mb-1">{owner.company.name}</div>
@@ -213,21 +260,15 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
             <p className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest mb-8">We are looking to connect with:</p>
             
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: "Business Owners & Entrepreneurs", icon: <Users className="w-5 h-5"/> },
-                { label: "IT & Technology Leaders", icon: <Cpu className="w-5 h-5"/> },
-                { label: "Marketing & Growth Strategists", icon: <Megaphone className="w-5 h-5"/> },
-                { label: "Investors & Funding Partners", icon: <DollarSign className="w-5 h-5"/> },
-                { label: "Manufacturers & Industrial Leaders", icon: <Factory className="w-5 h-5"/> },
-                { label: "Startups & Scaleups", icon: <Zap className="w-5 h-5"/> },
-                { label: "HR & Talent Partners", icon: <Newspaper className="w-5 h-5"/> },
-                { label: "Sales & Business Development", icon: <BookOpen className="w-5 h-5"/> },
-              ].map((c)=>(
-                <div key={c.label} className="flex items-start gap-4 p-4 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
-                  <span className="text-[#D4AF37] flex-shrink-0">{c.icon}</span>
-                  <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-wider leading-relaxed">{c.label}</span>
-                </div>
-              ))}
+              {(owner.company.connectWith ?? DEFAULT_CONNECT_WITH).map((label, i)=>{
+                const Icon = CONNECT_ICON_CYCLE[i % CONNECT_ICON_CYCLE.length];
+                return (
+                  <div key={label} className="flex items-start gap-4 p-4 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                    <span className="text-[#D4AF37] flex-shrink-0"><Icon className="w-5 h-5" /></span>
+                    <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-wider leading-relaxed">{label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -236,59 +277,35 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
               <div className="w-8 h-px bg-[#D4AF37]" />
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm uppercase">Our Products & Services</h3>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: <Code className="w-6 h-6"/>, n: "Custom Software Dev", d: "Tailored solutions to power your business." },
-                { icon: <Globe className="w-6 h-6"/>, n: "Web & Mobile Apps", d: "Scalable, secure and high performance." },
-                { icon: <Megaphone className="w-6 h-6"/>, n: "Digital Marketing", d: "Drive visibility and generate leads." },
-                { icon: <Zap className="w-6 h-6"/>, n: "Cloud & DevOps", d: "Build, deploy and scale with confidence." },
-                { icon: <Briefcase className="w-6 h-6"/>, n: "Business Consulting", d: "Strategic guidance for sustainable growth." },
-                { icon: <BarChart2 className="w-6 h-6"/>, n: "Data Analytics", d: "Turn data into actionable insights." },
-              ].map((s)=>(
-                <div key={s.n} className="p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:border-white/20 transition-colors">
-                  <div className="text-[#D4AF37] mb-3">{s.icon}</div>
-                  <div className="font-cinzel text-white text-sm tracking-wider mb-2">{s.n}</div>
-                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest leading-relaxed">{s.d}</div>
+              {(owner.company.services ?? DEFAULT_SERVICES).map((s)=>(
+                <div key={s.name} className="p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:border-white/20 transition-colors">
+                  <div className="text-[#D4AF37] mb-3">{SERVICE_ICONS[s.icon] ?? <Briefcase className="w-6 h-6" />}</div>
+                  <div className="font-cinzel text-white text-sm tracking-wider mb-2">{s.name}</div>
+                  <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest leading-relaxed">{s.desc}</div>
                 </div>
               ))}
             </div>
           </div>
-          
+
         </div>
       </section>
 
-      {/* CONNECT CTA */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
-        <div className="max-w-7xl mx-auto glass-card border-[#D4AF37]/30 rounded-2xl p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 40% 60% at 0% 50%, ${team.color}15 0%, transparent 70%)` }} />
-          
-          <div className="relative">
-            <div className="font-montserrat text-[#D4AF37] text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Connect</div>
-            <h3 className="font-cinzel font-light text-white text-3xl sm:text-4xl mb-6 leading-tight">
-              LET'S BUILD SOMETHING <span className="text-[#D4AF37] italic">IMPACTFUL</span> TOGETHER
-            </h3>
-            <p className="font-montserrat text-white/50 text-sm mb-10 leading-relaxed max-w-md">Open to collaborations, partnerships and opportunities that create long-term value.</p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">Connect With Me <ArrowRight className="w-4 h-4 ml-2" /></Link>
-              <Link href="/contact" className="btn-secondary">Contact My Company</Link>
+      {/* CONTACT STRIP */}
+      <section className="py-10 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border border-white/8 rounded-full px-8 py-5">
+          {[
+            { icon: <Phone className="w-3.5 h-3.5"/>, v: owner.phone },
+            { icon: <Mail className="w-3.5 h-3.5"/>, v: owner.email },
+            { icon: <Globe className="w-3.5 h-3.5"/>, v: owner.company.website },
+            { icon: <MapPin className="w-3.5 h-3.5"/>, v: owner.company.headquarters },
+          ].filter((c) => c.v).map((c)=>(
+            <div key={c.v} className="flex items-center gap-2.5 font-montserrat text-white/60 text-xs tracking-wide">
+              <span className="text-[#D4AF37]">{c.icon}</span>
+              {c.v}
             </div>
-          </div>
-          
-          <div className="relative space-y-6 lg:pl-12 lg:border-l border-white/10">
-            {[
-              { icon: <Phone className="w-5 h-5"/>, v: owner.phone },
-              { icon: <Mail className="w-5 h-5"/>, v: owner.email },
-              { icon: <Globe className="w-5 h-5"/>, v: owner.company.website },
-              { icon: <MapPin className="w-5 h-5"/>, v: owner.company.headquarters },
-            ].filter((c) => c.v).map((c)=>(
-              <div key={c.v} className="flex items-center gap-4 font-cinzel tracking-wider text-white text-lg">
-                <div className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 text-[#D4AF37]">{c.icon}</div>
-                {c.v}
-              </div>
-            ))}
-          </div>
-          
+          ))}
         </div>
       </section>
 

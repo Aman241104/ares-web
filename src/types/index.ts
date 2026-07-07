@@ -7,6 +7,9 @@ export interface Company {
   size: string;
   about: string;
   values: string[];
+  services?: { icon: string; name: string; desc: string }[];
+  connectWith?: string[];
+  logo?: string;
 }
 
 export interface Owner {

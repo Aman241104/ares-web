@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Users, Trophy, Calendar, Briefcase, Building2, Star, CheckCircle2, CircleDot, Circle, Image as ImageIcon, BookOpen, Phone, Globe, TrendingUp } from "lucide-react";
 import { teams, partners, specialEvents, scheduleEvents } from "@/lib/data";
+import { COMMISSIONERS_2026 } from "@/lib/honorees";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -45,6 +46,17 @@ export default function HomePage() {
   const glassArrowRef = useRef<HTMLDivElement>(null);
   const ctaBtnRef = useRef<HTMLDivElement>(null);
   const bgLogoRef = useRef<HTMLDivElement>(null);
+  const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
+
+  const handleFactionCardClick = (e: React.MouseEvent, teamId: string) => {
+    // Touch devices have no :hover to reveal the poster — first tap flips the
+    // card to show it, second tap (now flipped) lets the link navigate through.
+    // Devices with a real pointer (mouse) keep single-click-to-navigate.
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches && flippedTeam !== teamId) {
+      e.preventDefault();
+      setFlippedTeam(teamId);
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -122,16 +134,30 @@ export default function HomePage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const title = new SplitType(".h-title-ares", { types: "chars" });
+      // SplitType measures/splits characters synchronously against whatever font is
+      // active at that instant. On a slow connection the custom webfont may still be
+      // swapping in (font-display:swap), which can leave the chained timeline below
+      // partially applied or the split malformed. Guard it and always force the hero
+      // back to fully visible shortly after mount, so a font-load race can never leave
+      // the title/subtitle/buttons permanently stuck at opacity:0.
+      try {
+        const title = new SplitType(".h-title-ares", { types: "chars" });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
-        .from(title.chars, { opacity: 0, y: 60, rotateX: -90, stagger: 0.05, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
-        .from(".h-title-bl", { opacity: 0, x: -30, duration: 0.8 }, "-=0.5")
-        .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
-        .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
-        .from(".h-dock", { opacity: 0, y: 30, duration: 1, ease: "power3.out" }, "-=0.4")
-        .from(".h-stat-item", { opacity: 0, y: 15, duration: 0.8, stagger: 0.1 }, "-=0.8");
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".h-badge", { opacity: 0, y: -20, duration: 0.8 })
+          .from(title.chars, { opacity: 0, y: 60, rotateX: -90, stagger: 0.05, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
+          .from(".h-title-bl", { opacity: 0, x: -30, duration: 0.8 }, "-=0.5")
+          .from(".h-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+          .from(".h-btns", { opacity: 0, y: 20, duration: 0.8 }, "-=0.6")
+          .from(".h-dock", { opacity: 0, y: 30, duration: 1, ease: "power3.out" }, "-=0.4")
+          .from(".h-stat-item", { opacity: 0, y: 15, duration: 0.8, stagger: 0.1 }, "-=0.8");
+      } catch {
+        // fall through to the safety net below
+      }
+
+      gsap.set([".h-badge", ".h-title-ares", ".h-title-ares .char", ".h-title-bl", ".h-sub", ".h-btns", ".h-dock", ".h-stat-item"], {
+        opacity: 1, y: 0, x: 0, rotateX: 0, delay: 2.5,
+      });
 
       gsap.utils.toArray<Element>(".sr").forEach((el) => {
         gsap.fromTo(el,
@@ -560,11 +586,11 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
             {sorted.map((team) => (
-              <div key={team.id} className="group relative">
+              <div key={team.id} className="group relative" data-flipped={flippedTeam === team.id}>
                 {/* Top team-color accent line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 z-20 transition-all duration-500 rounded-t-sm" style={{ background: team.color, boxShadow: `0 0 12px ${team.color}88`, opacity: 0.7 }} />
                 <div
-                  className="absolute top-0 left-0 right-0 h-0.5 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute top-0 left-0 right-0 h-0.5 z-20 opacity-0 group-hover:opacity-100 group-data-[flipped=true]:opacity-100 transition-opacity duration-500"
                   style={{ background: team.color, boxShadow: `0 0 20px ${team.color}, 0 0 40px ${team.color}60` }}
                 />
 
@@ -576,35 +602,35 @@ export default function HomePage() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,194,0,0.22)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                 >
                   {/* Image area */}
-                  <Link href={`/teams/${team.id}`} className="block">
+                  <Link href={`/teams/${team.id}`} className="block" onClick={(e) => handleFactionCardClick(e, team.id)}>
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
                         src={ownerImgs[team.id]}
                         alt={team.owner.name}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover object-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
+                        className="object-cover object-top transition-all duration-700 group-hover:opacity-0 group-hover:scale-105 group-data-[flipped=true]:opacity-0 group-data-[flipped=true]:scale-105"
                       />
                       <Image
                         src={mascots[team.id]}
                         alt={team.name}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover object-center transition-all duration-700 opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100"
+                        className="object-cover object-center transition-all duration-700 opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 group-data-[flipped=true]:opacity-100 group-data-[flipped=true]:scale-100"
                       />
 
-                      {/* Team color gradient overlay — fades out on hover as the poster (own design) takes over */}
+                      {/* Team color gradient overlay — fades out on hover/flip as the poster (own design) takes over */}
                       <div
-                        className="absolute inset-0 opacity-40 group-hover:opacity-0 transition-opacity duration-500"
+                        className="absolute inset-0 opacity-40 group-hover:opacity-0 group-data-[flipped=true]:opacity-0 transition-opacity duration-500"
                         style={{ background: `linear-gradient(180deg, ${team.color}00 0%, ${team.color}90 100%)` }}
                       />
-                      {/* Team color ambient flood on hover, as the poster reveals */}
+                      {/* Team color ambient flood on hover/flip, as the poster reveals */}
                       <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 group-data-[flipped=true]:opacity-100 transition-opacity duration-700 pointer-events-none"
                         style={{ background: `radial-gradient(ellipse 120% 80% at 50% 110%, ${team.color}30 0%, transparent 60%)` }}
                       />
                       {/* Scrim — visible by default for the owner caption's legibility, fades out as the poster (own contrast) reveals */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100 group-hover:opacity-0 group-data-[flipped=true]:opacity-0 transition-opacity duration-500" />
 
                       {/* Rank badge */}
                       <div className="absolute top-4 right-4 z-10">
@@ -614,9 +640,9 @@ export default function HomePage() {
                         </div>
                       </div>
 
-                      {/* Default caption — owner info, fades out on hover as the poster (own baked-in labels) takes over */}
-                      <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-3 transition-all duration-300 z-10">
-                        <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Captain</div>
+                      {/* Default caption — owner info, fades out on hover/flip as the poster (own baked-in labels) takes over */}
+                      <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-3 group-data-[flipped=true]:opacity-0 group-data-[flipped=true]:translate-y-3 transition-all duration-300 z-10">
+                        <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Owner</div>
                         <div className="font-cinzel text-white text-base tracking-wider leading-tight">{team.owner.name}</div>
                         <div className="font-montserrat text-white/70 text-[9px] mt-1.5 tracking-wider leading-relaxed">{team.owner.leadershipStyle}</div>
                       </div>
@@ -659,6 +685,40 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          MEET THE COMMISSIONERS
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 pointer-events-none bg-grid opacity-30" />
+        <div className="max-w-7xl mx-auto relative">
+          <div className="mb-14 sr text-center">
+            <div className="section-label mx-auto mb-4">The Visionaries</div>
+            <h2 className="font-cinzel text-white text-2xl sm:text-3xl tracking-[0.2em] text-shadow-gold">Meet the Commissioners</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-8 sr-stagger">
+            {COMMISSIONERS_2026.map((comm) => (
+              <div key={comm.name} className="glass-card border-white/10 p-8 sm:p-10 flex flex-col items-center text-center">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-6 border border-[#D4AF37]/30 relative shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                  <Image src={comm.img} alt={comm.name} fill className="object-cover" sizes="128px" />
+                </div>
+                <h3 className="font-cinzel text-xl text-white mb-2 tracking-wide">{comm.name}</h3>
+                <div className="font-montserrat text-[#D4AF37]/80 text-[10px] uppercase tracking-[0.25em] mb-2">{comm.role}</div>
+                <div className="font-montserrat text-white/40 text-[9px] tracking-[0.2em] flex items-center justify-center gap-1.5">
+                  <Briefcase className="w-3 h-3" /> {comm.company.name}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12 sr">
+            <Link href="/about" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
+              Full Profiles <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
@@ -671,7 +731,7 @@ export default function HomePage() {
           <div>
             <div className="sr flex items-center justify-between mb-8">
               <div>
-                <div className="section-label mb-2">Special Events</div>
+                <div className="section-label mb-2">Scheduled Events</div>
                 <h2 className="font-cinzel text-white text-xl tracking-widest">Key Milestones</h2>
               </div>
               <Link href="/schedule" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">

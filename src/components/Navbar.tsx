@@ -117,14 +117,14 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-2.5 pl-5 ml-1 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-opacity duration-300"
             >
-              <span className="font-montserrat text-white/40 text-[7px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
-              <span className={`inline-flex items-center bg-white rounded-full transition-all duration-700 shadow-[0_2px_10px_rgba(0,0,0,0.3)] ${scrolled ? "px-2.5 py-1.5" : "px-3 py-2"}`}>
+              <span className="font-montserrat text-white/50 text-[8px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
+              <span className={`inline-flex items-center bg-white rounded-full transition-all duration-700 shadow-[0_2px_12px_rgba(0,0,0,0.35)] ${scrolled ? "px-3 py-2" : "px-3.5 py-2.5"}`}>
                 <Image
                   src="/images/jukebox-media-logo.png"
                   alt="Jukebox Media"
                   width={872}
                   height={342}
-                  className={`w-auto object-contain transition-all duration-700 ${scrolled ? "h-5" : "h-6"}`}
+                  className={`w-auto object-contain transition-all duration-700 ${scrolled ? "h-7" : "h-8"}`}
                 />
               </span>
             </a>
@@ -184,15 +184,6 @@ export default function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
-              <a
-                href="https://jukeboxmedia.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary whitespace-nowrap"
-                style={{ padding: "9px 20px", fontSize: "9px", letterSpacing: "0.22em" }}
-              >
-                Jukebox Media
-              </a>
               <Link
                 href="/contact"
                 className="btn-primary whitespace-nowrap"

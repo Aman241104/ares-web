@@ -265,19 +265,19 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
             {/* Right Hero — Team Owner portrait */}
             <div className="hidden lg:flex justify-end">
                {team.owner.image ? (
-                 <div className="relative w-[340px] h-[420px] rounded-sm overflow-hidden border border-white/10" style={{ boxShadow: `0 0 0 1px ${team.color}25, 0 40px 80px rgba(0,0,0,0.5)` }}>
+                 <div className="relative w-full max-w-[480px] aspect-[4/5] rounded-sm overflow-hidden border border-white/10" style={{ boxShadow: `0 0 0 1px ${team.color}25, 0 40px 80px rgba(0,0,0,0.5)` }}>
                     <Image
                        src={team.owner.image}
                        alt={team.owner.name}
                        fill
-                       sizes="340px"
+                       sizes="480px"
                        className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: team.color }} />
-                    <div className="absolute bottom-5 left-5 right-5">
-                      <div className="font-montserrat text-[8px] uppercase tracking-[0.3em] mb-1" style={{ color: team.color }}>Team Owner</div>
-                      <div className="font-cinzel text-white text-lg tracking-wide">{team.owner.name}</div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="font-montserrat text-[9px] uppercase tracking-[0.3em] mb-1.5" style={{ color: team.color }}>Team Owner</div>
+                      <div className="font-cinzel text-white text-2xl tracking-wide">{team.owner.name}</div>
                     </div>
                  </div>
                ) : (
