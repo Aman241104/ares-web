@@ -32,7 +32,7 @@ export const PARTNERS_2026: Honoree[] = [
     name: "Shruti Agarwal",
     role: "Founding Partner",
     quote: "Backing the league that backs its members — that's what real partnership looks like.",
-    img: "/images/roster/shruti-agarwal_card.jpg",
+    img: "/images/roster/shruti-agarwal.png",
     company: {
       name: "Arcedior International Pvt. Ltd.",
       category: "Furniture Manufacturer",
