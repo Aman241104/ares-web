@@ -235,7 +235,7 @@ export default function WallOfFamePage() {
     <div ref={containerRef} className="pt-24 bg-[#000000] min-h-screen overflow-x-hidden">
 
       {/* ══════════════ HERO ══════════════ */}
-      <PageHero layout="left" className="min-h-[70vh]">
+      <PageHero layout="left" className="min-h-[70vh]" objectPosition="object-[78%_center] md:object-center">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-24">
           <div className="max-w-2xl">
             <div className="h-badge inline-flex items-center gap-3 mb-8 relative">

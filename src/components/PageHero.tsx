@@ -28,6 +28,8 @@ interface PageHeroProps {
   className?: string;
   /** How bright the background image should be — adjust per page. Default 0.72 */
   imageBrightness?: number;
+  /** Tailwind object-position classes. Use to keep an off-center focal point (e.g. a trophy) in frame on narrow viewports. Default centers on all breakpoints. */
+  objectPosition?: string;
 }
 
 export default function PageHero({
@@ -36,6 +38,7 @@ export default function PageHero({
   children,
   className = "",
   imageBrightness = 0.72,
+  objectPosition = "object-center",
 }: PageHeroProps) {
   return (
     <section className={`relative flex items-center overflow-hidden ${className}`}>
@@ -47,7 +50,7 @@ export default function PageHero({
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-center"
+          className={`object-cover ${objectPosition}`}
           priority
           style={{ filter: `brightness(${imageBrightness}) saturate(1.1)` }}
         />

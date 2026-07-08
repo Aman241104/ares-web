@@ -234,7 +234,7 @@ export default function HomePage() {
             alt="ARES Business League 2026 — Championship Trophy"
             fill
             sizes="100vw"
-            className="object-cover object-center parallax-bg scale-110"
+            className="object-cover object-[78%_center] md:object-center parallax-bg scale-110"
             priority
             style={{ filter: "brightness(0.85) saturate(1.1)" }}
           />
