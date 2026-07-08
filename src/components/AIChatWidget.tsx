@@ -27,8 +27,9 @@ export default function AIChatWidget() {
       )}
 
       <div
+        inert={!chatOpen}
         className={`fixed left-4 right-4 bottom-40 xl:left-auto xl:right-6 xl:bottom-24 xl:w-[380px] z-[999] rounded-2xl overflow-hidden bg-[#0B1120] ring-1 ring-[#D4AF37]/25 shadow-[0_25px_70px_rgba(0,0,0,0.5)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          chatOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"
+          chatOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
         <button

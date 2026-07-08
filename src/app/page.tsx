@@ -47,16 +47,16 @@ export default function HomePage() {
   const glassArrowRef = useRef<HTMLDivElement>(null);
   const ctaBtnRef = useRef<HTMLDivElement>(null);
   const bgLogoRef = useRef<HTMLDivElement>(null);
-  const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
   const [activeCommissioner, setActiveCommissioner] = useState<number | null>(null);
+  const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
 
   const handleFactionCardClick = (e: React.MouseEvent, teamId: string) => {
-    // Touch devices have no :hover to reveal the poster — first tap flips the
-    // card to show it, second tap (now flipped) lets the link navigate through.
-    // Devices with a real pointer (mouse) keep single-click-to-navigate.
-    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches && flippedTeam !== teamId) {
+    // Touch devices have no :hover to reveal the poster — tap toggles between
+    // owner photo and poster instead of navigating. Navigation only happens
+    // through the Team/Owner buttons below the image.
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
       e.preventDefault();
-      setFlippedTeam(teamId);
+      setFlippedTeam(prev => (prev === teamId ? null : teamId));
     }
   };
 
