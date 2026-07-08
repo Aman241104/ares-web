@@ -88,7 +88,7 @@ export default function Navbar() {
         />
 
         <div className={`transition-all duration-700 ${scrolled ? "px-6 sm:px-7" : "px-6 sm:px-10 lg:px-16"}`}>
-          <div className={`flex items-center justify-between gap-6 transition-all duration-700 ${scrolled ? "h-[64px]" : "h-[80px]"}`}>
+          <div className={`flex items-center justify-between transition-all duration-700 ${scrolled ? "h-[64px] gap-3" : "h-[80px] gap-6"}`}>
 
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0 group">
@@ -115,7 +115,7 @@ export default function Navbar() {
               href="https://jukeboxmedia.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2.5 pl-5 ml-1 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-opacity duration-300"
+              className={`hidden lg:flex items-center gap-2.5 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-all duration-700 ${scrolled ? "pl-3" : "pl-5"}`}
             >
               <span className="font-montserrat text-white/50 text-[8px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
               <span className={`inline-flex items-center bg-white rounded-full transition-all duration-700 shadow-[0_2px_12px_rgba(0,0,0,0.35)] ${scrolled ? "px-3 py-2" : "px-3.5 py-2.5"}`}>
