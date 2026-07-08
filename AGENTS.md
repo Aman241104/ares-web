@@ -24,15 +24,17 @@ Marketing/portfolio site for the **ARES Business League 2026 ("Nation Builders E
 
 ## File Map (partial — see `src/app` for full route list)
 - `src/lib/data.ts` — teams, `tournamentRules`, `specialEvents`, `partners` — source of truth for any ABL facts
-- `src/components/GlobalCTA.tsx` + `CTARenderer.tsx` — the site-wide "Official Web & Media Partner" CTA (rendered on every page except `/contact`/`/about`), promotes Gravity Media Marketing
+- `src/components/GlobalCTA.tsx` + `CTARenderer.tsx` — the site-wide "Official Web & Media Partner" CTA (rendered on every page except `/contact`; as of 2026-07-08 also shown on `/about`), promotes Gravity Media Marketing
 - `src/components/Navbar.tsx`, `Footer.tsx`, `MobileDock.tsx`, `CommandMenu.tsx` — global chrome
 
 ## Website AI Widget (added 2026-07-06)
-`GlobalCTA.tsx` embeds a live, working AI chat widget (inline `data-target` mode, not a floating bubble) — a real product built in the sibling `whatsapp-agents/dashboard` project, not a mockup:
+`src/components/AIChatWidget.tsx` (floating bubble, mounted once in `layout.tsx` outside `{children}` — NOT inside `GlobalCTA.tsx` anymore, see the in-file comment for why) embeds a live, working AI chat widget — a real product built in the sibling `whatsapp-agents/dashboard` project, not a mockup:
 ```html
 <script src="https://whatsapp-ai-agent-inky.vercel.app/widget.js" data-site-id="f5cd9777-83a2-44f5-a880-088b0d6de332" data-target="#gravity-ai-widget" async />
 ```
-That site id is the workspace (renamed "ARES Business League", was "Gravity Media Marketing") in the WhatsApp AI Agent dashboard. **As of 2026-07-08, scoped to ABL-only, not Gravity**: `ai_config.system_prompt` instructs it to only answer ARES Business League questions and deflect anything else, the 6 Gravity-services/company KB entries were deactivated (`is_active: false`, not deleted), and `widget_greeting` no longer mentions Gravity's services. No WhatsApp number involved — it's the dashboard's new "web" channel. See `whatsapp-agents/dashboard/AGENTS.md`'s 2026-07-06 handoff for the full build. To change scope/greeting/color again, log into that dashboard → Settings → Website Widget or Settings → AI Studio (do not hardcode changes here beyond the site id).
+That site id is the workspace (renamed "ARES Business League", was "Gravity Media Marketing") in the WhatsApp AI Agent dashboard. **As of 2026-07-08, scoped to ABL-only, not Gravity**: `ai_config.system_prompt` instructs it to only answer ARES Business League questions and deflect anything else, the 6 Gravity-services/company KB entries were deactivated (`is_active: false`, not deleted), and `widget_greeting` no longer mentions Gravity's services. The floating pill copy in `AIChatWidget.tsx` was also fixed the same day to say "Ask our AI Assistant about ABL 2026" (no Gravity mention). No WhatsApp number involved — it's the dashboard's new "web" channel. See `whatsapp-agents/dashboard/AGENTS.md`'s 2026-07-06 handoff for the full build. To change scope/greeting/color again, log into that dashboard → Settings → Website Widget or Settings → AI Studio (do not hardcode changes here beyond the site id).
+
+**Reliability fix (2026-07-08):** `whatsapp-agents/dashboard/app/widget.js/route.ts`'s `mountHost()` used to query its `data-target` div exactly once and give up permanently if not found yet — a real intermittent "widget sometimes doesn't load" failure mode. Now polls every 250ms for up to ~10s before giving up, so a slow/late-mounted target div no longer permanently breaks the widget until a hard reload. This is a shared script served to every embedding site, not ares-web-specific — the fix lives in the dashboard repo.
 
 ## Known Issue (resolved 2026-07-08)
 `GlobalCTA.tsx`'s dark/light contrast mismatch (background changed to `#030712` without updating left-column text colors) — confirmed fixed as of 2026-07-08's pre-launch audit, all text now uses white/white-opacity classes against the dark background.

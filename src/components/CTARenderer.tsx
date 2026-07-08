@@ -5,7 +5,7 @@ import GlobalCTA from "./GlobalCTA";
 export default function CTARenderer() {
   const pathname = usePathname();
   
-  if (pathname === '/contact' || pathname === '/about') {
+  if (pathname === '/contact') {
     return null;
   }
   

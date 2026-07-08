@@ -22,7 +22,7 @@ export default function AIChatWidget() {
       {!chatOpen && (
         <div className="hidden xl:flex fixed bottom-9 right-28 z-[998] items-center gap-2 bg-[#0B1120] ring-1 ring-[#D4AF37]/30 rounded-full pl-4 pr-5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.4)] animate-[fadeIn_0.6s_ease]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-          <span className="text-white/80 text-[11px] font-semibold tracking-wide whitespace-nowrap">Ask our AI Assistant about Gravity or ABL 2026</span>
+          <span className="text-white/80 text-[11px] font-semibold tracking-wide whitespace-nowrap">Ask our AI Assistant about ABL 2026</span>
         </div>
       )}
 
