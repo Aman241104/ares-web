@@ -500,6 +500,13 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
                       <span className="font-montserrat text-[9px] font-bold tracking-[0.2em] uppercase" style={{ color: team.color }}>Captain</span>
                     </div>
                   )}
+
+                  {/* Company logo badge */}
+                  {m.companyLogo && (
+                    <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.5)] z-20 ring-1 ring-white/20">
+                      <Image src={m.companyLogo} alt={m.company} width={40} height={40} className="w-full h-full object-contain p-1" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Info Section */}

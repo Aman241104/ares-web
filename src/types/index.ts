@@ -37,6 +37,7 @@ export interface WeeklyMember {
   industry: string;
   points: number;
   image?: string;
+  companyLogo?: string;
   company: string;
   companyDesc: string;
   product: string;
@@ -128,6 +129,7 @@ export interface Partner {
   name: string;
   tier: string;
   tagline: string;
+  logo?: string;
 }
 
 export interface Commissioner {

@@ -230,11 +230,20 @@ export default function HomePage() {
         {/* ── FULL-BLEED BACKGROUND IMAGE ── */}
         <div className="absolute inset-0 z-0">
           <Image
+            src="/images/hero_trophy_mobile.png"
+            alt="ARES Business League 2026 — Championship Trophy"
+            fill
+            sizes="100vw"
+            className="object-cover object-center md:hidden scale-110"
+            priority
+            style={{ filter: "brightness(0.75) saturate(1.1)" }}
+          />
+          <Image
             src="/images/hero_trophy_stadium.png"
             alt="ARES Business League 2026 — Championship Trophy"
             fill
             sizes="100vw"
-            className="object-cover object-[78%_center] md:object-center parallax-bg scale-110"
+            className="object-cover object-[78%_center] md:object-center hidden md:block parallax-bg scale-110"
             priority
             style={{ filter: "brightness(0.85) saturate(1.1)" }}
           />
@@ -242,6 +251,8 @@ export default function HomePage() {
 
         {/* ── GRADIENT OVERLAYS — darken left so text pops, let right show trophy ── */}
         <div className="absolute inset-0 z-[1] pointer-events-none">
+          {/* Mobile-only darkening veil — full width, background photo has no dedicated text-safe zone at this crop */}
+          <div className="absolute inset-0 md:hidden bg-black/55" />
           {/* Strong dark veil over left half */}
           <div className="absolute inset-0" style={{ background: "linear-gradient(95deg, rgba(7,12,28,0.97) 0%, rgba(7,12,28,0.90) 28%, rgba(7,12,28,0.55) 52%, rgba(7,12,28,0.10) 70%, transparent 85%)" }} />
           {/* Top fade for navbar */}
@@ -281,7 +292,7 @@ export default function HomePage() {
           style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
         {/* ── HERO CONTENT — LEFT SIDE ── */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-20 sm:pt-24 pb-0 px-6 sm:px-10 lg:px-16 w-full">
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-16 sm:pt-24 pb-0 px-8 sm:px-12 lg:px-20 w-full">
           <div className="max-w-[600px] lg:max-w-[min(52%,680px)]">
 
             {/* Live badge */}
@@ -335,13 +346,13 @@ export default function HomePage() {
             </a>
 
             {/* Gold divider */}
-            <div className="flex items-center gap-4 my-7">
+            <div className="flex items-center gap-4 my-4">
               <div className="h-[1.5px] w-16 bg-gradient-to-r from-[#FFC200] to-transparent" />
               <span className="font-montserrat text-[#FFC200]/70 text-[8px] tracking-[0.45em] uppercase font-bold">Est. 2026</span>
             </div>
 
             {/* Subtext */}
-            <div className="h-sub mb-10">
+            <div className="h-sub mb-6">
               {/* Primary tagline — design guide hero statement */}
               <p className="font-cinzel font-bold text-white leading-[1.15] mb-4"
                 style={{ fontSize: "clamp(14px, 2.2vw, 22px)", letterSpacing: "0.12em", textShadow: "0 2px 20px rgba(0,0,0,0.8)" }}>
@@ -357,7 +368,7 @@ export default function HomePage() {
             </div>
 
             {/* CTAs */}
-            <div className="h-btns flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-4 sm:gap-6 mb-14">
+            <div className="h-btns flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-4 sm:gap-6 mb-8">
               <div className="flex flex-wrap gap-4">
                 <Link href="/teams" className="btn-primary px-10 py-5 text-[11px] tracking-[0.25em]">
                   Explore Teams <ArrowRight className="w-3.5 h-3.5" />
@@ -440,6 +451,33 @@ export default function HomePage() {
           </div>
         </div>
         <div className="gold-divider opacity-30" />
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          WEEK 1 RECAP
+      ═══════════════════════════════════════════ */}
+      <section className="relative z-20 bg-[#000000] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 relative">
+          <div className="text-center mb-10 sr">
+            <div className="section-label mx-auto mb-5">Week 1 Recap</div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sr-stagger">
+            {[
+              { n: "223",           prefix: "", label: "1-2-1s Held" },
+              { n: "106",           prefix: "", label: "Referrals Passed" },
+              { n: "1,88,75,447",   prefix: "₹", label: "Business Passed" },
+              { n: "2",             prefix: "", label: "Visitors" },
+            ].map((s) => (
+              <div key={s.label} className="border border-[rgba(255,194,0,0.10)] bg-[#0B1120] flex flex-col items-center justify-center text-center px-4 py-8">
+                <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(22px, 3vw, 34px)", lineHeight: 1, textShadow: "0 0 20px rgba(255,194,0,0.35)" }}>
+                  {s.prefix}<AnimatedCounter value={s.n} />
+                </div>
+                <div className="font-montserrat text-white/55 text-[8px] sm:text-[9px] uppercase tracking-[0.25em] mt-3">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -868,8 +906,12 @@ export default function HomePage() {
               {partners.slice(0,6).map((p) => (
                 <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-white/[0.03] border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors">
-                    <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
+                  <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center mb-3 border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors" style={{ background: p.logo ? "#ffffff" : "rgba(255,255,255,0.03)" }}>
+                    {p.logo ? (
+                      <Image src={p.logo} alt={p.name} width={56} height={56} className="w-full h-full object-contain p-1.5" />
+                    ) : (
+                      <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
+                    )}
                   </div>
                   <div className="font-cinzel text-white/75 text-xs tracking-wide group-hover:text-white transition-colors mb-1">{p.name}</div>
                   <div className="font-montserrat text-[#D4AF37]/45 text-[7px] uppercase tracking-widest">{p.tier.replace(" Partner","")}</div>
@@ -918,7 +960,7 @@ export default function HomePage() {
                 ? "text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/5"
                 : "text-white/55 border-white/10 bg-white/[0.05]";
               return (
-                <div key={ev.name} className="group glass-card p-6 hover:border-[rgba(212,175,55,0.25)] transition-all duration-400 relative overflow-hidden">
+                <div key={`${ev.date}-${ev.name}`} className="group glass-card p-6 hover:border-[rgba(212,175,55,0.25)] transition-all duration-400 relative overflow-hidden">
                   {ev.status === "in-progress" && (
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
                   )}

@@ -115,7 +115,7 @@ export default function Navbar() {
               href="https://jukeboxmedia.in"
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden lg:flex items-center gap-2.5 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-all duration-700 ${scrolled ? "pl-3" : "pl-5"}`}
+              className={`hidden 2xl:flex items-center gap-2.5 border-l border-white/10 flex-shrink-0 opacity-85 hover:opacity-100 transition-all duration-700 ${scrolled ? "pl-3" : "pl-5"}`}
             >
               <span className="font-montserrat text-white/50 text-[8px] tracking-[0.2em] uppercase whitespace-nowrap">Presented by</span>
               <span className={`inline-flex items-center bg-white rounded-full transition-all duration-700 shadow-[0_2px_12px_rgba(0,0,0,0.35)] ${scrolled ? "px-3 py-2" : "px-3.5 py-2.5"}`}>
@@ -135,7 +135,7 @@ export default function Navbar() {
                 link.dropdown ? (
                   <div key={link.label} className="relative group">
                     <button
-                      className={`flex items-center gap-1.5 px-3.5 py-2.5 font-montserrat text-[9.5px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 rounded-sm whitespace-nowrap ${
+                      className={`flex items-center gap-1.5 px-2.5 py-2.5 font-montserrat text-[9.5px] uppercase tracking-[0.12em] font-semibold transition-all duration-300 rounded-sm whitespace-nowrap ${
                         pathname.startsWith("/teams")
                           ? "text-[#D4AF37] bg-[#D4AF37]/6"
                           : "text-white/50 hover:text-white hover:bg-white/[0.04]"
@@ -170,7 +170,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href!}
-                    className={`px-3.5 py-2.5 font-montserrat text-[9.5px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 rounded-sm whitespace-nowrap ${
+                    className={`px-2.5 py-2.5 font-montserrat text-[9.5px] uppercase tracking-[0.12em] font-semibold transition-all duration-300 rounded-sm whitespace-nowrap ${
                       pathname === link.href
                         ? "text-[#D4AF37] bg-[#D4AF37]/6"
                         : "text-white/50 hover:text-white hover:bg-white/[0.04]"
@@ -187,7 +187,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className="btn-primary whitespace-nowrap"
-                style={{ padding: "9px 22px", fontSize: "9px", letterSpacing: "0.22em" }}
+                style={{ padding: "9px 16px", fontSize: "9px", letterSpacing: "0.18em" }}
               >
                 Build Your Web Site
               </Link>

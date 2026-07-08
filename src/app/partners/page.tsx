@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Users, BarChart2, Trophy, Handshake, Megaphone, Target, Globe, Building2, Star } from "lucide-react";
 import { partners } from "@/lib/data";
 import gsap from "gsap";
@@ -204,14 +205,18 @@ export default function PartnersPage() {
                   )}
 
                   <div
-                    className="w-9 h-9 flex items-center justify-center mb-4 border transition-all duration-300"
+                    className="w-14 h-14 flex items-center justify-center mb-4 border rounded-full overflow-hidden transition-all duration-300"
                     style={{
-                      background: isPremium ? "rgba(212,175,55,0.1)" : "rgba(255,255,255,0.02)",
+                      background: p.logo ? "#ffffff" : isPremium ? "rgba(212,175,55,0.1)" : "rgba(255,255,255,0.02)",
                       borderColor: isPremium ? "rgba(212,175,55,0.25)" : "rgba(255,255,255,0.08)",
                       color: isPremium ? "#D4AF37" : "rgba(255,255,255,0.35)",
                     }}
                   >
-                    <Building2 className="w-4 h-4" />
+                    {p.logo ? (
+                      <Image src={p.logo} alt={p.name} width={56} height={56} className="w-full h-full object-contain p-1.5" />
+                    ) : (
+                      <Building2 className="w-4 h-4" />
+                    )}
                   </div>
 
                   <div className="font-cinzel text-white text-[11px] tracking-wider leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors">{p.name}</div>

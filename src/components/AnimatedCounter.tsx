@@ -34,7 +34,7 @@ export default function AnimatedCounter({
       ease: "power2.out",
       onUpdate: () => {
         const rounded = Math.round(counter.val);
-        el.textContent = (hasCommas ? rounded.toLocaleString() : String(rounded)) + suffix;
+        el.textContent = (hasCommas ? rounded.toLocaleString("en-IN") : String(rounded)) + suffix;
       },
       scrollTrigger: { trigger: el, start: "top 90%", once: true },
     });

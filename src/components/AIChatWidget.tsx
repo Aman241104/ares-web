@@ -46,7 +46,7 @@ export default function AIChatWidget() {
       <button
         onClick={() => setChatOpen((v) => !v)}
         aria-label={chatOpen ? "Close AI Assistant" : "Open AI Assistant chat"}
-        className="fixed bottom-24 right-4 w-14 h-14 xl:bottom-6 xl:right-6 xl:w-16 xl:h-16 z-[999] rounded-full bg-gradient-to-br from-[#D4AF37] to-[#8B6914] ring-1 ring-white/10 shadow-[0_10px_30px_rgba(212,175,55,0.5)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.7)] hover:scale-105 flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-32 right-4 w-14 h-14 xl:bottom-6 xl:right-6 xl:w-16 xl:h-16 z-[999] rounded-full bg-gradient-to-br from-[#D4AF37] to-[#8B6914] ring-1 ring-white/10 shadow-[0_10px_30px_rgba(212,175,55,0.5)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.7)] hover:scale-105 flex items-center justify-center transition-all duration-300"
       >
         {chatOpen ? (
           <X className="w-5 h-5 xl:w-6 xl:h-6 text-[#050B0A]" strokeWidth={2.25} />
