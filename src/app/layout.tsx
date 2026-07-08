@@ -27,8 +27,14 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
+// aresbusinessleague.com is not yet connected in Vercel (DNS doesn't resolve) — link
+// previews (WhatsApp, etc.) need metadataBase to point at a URL that actually resolves,
+// otherwise og:image resolves to a dead domain and the preview shows no image. Swap
+// SITE_URL back to the custom domain once it's connected.
+const SITE_URL = "https://ares-web-nine.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aresbusinessleague.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "ARES Business League 2026 — Nation Builders Edition",
     template: "%s | ARES Business League 2026",
@@ -39,7 +45,7 @@ export const metadata: Metadata = {
     title: "ARES Business League 2026 — Nation Builders Edition",
     description: "4 Teams. 4 Leaders. 1 Mission. July 1st – July 29th, 2026",
     type: "website",
-    url: "https://aresbusinessleague.com",
+    url: SITE_URL,
     siteName: "ARES Business League",
     images: [{ url: "/images/hero_trophy_stadium.png", width: 1600, height: 854, alt: "ARES Business League 2026 Trophy" }],
   },

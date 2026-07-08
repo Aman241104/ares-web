@@ -13,6 +13,13 @@ export async function generateMetadata({ params }: { params: Promise<{ team: str
     openGraph: {
       title: `${team.name} | ARES Business League 2026`,
       description: team.description,
+      images: [{ url: team.owner.image, width: 1200, height: 1500, alt: team.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${team.name} | ARES Business League 2026`,
+      description: team.description,
+      images: [team.owner.image],
     },
   };
 }

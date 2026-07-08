@@ -11,7 +11,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## What This Project Is
 Marketing/portfolio site for the **ARES Business League 2026 ("Nation Builders Edition")** — a one-month BNI business tournament, 30 members across 4 teams. Built and maintained by **Gravity Media Marketing** (Gaurav Mehta's agency), who are credited site-wide as "Official Web & Media Partner."
 
-**Intended domain:** `aresbusinessleague.com` (referenced throughout `layout.tsx` metadata/OpenGraph) — **not actually connected in this Vercel account as of 2026-07-06** (`vercel domains ls` doesn't list it, DNS doesn't resolve). Confirm whether that's expected before assuming the site is publicly reachable there.
+**Intended domain:** `aresbusinessleague.com` — **still not connected in this Vercel account as of 2026-07-08** (`vercel domains ls` doesn't list it, DNS doesn't resolve). The live URL right now is `https://ares-web-nine.vercel.app`. `layout.tsx`'s `SITE_URL`, `sitemap.ts`'s `BASE`, and `robots.ts`'s `sitemap` field were switched to that Vercel URL on 2026-07-08 (previously hardcoded `aresbusinessleague.com`, which broke og:image resolution — WhatsApp/social link previews showed no image because the domain doesn't resolve). **Swap all three back to `aresbusinessleague.com` once DNS is actually connected**, or previews will keep pointing at the Vercel URL after the custom domain goes live.
 **Vercel project:** `aman241104s-projects/ares-web` (deploys via `npx vercel --prod`, no `vercel.json`).
 
 ## Stack
@@ -34,8 +34,11 @@ Marketing/portfolio site for the **ARES Business League 2026 ("Nation Builders E
 ```
 That site id is the **Gravity Media Marketing** workspace in the WhatsApp AI Agent dashboard — its knowledge base covers Gravity's own services and real ABL facts (from `src/lib/data.ts`), so visitors can ask it about either. No WhatsApp number involved — it's the dashboard's new "web" channel. See `whatsapp-agents/dashboard/AGENTS.md`'s 2026-07-06 handoff for the full build. To change the widget's greeting/color, log into that dashboard → Settings → Website Widget (do not hardcode changes here beyond the site id).
 
-## Known Issue (as of 2026-07-06)
-`GlobalCTA.tsx`'s outer `<section>` background was independently changed from light (`#FDFBF7`) to dark (`#030712`) by a concurrent editing session, but the left-column text colors (heading, description, feature list — all originally tuned for a light background) were not updated to match, so they're currently low-contrast. Fix before considering this section done — verify current state first, this may already be resolved by the time you read this.
+## Known Issue (resolved 2026-07-08)
+`GlobalCTA.tsx`'s dark/light contrast mismatch (background changed to `#030712` without updating left-column text colors) — confirmed fixed as of 2026-07-08's pre-launch audit, all text now uses white/white-opacity classes against the dark background.
+
+## Pending — not yet reproduced in code
+Two mobile UI reports have been reviewed twice against source with no bug found (buttons wrap full content, no blocking overlays/z-index issues): "broken hover line on home page team captain cards" and "roster member card not clickable" (`src/app/page.tsx`, `src/app/teams/[team]/TeamPageClient.tsx`). If still seen live, the cause is likely runtime (GSAP/touch-state) rather than markup — reproduce with a live browser tool before further static review.
 
 ## Testing
 No test runner configured (`package.json` has no `test` script, no `vitest`/`jest` config, no test files exist anywhere in this repo). `tdd-guard` is disabled here (`.claude/tdd-guard/data/config.json`, `guardEnabled: false`) to match that reality — re-enable only after actually setting up a test runner, otherwise it'll block every edit with no way to reach green.

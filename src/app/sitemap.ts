@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/data'
 
-const BASE = 'https://aresbusinessleague.com'
+// Matches SITE_URL in layout.tsx — aresbusinessleague.com isn't connected in Vercel yet.
+const BASE = 'https://ares-web-nine.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = blogPosts.map((post) => ({
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/teams/amit-shah`,      lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${BASE}/teams/jaishankar`,     lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${BASE}/schedule`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
+    { url: `${BASE}/points`,               lastModified: new Date(), changeFrequency: 'daily',   priority: 0.7 },
     { url: `${BASE}/about`,                lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/blog`,                 lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${BASE}/partners`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
@@ -27,6 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/wall-of-fame`,         lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.6 },
     { url: `${BASE}/rules`,                lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${BASE}/contact`,              lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/team-owners`,          lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.6 },
+    { url: `${BASE}/owners/jay-patel`,       lastModified: new Date(), changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${BASE}/owners/vishnu-soni`,     lastModified: new Date(), changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${BASE}/owners/harsh-brambhatt`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.5 },
+    { url: `${BASE}/owners/mayursinh-chavda`,lastModified: new Date(), changeFrequency: 'weekly', priority: 0.5 },
     ...blogEntries,
   ]
 }

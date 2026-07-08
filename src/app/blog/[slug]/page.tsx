@@ -7,6 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = blogPosts.find((p) => p.id === slug);
   if (!post) return {};
+  const image = post.image ?? "/images/hero_trophy_stadium.png";
   return {
     title: post.title,
     description: post.excerpt,
@@ -14,11 +15,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${post.title} | ARES Business League`,
       description: post.excerpt,
       type: "article",
+      images: [{ url: image, width: 1600, height: 854, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: [image],
     },
   };
 }
