@@ -293,7 +293,7 @@ export default function HomePage() {
 
         {/* ── HERO CONTENT — SLIGHTLY RIGHT OF LEFT EDGE ── */}
         <div className="relative z-10 flex flex-col justify-center min-h-screen pt-16 sm:pt-24 pb-0 px-8 sm:px-12 lg:px-20 w-full">
-          <div className="max-w-[600px] lg:max-w-[min(52%,680px)] ml-20 sm:ml-32 lg:ml-48">
+          <div className="max-w-[600px] lg:max-w-[min(52%,680px)] mx-auto text-center sm:mx-0 sm:ml-32 sm:text-left lg:ml-48">
 
             {/* Live badge */}
             <div className="h-badge inline-flex items-center gap-3 mb-5 sm:mb-8 px-4 sm:px-5 py-2 sm:py-2.5 relative">
@@ -346,7 +346,7 @@ export default function HomePage() {
             </a>
 
             {/* Gold divider */}
-            <div className="flex items-center gap-4 my-4">
+            <div className="flex items-center justify-center sm:justify-start gap-4 my-4">
               <div className="h-[1.5px] w-16 bg-gradient-to-r from-[#FFC200] to-transparent" />
               <span className="font-montserrat text-[#FFC200]/70 text-[8px] tracking-[0.45em] uppercase font-bold">Est. 2026</span>
             </div>
@@ -369,7 +369,7 @@ export default function HomePage() {
 
             {/* CTAs */}
             <div className="h-btns flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-4 sm:gap-6 mb-8">
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-4">
                 <Link href="/teams" className="btn-primary px-10 py-5 text-[11px] tracking-[0.25em]">
                   Explore Teams <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -385,8 +385,8 @@ export default function HomePage() {
             </div>
 
             {/* ── STATS DOCK — inline below CTAs ── */}
-            <div className="h-dock w-full max-w-lg relative">
-              <div className="flex gap-6 sm:gap-10 relative z-10">
+            <div className="h-dock w-full max-w-lg mx-auto sm:mx-0 relative">
+              <div className="flex justify-center sm:justify-start gap-6 sm:gap-10 relative z-10">
                 {[
                   { n: "30",  l: "Business Owners", icon: <Users className="w-5 h-5 text-[#D4AF37]/70" /> },
                   { n: "4",   l: "Teams", icon: <Building2 className="w-5 h-5 text-[#D4AF37]/70" /> },
