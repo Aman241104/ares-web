@@ -92,52 +92,6 @@ export default function GalleryPage() {
         </div>
       </PageHero>
 
-      {/* ─── COMING SOON ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
-        <div className="max-w-5xl mx-auto sr">
-          {/* Coming soon card */}
-          <div className="relative overflow-hidden border border-[rgba(212,175,55,0.2)] bg-[#0B1120]">
-            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
-
-            <div className="p-12 lg:p-20 text-center relative z-10">
-              <div className="w-20 h-20 rounded-sm bg-[#D4AF37]/14 border border-[#D4AF37]/20 flex items-center justify-center mx-auto mb-8">
-                <Clock className="w-9 h-9 text-[#D4AF37]/70" />
-              </div>
-
-              <div className="section-label mx-auto mb-5">Tournament in Progress</div>
-
-              <h2 className="font-cinzel font-bold text-white mb-5" style={{ fontSize: "clamp(28px,5vw,56px)" }}>
-                PHOTOS ARRIVING <span className="text-[#D4AF37]">SOON</span>
-              </h2>
-
-              <div className="gold-divider max-w-xs mx-auto mb-7" />
-
-              <p className="font-montserrat text-white/60 text-xs sm:text-sm max-w-xl mx-auto leading-[2] tracking-wide mb-10">
-                Official photos, highlights and videos from every event will be published here throughout the tournament. Check back after each weekly event.
-              </p>
-
-              <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto mb-12">
-                {[
-                  { n: "12+", l: "Events" },
-                  { n: "30",  l: "Warriors" },
-                  { n: "4W",  l: "Coverage" },
-                ].map((s) => (
-                  <div key={s.l} className="text-center border border-white/5 py-4 bg-white/[0.05]">
-                    <div className="font-cinzel text-[#D4AF37] text-2xl mb-1 number-glow">{s.n}</div>
-                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-[0.2em]">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-
-              <Link href="/schedule" className="btn-primary">
-                View Upcoming Events <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── PREVIEW GRID ─── */}
       <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">

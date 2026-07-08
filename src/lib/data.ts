@@ -111,18 +111,18 @@ export const teams: Team[] = [
       title: "Team Owner & Leader",
       from: "Gujarat, India",
       experience: "20+ Years",
-      focusAreas: "Strategy, Fine Dining, Event Management",
+      focusAreas: "Silver Jewelry, Giftware, Corporate Gifting",
       leadershipStyle: "Strategic • Customer-Centric",
       quote: "Creating experiences that leave a lasting impression.",
       company: {
         name: "Silver Spoon",
-        industry: "Corporate Gifting",
-        founded: "2005",
+        industry: "Silver Jewelry & Giftware",
+        founded: "2019",
         headquarters: "Ahmedabad, Gujarat, India",
         website: "www.silverspoonbyacj.com",
         size: "50-100 Employees",
-        about: "Corporate gifting brand serving corporates, MNCs and HR teams across Gujarat.",
-        values: ["Quality", "Experience", "Service", "Excellence"],
+        about: "Premium silver and German silver jewelry, giftware and decorative items — handcrafted collections for personal wear and corporate/bulk gifting, alongside silverware, pooja items and personalized engraving. 925/999 hallmarked purity, backed by 40+ years of artisan craftsmanship. \"Timeless Elegance, Everyday.\"",
+        values: ["Craftsmanship", "Purity", "Heritage", "Trust"],
       },
       phone: "+91 99981 23479",
       email: "vnu444@gmail.com",
@@ -187,11 +187,11 @@ export const teams: Team[] = [
       company: {
         name: "Vaer HVAC Solutions",
         industry: "HVAC & Engineering",
-        founded: "2014",
+        founded: "1990",
         headquarters: "Ahmedabad, Gujarat, India",
         website: "www.vaerhvac.com",
         size: "25-50 Employees",
-        about: "HVAC solutions provider serving interior designers, architects and private bungalow owners.",
+        about: "Precision HVAC and cooling engineering firm — VRF installation, annual maintenance, rapid repair and retrofit/upgrade services for luxury homes, showrooms, commercial offices and factories. 500+ projects completed, 25+ expert engineers, 30+ years of excellence since 1990.",
         values: ["Reliability", "Efficiency", "Innovation", "Execution"],
       },
       phone: "+91 98246 53242",
@@ -359,31 +359,10 @@ export const scheduleEvents: ScheduleEvent[] = weeklyEvents.flatMap((w) => w.eve
 
 export const specialEvents: SpecialEvent[] = [
   {
-    name: "Opening Ceremony",
-    desc: "The grand opening of ARES Business League 2026. Let the legacy begin!",
-    date: "Jun 24, 2026",
-    time: "6:00 PM",
-    status: "completed",
-  },
-  {
-    name: "Mid-League Summit",
-    desc: "Strategy. Connect. Grow. A power-packed mid-league event.",
-    date: "Jul 03, 2026",
-    time: "6:00 PM",
-    status: "completed",
-  },
-  {
     name: "Cross Chapter Meet",
     desc: "Week 2 networking session connecting members across chapters.",
     date: "Jul 09, 2026",
     time: "5:00 PM – 6:00 PM",
-    status: "upcoming",
-  },
-  {
-    name: "Leaders Connect",
-    desc: "Exclusive networking evening for leaders and changemakers.",
-    date: "Jul 10, 2026",
-    time: "6:00 PM",
     status: "upcoming",
   },
   {
@@ -414,13 +393,6 @@ export const specialEvents: SpecialEvent[] = [
     time: "After Meeting",
     status: "upcoming",
   },
-  {
-    name: "Finale & Awards Night",
-    desc: "The ultimate showdown and celebration of champions.",
-    date: "Jul 22, 2026",
-    time: "6:00 PM",
-    status: "upcoming",
-  },
 ];
 
 export const partners: Partner[] = [
@@ -428,6 +400,14 @@ export const partners: Partner[] = [
   { name: "Prihaan Spices", tier: "Gifting Sponsor", tagline: "Gifting Sponsor", logo: "/images/partners/prihaan-spices-logo.png" },
   { name: "Destination Anywhere", tier: "Travel Sponsor", tagline: "Travel Sponsor", logo: "/images/partners/destination-anywhere-logo.png" },
   { name: "Fitness Hustler", tier: "Fitness Sponsor", tagline: "Fitness Sponsor", logo: "/images/partners/fitness-hustler-logo.png" },
+  { name: "Gravity Media Marketing", tier: "Web Development", tagline: "Web Development Partner", logo: "/images/partners/gravity-media-logo.png" },
+];
+
+export const topPerformers: { label: string; name?: string; image?: string; team?: string; value?: string }[] = [
+  { label: "Top Points Earner", name: "Ashutosh Mehta", image: "/images/roster/ashutosh-mehta.png", team: "Silver Spoon Warriors", value: "75,000 pts" },
+  { label: "Top Referrer", name: "Ankit Patel", image: "/images/roster/ankit-patel.png", team: "Advocate Jay Visionaries" },
+  { label: "Top Meetings" },
+  { label: "Top Growth" },
 ];
 
 export const blogCategories: string[] = ["Strategy", "Leadership", "Networking", "Execution", "Business Growth", "Nation Building"];

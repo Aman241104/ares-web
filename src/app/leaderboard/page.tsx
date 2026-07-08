@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Users } from "lucide-react";
-import { teams } from "@/lib/data";
+import { teams, topPerformers } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
@@ -272,20 +272,19 @@ export default function LeaderboardPage() {
             <div className="glass-card p-8 sr border-white/10">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
-                {[
-                  { label: "Top Points Earner" },
-                  { label: "Top Referrer" },
-                  { label: "Top Meetings" },
-                  { label: "Top Growth" },
-                ].map((p) => (
+                {topPerformers.map((p) => (
                   <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
                     <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
                     <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/10 bg-white/[0.03] flex items-center justify-center">
-                      <Users className="w-6 h-6 text-white/20" />
+                      {p.image ? (
+                        <Image src={p.image} alt={p.name!} width={64} height={64} className="w-full h-full object-cover" />
+                      ) : (
+                        <Users className="w-6 h-6 text-white/20" />
+                      )}
                     </div>
-                    <div className="font-cinzel tracking-wider text-white/40 text-[11px] mb-1">TBA</div>
-                    <div className="font-montserrat text-[8px] uppercase tracking-widest mb-3 text-white/30">Awaiting Results</div>
-                    <div className="font-cinzel font-bold text-lg text-white/25">—</div>
+                    <div className={`font-cinzel tracking-wider text-[11px] mb-1 ${p.name ? "text-white" : "text-white/40"}`}>{p.name ?? "TBA"}</div>
+                    <div className={`font-montserrat text-[8px] uppercase tracking-widest mb-3 ${p.name ? "text-white/50" : "text-white/30"}`}>{p.team ?? "Awaiting Results"}</div>
+                    <div className={`font-cinzel font-bold text-lg ${p.value ? "text-[#D4AF37]" : "text-white/25"}`}>{p.value ?? "—"}</div>
                   </div>
                 ))}
               </div>

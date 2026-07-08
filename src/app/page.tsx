@@ -292,14 +292,14 @@ export default function HomePage() {
           style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
         {/* ── HERO CONTENT — SLIGHTLY RIGHT OF LEFT EDGE ── */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-16 sm:pt-24 pb-0 px-8 sm:px-12 lg:px-20 w-full">
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-16 sm:pt-24 pb-44 xl:pb-0 px-8 sm:px-12 lg:px-20 w-full">
           <div className="max-w-[600px] lg:max-w-[min(52%,680px)] mx-auto text-center sm:mx-0 sm:ml-32 sm:text-left lg:ml-48">
 
             {/* Live badge */}
             <div className="h-badge inline-flex items-center gap-3 mb-5 sm:mb-8 px-4 sm:px-5 py-2 sm:py-2.5 relative">
               <div className="absolute inset-0 border border-[#FFC200]/30 bg-[#FFC200]/14 backdrop-blur-xl" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFC200] pulse-live block relative z-10" />
-              <span className="font-montserrat text-[#FFC200] text-[8px] font-bold tracking-[0.5em] uppercase relative z-10">Nation Builders Edition · 2026</span>
+              <span className="font-montserrat text-[#FFC200] text-[8px] font-bold tracking-[0.2em] sm:tracking-[0.5em] uppercase relative z-10 whitespace-nowrap">Nation Builders Edition · 2026</span>
             </div>
 
             {/* Main title */}
@@ -362,8 +362,8 @@ export default function HomePage() {
                 </span>{" "}
                 CREATE IMPACT.
               </p>
-              <p className="font-montserrat text-white/50 text-[9px] sm:text-[10px] tracking-[0.3em] uppercase">
-                4 Teams · 4 Leaders · 1 Mission · July 1st – July 29th
+              <p className="font-montserrat text-white/50 text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.3em] uppercase">
+                4 Teams · 4 Leaders · 1 Mission ·<br className="sm:hidden" /> July 1st – July 29th
               </p>
             </div>
 
@@ -386,7 +386,7 @@ export default function HomePage() {
 
             {/* ── STATS DOCK — inline below CTAs ── */}
             <div className="h-dock w-full max-w-lg mx-auto sm:mx-0 relative">
-              <div className="flex justify-center sm:justify-start gap-6 sm:gap-10 relative z-10">
+              <div className="grid grid-cols-2 justify-items-center sm:flex sm:justify-start sm:justify-items-stretch gap-x-8 gap-y-6 sm:gap-10 relative z-10">
                 {[
                   { n: "30",  l: "Business Owners", icon: <Users className="w-5 h-5 text-[#D4AF37]/70" /> },
                   { n: "4",   l: "Teams", icon: <Building2 className="w-5 h-5 text-[#D4AF37]/70" /> },
@@ -440,7 +440,7 @@ export default function HomePage() {
                 <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "linear-gradient(90deg, transparent, rgba(255,194,0,0.8), transparent)" }} />
                 <div
                   className="font-cinzel font-bold text-[#FFC200] mb-3 number-glow relative z-10"
-                  style={{ fontSize: "clamp(56px, 8vw, 100px)", lineHeight: 1, textShadow: "0 0 40px rgba(255,194,0,0.4), 0 4px 20px rgba(0,0,0,0.8)" }}
+                  style={{ fontSize: "clamp(56px, 8vw, 100px)", lineHeight: 1, textShadow: "0 0 18px rgba(255,194,0,0.22), 0 4px 20px rgba(0,0,0,0.8)" }}
                 >
                   <AnimatedCounter value={s.n} />{s.suffix && <span className="text-[0.4em] align-top mt-2 inline-block text-[#D4AF37]">{s.suffix}</span>}
                 </div>
@@ -451,33 +451,6 @@ export default function HomePage() {
           </div>
         </div>
         <div className="gold-divider opacity-30" />
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          WEEK 1 RECAP
-      ═══════════════════════════════════════════ */}
-      <section className="relative z-20 bg-[#000000] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 relative">
-          <div className="text-center mb-10 sr">
-            <div className="section-label mx-auto mb-5">Week 1 Recap</div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sr-stagger">
-            {[
-              { n: "223",           prefix: "", label: "1-2-1s Held" },
-              { n: "106",           prefix: "", label: "Referrals Passed" },
-              { n: "1,88,75,447",   prefix: "₹", label: "Business Passed" },
-              { n: "2",             prefix: "", label: "Visitors" },
-            ].map((s) => (
-              <div key={s.label} className="border border-[rgba(255,194,0,0.10)] bg-[#0B1120] flex flex-col items-center justify-center text-center px-4 py-8">
-                <div className="font-cinzel font-bold text-[#FFC200] number-glow" style={{ fontSize: "clamp(22px, 3vw, 34px)", lineHeight: 1, textShadow: "0 0 20px rgba(255,194,0,0.35)" }}>
-                  {s.prefix}<AnimatedCounter value={s.n} />
-                </div>
-                <div className="font-montserrat text-white/55 text-[8px] sm:text-[9px] uppercase tracking-[0.25em] mt-3">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
