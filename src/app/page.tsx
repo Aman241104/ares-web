@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Users, Trophy, Calendar, Briefcase, Building2, Star, CheckCircle2, CircleDot, Circle, Image as ImageIcon, BookOpen, Phone, Globe, TrendingUp, Mail, X } from "lucide-react";
+import { ArrowRight, Users, Trophy, Calendar, Briefcase, Building2, Star, Image as ImageIcon, BookOpen, Phone, Globe, TrendingUp, Mail, X } from "lucide-react";
 import { createPortal } from "react-dom";
-import { teams, partners, specialEvents, scheduleEvents } from "@/lib/data";
+import { teams, partners, specialEvents } from "@/lib/data";
 import { COMMISSIONERS_2026 } from "@/lib/honorees";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -291,9 +291,9 @@ export default function HomePage() {
         <div className="absolute inset-0 z-[3] pointer-events-none opacity-[0.03]"
           style={{ backgroundImage: "url(/images/noise.svg)", backgroundSize: "180px 180px" }} />
 
-        {/* ── HERO CONTENT — LEFT SIDE ── */}
+        {/* ── HERO CONTENT — SLIGHTLY RIGHT OF LEFT EDGE ── */}
         <div className="relative z-10 flex flex-col justify-center min-h-screen pt-16 sm:pt-24 pb-0 px-8 sm:px-12 lg:px-20 w-full">
-          <div className="max-w-[600px] lg:max-w-[min(52%,680px)]">
+          <div className="max-w-[600px] lg:max-w-[min(52%,680px)] ml-20 sm:ml-32 lg:ml-48">
 
             {/* Live badge */}
             <div className="h-badge inline-flex items-center gap-3 mb-5 sm:mb-8 px-4 sm:px-5 py-2 sm:py-2.5 relative">
@@ -580,9 +580,9 @@ export default function HomePage() {
               </div>
 
               {[
-                { label: "TYFCB Generated", value: "TBA", icon: <Briefcase className="w-4 h-4" />, sub: "Total business passed" },
-                { label: "Referrals Passed", value: "TBA",   icon: <Users className="w-4 h-4" />,    sub: "Total referrals passed" },
-                { label: "1-2-1 Meetings",   value: "TBA", icon: <Calendar className="w-4 h-4" />, sub: "Total 1-2-1 meetings held" },
+                { label: "TYFCB Generated", value: "₹1,88,75,447", icon: <Briefcase className="w-4 h-4" />, sub: "Total business passed" },
+                { label: "Referrals Passed", value: "106",   icon: <Users className="w-4 h-4" />,    sub: "Total referrals passed" },
+                { label: "1-2-1 Meetings",   value: "223", icon: <Calendar className="w-4 h-4" />, sub: "Total 1-2-1 meetings held" },
               ].map((m) => (
                 <div key={m.label} className="card-glow p-6 group hover:translate-y-[-2px] transition-transform duration-300">
                   <div className="flex items-center justify-between mb-4">
@@ -844,7 +844,7 @@ export default function HomePage() {
             <div className="sr flex items-center justify-between mb-8">
               <div>
                 <div className="section-label mb-2">Scheduled Events</div>
-                <h2 className="font-cinzel text-white text-xl tracking-widest">Key Milestones</h2>
+                <h2 className="font-cinzel text-white text-xl tracking-widest">Week 2 Schedule</h2>
               </div>
               <Link href="/schedule" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
                 All Events <ArrowRight className="w-3 h-3" />
@@ -904,17 +904,14 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sr-stagger">
               {partners.slice(0,6).map((p) => (
-                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-[#0B1120] hover:bg-[#030712] transition-all duration-400 aspect-square flex flex-col items-center justify-center p-6 text-center">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 100%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
-                  <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center mb-3 border border-white/8 group-hover:border-[#D4AF37]/20 transition-colors" style={{ background: p.logo ? "#ffffff" : "rgba(255,255,255,0.03)" }}>
-                    {p.logo ? (
-                      <Image src={p.logo} alt={p.name} width={56} height={56} className="w-full h-full object-contain p-1.5" />
-                    ) : (
-                      <Building2 className="w-4 h-4 text-white/20 group-hover:text-[#D4AF37]/50 transition-colors" />
-                    )}
-                  </div>
-                  <div className="font-cinzel text-white/75 text-xs tracking-wide group-hover:text-white transition-colors mb-1">{p.name}</div>
-                  <div className="font-montserrat text-[#D4AF37]/45 text-[7px] uppercase tracking-widest">{p.tier.replace(" Partner","")}</div>
+                <div key={p.name} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.2)] bg-white aspect-square" title={p.name}>
+                  {p.logo ? (
+                    <Image src={p.logo} alt={p.name} fill className="object-contain p-4" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
+                      <Building2 className="w-6 h-6 text-white/20" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -924,60 +921,6 @@ export default function HomePage() {
                 View All Partners <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          SCHEDULE PREVIEW
-      ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none bg-grid opacity-50" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
-        <div className="gold-divider opacity-60" />
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="sr flex items-center justify-between mb-12">
-            <div>
-              <div className="section-label mb-2">Schedule</div>
-              <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">This Week</h2>
-            </div>
-            <Link href="/schedule" className="font-montserrat text-white/60 hover:text-[#D4AF37] transition-colors text-[9px] uppercase tracking-[0.2em] inline-flex items-center gap-2">
-              Full Schedule <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sr-stagger">
-            {scheduleEvents.map((ev) => {
-              const statusIcon = ev.status === "completed"
-                ? <CheckCircle2 className="w-4 h-4 text-green-400/70" />
-                : ev.status === "in-progress"
-                ? <CircleDot className="w-4 h-4 text-[#D4AF37]" />
-                : <Circle className="w-4 h-4 text-white/20" />;
-              const statusClass = ev.status === "completed"
-                ? "text-green-400/70 border-green-500/20 bg-green-500/5"
-                : ev.status === "in-progress"
-                ? "text-[#D4AF37] border-[#D4AF37]/20 bg-[#D4AF37]/5"
-                : "text-white/55 border-white/10 bg-white/[0.05]";
-              return (
-                <div key={`${ev.date}-${ev.name}`} className="group glass-card p-6 hover:border-[rgba(212,175,55,0.25)] transition-all duration-400 relative overflow-hidden">
-                  {ev.status === "in-progress" && (
-                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
-                  )}
-                  <div className="flex items-start justify-between gap-3 mb-5">
-                    {statusIcon}
-                    <span className={`font-montserrat text-[7px] uppercase tracking-[0.25em] px-2.5 py-1 rounded-full border ${statusClass}`}>
-                      {ev.status === "completed" ? "Done" : ev.status === "in-progress" ? "Live" : "Soon"}
-                    </span>
-                  </div>
-                  <h3 className="font-cinzel text-white text-sm tracking-wider mb-1 group-hover:text-[#F0D060] transition-colors">{ev.name}</h3>
-                  <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/5">
-                    <span className="font-montserrat text-white/70 text-[8px] uppercase tracking-[0.18em]">{ev.category}</span>
-                    <span className="font-cinzel text-[#D4AF37] text-sm">+{ev.points} pts</span>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>

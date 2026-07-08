@@ -373,11 +373,10 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {[
               { l: "Total Points", v: team.points.toLocaleString() },
               { l: "This Week",    v: team.weekPoints.toLocaleString() },
-              { l: "Win Rate",     v: team.winRate },
             ].map((s) => (
               <div key={s.l} className="p-5 bg-white/[0.05] border border-white/5 text-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

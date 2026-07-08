@@ -87,7 +87,7 @@ export default function Footer() {
                 { href: "/teams",        label: "Teams" },
                 { href: "/schedule",     label: "Schedule" },
                 { href: "/leaderboard",  label: "Leaderboard" },
-                { href: "/wall-of-fame", label: "Hall of Fame" },
+                { href: "/wall-of-fame", label: "Wall of Fame" },
                 { href: "/blog",         label: "Blog" },
                 { href: "/partners",     label: "Partners" },
                 { href: "/contact",  label: "Build Your Site" },

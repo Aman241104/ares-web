@@ -243,51 +243,8 @@ export default function SchedulePage() {
 
           {/* ── Right: Bonus Points Sidebar ── */}
           <div className="flex-shrink-0 lg:w-72 bg-white/[0.05] border-l border-white/10 p-8" style={{ minWidth: 260 }}>
-            <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">
-              Bonus Points — Week {weeklyEvents[activeWeek].week}
-            </h3>
-
-            <div className="space-y-4 mb-8">
-              {[
-                { name: "Early Bird Bonus", pts: "+25", desc: "Complete before the deadline" },
-                { name: "Perfect Week Bonus", pts: "+100", desc: "Complete all weekly events" },
-                { name: "Consistency Bonus", pts: "+75", desc: "Attend 3 consecutive weeks" },
-                { name: "Mega Impact Bonus", pts: "+150", desc: "Achieve high business impact" },
-                { name: "Full Team Bonus", pts: "+750", desc: "Whole team present at the offline team meeting" },
-              ].map((b) => (
-                <div key={b.name} className="p-4 rounded-xl border border-white/5 bg-white/[0.01]">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="font-montserrat text-white text-[10px] uppercase tracking-widest mb-1.5">
-                        {b.name}
-                      </div>
-                      <div className="font-montserrat text-white/60 text-[9px] leading-snug">
-                        {b.desc}
-                      </div>
-                    </div>
-                    <span className="font-cinzel text-green-400 text-sm flex-shrink-0">
-                      {b.pts}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Max bonus highlight */}
-            <div className="p-6 bg-white/[0.05] border border-white/5 rounded-xl text-center mb-8">
-              <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">
-                MAX BONUS POINTS<br />PER WEEK
-              </div>
-              <div className="font-cinzel font-bold text-4xl text-[#D4AF37] mb-1">
-                1,100
-              </div>
-              <div className="font-montserrat text-white/55 text-[9px] tracking-widest uppercase">
-                PTS
-              </div>
-            </div>
-
             {/* Schedule at a Glance */}
-            <div className="pt-6 border-t border-white/10">
+            <div>
               <h3 className="font-cinzel tracking-widest text-white/60 text-xs mb-4 uppercase">At a Glance</h3>
               <div className="space-y-3">
                 {[

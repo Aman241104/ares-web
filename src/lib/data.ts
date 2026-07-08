@@ -97,10 +97,10 @@ export const teams: Team[] = [
     rank: 2,
     points: 16040,
     weekPoints: 16040,
-    business: "--",
-    referrals: 0,
-    meetings: 0,
-    visitors: 0,
+    business: "₹55,68,710",
+    referrals: 32,
+    meetings: 59,
+    visitors: 1,
     induction: 0,
     winRate: "0%",
     members: 7,
@@ -314,7 +314,7 @@ export const weeklyEvents: WeeklyEvent[] = [
     description: "Kickstarting the league with focus, energy and meaningful connections.",
     events: [
       { name: "121 Conclave – Cross Chapter", category: "121", points: 250, status: "completed", date: "Jul 4, 2026" },
-      { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "upcoming" },
+      { name: "Offline Team Meeting", category: "Attendance", points: 250, status: "completed" },
     ],
   },
   {
@@ -408,6 +408,13 @@ export const specialEvents: SpecialEvent[] = [
     status: "upcoming",
   },
   {
+    name: "In-Chapter 121 Conclave",
+    desc: "Week 2 in-chapter one-to-one conclave for deeper connections.",
+    date: "Jul 15, 2026",
+    time: "After Meeting",
+    status: "upcoming",
+  },
+  {
     name: "Finale & Awards Night",
     desc: "The ultimate showdown and celebration of champions.",
     date: "Jul 22, 2026",
@@ -417,7 +424,7 @@ export const specialEvents: SpecialEvent[] = [
 ];
 
 export const partners: Partner[] = [
-  { name: "Gravity Media Marketing", tier: "Web Development", tagline: "Web Development Partner", logo: "/images/partners/gravity-media-logo.png" },
+  { name: "Chahana Dental Studio", tier: "Dental Sponsor", tagline: "Dental Sponsor", logo: "/images/roster/chahana-dental-logo.png" },
   { name: "Prihaan Spices", tier: "Gifting Sponsor", tagline: "Gifting Sponsor", logo: "/images/partners/prihaan-spices-logo.png" },
   { name: "Destination Anywhere", tier: "Travel Sponsor", tagline: "Travel Sponsor", logo: "/images/partners/destination-anywhere-logo.png" },
   { name: "Fitness Hustler", tier: "Fitness Sponsor", tagline: "Fitness Sponsor", logo: "/images/partners/fitness-hustler-logo.png" },

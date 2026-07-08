@@ -90,10 +90,10 @@ export default function PartnersPage() {
       <section className="py-12 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 sr-stagger">
           {[
-            { icon: <Users className="w-5 h-5" />,    num: "18+", label: "Trusted Partners" },
+            { icon: <Star className="w-5 h-5" />,     num: "1",   label: "Presenting Sponsor" },
+            { icon: <Users className="w-5 h-5" />,    num: "5",   label: "Partners" },
             { icon: <Trophy className="w-5 h-5" />,   num: "4",   label: "Team Owners" },
             { icon: <BarChart2 className="w-5 h-5" />, num: "6",  label: "Commissioners" },
-            { icon: <Globe className="w-5 h-5" />,    num: "∞",   label: "Endless Impact" },
           ].map((s) => (
             <div key={s.label} className="text-center p-8 bg-[#030712] hover:bg-[#0B1120] transition-colors duration-300 group">
               <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
@@ -120,6 +120,9 @@ export default function PartnersPage() {
               style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 80%)" }} />
 
             <div className="relative">
+              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center mx-auto mb-6 border border-[#D4AF37]/20 overflow-hidden">
+                <Image src="/images/partners/gravity-media-logo.png" alt="Gravity Media Marketing" width={80} height={80} className="w-full h-full object-contain p-2" />
+              </div>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-8 bg-[#FFC200]/65" />
                 <Star className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -171,65 +174,22 @@ export default function PartnersPage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10 sr-stagger">
-            {partners.map((p) => {
-              const isPremium = p.tier.toLowerCase().includes("platinum") || p.tier.toLowerCase().includes("strategic");
-              const isGold = p.tier.toLowerCase().includes("gold");
-
-              let tierColor = "rgba(255,255,255,0.5)";
-              let tierBg = "rgba(255,255,255,0.04)";
-              let tierBorder = "rgba(255,255,255,0.08)";
-
-              if (isPremium) {
-                tierColor = "#D4AF37";
-                tierBg = "rgba(212,175,55,0.1)";
-                tierBorder = "rgba(212,175,55,0.28)";
-              } else if (isGold) {
-                tierColor = "#C49428";
-                tierBg = "rgba(196,148,40,0.08)";
-                tierBorder = "rgba(196,148,40,0.2)";
-              }
-
-              return (
-                <div
-                  key={p.name}
-                  className="group relative border bg-[#030712] hover:bg-[#0B1120] transition-all duration-400 p-7 flex flex-col items-center justify-center text-center min-h-[140px] overflow-hidden"
-                  style={{ borderColor: isPremium ? "rgba(212,175,55,0.15)" : "rgba(255,255,255,0.06)" }}
-                >
-                  {isPremium && (
-                    <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.55), transparent)" }} />
-                  )}
-                  {/* Hover top line */}
-                  {!isPremium && (
-                    <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)" }} />
-                  )}
-
-                  <div
-                    className="w-14 h-14 flex items-center justify-center mb-4 border rounded-full overflow-hidden transition-all duration-300"
-                    style={{
-                      background: p.logo ? "#ffffff" : isPremium ? "rgba(212,175,55,0.1)" : "rgba(255,255,255,0.02)",
-                      borderColor: isPremium ? "rgba(212,175,55,0.25)" : "rgba(255,255,255,0.08)",
-                      color: isPremium ? "#D4AF37" : "rgba(255,255,255,0.35)",
-                    }}
-                  >
-                    {p.logo ? (
-                      <Image src={p.logo} alt={p.name} width={56} height={56} className="w-full h-full object-contain p-1.5" />
-                    ) : (
-                      <Building2 className="w-4 h-4" />
-                    )}
+            {partners.map((p) => (
+              <div
+                key={p.name}
+                className="group relative border bg-white transition-all duration-400 min-h-[140px] overflow-hidden"
+                style={{ borderColor: "rgba(255,255,255,0.06)" }}
+                title={p.name}
+              >
+                {p.logo ? (
+                  <Image src={p.logo} alt={p.name} fill className="object-contain p-6" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-[#0B1120]">
+                    <Building2 className="w-5 h-5 text-white/20" />
                   </div>
-
-                  <div className="font-cinzel text-white text-[11px] tracking-wider leading-snug mb-3 group-hover:text-[#D4AF37] transition-colors">{p.name}</div>
-
-                  <div
-                    className="font-montserrat text-[7px] font-bold uppercase tracking-[0.2em] px-2.5 py-1 border"
-                    style={{ color: tierColor, background: tierBg, borderColor: tierBorder }}
-                  >
-                    {p.tier}
-                  </div>
-                </div>
-              );
-            })}
+                )}
+              </div>
+            ))}
           </div>
 
           <div className="text-center sm:hidden">

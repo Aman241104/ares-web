@@ -74,10 +74,10 @@ export default function LeaderboardPage() {
 
   const sorted = [...teams].sort((a, b) => a.rank - b.rank);
   const weekData: Record<string, number[]> = {
-    modi: [0, 0, 0, 0],
-    doval: [0, 0, 0, 0],
-    "amit-shah": [0, 0, 0, 0],
-    jaishankar: [0, 0, 0, 0],
+    modi: [22272, 0, 0, 0],
+    doval: [16040, 0, 0, 0],
+    "amit-shah": [12195, 0, 0, 0],
+    jaishankar: [7665, 0, 0, 0],
   };
 
   return (
@@ -131,11 +131,11 @@ export default function LeaderboardPage() {
 
       {/* ─── MAIN CONTENT ─── */}
       <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto">
 
           {/* TABLE + FILTERS */}
-          <div className="lg:col-span-2 space-y-6">
-            
+          <div className="space-y-6">
+
             {/* Filters */}
             <div className="flex flex-wrap gap-2 sr">
               {["Week 2 (Current)", "All Teams", "All Categories", "Reset Filters"].map((f, i) => (
@@ -292,55 +292,6 @@ export default function LeaderboardPage() {
             </div>
           </div>
 
-          {/* SIDEBAR */}
-          <div className="space-y-6">
-            <div className="glass-card p-8 sticky top-24 border-white/10 sr bg-[#030712]">
-              <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-2 uppercase">Points Details</h3>
-              <p className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest mb-6 leading-relaxed">Total Points = Performance + Engagement + Impact</p>
-
-              <div className="mb-6">
-                <div className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold uppercase tracking-widest mb-3">Core Categories (Max 1,000 pts)</div>
-                <div className="space-y-2">
-                  {[["Business Growth","300 PTS"],["Referrals Generated","250 PTS"],["Meetings Conducted","200 PTS"],["One-to-Ones","150 PTS"],["Event Participation","100 PTS"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
-                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
-                      <span className="font-montserrat text-[#D4AF37] text-[10px] font-bold">{p}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <div className="font-montserrat text-[#D4AF37]/70 text-[9px] font-bold uppercase tracking-widest mb-3">Bonus Points (Max 500 pts)</div>
-                <div className="space-y-2">
-                  {[["Early Bird Bonus","+100"],["Perfect Week Bonus","+150"],["Consistency Bonus","+100"],["Mega Impact Bonus","+150"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
-                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
-                      <span className="font-montserrat text-green-400 text-[10px] font-bold">{p}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mb-8">
-                <div className="font-montserrat text-red-400/70 text-[9px] font-bold uppercase tracking-widest mb-3">Deductions</div>
-                <div className="space-y-2">
-                  {[["No Show","-25"],["Late Submission","-15"],["Incomplete Activity","-10"]].map(([l,p])=>(
-                    <div key={l} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
-                      <span className="font-montserrat text-white/50 text-[10px] uppercase tracking-wider">{l}</span>
-                      <span className="font-montserrat text-red-400 text-[10px] font-bold">{p}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-6 bg-white/[0.05] border border-white/5 rounded-xl text-center">
-                <div className="font-montserrat text-white/60 text-[9px] uppercase tracking-widest mb-2">Max Possible Per Week</div>
-                <div className="font-cinzel font-bold text-5xl text-[#D4AF37] mb-1">1,500</div>
-                <div className="font-montserrat text-white/55 text-[9px] uppercase tracking-widest">PTS</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

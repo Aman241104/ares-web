@@ -90,7 +90,7 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════
           HERO
       ═══════════════════════════════════ */}
-      <PageHero backgroundImage="/images/hero_arena.png" layout="left" className="min-h-[90vh] px-6 sm:px-10 lg:px-16">
+      <PageHero backgroundImage="/images/hero_trophy_stadium.png" objectPosition="object-[78%_center]" layout="left" className="min-h-[90vh] px-6 sm:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
 
           {/* Left copy */}
