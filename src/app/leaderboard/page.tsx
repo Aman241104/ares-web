@@ -130,7 +130,7 @@ export default function LeaderboardPage() {
       </PageHero>
 
       {/* ─── MAIN CONTENT ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="pt-20 pb-40 xl:pb-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
 
           {/* TABLE + FILTERS */}
