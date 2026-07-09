@@ -91,9 +91,9 @@ export default function PartnersPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 sr-stagger">
           {[
             { icon: <Star className="w-5 h-5" />,     num: "1",   label: "Presenting Sponsor" },
-            { icon: <Users className="w-5 h-5" />,    num: "5",   label: "Partners" },
+            { icon: <Users className="w-5 h-5" />,    num: "6",   label: "Partners" },
             { icon: <Trophy className="w-5 h-5" />,   num: "4",   label: "Team Owners" },
-            { icon: <BarChart2 className="w-5 h-5" />, num: "6",  label: "Commissioners" },
+            { icon: <BarChart2 className="w-5 h-5" />, num: "2",  label: "Commissioners" },
           ].map((s) => (
             <div key={s.label} className="text-center p-8 bg-[#030712] hover:bg-[#0B1120] transition-colors duration-300 group">
               <div className="w-10 h-10 border border-[#D4AF37]/18 bg-[#D4AF37]/14 flex items-center justify-center mx-auto mb-4 text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
@@ -106,12 +106,12 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ─── FEATURED WEB PARTNER ─── */}
+      {/* ─── PRESENTING SPONSOR ─── */}
       <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <div className="section-label mx-auto mb-3">Featured Partner</div>
           <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 3.5vw, 44px)" }}>
-            Official <span className="text-[#D4AF37]">Web Partner</span>
+            Presenting <span className="text-[#D4AF37]">Sponsor</span>
           </h2>
 
           <div className="max-w-3xl mx-auto relative border border-[rgba(212,175,55,0.25)] bg-[#0B1120] p-10 lg:p-14 text-center overflow-hidden">
@@ -120,13 +120,13 @@ export default function PartnersPage() {
               style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 80%)" }} />
 
             <div className="relative">
-              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center mx-auto mb-6 border border-[#D4AF37]/20 overflow-hidden">
-                <Image src="/images/partners/gravity-media-logo.png" alt="Gravity Media Marketing" width={80} height={80} className="w-full h-full object-contain p-2" />
+              <div className="w-full max-w-sm bg-white flex items-center justify-center mx-auto mb-8 border border-[#D4AF37]/20 overflow-hidden p-6">
+                <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="w-full h-auto object-contain" />
               </div>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-8 bg-[#FFC200]/65" />
                 <Star className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.45em] uppercase">Official Web Partner</span>
+                <span className="font-montserrat text-[#D4AF37] text-[9px] font-bold tracking-[0.45em] uppercase">Presenting Sponsor</span>
                 <Star className="w-3.5 h-3.5 text-[#D4AF37]" />
                 <div className="h-px w-8 bg-[#FFC200]/65" />
               </div>
@@ -140,17 +140,12 @@ export default function PartnersPage() {
                   backgroundClip: "text",
                 }}
               >
-                Gravity Media Marketing
+                Jukebox Media
               </h3>
               <div className="gold-divider max-w-xs mx-auto mb-7" />
-              <p className="font-montserrat text-white/60 text-[11px] leading-[2] max-w-lg mx-auto mb-9 tracking-wide">
-                Building digital legacies for India's top business owners. Gravity Media Marketing is the exclusive Web Partner of ABL 2026 — crafting premium, high-performance websites that drive real growth.
+              <p className="font-montserrat text-white/60 text-[11px] leading-[2] max-w-lg mx-auto tracking-wide">
+                Jukebox Media is the Presenting Sponsor of ABL 2026 — a digital marketing agency helping businesses fix their marketing and increase sales.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact" className="btn-primary">
-                  Get in Touch <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
             </div>
           </div>
         </div>

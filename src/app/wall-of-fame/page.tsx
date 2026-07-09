@@ -284,7 +284,7 @@ export default function WallOfFamePage() {
           {[
             { num: "30",  label: "Warriors",        icon: <Users    className="w-5 h-5 text-[#D4AF37]" /> },
             { num: "4",   label: "Team Owners",      icon: <Star     className="w-5 h-5 text-[#D4AF37]" /> },
-            { num: "4",   label: "Founding Partners", icon: <Heart    className="w-5 h-5 text-[#D4AF37]" /> },
+            { num: "6",   label: "Founding Partners", icon: <Heart    className="w-5 h-5 text-[#D4AF37]" /> },
             { num: "2",   label: "Commissioners",     icon: <Shield   className="w-5 h-5 text-[#D4AF37]" /> },
           ].map((s) => (
             <div key={s.label} className="glass-card p-6 text-center hover:border-[#D4AF37]/20 transition-colors">

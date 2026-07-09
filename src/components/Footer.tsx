@@ -105,7 +105,7 @@ export default function Footer() {
           {/* Teams */}
           <div className="lg:col-span-3">
             <h4 className="font-cinzel font-bold text-white text-xs tracking-[0.25em] uppercase mb-7 pb-3 border-b border-[rgba(255,194,0,0.18)]">
-              The Factions
+              The Teams
             </h4>
             <ul className="space-y-4">
               {footerTeams.map((team) => (

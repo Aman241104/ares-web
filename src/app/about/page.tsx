@@ -46,10 +46,10 @@ const VALUES = [
 ];
 
 const LEADERSHIP = [
-  { name: "Advocate Jay Patel", role: "Team Owner", faction: "Lions Visionaries",  color: "#E07820", img: "/images/owner_modi.png",        href: "/teams/modi" },
-  { name: "Vishnu Soni",        role: "Team Owner", faction: "Eagles Strategists", color: "#1F3A93", img: "/images/owner_doval.png",       href: "/teams/doval" },
-  { name: "Harsh Brambhatt",    role: "Team Owner", faction: "Tigers Warriors",    color: "#C0392B", img: "/images/owner_shah.png",        href: "/teams/amit-shah" },
-  { name: "Mayursinh Chavda",   role: "Team Owner", faction: "Lotus Diplomats",   color: "#1E824C", img: "/images/owner_jaishankar.png",  href: "/teams/jaishankar" },
+  { name: "Advocate Jay Patel", role: "Team Owner", team: "Lions Visionaries",  color: "#E07820", img: "/images/owner_modi.png",        href: "/teams/modi" },
+  { name: "Vishnu Soni",        role: "Team Owner", team: "Eagles Strategists", color: "#1F3A93", img: "/images/owner_doval.png",       href: "/teams/doval" },
+  { name: "Harsh Brambhatt",    role: "Team Owner", team: "Tigers Warriors",    color: "#C0392B", img: "/images/owner_shah.png",        href: "/teams/amit-shah" },
+  { name: "Mayursinh Chavda",   role: "Team Owner", team: "Lotus Diplomats",   color: "#1E824C", img: "/images/owner_jaishankar.png",  href: "/teams/jaishankar" },
 ];
 
 export default function AboutPage() {
@@ -120,12 +120,12 @@ export default function AboutPage() {
 
             <div className="h-sub max-w-lg mb-10">
               <p className="font-montserrat text-white/55 text-sm sm:text-base tracking-wider leading-[1.9] mb-8">
-                A high-stakes, one-month business tournament bringing together 30 elite business owners competing across 4 iconic factions. Strategy. Leadership. Execution. One Winner.
+                A high-stakes, one-month business tournament bringing together 30 elite business owners competing across 4 iconic teams. Strategy. Leadership. Execution. One Winner.
               </p>
               <div className="flex items-center gap-8">
                 {[
                   { val: "30", label: "Elite Players" },
-                  { val: "4",  label: "Factions" },
+                  { val: "4",  label: "Teams" },
                   { val: "4W", label: "Battle" },
                 ].map((s, i) => (
                   <div key={s.label} className="relative">
@@ -138,7 +138,7 @@ export default function AboutPage() {
             </div>
 
             <div className="h-btns flex flex-wrap gap-4">
-              <Link href="/teams" className="btn-primary">Meet The Factions <ArrowRight className="w-4 h-4" /></Link>
+              <Link href="/teams" className="btn-primary">Meet The Teams <ArrowRight className="w-4 h-4" /></Link>
               <Link href="/leaderboard" className="btn-secondary">Live Leaderboard</Link>
             </div>
           </div>
@@ -411,7 +411,7 @@ export default function AboutPage() {
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <div className="font-montserrat text-[7px] uppercase tracking-[0.3em] mb-1.5" style={{ color: leader.color }}>{leader.role}</div>
                     <h3 className="font-cinzel tracking-wider text-white text-sm leading-tight mb-1 group-hover:text-[#F0D060] transition-colors duration-300">{leader.name}</h3>
-                    <div className="font-montserrat text-white/60 text-[8px] tracking-[0.2em] uppercase">{leader.faction}</div>
+                    <div className="font-montserrat text-white/60 text-[8px] tracking-[0.2em] uppercase">{leader.team}</div>
                     {/* View team hint on hover */}
                     <div className="flex items-center gap-1.5 mt-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <span className="font-montserrat text-[7px] uppercase tracking-[0.25em]" style={{ color: leader.color }}>View Team</span>

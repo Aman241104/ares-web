@@ -50,7 +50,7 @@ export default function HomePage() {
   const [activeCommissioner, setActiveCommissioner] = useState<number | null>(null);
   const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
 
-  const handleFactionCardClick = (e: React.MouseEvent, teamId: string) => {
+  const handleTeamCardClick = (e: React.MouseEvent, teamId: string) => {
     // Touch devices have no :hover to reveal the poster — tap toggles between
     // owner photo and poster instead of navigating. Navigation only happens
     // through the Team/Owner buttons below the image.
@@ -426,7 +426,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 sr overflow-hidden border border-[rgba(255,194,0,0.12)] rounded-sm">
             {[
-              { n: "30",  label: "Business Owners",  sub: "Competing across 4 factions", suffix: "+" },
+              { n: "30",  label: "Business Owners",  sub: "Competing across 4 teams", suffix: "+" },
               { n: "4",   label: "Iconic Teams",   sub: "Led by iconic team owners",     suffix: "" },
               { n: "4",   label: "Weeks of Battle", sub: "July 1st – July 29th, 2026",     suffix: "" },
               { n: "∞",   label: "Legacy",         sub: "One champion, one legend",    suffix: "" },
@@ -583,7 +583,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          TEAM SPOTLIGHT — THE FACTIONS
+          TEAM SPOTLIGHT — THE TEAMS
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
@@ -592,9 +592,9 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
-            <div className="section-label mx-auto mb-4">The Factions</div>
+            <div className="section-label mx-auto mb-4">The Teams</div>
             <h2 className="font-cinzel text-white text-2xl sm:text-3xl tracking-[0.2em] text-shadow-gold">Choose Your Side</h2>
-            <p className="font-cormorant italic text-white/50 text-base sm:text-lg mt-2">Four factions. One championship. Eternal legacy.</p>
+            <p className="font-cormorant italic text-white/50 text-base sm:text-lg mt-2">Four teams. One championship. Eternal legacy.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
@@ -615,7 +615,7 @@ export default function HomePage() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,194,0,0.22)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                 >
                   {/* Image area */}
-                  <Link href={`/teams/${team.id}`} className="block" onClick={(e) => handleFactionCardClick(e, team.id)}>
+                  <Link href={`/teams/${team.id}`} className="block" onClick={(e) => handleTeamCardClick(e, team.id)}>
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
                         src={ownerImgs[team.id]}
@@ -849,10 +849,16 @@ export default function HomePage() {
                           </span>
                         </div>
                         <p className="font-montserrat text-white/60 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 flex-wrap">
                           <span className="font-montserrat text-[#FFC200] text-[8px] uppercase tracking-[0.18em] font-bold">{ev.date}</span>
                           <span className="text-white/20">·</span>
                           <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
+                          {ev.venue && (
+                            <>
+                              <span className="text-white/20">·</span>
+                              <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.18em]">{ev.venue}</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -104,7 +104,7 @@ export default function SplashLoader() {
         <div className="sp-helmet-glow absolute w-40 h-40 sm:w-56 sm:h-56 bg-[#D4AF37]/25 blur-[60px] rounded-full opacity-0 pointer-events-none" />
         <div className="sp-helmet opacity-0 flex flex-col items-center gap-4">
           <Image src="/images/logo_icon.png" alt="ARES Business League" width={554} height={486} className="w-24 sm:w-32 h-auto object-contain" priority />
-          <span className="font-cinzel text-white text-lg sm:text-2xl tracking-[0.3em]">ARES</span>
+          <span className="font-cinzel text-white text-lg sm:text-2xl tracking-[0.3em]">ARES BUSINESS LEAGUE</span>
         </div>
       </div>
 

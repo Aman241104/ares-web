@@ -104,6 +104,7 @@ export interface ScheduleEvent {
   date?: string;
   time?: string;
   organizer?: string;
+  venue?: string;
 }
 
 export interface SpecialEvent {
@@ -111,6 +112,7 @@ export interface SpecialEvent {
   desc: string;
   date: string;
   time: string;
+  venue?: string;
   status: 'upcoming' | 'completed';
 }
 

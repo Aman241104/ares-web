@@ -212,9 +212,9 @@ export default function SchedulePage() {
                 >
                   <div className="col-span-8 lg:col-span-5 lg:col-start-1">
                     <div className="font-cinzel text-white text-sm tracking-wide">{event.name}</div>
-                    {(event.date || event.time || event.organizer) && (
+                    {(event.date || event.time || event.organizer || event.venue) && (
                       <div className="font-montserrat text-white/40 text-[9px] uppercase tracking-widest mt-1">
-                        {[event.date, event.time, event.organizer && `by ${event.organizer}`].filter(Boolean).join(" · ")}
+                        {[event.date, event.time, event.venue, event.organizer && `by ${event.organizer}`].filter(Boolean).join(" · ")}
                       </div>
                     )}
                   </div>

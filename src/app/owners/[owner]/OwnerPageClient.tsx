@@ -3,7 +3,7 @@ import { useEffect, useRef, use } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Clock, Building2, Globe, Phone, Mail, ChevronRight, Code, Megaphone, BarChart2, Cpu, DollarSign, Factory, Zap, Newspaper, BookOpen, Users, Briefcase, Gavel, Key, HeartCrack, Map, Landmark, Banknote, Receipt, FileText, ShieldCheck, FileCheck } from "lucide-react";
+import { MapPin, Clock, Building2, Globe, Phone, Mail, ChevronRight, Code, Megaphone, BarChart2, Cpu, DollarSign, Factory, Zap, Newspaper, BookOpen, Users, Briefcase, Gavel, Key, HeartCrack, Map, Landmark, Banknote, Receipt, FileText, ShieldCheck, FileCheck, Gem, Sparkles, UtensilsCrossed, Frame, Pin, Gift, Wind, Wrench, RefreshCw } from "lucide-react";
 import { teams } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,6 +37,15 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
   megaphone: <Megaphone className="w-6 h-6" />,
   zap: <Zap className="w-6 h-6" />,
   "bar-chart": <BarChart2 className="w-6 h-6" />,
+  gem: <Gem className="w-6 h-6" />,
+  sparkles: <Sparkles className="w-6 h-6" />,
+  utensils: <UtensilsCrossed className="w-6 h-6" />,
+  frame: <Frame className="w-6 h-6" />,
+  pin: <Pin className="w-6 h-6" />,
+  gift: <Gift className="w-6 h-6" />,
+  wind: <Wind className="w-6 h-6" />,
+  wrench: <Wrench className="w-6 h-6" />,
+  "refresh-cw": <RefreshCw className="w-6 h-6" />,
 };
 
 const DEFAULT_SERVICES = [

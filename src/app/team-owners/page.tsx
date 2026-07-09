@@ -89,7 +89,7 @@ export default function TeamOwnersPage() {
             </span>
           </h1>
           <p className="font-montserrat text-white/60 text-sm max-w-2xl mx-auto leading-relaxed tracking-wide">
-            Meet the architects of victory. These visionary leaders command the top factions in the ARES Business League, bringing decades of experience and strategic dominance.
+            Meet the architects of victory. These visionary leaders command the top teams in the ARES Business League, bringing decades of experience and strategic dominance.
           </p>
         </div>
 

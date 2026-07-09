@@ -1,9 +1,9 @@
 export interface HonoreeCompany {
   name: string;
   category: string;
-  phone: string;
-  email: string;
-  idealConnect: string;
+  phone?: string;
+  email?: string;
+  idealConnect?: string;
 }
 
 export interface Honoree {
@@ -16,42 +16,25 @@ export interface Honoree {
 
 export const PARTNERS_2026: Honoree[] = [
   {
-    name: "Vishnu Soni",
+    name: "Ankit Jani",
     role: "Founding Partner",
-    quote: "Corporate gifting that leaves a lasting impression — proud to power ABL 2026.",
-    img: "/images/owner_doval.png",
+    quote: "Marketing is the engine of every business — proud to fuel ABL 2026 from day one.",
+    img: "/images/roster/ankit-jani.png",
     company: {
-      name: "Silver Spoon",
-      category: "Corporate Gifting",
-      phone: "+91 99981 23479",
-      email: "vnu444@gmail.com",
-      idealConnect: "Corporates, MNC's, HR",
+      name: "Jukebox Media",
+      category: "Digital Marketing",
+      idealConnect: "Businesses Looking to Fix Their Digital Marketing, Businesses Looking to Increase Their Sales",
     },
   },
   {
-    name: "Shruti Agarwal",
+    name: "Dr. Chahana Shah",
     role: "Founding Partner",
-    quote: "Backing the league that backs its members — that's what real partnership looks like.",
-    img: "/images/roster/shruti-agarwal.png",
+    quote: "A healthy smile builds real confidence — glad to back a league that builds champions.",
+    img: "/images/roster/chahana-shah.png",
     company: {
-      name: "Arcedior International Pvt. Ltd.",
-      category: "Furniture Manufacturer",
-      phone: "+91 99099 07405",
-      email: "shruti@arcedior.com",
-      idealConnect: "Interior Designers, Hoteliers, Builders, Home Stylists, Corporates Making New Office",
-    },
-  },
-  {
-    name: "Priyank Vora",
-    role: "Founding Partner",
-    quote: "Wealth is built the same way this league is — with trust, consistency, and the right partners.",
-    img: "/images/roster/priyank-vora.png",
-    company: {
-      name: "Kinstugii Wealth",
-      category: "Wealth Management",
-      phone: "+91 70432 68807",
-      email: "kinstugiiwealth@gmail.com",
-      idealConnect: "Business Owners, HNIs, Families Planning Their Finances",
+      name: "Chahana Dental Studio",
+      category: "Dentist",
+      idealConnect: "Families, Corporates, Anyone Looking to Improve Oral Health",
     },
   },
   {
@@ -65,6 +48,38 @@ export const PARTNERS_2026: Honoree[] = [
       phone: "+91 81049 33816",
       email: "gauravmehta.biz@gmail.com",
       idealConnect: "Business Owners Without a Website, Custom Web Apps, CRM & ERP Solutions",
+    },
+  },
+  {
+    name: "Rushil Pandya",
+    role: "Founding Partner",
+    quote: "Strength is built one rep at a time — the same discipline that built this league.",
+    img: "/images/roster/rushil-pandya.png",
+    company: {
+      name: "Fitness Hustler",
+      category: "Health Coach",
+      idealConnect: "Gym Owners, Gujarati Businessmen (25-40 age), Fitness Enthusiasts",
+    },
+  },
+  {
+    name: "Ankit Patel",
+    role: "Founding Partner",
+    quote: "Backing ABL 2026 the same way we back every relationship — with trust and consistency.",
+    img: "/images/roster/ankit-patel.png",
+    company: {
+      name: "Prihaan Spices & Frozen Foods",
+      category: "Gifting Sponsor",
+    },
+  },
+  {
+    name: "Sujal Soni",
+    role: "Founding Partner",
+    quote: "Every great journey needs the right partners — honored to be one for ABL 2026.",
+    img: "/images/roster/sujal-soni.png",
+    company: {
+      name: "Destination Anywhere Travel Co.",
+      category: "International Tours & Travel",
+      idealConnect: "Friends and Family Travelling Abroad, Corporates, Wedding Planners, Honeymooners",
     },
   },
 ];
