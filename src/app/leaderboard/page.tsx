@@ -86,7 +86,7 @@ export default function LeaderboardPage() {
       {/* ─── HERO ─── */}
       <PageHero backgroundImage="/images/hero_trophy_leaderboard.png" layout="left" className="min-h-[380px]" objectPosition="object-[78%_center] md:object-center">
 
-        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-24 z-10">
+        <div className="max-w-7xl mx-auto relative px-6 sm:px-10 lg:px-16 py-12 sm:py-24 z-10">
           <div className="max-w-2xl">
             <div className="h-badge inline-flex items-center gap-3 mb-7">
               <div className="absolute inset-0 rounded-full border border-white/10 bg-white/4 backdrop-blur-md" />

@@ -88,7 +88,7 @@ export default function BlogPage() {
       </PageHero>
 
       {/* ── FEATURED POST ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="section-label mb-10">Featured Article</div>
 
@@ -190,7 +190,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── ALL POSTS + SIDEBAR ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 

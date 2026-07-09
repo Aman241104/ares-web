@@ -141,7 +141,7 @@ export default function SchedulePage() {
       </PageHero>
 
       {/* ── THIS WEEK'S EVENT UPDATE ── */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 relative">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5 relative">
         <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto mb-12 sr relative">
           <div className="section-label mb-4">Live Updates</div>
@@ -265,7 +265,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ── GALLERY ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-16 sm:py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center justify-between mb-12">
             <div>

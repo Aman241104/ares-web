@@ -184,9 +184,9 @@ export default function TeamsPage() {
       </section>
 
       {/* ── CINEMATIC TEAM CARDS ── */}
-      <section className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="pt-10 pb-32 sm:py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
-          <div className="flex items-center gap-4 mb-16">
+          <div className="flex items-center gap-4 mb-10 sm:mb-16">
             <h2 className="font-cinzel font-bold text-white text-3xl tracking-widest uppercase">
               Meet the <span className="text-[#D4AF37]">Teams</span>
             </h2>

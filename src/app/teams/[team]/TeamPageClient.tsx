@@ -208,7 +208,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
     <div ref={containerRef} className="pt-28 bg-[#000000] min-h-screen overflow-x-hidden">
       {activeMember && <MemberModal member={activeMember} color={team.color} onClose={() => setActiveMember(null)} />}
       {/* HERO */}
-      <section className="relative min-h-[60vh] flex items-center py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center py-10 sm:py-20 px-6 sm:px-10 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 60% 70% at 70% 50%, ${team.color}10 0%, transparent 70%)` }} />
 
@@ -366,7 +366,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       )}
 
       {/* OVERVIEW STATS (Full Width Now) */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto glass-card p-10 border-white/10 sr">
           <div className="flex items-center gap-4 mb-8">
             <h3 className="font-cinzel text-white text-xl tracking-widest uppercase">Team Overview</h3>
@@ -404,7 +404,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* ROSTER: OWNER + 6 MEMBERS GRID */}
-      <section id="members" className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
+      <section id="members" className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         {/* Dynamic Background */}
         <div className="absolute inset-0 pointer-events-none opacity-20" style={{ background: `radial-gradient(circle at 30% 50%, ${team.color}15, transparent 60%)` }} />
         
@@ -528,7 +528,7 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
       </section>
 
       {/* PERFORMANCE */}
-      <section id="performance" className="py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section id="performance" className="py-16 sm:py-32 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex items-center gap-6 mb-16">
             <h2 className="font-cinzel font-light text-white text-3xl tracking-widest uppercase">Performance</h2>

@@ -236,7 +236,7 @@ export default function WallOfFamePage() {
 
       {/* ══════════════ HERO ══════════════ */}
       <PageHero layout="left" className="min-h-[70vh]" objectPosition="object-[78%_center] md:object-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full z-10 relative py-12 sm:py-24">
           <div className="max-w-2xl">
             <div className="h-badge inline-flex items-center gap-3 mb-8 relative">
               <div className="absolute inset-0 rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/6 backdrop-blur-xl" />
@@ -312,7 +312,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ COMMISSIONERS ══════════════ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Guardians"
@@ -329,7 +329,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ TEAM OWNERS ══════════════ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Visionaries"
@@ -348,7 +348,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ PARTNERS ══════════════ */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Backbone"
@@ -367,7 +367,7 @@ export default function WallOfFamePage() {
       {activeHonoree && <HonoreeModal honoree={activeHonoree} onClose={() => setActiveHonoree(null)} />}
 
       {/* ══════════════ ALL WARRIORS ══════════════ */}
-      <section className="py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+      <section className="py-14 sm:py-28 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             eyebrow="The Competitors"
@@ -403,7 +403,7 @@ export default function WallOfFamePage() {
       </section>
 
       {/* ══════════════ ABL 2026 COMING SOON ══════════════ */}
-      <section className="relative py-20 sm:py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#000000] overflow-hidden border-t border-white/5 sr">
+      <section className="relative py-10 sm:py-20 sm:py-32 sm:py-40 px-6 sm:px-10 lg:px-16 bg-[#000000] overflow-hidden border-t border-white/5 sr">
         <div className="absolute inset-0 bg-grid opacity-5 pointer-events-none" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
 

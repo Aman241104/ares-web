@@ -1,10 +1,14 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +16,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
+    lenisRef.current = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -40,9 +45,18 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       window.removeEventListener("load", onLoad);
       window.clearInterval(revealInterval);
       gsap.ticker.remove(lenisRaf);
+      lenisRef.current = null;
       lenis.destroy();
     };
   }, []);
+
+  // Client-side route changes (e.g. the mobile dock's Links) don't reset
+  // scroll on their own here — Lenis owns the scroll position, so a plain
+  // window.scrollTo gets fought/overridden by Lenis re-asserting its last
+  // offset on the next raf tick. Snap Lenis itself back to the top.
+  useEffect(() => {
+    lenisRef.current?.scrollTo(0, { immediate: true });
+  }, [pathname]);
 
   return <>{children}</>;
 }

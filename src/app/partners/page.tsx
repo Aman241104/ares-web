@@ -107,7 +107,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── PRESENTING SPONSOR ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 sr">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5 sr">
         <div className="max-w-7xl mx-auto">
           <div className="section-label mx-auto mb-3">Featured Partner</div>
           <h2 className="font-cinzel font-bold text-white text-center mb-12" style={{ fontSize: "clamp(24px, 3.5vw, 44px)" }}>
@@ -152,7 +152,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── PARTNERS GRID ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto sr">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-5">
             <div>
@@ -196,7 +196,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ─── BECOME A PARTNER CTA ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-5xl mx-auto">
           <div className="relative border border-[rgba(212,175,55,0.2)] bg-[#0B1120] p-10 lg:p-14 text-center overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)" }} />

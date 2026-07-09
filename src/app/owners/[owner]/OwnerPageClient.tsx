@@ -202,7 +202,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
       </section>
 
       {/* COMPANY DETAILS */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] border-y border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sr">
           
           <div className="glass-card p-10 border-white/10">
@@ -258,7 +258,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
       </section>
 
       {/* CONNECTIONS + SERVICES */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000]">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sr-stagger">
           
           <div className="glass-card p-10 border-white/10">

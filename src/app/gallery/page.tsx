@@ -93,7 +93,7 @@ export default function GalleryPage() {
       </PageHero>
 
       {/* ─── PREVIEW GRID ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr mb-10 flex items-center justify-between">
             <div>
@@ -135,7 +135,7 @@ export default function GalleryPage() {
       </section>
 
       {/* ─── TEAM COVERAGE ─── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="sr text-center mb-10">
             <div className="section-label mx-auto mb-3">Photo Schedule</div>

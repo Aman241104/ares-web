@@ -419,7 +419,7 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-20 relative">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">Tournament at a Glance</div>
           </div>
@@ -456,7 +456,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           LIVE LEADERBOARD
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative z-20">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative z-20">
         {/* Subtle ambient */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -585,7 +585,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           TEAM SPOTLIGHT — THE TEAMS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
@@ -700,7 +700,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           MEET THE COMMISSIONERS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden border-t border-white/5">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
@@ -806,7 +806,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.06) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
@@ -907,7 +907,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           QUICK ACCESS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
+      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
 
           <div className="sr mb-12 text-center">

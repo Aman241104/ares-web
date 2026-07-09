@@ -17,7 +17,7 @@ const footerTeams = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#07101F] overflow-hidden">
+    <footer className="relative bg-[#07101F] overflow-hidden pb-28 xl:pb-0">
       {/* Top decorative border */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 20%, rgba(240,208,96,0.8) 50%, rgba(212,175,55,0.5) 80%, transparent 100%)" }} />
 

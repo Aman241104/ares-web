@@ -232,7 +232,7 @@ export default function PointsPage() {
       </PageHero>
 
       {/* ── LEAGUE SCORING SYSTEM ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="sr mb-12">
             <div className="section-label mb-4">League Scoring System</div>
@@ -258,7 +258,7 @@ export default function PointsPage() {
       </section>
 
       {/* ── AND THAT'S NOT ALL ── */}
-      <section className="py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-4 mb-5">
