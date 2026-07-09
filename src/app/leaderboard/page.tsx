@@ -269,22 +269,22 @@ export default function LeaderboardPage() {
             </div>
 
             {/* Top Performers */}
-            <div className="glass-card p-8 sr border-white/10">
+            <div className="glass-card p-5 sm:p-8 sr border-white/10">
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm mb-6 uppercase">Top Performers — Week 1</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sr-stagger">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 sr-stagger">
                 {topPerformers.map((p) => (
-                  <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-5 text-center hover:bg-white/[0.03] transition-all">
-                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-4">{p.label}</div>
-                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-3 border border-white/10 bg-white/[0.03] flex items-center justify-center">
+                  <div key={p.label} className="bg-white/[0.01] border border-white/5 rounded-xl p-3 sm:p-5 text-center hover:bg-white/[0.03] transition-all">
+                    <div className="font-montserrat text-white/55 text-[8px] uppercase tracking-widest mb-2 sm:mb-4">{p.label}</div>
+                    <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-2 sm:mb-3 border border-white/10 bg-white/[0.03] flex items-center justify-center">
                       {p.image ? (
                         <Image src={p.image} alt={p.name!} width={96} height={96} className="w-full h-full object-cover" />
                       ) : (
-                        <Users className="w-8 h-8 text-white/20" />
+                        <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white/20" />
                       )}
                     </div>
-                    <div className={`font-cinzel tracking-wider text-[11px] mb-1 ${p.name ? "text-white" : "text-white/40"}`}>{p.name ?? "TBA"}</div>
-                    <div className={`font-montserrat text-[8px] uppercase tracking-widest mb-3 ${p.name ? "text-white/50" : "text-white/30"}`}>{p.team ?? "Awaiting Results"}</div>
-                    <div className={`font-cinzel font-bold text-lg ${p.value ? "text-[#D4AF37]" : "text-white/25"}`}>{p.value ?? "—"}</div>
+                    <div className={`font-cinzel tracking-wider text-[10px] sm:text-[11px] leading-tight mb-1 ${p.name ? "text-white" : "text-white/40"}`}>{p.name ?? "TBA"}</div>
+                    <div className={`font-montserrat text-[7px] sm:text-[8px] uppercase tracking-widest leading-snug mb-1.5 sm:mb-3 ${p.name ? "text-white/50" : "text-white/30"}`}>{p.team ?? "Awaiting Results"}</div>
+                    <div className={`font-cinzel font-bold text-base sm:text-lg ${p.value ? "text-[#D4AF37]" : "text-white/25"}`}>{p.value ?? "—"}</div>
                   </div>
                 ))}
               </div>
