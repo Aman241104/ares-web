@@ -439,9 +439,9 @@ export const partners: Partner[] = [
 
 export const topPerformers: { label: string; name?: string; image?: string; team?: string; value?: string }[] = [
   { label: "MVP", name: "Ashutosh Mehta", image: "/images/roster/ashutosh-mehta.png", team: "Silver Spoon Warriors", value: "7,605 pts" },
-  { label: "Max Referrer", name: "Ankit Patel", image: "/images/roster/ankit-patel.png", team: "Advocate Jay Visionaries" },
-  { label: "Max TYFCB", name: "Jay G Patel", image: "/images/owner_modi.png", team: "Advocate Jay Visionaries" },
-  { label: "Max 121", name: "Mayursinh Chavda", image: "/images/owner_jaishankar.png", team: "CSM Diplomats" },
+  { label: "Max Referrer", name: "Ankit Patel", image: "/images/roster/ankit-patel.png", team: "Advocate Jay Visionaries", value: "4,656 pts" },
+  { label: "Max TYFCB", name: "Jay G Patel", image: "/images/owner_modi.png", team: "Advocate Jay Visionaries", value: "7,205 pts" },
+  { label: "Max 121", name: "Mayursinh Chavda", image: "/images/owner_jaishankar.png", team: "CSM Diplomats", value: "3,795 pts" },
 ];
 
 export const blogCategories: string[] = ["Strategy", "Leadership", "Networking", "Execution", "Business Growth", "Nation Building"];
