@@ -27,11 +27,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-// aresbusinessleague.com is not yet connected in Vercel (DNS doesn't resolve) — link
-// previews (WhatsApp, etc.) need metadataBase to point at a URL that actually resolves,
-// otherwise og:image resolves to a dead domain and the preview shows no image. Swap
-// SITE_URL back to the custom domain once it's connected.
-const SITE_URL = "https://ares-web-nine.vercel.app";
+const SITE_URL = "https://www.aresbusinessleague.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

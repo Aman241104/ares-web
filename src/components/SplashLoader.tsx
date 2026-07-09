@@ -90,7 +90,7 @@ export default function SplashLoader() {
       {/* Jukebox Media */}
       <div className="sp-jukebox absolute opacity-0 flex flex-col items-center gap-4">
         <span className="inline-flex items-center bg-white rounded-full px-6 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-          <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-12 sm:h-16 w-auto object-contain" priority />
+          <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-16 sm:h-20 w-auto object-contain" priority />
         </span>
       </div>
 

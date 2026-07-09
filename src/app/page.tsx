@@ -50,7 +50,7 @@ export default function HomePage() {
   const [activeCommissioner, setActiveCommissioner] = useState<number | null>(null);
   const [flippedTeam, setFlippedTeam] = useState<string | null>(null);
 
-  const handleTeamCardClick = (e: React.MouseEvent, teamId: string) => {
+  const handleFactionCardClick = (e: React.MouseEvent, teamId: string) => {
     // Touch devices have no :hover to reveal the poster — tap toggles between
     // owner photo and poster instead of navigating. Navigation only happens
     // through the Team/Owner buttons below the image.
@@ -341,7 +341,7 @@ export default function HomePage() {
             >
               <span className="font-montserrat text-white/40 text-[8px] tracking-[0.3em] uppercase">Presented by</span>
               <span className="inline-flex items-center bg-white rounded-full pl-3 pr-4 py-2 shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
-                <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-6 sm:h-7 w-auto object-contain" />
+                <Image src="/images/jukebox-media-logo.png" alt="Jukebox Media" width={872} height={342} className="h-8 sm:h-9 w-auto object-contain" />
               </span>
             </a>
 
@@ -419,14 +419,14 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-20 relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 relative">
           <div className="text-center mb-14 sr">
             <div className="section-label mx-auto mb-5">Tournament at a Glance</div>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 sr overflow-hidden border border-[rgba(255,194,0,0.12)] rounded-sm">
             {[
-              { n: "30",  label: "Business Owners",  sub: "Competing across 4 teams", suffix: "+" },
+              { n: "30",  label: "Business Owners",  sub: "Competing across 4 factions", suffix: "+" },
               { n: "4",   label: "Iconic Teams",   sub: "Led by iconic team owners",     suffix: "" },
               { n: "4",   label: "Weeks of Battle", sub: "July 1st – July 29th, 2026",     suffix: "" },
               { n: "∞",   label: "Legacy",         sub: "One champion, one legend",    suffix: "" },
@@ -456,7 +456,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           LIVE LEADERBOARD
       ═══════════════════════════════════════════ */}
-      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative z-20">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative z-20">
         {/* Subtle ambient */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(212,175,55,0.025) 0%, transparent 70%)" }} />
 
@@ -583,18 +583,18 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          TEAM SPOTLIGHT — THE TEAMS
+          TEAM SPOTLIGHT — THE FACTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-40" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.08) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
-            <div className="section-label mx-auto mb-4">The Teams</div>
+            <div className="section-label mx-auto mb-4">The teams</div>
             <h2 className="font-cinzel text-white text-2xl sm:text-3xl tracking-[0.2em] text-shadow-gold">Choose Your Side</h2>
-            <p className="font-cormorant italic text-white/50 text-base sm:text-lg mt-2">Four teams. One championship. Eternal legacy.</p>
+            <p className="font-cormorant italic text-white/50 text-base sm:text-lg mt-2">Four factions. One championship. Eternal legacy.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sr-stagger">
@@ -615,7 +615,7 @@ export default function HomePage() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,194,0,0.22)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                 >
                   {/* Image area */}
-                  <Link href={`/teams/${team.id}`} className="block" onClick={(e) => handleTeamCardClick(e, team.id)}>
+                  <Link href={`/teams/${team.id}`} className="block" onClick={(e) => handleFactionCardClick(e, team.id)}>
                     <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
                         src={ownerImgs[team.id]}
@@ -700,7 +700,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           MEET THE COMMISSIONERS
       ═══════════════════════════════════════════ */}
-      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#030712] relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 pointer-events-none bg-grid opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-14 sr text-center">
@@ -806,7 +806,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           EVENTS & PARTNERS
       ═══════════════════════════════════════════ */}
-      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,194,0,0.06) 0%, transparent 70%)" }} />
         <div className="gold-divider opacity-60" />
 
@@ -849,16 +849,10 @@ export default function HomePage() {
                           </span>
                         </div>
                         <p className="font-montserrat text-white/60 text-[9px] tracking-wide leading-relaxed mb-2">{ev.desc}</p>
-                        <div className="flex items-center gap-3 flex-wrap">
+                        <div className="flex items-center gap-3">
                           <span className="font-montserrat text-[#FFC200] text-[8px] uppercase tracking-[0.18em] font-bold">{ev.date}</span>
                           <span className="text-white/20">·</span>
                           <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.18em]">{ev.time}</span>
-                          {ev.venue && (
-                            <>
-                              <span className="text-white/20">·</span>
-                              <span className="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.18em]">{ev.venue}</span>
-                            </>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -907,7 +901,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           QUICK ACCESS
       ═══════════════════════════════════════════ */}
-      <section className="py-12 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
+      <section className="py-24 px-6 sm:px-10 lg:px-16 bg-[#000000] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
 
           <div className="sr mb-12 text-center">

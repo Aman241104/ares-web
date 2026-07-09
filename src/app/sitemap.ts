@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/data'
 
-// Matches SITE_URL in layout.tsx — aresbusinessleague.com isn't connected in Vercel yet.
-const BASE = 'https://ares-web-nine.vercel.app'
+// Matches SITE_URL in layout.tsx.
+const BASE = 'https://www.aresbusinessleague.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = blogPosts.map((post) => ({

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://ares-web-nine.vercel.app/sitemap.xml',
+    sitemap: 'https://www.aresbusinessleague.com/sitemap.xml',
   }
 }
