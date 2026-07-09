@@ -535,45 +535,26 @@ export default function TeamPage({ params }: { params: Promise<{ team: string }>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="glass-card p-10 border-white/10 flex flex-col justify-center sr">
-              <h3 className="font-cinzel tracking-widest text-white/60 text-sm mb-8 uppercase">Key Metrics</h3>
-              <div className="space-y-6">
-                {[
-                  { l: "Visitors", v: team.performance.visitors },
-                  { l: "Referrals", v: team.performance.referrals },
-                  { l: "TYFCB", v: team.performance.tyfcb },
-                  { l: "One-to-Ones", v: team.performance.oneToOnes },
-                  { l: "Attendance", v: team.performance.attendance },
-                ].map((p) => (
-                  <div key={p.l}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest">{p.l}</span>
-                      <span className="font-cinzel text-sm" style={{ color: team.color }}>{p.v}%</span>
-                    </div>
-                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${p.v}%`, background: team.color }} />
-                    </div>
+          <div className="glass-card p-10 border-white/10 max-w-2xl sr">
+            <h3 className="font-cinzel tracking-widest text-white/60 text-sm mb-8 uppercase">Key Metrics</h3>
+            <div className="space-y-6">
+              {[
+                { l: "Visitors", v: team.performance.visitors },
+                { l: "Referrals", v: team.performance.referrals },
+                { l: "TYFCB", v: team.performance.tyfcb },
+                { l: "One-to-Ones", v: team.performance.oneToOnes },
+                { l: "Attendance", v: team.performance.attendance },
+              ].map((p) => (
+                <div key={p.l}>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-montserrat text-white/60 text-[10px] uppercase tracking-widest">{p.l}</span>
+                    <span className="font-cinzel text-sm" style={{ color: team.color }}>{p.v}%</span>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="glass-card p-10 border-white/10 sr">
-              <h3 className="font-cinzel tracking-widest text-white/60 text-sm mb-8 uppercase">Recent Achievements</h3>
-              <div className="space-y-4">
-                {team.achievements.map((a) => (
-                  <div key={a.title} className="flex gap-4 p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0">
-                      <Trophy className="w-4 h-4 text-white/60" />
-                    </div>
-                    <div>
-                      <div className="font-cinzel text-white text-base mb-1">{a.title}</div>
-                      <div className="font-montserrat text-white/50 text-[10px] uppercase tracking-widest leading-relaxed">{a.desc}</div>
-                    </div>
+                  <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${p.v}%`, background: team.color }} />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

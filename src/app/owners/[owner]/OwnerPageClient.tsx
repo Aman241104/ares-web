@@ -233,10 +233,12 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
                 { icon: <Globe className="w-4 h-4"/>, l: "Website", v: owner.company.website },
                 { icon: <Building2 className="w-4 h-4"/>, l: "Company Size", v: owner.company.size },
               ].filter((i) => i.v).map((i)=>(
-                <div key={i.l} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-0">
-                  <div className="text-[#D4AF37] flex-shrink-0">{i.icon}</div>
-                  <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest w-32 flex-shrink-0">{i.l}</span>
-                  <span className="font-cinzel text-white text-sm tracking-wider break-all">{i.v}</span>
+                <div key={i.l} className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 py-3 border-b border-white/5 last:border-0">
+                  <div className="flex items-center gap-4 sm:contents">
+                    <div className="text-[#D4AF37] flex-shrink-0">{i.icon}</div>
+                    <span className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest sm:w-32 sm:flex-shrink-0">{i.l}</span>
+                  </div>
+                  <span className="font-cinzel text-white text-sm tracking-wider break-all pl-8 sm:pl-0">{i.v}</span>
                 </div>
               ))}
             </div>
@@ -268,7 +270,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
             </div>
             <p className="font-montserrat text-white/40 text-[10px] uppercase tracking-widest mb-8">We are looking to connect with:</p>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {(owner.company.connectWith ?? DEFAULT_CONNECT_WITH).map((label, i)=>{
                 const Icon = CONNECT_ICON_CYCLE[i % CONNECT_ICON_CYCLE.length];
                 return (
@@ -287,7 +289,7 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
               <h3 className="font-cinzel tracking-widest text-[#D4AF37] text-sm uppercase">Our Products & Services</h3>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {(owner.company.services ?? DEFAULT_SERVICES).map((s)=>(
                 <div key={s.name} className="p-5 bg-white/[0.05] border border-white/5 rounded-xl hover:border-white/20 transition-colors">
                   <div className="text-[#D4AF37] mb-3">{SERVICE_ICONS[s.icon] ?? <Briefcase className="w-6 h-6" />}</div>
@@ -302,8 +304,8 @@ export default function OwnerPageClient({ params }: { params: Promise<{ owner: s
       </section>
 
       {/* CONTACT STRIP */}
-      <section className="py-10 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border border-white/8 rounded-full px-8 py-5">
+      <section className="pt-10 pb-32 xl:pb-10 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5 sr">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-4 border border-white/8 rounded-3xl sm:rounded-full px-8 py-5">
           {[
             { icon: <Phone className="w-3.5 h-3.5"/>, v: owner.phone },
             { icon: <Mail className="w-3.5 h-3.5"/>, v: owner.email },

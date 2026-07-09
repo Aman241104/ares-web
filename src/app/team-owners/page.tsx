@@ -1,17 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { teams } from "@/lib/data";
-import { Quote, Briefcase, Building2, MapPin, Target } from "lucide-react";
+import { Quote, Briefcase, Building2, MapPin, Target, ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function TeamOwnersPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -102,7 +105,11 @@ export default function TeamOwnersPage() {
               className="owner-card relative group w-full"
             >
               <div
-                className="relative w-full rounded-2xl border border-white/10 bg-[#070B14]/40 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-white/20 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row"
+                role="link"
+                tabIndex={0}
+                onClick={() => router.push(`/owners/${team.owner.id}`)}
+                onKeyDown={(e) => { if (e.key === "Enter") router.push(`/owners/${team.owner.id}`); }}
+                className="relative w-full rounded-2xl border border-white/10 bg-[#070B14]/40 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-white/20 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row cursor-pointer"
               >
                 {/* Left Side: Image Placeholder */}
                 <div className="w-full lg:w-[40%] relative min-h-[400px] lg:min-h-full bg-black/60 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/5 overflow-hidden">
@@ -214,6 +221,16 @@ export default function TeamOwnersPage() {
                       <div className="font-montserrat text-white/40 text-[8px] tracking-[0.15em] sm:tracking-[0.2em] uppercase">Current Rank</div>
                     </div>
                   </div>
+
+                  {/* View Profile CTA */}
+                  <Link
+                    href={`/owners/${team.owner.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border font-montserrat text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:gap-3 self-start"
+                    style={{ borderColor: `${team.color}40`, color: team.color, backgroundColor: `${team.color}0D` }}
+                  >
+                    View Full Profile <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
 
                 </div>
               </div>

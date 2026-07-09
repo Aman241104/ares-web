@@ -2,12 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Users, Trophy, Calendar, Menu, X, ChevronRight, ArrowRight } from "lucide-react";
+import { Home, Users, Trophy, Calendar, Menu, X, ChevronRight, ChevronDown, ArrowRight } from "lucide-react";
 import { navLinks } from "./Navbar";
 
 export default function MobileDock() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const dockItems = [
     { href: "/",            label: "Home",   icon: <Home     className="w-5 h-5" /> },
@@ -55,10 +56,48 @@ export default function MobileDock() {
           <div className="space-y-1.5 max-h-[50vh] overflow-y-auto pr-1 custom-scrollbar">
             {navLinks.map((link) => {
               const isActive = link.href ? pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)) : pathname.startsWith("/teams");
+
+              if (link.dropdown) {
+                const isOpen = openDropdown === link.label;
+                return (
+                  <div key={link.label} className={`border transition-all duration-300 ${
+                    isActive
+                      ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6"
+                      : "border-white/5 bg-white/[0.05]"
+                  }`}>
+                    <button
+                      className={`w-full flex items-center justify-between px-5 py-4 ${
+                        isActive ? "text-[#D4AF37]" : "text-white/60"
+                      }`}
+                      onClick={() => setOpenDropdown(isOpen ? null : link.label)}
+                    >
+                      <span className="font-montserrat text-[11px] uppercase tracking-[0.18em] font-semibold">{link.label}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""} ${isActive ? "text-[#D4AF37]/60" : "text-white/20"}`} />
+                    </button>
+                    {isOpen && (
+                      <div className="pb-2 px-2 space-y-1">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.04] transition-all duration-200"
+                            onClick={() => { setMenuOpen(false); setOpenDropdown(null); }}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color, boxShadow: `0 0 6px ${item.color}` }} />
+                            <span className="flex-1 font-montserrat text-[10px] tracking-[0.12em]">{item.label}</span>
+                            <span className="font-montserrat text-[7px] uppercase tracking-[0.2em] opacity-40" style={{ color: item.color }}>{item.sub}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={link.label}
-                  href={link.href || "/teams"}
+                  href={link.href!}
                   className={`flex items-center justify-between px-5 py-4 border transition-all duration-300 ${
                     isActive
                       ? "border-[rgba(212,175,55,0.3)] bg-[#D4AF37]/6 text-[#D4AF37]"

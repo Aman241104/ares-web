@@ -17,7 +17,7 @@ export interface Honoree {
 export const PARTNERS_2026: Honoree[] = [
   {
     name: "Ankit Jani",
-    role: "Founding Partner",
+    role: "Presenting Sponsor",
     quote: "Marketing is the engine of every business — proud to fuel ABL 2026 from day one.",
     img: "/images/roster/ankit-jani.png",
     company: {
