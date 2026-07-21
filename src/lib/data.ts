@@ -378,8 +378,10 @@ export const weeklyEvents: WeeklyEvent[] = [
     theme: "THE FINAL BATTLE",
     description: "Everything is on the line. Champions are made in the final stretch.",
     events: [
-      { name: "Sports Event", category: "Fun & Games", points: 0, status: "upcoming", date: "Jul 24, 2026", time: "8:30 PM onwards" },
-      { name: "Coffee With Business", category: "Networking", points: 0, status: "upcoming", date: "Jul 27, 2026", time: "6:00 PM" },
+      { name: "121 Conclave – BNI Darius", category: "121", points: 0, status: "upcoming", date: "Jul 24, 2026" },
+      { name: "Go Karting", category: "Fun & Games", points: 0, status: "upcoming", date: "Jul 25, 2026" },
+      { name: "Coffee With Business", category: "Networking", points: 0, status: "upcoming", date: "Jul 27, 2026" },
+      { name: "Know Your Members – Ankit Jani", category: "Networking", points: 0, status: "upcoming", date: "Jul 28, 2026" },
     ],
   },
 ];
