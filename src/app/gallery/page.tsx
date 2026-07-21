@@ -9,19 +9,70 @@ import PageHero from "@/components/PageHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const HIGHLIGHT_VIDEOS = [
+  { src: "/videos/gallery/gallery-01.mp4", label: "Box Cricket – Bonding League" },
+  { src: "/videos/gallery/gallery-02.mp4", label: "Box Cricket – Bonding League" },
+  { src: "/videos/gallery/gallery-03.mp4", label: "BNI Conference" },
+  { src: "/videos/gallery/gallery-04.mp4", label: "Conference Moments" },
+  { src: "/videos/gallery/gallery-05.mp4", label: "Conference Moments" },
+  { src: "/videos/gallery/gallery-06.mp4", label: "Conference Moments" },
+  { src: "/videos/gallery/gallery-07.mp4", label: "Conference Moments" },
+  { src: "/videos/gallery/gallery-08.mp4", label: "Coffee With Business" },
+  { src: "/videos/gallery/gallery-09.mp4", label: "Coffee With Business" },
+  { src: "/videos/gallery/gallery-10.mp4", label: "KYM – Advocate Jay Patel" },
+  { src: "/videos/gallery/gallery-11.mp4", label: "KYM – Advocate Jay Patel" },
+  { src: "/videos/gallery/gallery-12.mp4", label: "Cross Chapter Session" },
+  { src: "/videos/gallery/gallery-13.mp4", label: "Cross Chapter Session" },
+  { src: "/videos/gallery/gallery-14.mp4", label: "Cross Chapter Session" },
+  { src: "/videos/gallery/gallery-15.mp4", label: "Auction Night" },
+  { src: "/videos/gallery/gallery-16.mp4", label: "Auction Night" },
+];
+
 const PREVIEW_IMAGES = [
-  { src: "/images/hero_arena.png",        alt: "Arena",          label: "The Arena" },
-  { src: "/images/luxury_boardroom.png",  alt: "Boardroom",      label: "Opening Night" },
-  { src: "/images/blog_strategy.png",     alt: "Strategy",       label: "Strategy Session" },
-  { src: "/images/blog_leadership.png",   alt: "Leadership",     label: "Leadership Summit" },
-  { src: "/images/blog-networking.png",   alt: "Networking",     label: "Networking Gala" },
-  { src: "/images/blog-growth.png",       alt: "Growth",         label: "Growth Showcase" },
-  { src: "/images/mascot_lion.png",       alt: "Lions",          label: "Team Modi Lions" },
-  { src: "/images/mascot_eagle.png",      alt: "Eagles",         label: "Team Doval Eagles" },
-  { src: "/images/mascot_tiger.png",      alt: "Tigers",         label: "Team Shah Tigers" },
-  { src: "/images/mascot_lotus.png",      alt: "Lotus",          label: "Team Jaishankar" },
-  { src: "/images/owner_modi.png",        alt: "Owner Modi",     label: "Advocate Jay Patel" },
-  { src: "/images/owner_doval.png",       alt: "Owner Doval",    label: "Vishnu Soni" },
+  { src: "/images/gallery/gallery-19.jpg", alt: "Box Cricket",      label: "Box Cricket – Bonding League" },
+  { src: "/images/gallery/gallery-03.jpg", alt: "KYM",              label: "KYM – Advocate Jay Patel" },
+  { src: "/images/gallery/gallery-02.jpg", alt: "KYM",              label: "KYM – Nisha Kumbhani" },
+  { src: "/images/gallery/gallery-04.jpg", alt: "Session",          label: "Cross Chapter Session" },
+  { src: "/images/gallery/gallery-05.jpg", alt: "Team Portrait",    label: "Team Portrait" },
+  { src: "/images/gallery/gallery-06.jpg", alt: "Dinner Meet",      label: "Dinner Meet" },
+  { src: "/images/gallery/gallery-07.jpg", alt: "Dinner Meet",      label: "Dinner Meet" },
+  { src: "/images/gallery/gallery-08.jpg", alt: "Lounge Meet",      label: "Lounge Meet" },
+  { src: "/images/gallery/gallery-09.jpg", alt: "Coffee",           label: "Coffee With Business" },
+  { src: "/images/gallery/gallery-10.jpg", alt: "121 Conclave",     label: "121 Conclave" },
+  { src: "/images/gallery/gallery-11.jpg", alt: "Conference",       label: "Conference Selfie" },
+  { src: "/images/gallery/gallery-12.jpg", alt: "Night Meet",       label: "Night Meet" },
+  { src: "/images/gallery/gallery-13.jpg", alt: "Terrace Meet",     label: "Terrace Get-Together" },
+  { src: "/images/gallery/gallery-14.jpg", alt: "Birthday",         label: "Birthday Celebration" },
+  { src: "/images/gallery/gallery-15.jpg", alt: "Birthday",         label: "Birthday Celebration" },
+  { src: "/images/gallery/gallery-16.jpg", alt: "Birthday",         label: "Birthday Celebration" },
+  { src: "/images/gallery/gallery-17.jpg", alt: "Birthday",         label: "Birthday Celebration" },
+  { src: "/images/gallery/gallery-18.jpg", alt: "Birthday",         label: "Birthday Celebration" },
+  { src: "/images/gallery/gallery-20.jpg", alt: "Garden Meet",      label: "Garden Cafe Meet" },
+  { src: "/images/gallery/gallery-21.jpg", alt: "Cross Chapter",    label: "Cross Chapter Call" },
+  { src: "/images/gallery/gallery-22.jpg", alt: "Coffee Meet",      label: "Coffee Meet" },
+  { src: "/images/gallery/gallery-23.jpg", alt: "Cross Chapter",    label: "Cross Chapter Meeting" },
+  { src: "/images/gallery/gallery-24.jpg", alt: "Team Hangout",     label: "Team Hangout" },
+  { src: "/images/gallery/gallery-25.jpg", alt: "Cross Chapter",    label: "Cross Chapter Meeting" },
+  { src: "/images/gallery/gallery-01.jpg", alt: "Team Call",        label: "Team Call" },
+  { src: "/images/gallery/gallery-26.jpg", alt: "Gift Ceremony",    label: "Gift Ceremony" },
+  { src: "/images/gallery/gallery-27.jpg", alt: "Lights Camera Action", label: "Lights, Camera, Action" },
+  { src: "/images/gallery/gallery-28.jpg", alt: "KYM",              label: "KYM – Shruti Agrawal" },
+  { src: "/images/gallery/gallery-29.jpg", alt: "Conference",       label: "Conference Selfie" },
+  { src: "/images/gallery/gallery-30.jpg", alt: "Conference",       label: "Conference Selfie" },
+  { src: "/images/gallery/gallery-31.jpg", alt: "Hotel Meet",       label: "Hotel Corridor Meet" },
+  { src: "/images/gallery/gallery-32.jpg", alt: "Restaurant Meet",  label: "Restaurant Meet" },
+  { src: "/images/gallery/gallery-33.jpg", alt: "Conference",       label: "Conference Selfie" },
+  { src: "/images/gallery/gallery-34.jpg", alt: "Lounge Meet",      label: "Lounge Meet" },
+  { src: "/images/gallery/gallery-35.jpg", alt: "Event Swag",       label: "Event Swag Bags" },
+  { src: "/images/gallery/gallery-36.jpg", alt: "Silver Spoon",     label: "Silver Spoon Gifts" },
+  { src: "/images/gallery/gallery-37.jpg", alt: "Coffee With Business", label: "Coffee With Business" },
+  { src: "/images/gallery/gallery-38.jpg", alt: "Coffee With Business", label: "Coffee With Business" },
+  { src: "/images/gallery/gallery-39.jpg", alt: "BNI Ahmedabad",    label: "BNI Ahmedabad Chapter" },
+  { src: "/images/gallery/gallery-40.jpg", alt: "Week 1 Recap",     label: "Week 1 Recap" },
+  { src: "/images/gallery/gallery-41.jpg", alt: "MVP of Week 1",    label: "MVP of Week 1 – Ashutosh Mehta" },
+  { src: "/images/gallery/gallery-42.jpg", alt: "Session",          label: "Cross Chapter Session" },
+  { src: "/images/gallery/gallery-43.jpg", alt: "Session",          label: "Understanding Intelligence" },
+  { src: "/images/gallery/gallery-44.jpg", alt: "Auction Complete", label: "Auction Complete" },
 ];
 
 export default function GalleryPage() {
@@ -100,7 +151,7 @@ export default function GalleryPage() {
               <div className="section-label mb-2">Sneak Peek</div>
               <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">Preview Gallery</h2>
             </div>
-            <div className="font-montserrat text-white/65 text-[8px] uppercase tracking-[0.3em]">More coming soon</div>
+            <div className="font-montserrat text-white/65 text-[8px] uppercase tracking-[0.3em]">{PREVIEW_IMAGES.length} Photos</div>
           </div>
 
           {/* Masonry-style grid */}
@@ -124,9 +175,36 @@ export default function GalleryPage() {
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
                   <div className="font-cinzel text-white text-xs tracking-wider">{img.label}</div>
                 </div>
-                {/* Placeholder overlay */}
-                <div className="absolute top-3 right-3 font-montserrat text-[7px] uppercase tracking-[0.2em] text-white/60 bg-black/60 border border-white/10 px-2 py-1">
-                  Preview
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VIDEO HIGHLIGHTS ─── */}
+      <section className="py-10 sm:py-20 px-6 sm:px-10 lg:px-16 bg-[#030712] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="sr mb-10 flex items-center justify-between">
+            <div>
+              <div className="section-label mb-2">In Motion</div>
+              <h2 className="font-cinzel text-white text-xl sm:text-2xl tracking-widest">Video Highlights</h2>
+            </div>
+            <div className="font-montserrat text-white/65 text-[8px] uppercase tracking-[0.3em]">{HIGHLIGHT_VIDEOS.length} Clips</div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sr-stagger">
+            {HIGHLIGHT_VIDEOS.map((v, i) => (
+              <div key={i} className="group relative overflow-hidden border border-white/5 hover:border-[rgba(212,175,55,0.25)] transition-all duration-500 bg-black">
+                <video
+                  src={v.src}
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full aspect-video object-cover"
+                />
+                <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+                  <div className="font-cinzel text-white text-xs tracking-wider">{v.label}</div>
                 </div>
               </div>
             ))}

@@ -74,10 +74,10 @@ export default function LeaderboardPage() {
 
   const sorted = [...teams].sort((a, b) => a.rank - b.rank);
   const weekData: Record<string, number[]> = {
-    modi: [22272, 0, 0, 0],
-    doval: [16040, 0, 0, 0],
-    "amit-shah": [12195, 0, 0, 0],
-    jaishankar: [7665, 0, 0, 0],
+    modi: [22272, 36105, 65550, 0],
+    doval: [16040, 40180, 30890, 0],
+    "amit-shah": [12195, 18315, 18800, 0],
+    jaishankar: [7665, 10110, 45010, 0],
   };
 
   return (
@@ -138,7 +138,7 @@ export default function LeaderboardPage() {
 
             {/* Filters */}
             <div className="flex flex-wrap gap-2 sr">
-              {["Week 2 (Current)", "All Teams", "All Categories", "Reset Filters"].map((f, i) => (
+              {["Week 4 (Current)", "All Teams", "All Categories", "Reset Filters"].map((f, i) => (
                 <button key={f} className={`font-montserrat text-[10px] font-bold px-4 py-2 rounded-full border transition-all uppercase tracking-wider ${i === 3 ? "border-white/10 text-white/60 hover:bg-white/5" : "border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"}`}>
                   {f}
                 </button>
